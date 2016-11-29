@@ -1,17 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.name }}{% endif %}</title>
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600">
-  <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
-  <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{ site.name }}" href="{{ site.baseurl }}/feed.xml" />
-  {% seo %}
-</head>
+<html>
+{% include head.html %}
 <body>
-  <div class="container">
-    {{ content }}
-  </div>
+    <a id="top"></a>
+    <div class="container">
+        <header class="masthead-bar scoll-up">
+            <h1 class="masthead-bar-title">
+                {% if page.title != null %}<a href="#top" id="scoll-to-top">{{ page.title }}</a><span> | </span>{% endif %}
+                <a href="{{ site.baseurl }}/" id="site-title">{{ site.author }}<span>&#39;s blog</span></a>
+            </h1>
+        </header>
+        <header class="masthead scoll-up">
+            <h1 class="masthead-title">
+                {% if page.title != null %}<a href="{{ site.baseurl }}/" id="page-title">{{ page.title }}</a><span> | </span>{% endif %}
+                <a href="{{ site.baseurl }}/"><span id="author-name">{{ site.author }}</span><span>&#39;s blog</span></a>
+            </h1>
+            <nav class="masthead-nav">
+                {% for nav in site.nav %}
+                <a href="{{ nav.href }}">{{ nav.name }}</a>
+                {% endfor %}
+            </nav>
+        </header>
+        {{ content }}
+    </div>
+
+    <script>
+function init() {
+    window.addEventListener('scroll', function(e){
+        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+        shrinkOn = 200,
+        header = $("header");
+        if (distanceY > shrinkOn) {
+            if (header.hasClass("scoll-up")) {
+                header.removeClass("scoll-up");
+            }
+            header.addClass("scoll-down");
+        } else {
+            if (header.hasClass("scoll-down")) {
+                header.removeClass("scoll-down");
+            }
+            header.addClass("scoll-up");
+        }
+        //console.log(distanceY);
+    });
+    var scollItem = $("#scoll-to-top");
+    scollItem.click(function() {
+        $.scrollTo(scollItem.attr("href"), {duration:2000});
+    });
+}
+$(document).ready(init());
+    </script>
 </body>
 </html>

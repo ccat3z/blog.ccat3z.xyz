@@ -1,0 +1,59 @@
+---
+layout: default
+permlink: tags
+title: 标签
+---
+
+
+<div id="tag-list">
+    {% for tag in site.tags %}
+    <div class="list-item">
+        {% for post in tag[1] %} {% if post.image_preview != null %}
+        <div class="list-item-img">
+            <img class="media-image" src="{{ post.image_preview }}" alt="{{ post.title }}" title="{{ post.title }}" />
+        </div>
+        {% break %} {% endif %} {% endfor %}
+
+        <div class="list-item-body">
+            <h2 class="list-post-title">
+                <a href="{{ site.baseurl }}/tags?tag={{ tag[0] }}"
+                title="{{ tag[0] }}">
+                {{ tag[0] }}</a>
+            </h2>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% for tag in site.tags %}
+<div id="tag-{{ tag[0] }}" style="display : none;">
+    {% assign list-posts = tag[1] %} {% include list_post.html %}
+</div>
+{% endfor %}
+
+<script type="text/javascript">
+function getURLParameter(name) {
+    return decodeURIComponent(
+        (new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)')
+        .exec(location.search)
+        || [null, ''])[1]
+        .replace(/\+/g, '%20')) || null;
+}
+
+function showTag(tagStr) {
+    $(document).ready(function(){
+        $("#tag-" + tagStr).attr("style", "");
+        $("#tag-list").attr("style", "display :none;");
+        $("#page-title").html("标签:" + tagStr);
+        $("#scoll-to-top").html("标签:" + tagStr);
+    });
+}
+
+
+var tag_name = getURLParameter("tag");
+
+if (tag_name != null) {
+    showTag(tag_name);
+}
+
+</script>

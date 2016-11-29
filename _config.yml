@@ -1,23 +1,13 @@
-# # # # # # # #
-#   K i k o   #
-# # # # # # # #
-
 # Basic
-name:               "Kiko"
-description:        "a clean, lightweight and minimalistic blog theme for jekyll"
+name:               "c0ldcat's blog"
+description:        "一个伪装成菜鸡全栈工程师的上海高三狗"
 
 # jekyll-seo-tag, see: http://www.rubydoc.info/gems/jekyll-seo-tag/1.2.0
-url:                "//kiko.gfjaru.com"
-author:             "gfjaru"
-twitter:
-  username:         "gfjaru"
-#facebook:
-#  app_id:           1234
-#    publisher:      1234
+url:                "//blog.c0ldcat.ml"
+author:             "c0ldcat"
 
 # URL
 baseurl:            ""
-#baseurl:            "" #For Root Domain
 permalink:          /:year/:month/:day/:title/
 
 # Markdown
@@ -25,10 +15,26 @@ markdown:           kramdown
 
 # Navigation
 nav:
-  - name:           "About"
-    href:           "//kiko.gfjaru.com/about"
-  - name:           "Download"
-    href:           "//github.com/gfjaru/Kiko/releases"
+  - name:           "文章"
+    href:           "/posts"
+  - name:           "项目"
+    href:           "/projects"
+  - name:           "标签"
+    href:           "/tags"
+
+projects:
+  - name: netease-music-java
+    description: 网易云音乐 Java API
+    link: https://github.com/c0ldcat/netease-music-java
+    image: /images/netease_music.png
+
+social:
+  - service: github
+    username: c0ldcat
+    link: https://github.com/c0ldcat
+  - service: mail
+    username: firez199984@gmail.com
+    link: mailto:firez199984@gmail.com
 
 # Sass
 sass:

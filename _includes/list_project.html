@@ -1,0 +1,24 @@
+<div class="content list">
+{% if site.projects.size == 0 %}
+  <h2>No project found</h2>
+{% else %}
+{% if list-project-limit == null %} {% assign list-project-limit = site.projects.size %} {% endif %}
+{% for project in site.projects limit:list-project-limit %}
+<div class="list-item">
+    {% if project.image != null %}
+    <div class="list-item-img">
+        <img class="media-image" src="{{ project.image }}" alt="{{ project.name }}" title="{{ project.name }}" />
+    </div>
+    {% endif %}
+    <div class="list-item-body">
+        <h2 class="list-post-title">
+            <a href="{{ project.link }}">{{ project.name }}</a>
+        </h2>
+        <div class="list-post-info">
+            {% if project.description %} {{ project.description }} {% endif %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+</div>

@@ -1,12 +1,14 @@
 ---
 layout: default
 ---
-<header class="masthead">
-  <h1 class="masthead-title--small">
-    <a href="{{ site.baseurl }}/">{{ site.name }}</a>
-  </h1>
-</header>
 <div class="content page">
-  <h1 class="page-title">{{ page.title }}</h1>
   {{ content }}
 </div>
+
+<script>
+var titleItem = $("#site-title");
+titleItem.attr("href","#top");
+titleItem.click(function() {
+    $.scrollTo(titleItem.attr("href"), {duration:2000});
+});
+</script>

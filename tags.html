@@ -10,7 +10,7 @@ title: 标签
     <div class="list-item">
         {% for post in tag[1] %} {% if post.image_preview != null %}
         <div class="list-item-img">
-            <img class="media-image" src="{{ post.image_preview }}" alt="{{ post.title }}" title="{{ post.title }}" />
+            <img src="{{ post.image_preview }}" alt="{{ post.title }}" title="{{ post.title }}" />
         </div>
         {% break %} {% endif %} {% endfor %}
 
@@ -20,6 +20,9 @@ title: 标签
                 title="{{ tag[0] }}">
                 {{ tag[0] }}</a>
             </h2>
+            <div class="list-post-info">
+                {{ tag[1][0].title }}
+            </div>
         </div>
     </div>
     {% endfor %}

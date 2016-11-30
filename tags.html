@@ -45,7 +45,7 @@ function getURLParameter(name) {
 
 function showTag(tagStr) {
     $(document).ready(function(){
-        $("#tag-" + tagStr).attr("style", "");
+        $('div[id="tag-' + tagStr + '"]').attr("style", "");
         $("#tag-list").attr("style", "display :none;");
         $("#page-title").html("标签:" + tagStr);
         $("#scoll-to-top").html("标签:" + tagStr);
@@ -56,6 +56,7 @@ function showTag(tagStr) {
 var tag_name = getURLParameter("tag");
 
 if (tag_name != null) {
+    console.log(tag_name);
     showTag(tag_name);
 }
 

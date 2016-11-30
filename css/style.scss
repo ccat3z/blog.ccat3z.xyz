@@ -358,6 +358,7 @@ tbody tr:nth-child(odd) th {
     left: 0;
     background: rgba(255,255,255,0.8);
     width: 100%;
+    z-index: 9999;
 
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;

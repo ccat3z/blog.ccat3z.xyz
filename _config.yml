@@ -1,19 +1,14 @@
-# Basic
 name:               "c0ldcat's blog"
 description:        "一个伪装成菜鸡全栈工程师的上海高三狗"
 
-# jekyll-seo-tag, see: http://www.rubydoc.info/gems/jekyll-seo-tag/1.2.0
 url:                "//blog.c0ldcat.ml"
 author:             "c0ldcat"
 
-# URL
 baseurl:            ""
 permalink:          /:year/:month/:day/:title/
 
-# Markdown
 markdown:           kramdown
 
-# Navigation
 nav:
   - name:           "文章"
     href:           "/posts"
@@ -40,24 +35,12 @@ social:
     username: firez199984@gmail.com
     link: mailto:firez199984@gmail.com
 
-# Sass
 sass:
   style:            :compressed
 
-# Scopes
-defaults:
-  -
-    scope:
-      path:         ""
-      type:         "pages"
-    values:
-      layout:       "page"
-  -
-    scope:
-      path:         ""
-      type:         "posts"
-    values:
-      layout:       "post"
-
 gems:
   - jekyll-seo-tag
+
+exclude:
+  - "CNAME"
+  - "*.dot"

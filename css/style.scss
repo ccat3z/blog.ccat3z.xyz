@@ -283,7 +283,7 @@ tbody tr:nth-child(odd) th {
 // # ## # #    #  ####    #   ###### #####  #    # #    #
 // #    # ######      #   #   #    # #      ###### #    #
 // #    # #    # #    #   #   #    # #      #    # #    #
-// #    # #    #  ####    #   #    # ###### #    # #####  
+// #    # #    #  ####    #   #    # ###### #    # #####
 
 .masthead{
     -webkit-transition: all 0.3s;
@@ -339,7 +339,6 @@ tbody tr:nth-child(odd) th {
 
         a {
             color: #aaa;
-            text-transform: lowercase;
             -webkit-transition: all .2s ease;
             -moz-transition: all .2s ease;
             transition: all .2s ease;

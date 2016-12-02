@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 一些微小的工作
-permlink: /projects
+title: 项目
+permalink: /projects/
 ---
-{% include list_project.html %} 
+{% include list_project.html %}

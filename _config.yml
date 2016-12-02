@@ -5,7 +5,6 @@ url:                "//blog.c0ldcat.ml"
 author:             "c0ldcat"
 
 baseurl:            ""
-permalink:          /:year/:month/:day/:title/
 
 markdown:           kramdown
 
@@ -16,6 +15,24 @@ nav:
     href:           "/projects"
   - name:           "标签"
     href:           "/tags"
+
+collections:
+    col_tags:
+      output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "col_tags"
+    values:
+      permalink: /tags/:slug/
+      layout: tag_page
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: /posts/:title/
+      layout: post
 
 projects:
   - name: netease-music-java

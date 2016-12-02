@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
+    <title id="site-title">{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
     <link rel="icon" href="/c0ldcat.png">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{ site.name }}" href="{{ site.baseurl }}/feed.xml" />

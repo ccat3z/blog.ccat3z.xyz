@@ -1,0 +1,28 @@
+<div class="content list">
+    {% if site.posts.size == 0 %}
+    <h2>No post found</h2>
+    {% else %}
+    {% if list-post-limit == null %} {% assign list-post-limit = site.posts | size %} {% endif %}
+    {% if list-posts == null %} {% assign list-posts = site.posts %} {% endif %}
+    {% for post in list-posts limit:list-post-limit %}
+    <div class="list-item">
+        {% if post.image_preview != null %}
+        <div class="list-item-img">
+            <img class="media-image"
+            src="{{ post.image_preview }}" alt="{{ post.title }}"
+            title="{{ post.title }}" />
+        </div>
+        {% endif %}
+        <div class="list-item-body">
+            <h2 class="list-post-title">
+                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+            </h2>
+            <div class="list-post-info">
+                <time class="list-post-date">{{ post.date | date_to_string }}</time>
+                {% if post.short_description %} | {{ post.short_description }} {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>

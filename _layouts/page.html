@@ -4,11 +4,3 @@ layout: default
 <div class="content page">
   {{ content }}
 </div>
-
-<script>
-var titleItem = $("#site-title");
-titleItem.attr("href","#top");
-titleItem.click(function() {
-    $.scrollTo(titleItem.attr("href"), {duration:2000});
-});
-</script>

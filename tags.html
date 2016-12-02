@@ -1,14 +1,14 @@
 ---
 layout: default
-permlink: tags
+permalink: /tags/
 title: 标签
 ---
 
-
-<div id="tag-list">
-    {% for tag in site.tags %}
+<div class="content list">
+    {% for col_tag in site.col_tags %}
+    {% assign tag = site.tags[col_tag.title] %}
     <div class="list-item">
-        {% for post in tag[1] %} {% if post.image_preview != null %}
+        {% for post in tag %} {% if post.image_preview != null %}
         <div class="list-item-img">
             <img src="{{ post.image_preview }}" alt="{{ post.title }}" title="{{ post.title }}" />
         </div>
@@ -16,48 +16,14 @@ title: 标签
 
         <div class="list-item-body">
             <h2 class="list-post-title">
-                <a href="{{ site.baseurl }}/tags?tag={{ tag[0] }}"
-                title="{{ tag[0] }}">
-                {{ tag[0] }}</a>
+                <a href="{{ site.baseurl }}/tags/{{ col_tag.slug }}"
+                title="{{ col_tag.title }}">
+                {{ col_tag.title }}</a>
             </h2>
             <div class="list-post-info">
-                {{ tag[1][0].title }}
+                {{ tag[0].title }}
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
-
-{% for tag in site.tags %}
-<div id="tag-{{ tag[0] }}" style="display : none;">
-    {% assign list-posts = tag[1] %} {% include list_post.html %}
-</div>
-{% endfor %}
-
-<script type="text/javascript">
-function getURLParameter(name) {
-    return decodeURIComponent(
-        (new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)')
-        .exec(location.search)
-        || [null, ''])[1]
-        .replace(/\+/g, '%20')) || null;
-}
-
-function showTag(tagStr) {
-    $(document).ready(function(){
-        $('div[id="tag-' + tagStr + '"]').attr("style", "");
-        $("#tag-list").attr("style", "display :none;");
-        $("#page-title").html("标签:" + tagStr);
-        $("#scoll-to-top").html("标签:" + tagStr);
-    });
-}
-
-
-var tag_name = getURLParameter("tag");
-
-if (tag_name != null) {
-    console.log(tag_name);
-    showTag(tag_name);
-}
-
-</script>

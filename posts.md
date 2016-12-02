@@ -1,6 +1,6 @@
 ---
 layout: page
-permlink: /posts
+permalink: /posts/
+title: 文章
 ---
-{% include list_post.html %} 
-
+{% include list_post.html %}

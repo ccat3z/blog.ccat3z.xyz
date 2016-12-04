@@ -38,11 +38,15 @@ projects:
   - name: netease-music-java
     description: 网易云音乐 Java API
     link: https://github.com/c0ldcat/netease-music-java
-    image: /images/netease_music.png
+    image: /images/netease-music.svg
   - name: hackwlb-server
     description: 本站开源哦
     link: https://github.com/c0ldcat/hackwlb-server
     image: /c0ldcat.png
+  - name: bio-font-z
+    description: 生物笔记符号字体
+    link: https://github.com/c0ldcat/bio-font-z
+    image: /images/bio-font-z.svg
 
 social:
   - service: github

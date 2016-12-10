@@ -5,14 +5,27 @@ title: 标签
 ---
 
 <div class="content list">
+    {% assign used_image = "" %}
     {% for col_tag in site.col_tags %}
     {% assign tag = site.tags[col_tag.title] %}
     <div class="list-item">
-        {% for post in tag %} {% if post.image_preview != null %}
+        {% for post in tag %}
+            {% if post.image_preview != null %}
+                {% assign image = post.image_preview %}
+
+                {% if used_image contains post.image_preview %}
+                {% else %}
+                    {% assign used_image = used_image | append: ' ' | append: post.image_preview %}
+                    {% break %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        {% if image != null %}
         <div class="list-item-img">
-            <img src="{{ post.image_preview }}" alt="{{ post.title }}" title="{{ post.title }}" />
+            <img src="{{ image }}" />
         </div>
-        {% break %} {% endif %} {% endfor %}
+        {% endif %}
 
         <div class="list-item-body">
             <h2 class="list-post-title">

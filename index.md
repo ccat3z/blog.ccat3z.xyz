@@ -1,5 +1,6 @@
 ---
 layout: page
+title: "主页"
 ---
 
 ### [ <span id="section-post-title" hidetext='<a href="/posts">更多精彩的文章</a>' origtext="一些生活的点滴"></span> ]
@@ -7,7 +8,7 @@ layout: page
 {% assign list-post-limit = 3 %}
 {% include list_post.html %}
 
----
+***
 
 ### [ <span id="section-project-title" hidetext='<a href="/projects">更多精妙复杂的设计</a>' origtext="以及一些微小的工作"></span> ]
 

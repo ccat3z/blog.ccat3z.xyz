@@ -8,13 +8,13 @@
     <div class="container">
         <header class="masthead-bar scoll-up">
             <h1 class="masthead-bar-title">
-                {% if page.title != null %}<a href="#top" id="scoll-to-top">{{ page.title }}</a><span> | </span>{% endif %}
+                {% if page.title != "主页" %}<a href="#top" id="scoll-to-top">{{ page.title }}</a><span> | </span>{% endif %}
                 <a href="{{ site.baseurl }}/">{{ site.author }}<span>&#39;s blog</span></a>
             </h1>
         </header>
         <header class="masthead scoll-up">
             <h1 class="masthead-title">
-                {% if page.title != null %}<a href="{{ site.baseurl }}/" id="page-title">{{ page.title }}</a><span> | </span>{% endif %}
+                {% if page.title != "主页" %}<a href="{{ site.baseurl }}/" id="page-title">{{ page.title }}</a><span> | </span>{% endif %}
                 <a href="{{ site.baseurl }}/"><span id="author-name">{{ site.author }}</span><span>&#39;s blog</span></a>
             </h1>
             <nav class="masthead-nav">

@@ -105,21 +105,6 @@ ul {
     }
 }
 
-ol {
-    list-style: inside decimal;
-    padding-left: 0;
-
-    li {
-        margin-bottom: .25rem;
-    }
-
-    ul,
-    ol {
-        margin-top: .25rem;
-        margin-bottom: .5rem;
-    }
-}
-
 p + h1,
 p + h2,
 p + h3,

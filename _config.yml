@@ -63,5 +63,9 @@ gems:
   - jekyll-seo-tag
 
 exclude:
-  - "CNAME"
   - "*.dot"
+  - ".*"
+  - "Gemfile"
+  - "deploy.sh"
+  - "deploy_key"
+  - "deploy_key.enc"

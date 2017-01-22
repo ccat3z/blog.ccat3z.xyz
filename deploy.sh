@@ -30,6 +30,16 @@ jekyll build
 # Init git dir
 mv _site out
 cd out
+
+sed -i "s|\/fonts|../fonts|g" css/*.css
+
+for html in $(find . -name "*html")
+do
+    sed -i "s|/css|$(echo $html | sed "s|[^/\\.]\{1,\}/|../|g;s|/[^/]*$||")/css|" $html
+done
+
+font-spider --debug --no-backup $(find . -name "*html")
+
 git init
 git checkout --orphan $TARGET_BRANCH
 

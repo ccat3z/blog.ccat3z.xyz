@@ -1,7 +1,6 @@
 #!/bin/bash
 
 TARGET_BRANCH="gh-pages"
-OUTPUT_DIR="$PWD/out"
 
 # Pull requests shouldn't try to deploy, just skip
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
@@ -27,9 +26,7 @@ SHA=`git rev-parse --verify HEAD`
 # Build
 jekyll build
 
-# Init git dir
-mv _site out
-cd out
+cd _site
 
 sed -i "s|\/fonts|../fonts|g" css/*.css
 
@@ -40,12 +37,26 @@ done
 
 font-spider --debug --no-backup $(find . -name "*html")
 
-git init
-git checkout --orphan $TARGET_BRANCH
+cd ..
 
+# Init git dir
+git clone --depth=1 --branch=$TARGET_BRANCH $REPO orig
+
+mv _site out
+cd out
+mv ../orig/.git .git
+
+# Config git
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
+# If no change, just exit
+if [ -z `git diff --exit-code` ]; then
+    echo "No changes to the output on this push, exiting."
+    exit 0
+fi
+
+# Add all
 git add .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 

@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+    - 2.4.0
+
+script: bash ./deploy.sh
+
+env:
+    global:
+        - ENCRYPTION_LABEL: "e4c6db214c19"
+        - COMMIT_AUTHOR_EMAIL: "firez199984@gmail.com"

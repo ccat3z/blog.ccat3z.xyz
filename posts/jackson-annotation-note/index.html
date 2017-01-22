@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title id="site-title">Jackson Annotation Note | c0ldcat's blog</title>
+    <link rel="icon" href="/c0ldcat.png">
+    <link rel="stylesheet" href="./../../css/style.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for c0ldcat's blog" href="/feed.xml" />
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.typetype.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.scrollTo.min.js"></script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e1acee033923881f5528a3b4a658039b";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Jackson Annotation Note - c0ldcat’s blog</title>
+<meta property="og:title" content="Jackson Annotation Note" />
+<meta name="description" content="Based on the article: Jackson Annotation Examples by Eugen Paraschiv" />
+<meta property="og:description" content="Based on the article: Jackson Annotation Examples by Eugen Paraschiv" />
+<link rel="canonical" href="//blog.c0ldcat.ml/posts/jackson-annotation-note/" />
+<meta property="og:url" content="//blog.c0ldcat.ml/posts/jackson-annotation-note/" />
+<meta property="og:site_name" content="c0ldcat’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-01-21T13:14:55+00:00" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Jackson Annotation Note",
+"datePublished": "2017-01-21T13:14:55+00:00",
+"description": "Based on the article: Jackson Annotation Examples by Eugen Paraschiv",
+"url": "//blog.c0ldcat.ml/posts/jackson-annotation-note/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+    <a id="top"></a>
+    <div class="container">
+        <header class="masthead-bar scoll-up">
+            <h1 class="masthead-bar-title">
+                <a href="#top" id="scoll-to-top">Jackson Annotation Note</a><span> | </span>
+                <a href="/">c0ldcat<span>&#39;s blog</span></a>
+            </h1>
+        </header>
+        <header class="masthead scoll-up">
+            <h1 class="masthead-title">
+                <a href="/" id="page-title">Jackson Annotation Note</a><span> | </span>
+                <a href="/"><span id="author-name">c0ldcat</span><span>&#39;s blog</span></a>
+            </h1>
+            <nav class="masthead-nav">
+                
+                <a href="/posts">文章</a>
+                
+                <a href="/projects">项目</a>
+                
+                <a href="/tags">标签</a>
+                
+                
+                
+                <a href="/tags/json">JSON</a>
+                
+                
+                <a href="/tags/jackson">Jackson</a>
+                
+            </nav>
+        </header>
+        <div class="content post">
+  <div class="post-date">
+    <time>21 Jan 2017</time>
+  </div>
+  <blockquote>
+  <p>Based on the <a href="http://www.baeldung.com/jackson-annotations">article: Jackson Annotation Examples</a> by Eugen Paraschiv</p>
+</blockquote>
+
+<blockquote>
+  <p>最近在搞Dropwizard, 意外发现了这个<a href="https://github.com/FasterXML/jackson">Jackson JSON Processor</a>, 支持注脚, 非常好用, 官方Wiki关于此写的并不详细, 在次转来一篇Example, 浅显易懂便不作翻译.</p>
+</blockquote>
+
+<h2 id="overview">Overview</h2>
+
+<p>In this article, we'll do a deep dive into <strong>Jackson Annotations</strong>.</p>
+
+<p>We'll see how to use the existing annotations, how to create custom ones and finally – how to disable them.</p>
+
+<h2 id="jackson-serialization-annotations">Jackson Serialization Annotations</h2>
+
+<p>First – let's take a look at the serialization annotations.</p>
+
+<h3 id="jsonanygetter"><code class="highlighter-rouge">@JsonAnyGetter</code></h3>
+
+<p>The <code class="highlighter-rouge">@JsonAnyGetter</code> annotation allows the flexibility of using a Map field as standard properties.</p>
+
+<p>Here's a quick example – the ExtendableBean entity has the name property and a set of extendable attributes in form of key/value pairs:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExtendableBean</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">properties</span><span class="o">;</span>
+
+    <span class="nd">@JsonAnyGetter</span>
+    <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="nf">getProperties</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">properties</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>When we serialize an instance of this entity, we get all the key-values in the Map as standard, plain properties:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My bean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attr2"</span><span class="p">:</span><span class="s2">"val2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attr1"</span><span class="p">:</span><span class="s2">"val1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>And here how the serialization of this entity looks like in practice:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonAnyGetter_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+
+    <span class="n">ExtendableBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ExtendableBean</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">);</span>
+    <span class="n">bean</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"attr1"</span><span class="o">,</span> <span class="s">"val1"</span><span class="o">);</span>
+    <span class="n">bean</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"attr2"</span><span class="o">,</span> <span class="s">"val2"</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"attr1"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"val1"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsongetter"><code class="highlighter-rouge">@JsonGetter</code></h3>
+
+<p>The <code class="highlighter-rouge">@JsonGetter</code> annotation is an alternative to <code class="highlighter-rouge">@JsonProperty</code> annotation to mark the specified method as a getter method.</p>
+
+<p>In the following example – we specify the method getTheName() as the getter method of name property of MyBean entity:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBean</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonGetter</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTheName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>And here's how this works in practice:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonGetter_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+
+    <span class="n">MyBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyBean</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"My bean"</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"1"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonpropertyorder"><code class="highlighter-rouge">@JsonPropertyOrder</code></h3>
+
+<p>The <code class="highlighter-rouge">@JsonPropertyOrder</code> annotation is used to specify <strong>the order of properties on serialization</strong>.</p>
+
+<p>Let's set a custom order for the properties of a MyBean entity:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@JsonPropertyOrder</span><span class="o">({</span> <span class="s">"name"</span><span class="o">,</span> <span class="s">"id"</span> <span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBean</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>And here is the output of serialization:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My bean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>And a simple test:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonPropertyOrder_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+
+    <span class="n">MyBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyBean</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"My bean"</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"1"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonrawvalue"><code class="highlighter-rouge">@JsonRawValue</code></h3>
+
+<p><code class="highlighter-rouge">@JsonRawValue</code> is used to instruct the Jackson to serialize a property exactly as is.</p>
+
+<p>In the following example – we use <code class="highlighter-rouge">@JsonRawValue</code> to embed some custom JSON as a value of an entity:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RawBean</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonRawValue</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">json</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The output of serializing the entity is:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My bean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"json"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"attr"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>And a simple test:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonRawValue_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+
+    <span class="n">RawBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RawBean</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">,</span> <span class="s">"{"</span><span class="n">attr</span><span class="s">":false}"</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"{"</span><span class="n">attr</span><span class="s">":false}"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonvalue"><code class="highlighter-rouge">@JsonValue</code></h3>
+
+<p><code class="highlighter-rouge">@JsonValue</code> indicates a single method that should be used to serialize the entire instance.</p>
+
+<p>For example in an enum – we annotate the getName with <code class="highlighter-rouge">@JsonValue</code> so that any such entity is serialized via its name:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="n">TypeEnumWithValue</span> <span class="o">{</span>
+    <span class="n">TYPE1</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"Type A"</span><span class="o">),</span> <span class="n">TYPE2</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">"Type 2"</span><span class="o">);</span>
+
+    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonValue</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Our test:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonValue_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonParseException</span><span class="o">,</span> <span class="n">IOException</span> <span class="o">{</span>
+
+    <span class="n">String</span> <span class="n">enumAsString</span>
+      <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">TypeEnumWithValue</span><span class="o">.</span><span class="na">TYPE1</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">enumAsString</span><span class="o">,</span> <span class="n">is</span><span class="o">(</span><span class="s">""</span><span class="n">Type</span> <span class="n">A</span><span class="s">""</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonrootname"><code class="highlighter-rouge">@JsonRootName</code></h3>
+
+<p>The <code class="highlighter-rouge">@JsonRootName</code> annotation is used – if wrapping is enabled – to specify the name of the root wrapper to be used.</p>
+
+<p>Wrapping means that instead of serializing a User to something like:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>It's going to be wrapped like this:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>So, let's look at an example – we're going to use the <code class="highlighter-rouge">@JsonRootName</code> annotation to indicate the name of this potential wrapper entity:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@JsonRootName</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"user"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserWithRoot</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>By default, the name of the wrapper would be the name of the class – UserWithRoot. By using the annotation, we get the cleaner-looking user:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonRootName_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+
+    <span class="n">UserWithRoot</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"John"</span><span class="o">);</span>
+
+    <span class="n">ObjectMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">();</span>
+    <span class="n">mapper</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">SerializationFeature</span><span class="o">.</span><span class="na">WRAP_ROOT_VALUE</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"John"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"user"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Here is the output of serialization:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"John"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="jsonserialize"><code class="highlighter-rouge">@JsonSerialize</code></h3>
+
+<p><code class="highlighter-rouge">@JsonSerialize</code> is used to indicate a custom serializer will be used to marshall the entity.</p>
+
+<p>Let's look at a quick example – we're going to use <code class="highlighter-rouge">@JsonSerialize</code> to serialize the eventDate property with a CustomDateSerializer:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Event</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonSerialize</span><span class="o">(</span><span class="n">using</span> <span class="o">=</span> <span class="n">CustomDateSerializer</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="n">eventDate</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Here's the simple custom Jackson serializer:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomDateSerializer</span> <span class="kd">extends</span> <span class="n">StdSerializer</span><span class="o">&lt;</span><span class="n">Date</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">SimpleDateFormat</span> <span class="n">formatter</span>
+      <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">"dd-MM-yyyy hh:mm:ss"</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="nf">CustomDateSerializer</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">CustomDateSerializer</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">Date</span><span class="o">&gt;</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">t</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">serialize</span><span class="o">(</span>
+      <span class="n">Date</span> <span class="n">value</span><span class="o">,</span> <span class="n">JsonGenerator</span> <span class="n">gen</span><span class="o">,</span> <span class="n">SerializerProvider</span> <span class="n">arg2</span><span class="o">)</span>
+      <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+        <span class="n">gen</span><span class="o">.</span><span class="na">writeString</span><span class="o">(</span><span class="n">formatter</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Let's use these in a test:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonSerialize_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span><span class="o">,</span> <span class="n">ParseException</span> <span class="o">{</span>
+
+    <span class="n">SimpleDateFormat</span> <span class="n">df</span>
+      <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">"dd-MM-yyyy hh:mm:ss"</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">toParse</span> <span class="o">=</span> <span class="s">"20-12-2014 02:30:00"</span><span class="o">;</span>
+    <span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">toParse</span><span class="o">);</span>
+    <span class="n">Event</span> <span class="n">event</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event</span><span class="o">(</span><span class="s">"party"</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="n">toParse</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="jackson-deserialization-annotations">Jackson Deserialization Annotations</h2>
+
+<p>Next – let's explore the Jackson deserialization annotations.</p>
+
+<h3 id="jsoncreator"><code class="highlighter-rouge">@JsonCreator</code></h3>
+
+<p>The <code class="highlighter-rouge">@JsonCreator</code> annotation is used to tune the constructor/factory used in deserialization.</p>
+
+<p>It's very helpful when we need to deserialize some JSON that doesn't exactly match the target entity we need to get.</p>
+
+<p>Let's look at an example; say we need to deserialize the following JSON:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"theName"</span><span class="p">:</span><span class="s2">"My bean"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>However, there is no theName field in our target entity – there is only a name field. Now – we don't want to change the entity itself – we just need a little more control over the unmarshalling process – by annotating the constructor with <code class="highlighter-rouge">@JsonCreator</code> and using the <code class="highlighter-rouge">@JsonProperty</code> annotation as well:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanWithCreator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonCreator</span>
+    <span class="kd">public</span> <span class="nf">BeanWithCreator</span><span class="o">(</span>
+      <span class="nd">@JsonProperty</span><span class="o">(</span><span class="s">"id"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">id</span><span class="o">,</span>
+      <span class="nd">@JsonProperty</span><span class="o">(</span><span class="s">"theName"</span><span class="o">)</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Let's see this in action:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenDeserializingUsingJsonCreator_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+
+    <span class="n">String</span> <span class="n">json</span> <span class="o">=</span> <span class="s">"{\"id\":1,\"theName\":\"My bean\"}"</span><span class="o">;</span>
+
+    <span class="n">BeanWithCreator</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">readerFor</span><span class="o">(</span><span class="n">BeanWithCreator</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">readValue</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">,</span> <span class="n">bean</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jacksoninject"><code class="highlighter-rouge">@JacksonInject</code></h3>
+
+<p><code class="highlighter-rouge">@JacksonInject</code> is used to indicate a property that will get its value from the injection and not from the JSON data.</p>
+
+<p>In the following example – we use <code class="highlighter-rouge">@JacksonInject</code> to inject the property id:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanWithInject</span> <span class="o">{</span>
+    <span class="nd">@JacksonInject</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>And here's how this works:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenDeserializingUsingJsonInject_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+
+    <span class="n">String</span> <span class="n">json</span> <span class="o">=</span> <span class="s">"{\"name\":\"My bean\"}"</span><span class="o">;</span>
+
+    <span class="n">InjectableValues</span> <span class="n">inject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InjectableValues</span><span class="o">.</span><span class="na">Std</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">addValue</span><span class="o">(</span><span class="kt">int</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="n">BeanWithInject</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">reader</span><span class="o">(</span><span class="n">inject</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">forType</span><span class="o">(</span><span class="n">BeanWithInject</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">readValue</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+
+    <span class="n">assertEquals</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">,</span> <span class="n">bean</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">bean</span><span class="o">.</span><span class="na">id</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonanysetter"><code class="highlighter-rouge">@JsonAnySetter</code></h3>
+
+<p><code class="highlighter-rouge">@JsonAnySetter</code> allows you the flexibility of using a Map as standard properties. On de-serialization, the properties from JSON will simply be added to the map.</p>
+
+<p>Let's see how this works – we'll use <code class="highlighter-rouge">@JsonAnySetter</code> to deserialize the entity ExtendableBean:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExtendableBean</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">properties</span><span class="o">;</span>
+
+    <span class="nd">@JsonAnySetter</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">properties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>This is the JSON we need to deserialize:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My bean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attr2"</span><span class="p">:</span><span class="s2">"val2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attr1"</span><span class="p">:</span><span class="s2">"val1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>And here's how this all ties in together:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenDeserializingUsingJsonAnySetter_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">json</span>
+      <span class="o">=</span> <span class="s">"{\"name\":\"My bean\",\"attr2\":\"val2\",\"attr1\":\"val1\"}"</span><span class="o">;</span>
+
+    <span class="n">ExtendableBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">readerFor</span><span class="o">(</span><span class="n">ExtendableBean</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">readValue</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+
+    <span class="n">assertEquals</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">,</span> <span class="n">bean</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="s">"val2"</span><span class="o">,</span> <span class="n">bean</span><span class="o">.</span><span class="na">getProperties</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="s">"attr2"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonsetter"><code class="highlighter-rouge">@JsonSetter</code></h3>
+
+<p><code class="highlighter-rouge">@JsonSetter</code> is an alternative to <code class="highlighter-rouge">@JsonProperty</code> – used to mark the method as a setter method.</p>
+
+<p>This is super useful when we need to read some JSON data but the target entity class doesn't exactly match that data and so we need to tune the process to make it fit.</p>
+
+<p>In the following example, we'll specify the method setTheName() as the setter of the name property in our MyBean entity:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBean</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonSetter</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTheName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Now, when we need to unmarshall some JSON data – this works perfectly well:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenDeserializingUsingJsonSetter_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+
+    <span class="n">String</span> <span class="n">json</span> <span class="o">=</span> <span class="s">"{\"id\":1,\"name\":\"My bean\"}"</span><span class="o">;</span>
+
+    <span class="n">MyBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">readerFor</span><span class="o">(</span><span class="n">MyBean</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">readValue</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">,</span> <span class="n">bean</span><span class="o">.</span><span class="na">getTheName</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsondeserialize"><code class="highlighter-rouge">@JsonDeserialize</code></h3>
+
+<p><code class="highlighter-rouge">@JsonDeserialize</code> is used to indicate <strong>the use of a custom deserializer</strong>.</p>
+
+<p>Let's see how that plays out – we'll use <code class="highlighter-rouge">@JsonDeserialize</code> to deserialize the eventDate property with the CustomDateDeserializer:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Event</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonDeserialize</span><span class="o">(</span><span class="n">using</span> <span class="o">=</span> <span class="n">CustomDateDeserializer</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="n">eventDate</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Here's the custom deserializer:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomDateDeserializer</span>
+  <span class="kd">extends</span> <span class="n">StdDeserializer</span><span class="o">&lt;</span><span class="n">Date</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">SimpleDateFormat</span> <span class="n">formatter</span>
+      <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">"dd-MM-yyyy hh:mm:ss"</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="nf">CustomDateDeserializer</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">CustomDateDeserializer</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">vc</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">vc</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">deserialize</span><span class="o">(</span>
+      <span class="n">JsonParser</span> <span class="n">jsonparser</span><span class="o">,</span> <span class="n">DeserializationContext</span> <span class="n">context</span><span class="o">)</span>
+      <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+
+        <span class="n">String</span> <span class="n">date</span> <span class="o">=</span> <span class="n">jsonparser</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">formatter</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">date</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ParseException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>And here's the back-to-back test:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenDeserializingUsingJsonDeserialize_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+
+    <span class="n">String</span> <span class="n">json</span>
+      <span class="o">=</span> <span class="s">"{"</span><span class="n">name</span><span class="s">":"</span><span class="n">party</span><span class="s">","</span><span class="n">eventDate</span><span class="s">":"</span><span class="mi">20</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">2014</span> <span class="mi">02</span><span class="o">:</span><span class="mi">30</span><span class="o">:</span><span class="mi">00</span><span class="s">"}"</span><span class="o">;</span>
+
+    <span class="n">SimpleDateFormat</span> <span class="n">df</span>
+      <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">"dd-MM-yyyy hh:mm:ss"</span><span class="o">);</span>
+    <span class="n">Event</span> <span class="n">event</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">readerFor</span><span class="o">(</span><span class="n">Event</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">readValue</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+
+    <span class="n">assertEquals</span><span class="o">(</span>
+      <span class="s">"20-12-2014 02:30:00"</span><span class="o">,</span> <span class="n">df</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">eventDate</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="jackson-property-inclusion-annotations">Jackson Property Inclusion Annotations</h2>
+
+<h3 id="jsonignoreproperties"><code class="highlighter-rouge">@JsonIgnoreProperties</code></h3>
+
+<p><code class="highlighter-rouge">@JsonIgnoreProperties</code> – one of the most common annotations in Jackson – is used to mark a property or a list of properties to be ignored at the class level.</p>
+
+<p>Let's go over a quick example ignoring the property id from serialization:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@JsonIgnoreProperties</span><span class="o">({</span> <span class="s">"id"</span> <span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanWithIgnore</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>And here's the test making sure the ignore happens:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonIgnoreProperties_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+
+    <span class="n">BeanWithIgnore</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BeanWithIgnore</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"My bean"</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"id"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonignore"><code class="highlighter-rouge">@JsonIgnore</code></h3>
+
+<p>The <code class="highlighter-rouge">@JsonIgnore</code> annotation is used to mark a property to be ignored at the field level.</p>
+
+<p>Let's use <code class="highlighter-rouge">@JsonIgnore</code> to ignore the property id from serialization:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanWithIgnore</span> <span class="o">{</span>
+    <span class="nd">@JsonIgnore</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>And the test making sure that id was successfully ignored:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonIgnore_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+
+    <span class="n">BeanWithIgnore</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BeanWithIgnore</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"My bean"</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"id"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonignoretype"><code class="highlighter-rouge">@JsonIgnoreType</code></h3>
+
+<p><code class="highlighter-rouge">@JsonIgnoreType</code> is used to mark all properties of annotated type to be ignored.</p>
+
+<p>Let's use the annotation to mark all properties of type Name to be ignored:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">Name</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonIgnoreType</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Name</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Here's the simple test making sure the ignore works correctly:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonIgnoreType_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span><span class="o">,</span> <span class="n">ParseException</span> <span class="o">{</span>
+
+    <span class="n">User</span><span class="o">.</span><span class="na">Name</span> <span class="n">name</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">.</span><span class="na">Name</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="s">"Doe"</span><span class="o">);</span>
+    <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"1"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"name"</span><span class="o">)));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"John"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsoninclude"><code class="highlighter-rouge">@JsonInclude</code></h3>
+
+<p><code class="highlighter-rouge">@JsonInclude</code> is used to <strong>exclude properties with empty/null/default values</strong>.</p>
+
+<p>Let's look at an example – excluding nulls from serialization:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@JsonInclude</span><span class="o">(</span><span class="n">Include</span><span class="o">.</span><span class="na">NON_NULL</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBean</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Here's the full test:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonInclude_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+
+    <span class="n">MyBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyBean</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"1"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"name"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonautodetect"><code class="highlighter-rouge">@JsonAutoDetect</code></h3>
+
+<p><code class="highlighter-rouge">@JsonAutoDetect</code> is used to override the default semantics of which properties are visible and which are not.</p>
+
+<p>Let's take a look at how the annotation can be very helpful with a simple example – let's enable serializing private properties:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@JsonAutoDetect</span><span class="o">(</span><span class="n">fieldVisibility</span> <span class="o">=</span> <span class="n">Visibility</span><span class="o">.</span><span class="na">ANY</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrivateBean</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>And the test:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonAutoDetect_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+
+    <span class="n">PrivateBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrivateBean</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"My bean"</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"1"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="jackson-polymorphic-type-handling-annotations">Jackson Polymorphic Type Handling Annotations</h2>
+
+<p>Next – let's take a look at Jackson polymorphic type handling annotations:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">@JsonTypeInfo</code> is used to indicate details of what type information is included in serialization</li>
+  <li><code class="highlighter-rouge">@JsonSubTypes</code> is used to indicate sub-types of annotated type</li>
+  <li><code class="highlighter-rouge">@JsonTypeName</code> is used to define logical type name to use for annotated class</li>
+</ul>
+
+<p>Let's look over a more complex example and use all three – @JsonTypeInfo, <code class="highlighter-rouge">@JsonSubTypes</code> and <code class="highlighter-rouge">@JsonTypeName</code> – to serialize/deserialize the entity Zoo:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Zoo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Animal</span> <span class="n">animal</span><span class="o">;</span>
+
+    <span class="nd">@JsonTypeInfo</span><span class="o">(</span>
+      <span class="n">use</span> <span class="o">=</span> <span class="n">JsonTypeInfo</span><span class="o">.</span><span class="na">Id</span><span class="o">.</span><span class="na">NAME</span><span class="o">,</span>
+      <span class="n">include</span> <span class="o">=</span> <span class="n">As</span><span class="o">.</span><span class="na">PROPERTY</span><span class="o">,</span>
+      <span class="n">property</span> <span class="o">=</span> <span class="s">"type"</span><span class="o">)</span>
+    <span class="nd">@JsonSubTypes</span><span class="o">({</span>
+        <span class="nd">@JsonSubTypes</span><span class="o">.</span><span class="na">Type</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">Dog</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"dog"</span><span class="o">),</span>
+        <span class="nd">@JsonSubTypes</span><span class="o">.</span><span class="na">Type</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">Cat</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"cat"</span><span class="o">)</span>
+    <span class="o">})</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@JsonTypeName</span><span class="o">(</span><span class="s">"dog"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">extends</span> <span class="n">Animal</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">double</span> <span class="n">barkVolume</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@JsonTypeName</span><span class="o">(</span><span class="s">"cat"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Cat</span> <span class="kd">extends</span> <span class="n">Animal</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="n">likesCream</span><span class="o">;</span>
+        <span class="kd">public</span> <span class="kt">int</span> <span class="n">lives</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>When we do serialization:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingPolymorphic_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+    <span class="n">Zoo</span><span class="o">.</span><span class="na">Dog</span> <span class="n">dog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Zoo</span><span class="o">.</span><span class="na">Dog</span><span class="o">(</span><span class="s">"lacy"</span><span class="o">);</span>
+    <span class="n">Zoo</span> <span class="n">zoo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Zoo</span><span class="o">(</span><span class="n">dog</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">zoo</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"type"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"dog"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Here's what serializing the Zoo instance with the Dog will result in:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"animal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dog"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lacy"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"barkVolume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Now for de-serialization – let's start from the following JSON input:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"animal"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"lacy"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"cat"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>And let's see how that gets unmarshalled to a Zoo instance:</p>
+
+<p>11</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenDeserializingPolymorphic_thenCorrect</span><span class="o">()</span>
+<span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">json</span> <span class="o">=</span> <span class="s">"{\"animal\":{\"name\":\"lacy\",\"type\":\"cat\"}}"</span><span class="o">;</span>
+
+    <span class="n">Zoo</span> <span class="n">zoo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">readerFor</span><span class="o">(</span><span class="n">Zoo</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">readValue</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+
+    <span class="n">assertEquals</span><span class="o">(</span><span class="s">"lacy"</span><span class="o">,</span> <span class="n">zoo</span><span class="o">.</span><span class="na">animal</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">Zoo</span><span class="o">.</span><span class="na">Cat</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">zoo</span><span class="o">.</span><span class="na">animal</span><span class="o">.</span><span class="na">getClass</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="jackson-general-annotations">Jackson General Annotations</h2>
+
+<p>Next – let's discuss some of Jackson more general annotations.</p>
+
+<h2 id="jsonproperty">@JsonProperty</h2>
+
+<p><code class="highlighter-rouge">@JsonProperty</code> is used to indicate <strong>the property name in JSON</strong>.</p>
+
+<p>Let's go over the annotation with a simple example – and use <code class="highlighter-rouge">@JsonProperty</code> to serialize/deserialize the property name when we're dealing with non-standard getters and setters:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBean</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonProperty</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTheName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@JsonProperty</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTheName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Our test:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenUsingJsonProperty_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="n">MyBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyBean</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"My bean"</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"1"</span><span class="o">));</span>
+
+    <span class="n">MyBean</span> <span class="n">resultBean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">readerFor</span><span class="o">(</span><span class="n">MyBean</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">readValue</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">,</span> <span class="n">resultBean</span><span class="o">.</span><span class="na">getTheName</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonformat"><code class="highlighter-rouge">@JsonFormat</code></h3>
+
+<p>The <code class="highlighter-rouge">@JsonFormat</code> annotation can be used to <strong>specify a format when serializing Date/Time values</strong>.</p>
+
+<p>In the following example – we use <code class="highlighter-rouge">@JsonFormat</code> to control the format of the property eventDate:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Event</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonFormat</span><span class="o">(</span>
+      <span class="n">shape</span> <span class="o">=</span> <span class="n">JsonFormat</span><span class="o">.</span><span class="na">Shape</span><span class="o">.</span><span class="na">STRING</span><span class="o">,</span>
+      <span class="n">pattern</span> <span class="o">=</span> <span class="s">"dd-MM-yyyy hh:mm:ss"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="n">eventDate</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>And here's the test:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonFormat_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span><span class="o">,</span> <span class="n">ParseException</span> <span class="o">{</span>
+    <span class="n">SimpleDateFormat</span> <span class="n">df</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">"dd-MM-yyyy hh:mm:ss"</span><span class="o">);</span>
+    <span class="n">df</span><span class="o">.</span><span class="na">setTimeZone</span><span class="o">(</span><span class="n">TimeZone</span><span class="o">.</span><span class="na">getTimeZone</span><span class="o">(</span><span class="s">"UTC"</span><span class="o">));</span>
+
+    <span class="n">String</span> <span class="n">toParse</span> <span class="o">=</span> <span class="s">"20-12-2014 02:30:00"</span><span class="o">;</span>
+    <span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">toParse</span><span class="o">);</span>
+    <span class="n">Event</span> <span class="n">event</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Event</span><span class="o">(</span><span class="s">"party"</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="n">toParse</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonunwrapped"><code class="highlighter-rouge">@JsonUnwrapped</code></h3>
+
+<p><code class="highlighter-rouge">@JsonUnwrapped</code> is used to define that <strong>a value should be unwrapped/flattened when serialized</strong>.</p>
+
+<p>Let's see exactly how that works; we'll use the annotation to unwrap the property name:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UnwrappedUser</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@JsonUnwrapped</span>
+    <span class="kd">public</span> <span class="n">Name</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Name</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Let's now serialize an instance of this class:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonUnwrapped_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span><span class="o">,</span> <span class="n">ParseException</span> <span class="o">{</span>
+    <span class="n">UnwrappedUser</span><span class="o">.</span><span class="na">Name</span> <span class="n">name</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UnwrappedUser</span><span class="o">.</span><span class="na">Name</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="s">"Doe"</span><span class="o">);</span>
+    <span class="n">UnwrappedUser</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UnwrappedUser</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"John"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"name"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Here's how the output looks like – the fields of the static nested class unwrapped along with the other field:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="jsonview"><code class="highlighter-rouge">@JsonView</code></h3>
+
+<p><code class="highlighter-rouge">@JsonView</code> is used to <strong>indicate the View</strong> in which the property will be included for serialization/deserialization.</p>
+
+<p>An example will show exactly how that works – we'll use <code class="highlighter-rouge">@JsonView</code> to serialize an instance of Item entity.</p>
+
+<p>Let's start with the views:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Views</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Public</span> <span class="o">{}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Internal</span> <span class="kd">extends</span> <span class="n">Public</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>And now here's the Item entity, using the views:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Item</span> <span class="o">{</span>
+    <span class="nd">@JsonView</span><span class="o">(</span><span class="n">Views</span><span class="o">.</span><span class="na">Public</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@JsonView</span><span class="o">(</span><span class="n">Views</span><span class="o">.</span><span class="na">Public</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">itemName</span><span class="o">;</span>
+
+    <span class="nd">@JsonView</span><span class="o">(</span><span class="n">Views</span><span class="o">.</span><span class="na">Internal</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">ownerName</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Finally – the full test:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonView_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+    <span class="n">Item</span> <span class="n">item</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Item</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">"book"</span><span class="o">,</span> <span class="s">"John"</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">writerWithView</span><span class="o">(</span><span class="n">Views</span><span class="o">.</span><span class="na">Public</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"book"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"2"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"John"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonmanagedreference-jsonbackreference"><code class="highlighter-rouge">@JsonManagedReference, @JsonBackReference</code></h3>
+
+<p>The <code class="highlighter-rouge">@JsonManagedReference</code> and <code class="highlighter-rouge">@JsonBackReference</code> annotations are used to handle parent/child relationships and work around loops.</p>
+
+<p>In the following example – we use <code class="highlighter-rouge">@JsonManagedReference</code> and <code class="highlighter-rouge">@JsonBackReference</code> to serialize our ItemWithRef entity:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ItemWithRef</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">itemName</span><span class="o">;</span>
+
+    <span class="nd">@JsonManagedReference</span>
+    <span class="kd">public</span> <span class="n">UserWithRef</span> <span class="n">owner</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Our UserWithRef entity:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserWithRef</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonBackReference</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">ItemWithRef</span><span class="o">&gt;</span> <span class="n">userItems</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>And the test:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJacksonReferenceAnnotation_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+    <span class="n">UserWithRef</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserWithRef</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"John"</span><span class="o">);</span>
+    <span class="n">ItemWithRef</span> <span class="n">item</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ItemWithRef</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">"book"</span><span class="o">,</span> <span class="n">user</span><span class="o">);</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"book"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"John"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"userItems"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="jsonidentityinfo"><code class="highlighter-rouge">@JsonIdentityInfo</code></h3>
+
+<p><code class="highlighter-rouge">@JsonIdentityInfo</code> is used to indicate that Object Identity is to be used when serializing/deserializing values – for instance, to deal with infinite recursion type of problems.</p>
+
+<p>In the following example – we have an ItemWithIdentity entity with <strong>a bidirectional relationship</strong> with the UserWithIdentity entity:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@JsonIdentityInfo</span><span class="o">(</span>
+  <span class="n">generator</span> <span class="o">=</span> <span class="n">ObjectIdGenerators</span><span class="o">.</span><span class="na">PropertyGenerator</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+  <span class="n">property</span> <span class="o">=</span> <span class="s">"id"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ItemWithIdentity</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">itemName</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">UserWithIdentity</span> <span class="n">owner</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>And the UserWithIdentity entity:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@JsonIdentityInfo</span><span class="o">(</span>
+  <span class="n">generator</span> <span class="o">=</span> <span class="n">ObjectIdGenerators</span><span class="o">.</span><span class="na">PropertyGenerator</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+  <span class="n">property</span> <span class="o">=</span> <span class="s">"id"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserWithIdentity</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">ItemWithIdentity</span><span class="o">&gt;</span> <span class="n">userItems</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Now, let's see how the infinite recursion problem is handled:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonIdentityInfo_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+    <span class="n">UserWithIdentity</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserWithIdentity</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"John"</span><span class="o">);</span>
+    <span class="n">ItemWithIdentity</span> <span class="n">item</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ItemWithIdentity</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">"book"</span><span class="o">,</span> <span class="n">user</span><span class="o">);</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"book"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"John"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"userItems"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Here's the full output of the serialized item and user:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"itemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"userItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">2</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="jsonfilter"><code class="highlighter-rouge">@JsonFilter</code></h3>
+
+<p>The <code class="highlighter-rouge">@JsonFilter</code> annotation <strong>specifies a filter to be used during serialization</strong>.</p>
+
+<p>Let's take a look at an example; first, we define the entity and we point to the filter:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@JsonFilter</span><span class="o">(</span><span class="s">"myFilter"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanWithFilter</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Now, in the full test, we define the filter – which excludes all other properties except name from serialization:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingJsonFilter_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+    <span class="n">BeanWithFilter</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BeanWithFilter</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"My bean"</span><span class="o">);</span>
+
+    <span class="n">FilterProvider</span> <span class="n">filters</span>
+      <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleFilterProvider</span><span class="o">().</span><span class="na">addFilter</span><span class="o">(</span>
+        <span class="s">"myFilter"</span><span class="o">,</span>
+        <span class="n">SimpleBeanPropertyFilter</span><span class="o">.</span><span class="na">filterOutAllExcept</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">writer</span><span class="o">(</span><span class="n">filters</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"id"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="custom-jackson-annotation">Custom Jackson Annotation</h2>
+
+<p>Next – let's see how to create <strong>a custom Jackson annotation</strong>; we can make use of the <code class="highlighter-rouge">@JacksonAnnotationsInside</code> annotation – as in the following example:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+    <span class="nd">@JacksonAnnotationsInside</span>
+    <span class="nd">@JsonInclude</span><span class="o">(</span><span class="n">Include</span><span class="o">.</span><span class="na">NON_NULL</span><span class="o">)</span>
+    <span class="nd">@JsonPropertyOrder</span><span class="o">({</span> <span class="s">"name"</span><span class="o">,</span> <span class="s">"id"</span><span class="o">,</span> <span class="s">"dateCreated"</span> <span class="o">})</span>
+    <span class="kd">public</span> <span class="err">```</span><span class="nd">@interface</span><span class="err">```</span> <span class="n">CustomAnnotation</span> <span class="o">{}</span>
+</code></pre>
+</div>
+
+<p>Now, if we use the new annotation on an entity:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@CustomAnnotation</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanWithCustomAnnotation</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="n">dateCreated</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>We can see how it does combine the existing annotations into a simpler, custom one that we can use as a shorthand:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingCustomAnnotation_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+    <span class="n">BeanWithCustomAnnotation</span> <span class="n">bean</span>
+      <span class="o">=</span> <span class="k">new</span> <span class="n">BeanWithCustomAnnotation</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"My bean"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"My bean"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"1"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"dateCreated"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The output of the serialization process:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My bean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="jackson-mixin-annotations">Jackson MixIn Annotations</h2>
+
+<p>Next – let's see how to use Jackson MixIn annotations.</p>
+
+<p>Let's use the MixIn annotations to – for example – ignore properties of type User:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Item</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">itemName</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">User</span> <span class="n">owner</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@JsonIgnoreType</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyMixInForIgnoreType</span> <span class="o">{}</span>
+</code></pre>
+</div>
+
+<p>Let's see this in action:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenSerializingUsingMixInAnnotation_thenCorrect</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+    <span class="n">Item</span> <span class="n">item</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Item</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"book"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">().</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"owner"</span><span class="o">));</span>
+
+    <span class="n">ObjectMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">();</span>
+    <span class="n">mapper</span><span class="o">.</span><span class="na">addMixIn</span><span class="o">(</span><span class="n">User</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">MyMixInForIgnoreType</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">not</span><span class="o">(</span><span class="n">containsString</span><span class="o">(</span><span class="s">"owner"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="disable-jackson-annotation">Disable Jackson Annotation</h3>
+
+<p>Finally – let's see how we can disable all Jackson annotations.We can do this by disabling the MapperFeature.USE_ANNOTATIONS as in the following example:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@JsonInclude</span><span class="o">(</span><span class="n">Include</span><span class="o">.</span><span class="na">NON_NULL</span><span class="o">)</span>
+<span class="nd">@JsonPropertyOrder</span><span class="o">({</span> <span class="s">"name"</span><span class="o">,</span> <span class="s">"id"</span> <span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBean</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Now, after disabling annotations, these should have no effect and the defaults of the library should apply:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenDisablingAllAnnotations_thenAllDisabled</span><span class="o">()</span>
+  <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="n">MyBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyBean</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+    <span class="n">ObjectMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMapper</span><span class="o">();</span>
+    <span class="n">mapper</span><span class="o">.</span><span class="na">disable</span><span class="o">(</span><span class="n">MapperFeature</span><span class="o">.</span><span class="na">USE_ANNOTATIONS</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"1"</span><span class="o">));</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">,</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>The result of serialization before disabling annotations:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>The result of serialization after disabling annotations:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>This tutorial has been a deep-dive into Jackson annotations, just scratching the surface of the kind of flexibility you can get using them properly.</p>
+
+<p>The implementation of all these examples and code snippets can be found in the GitHub project – this is a Maven-based project, so it should be easy to import and run as it is.</p>
+
+</div>
+
+    </div>
+
+    <script>
+function init() {
+    window.addEventListener('scroll', function(e){
+        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+        shrinkOn = 200,
+        header = $("header");
+        if (distanceY > shrinkOn) {
+            if (header.hasClass("scoll-up")) {
+                header.removeClass("scoll-up");
+            }
+            header.addClass("scoll-down");
+        } else {
+            if (header.hasClass("scoll-down")) {
+                header.removeClass("scoll-down");
+            }
+            header.addClass("scoll-up");
+        }
+        //console.log(distanceY);
+    });
+    var scollItem = $("#scoll-to-top");
+    scollItem.click(function() {
+        $.scrollTo(scollItem.attr("href"), {duration:2000});
+    });
+}
+$(document).ready(init());
+    </script>
+</body>
+</html>

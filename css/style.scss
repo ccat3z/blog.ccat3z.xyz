@@ -1,8 +1,39 @@
 ---
 ---
 @font-face {
-    font-family: 'SourceHanSansCN ExtraLight';
+    font-family: 'Source Han Sans CN';
     src: url('/fonts/SourceHanSansCN-ExtraLight.otf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'Source Han Sans CN';
+    src: url('/fonts/SourceHanSansCN-Light.otf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Source Han Sans CN';
+    src: url('/fonts/SourceHanSansCN-Normal.otf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Source Han Sans CN';
+    src: url('/fonts/SourceHanSansCN-Medium.otf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Source Han Sans CN';
+    src: url('/fonts/SourceHanSansCN-Bold.otf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Source Han Sans CN';
+    src: url('/fonts/SourceHanSansCN-Heavy.otf');
+    font-weight: 900;
 }
 
 * {
@@ -18,7 +49,7 @@ body {
 }
 
 html {
-    font-family:'Source Han Sans CN', 'Helvetica Neue', 'Helvetica', 'Microsoft Yahei', sans-serif;
+    font-family:'Source Han Sans CN', 'Microsoft Yahei', sans-serif;
     font-style:normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;

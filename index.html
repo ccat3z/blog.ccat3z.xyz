@@ -220,31 +220,48 @@ for (id in typetypeList) {
 
     </div>
 
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js"></script>
+
     <script>
-function init() {
-    window.addEventListener('scroll', function(e){
-        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-        shrinkOn = 200,
-        header = $("header");
-        if (distanceY > shrinkOn) {
-            if (header.hasClass("scoll-up")) {
-                header.removeClass("scoll-up");
+    function init() {
+        window.addEventListener('scroll', function(e){
+            var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+            shrinkOn = 200,
+            header = $("header");
+            if (distanceY > shrinkOn) {
+                if (header.hasClass("scoll-up")) {
+                    header.removeClass("scoll-up");
+                }
+                header.addClass("scoll-down");
+            } else {
+                if (header.hasClass("scoll-down")) {
+                    header.removeClass("scoll-down");
+                }
+                header.addClass("scoll-up");
             }
-            header.addClass("scoll-down");
-        } else {
-            if (header.hasClass("scoll-down")) {
-                header.removeClass("scoll-down");
+            //console.log(distanceY);
+        });
+        var scollItem = $("#scoll-to-top");
+        scollItem.click(function() {
+            $.scrollTo(scollItem.attr("href"), {duration:2000});
+        });
+    }
+    $(document).ready(init());
+
+    $(window).hashchange(function(){
+        var target = $(location.hash);
+        console.log(location.hash);
+        if(target.length==1){
+            var top = target.offset().top-$('.masthead-bar').height();
+            if(top > 0){
+                $('html,body').scrollTop(top);
             }
-            header.addClass("scoll-up");
         }
-        //console.log(distanceY);
     });
-    var scollItem = $("#scoll-to-top");
-    scollItem.click(function() {
-        $.scrollTo(scollItem.attr("href"), {duration:2000});
+
+    $(function() {
+        $(window).hashchange();
     });
-}
-$(document).ready(init());
     </script>
 </body>
 </html>

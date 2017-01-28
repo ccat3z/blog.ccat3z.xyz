@@ -42,6 +42,8 @@ font-spider --debug --no-backup $(find . -name "*html")
 
 cd ..
 
+mv _site out
+
 # Init git dir
 git clone --depth=1 --branch=$TARGET_BRANCH $SSH_REPO orig
 

@@ -42,19 +42,25 @@ cd ..
 # Init git dir
 git clone --depth=1 --branch=$TARGET_BRANCH $REPO orig
 
-mv _site out
-cd out
-mv ../orig/.git .git
+if [ $? -eq 0 ];then
+    cd out
+    mv ../orig/.git .git
+
+    # If no change, just exit
+    if [ -z `git diff --exit-code` ]; then
+        echo "No changes to the output on this push, exiting."
+        exit 0
+    fi
+else
+    cd out
+    git init
+    git checkout --orphan $TARGET_BRANCH
+    git remote add repo $REPO
+fi
 
 # Config git
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
-
-# If no change, just exit
-if [ -z `git diff --exit-code` ]; then
-    echo "No changes to the output on this push, exiting."
-    exit 0
-fi
 
 # Add all
 git add .

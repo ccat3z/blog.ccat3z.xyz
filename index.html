@@ -228,7 +228,7 @@ for (id in typetypeList) {
             var distanceY = window.pageYOffset || document.documentElement.scrollTop,
             shrinkOn = 200,
             header = $("header");
-            if (distanceY > shrinkOn) {
+            if (distanceY > shrinkOn && header.height() / $(window).height() < 0.15) {
                 if (header.hasClass("scoll-up")) {
                     header.removeClass("scoll-up");
                 }

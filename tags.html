@@ -10,6 +10,7 @@ title: 标签
     {% assign tag = site.tags[col_tag.title] %}
     <div class="list-item">
         {% for post in tag %}
+            {% assign image = null %}
             {% if post.image_preview != null %}
                 {% assign image = post.image_preview %}
 

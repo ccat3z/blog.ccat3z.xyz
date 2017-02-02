@@ -5,6 +5,8 @@ date: "2017-02-02 16:11:17 +0800"
 tag: ["SCEE", "SCEE CN"]
 ---
 
+> 转载自[2015年普通高等学校招生全国统一考试（上海卷）语文试题与答案](http://blog.sina.com.cn/s/blog_025424ce0102vjmf.html)
+
 <p align="center">
 2015年全国普通高等学校招生统一考试
 

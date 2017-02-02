@@ -35,6 +35,9 @@ defaults:
       layout: post
 
 projects:
+  - name: z-uploader
+    description: Group uploader, 收文件专用
+    link: https://github.com/c0ldcat/z-uploader
   - name: netease-music-java
     description: 网易云音乐 Java API
     link: https://github.com/c0ldcat/netease-music-java

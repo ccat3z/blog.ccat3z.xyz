@@ -28,12 +28,12 @@
 <meta property="og:url" content="//blog.c0ldcat.ml/posts/ruby-something/" />
 <meta property="og:site_name" content="c0ldcat’s blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-02-03T09:26:14+00:00" />
+<meta property="article:published_time" content="2017-02-03T10:02:00+00:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
 "headline": "Ruby 碎碎念",
-"datePublished": "2017-02-03T09:26:14+00:00",
+"datePublished": "2017-02-03T10:02:00+00:00",
 "description": "如何在Bundle添加Git源?",
 "url": "//blog.c0ldcat.ml/posts/ruby-something/"}</script>
 <!-- End Jekyll SEO tag -->
@@ -90,6 +90,12 @@
 </div>
 
 <p><a href="http://bundler.io/git.html">More detail</a></p>
+
+<p><strong>怎么告诉Bundle Gemfile在哪</strong></p>
+
+<p>通常Gemfile就放$PWD/Gemfile, 但有些情况下需要其他的文件名.</p>
+
+<p>最简单的方法就是设置<code class="highlighter-rouge">BUNDLE_GEMFILE</code>环境变量.</p>
 
 </div>
 

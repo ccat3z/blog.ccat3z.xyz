@@ -26,8 +26,14 @@
 &lt;/div&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://bundler.io/git.html&quot;&gt;More detail&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;怎么告诉Bundle Gemfile在哪&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;通常Gemfile就放$PWD/Gemfile, 但有些情况下需要其他的文件名.&lt;/p&gt;
+
+&lt;p&gt;最简单的方法就是设置&lt;code class=&quot;highlighter-rouge&quot;&gt;BUNDLE_GEMFILE&lt;/code&gt;环境变量.&lt;/p&gt;
 </description>
-				<pubDate>Fri, 03 Feb 2017 09:26:14 +0000</pubDate>
+				<pubDate>Fri, 03 Feb 2017 10:02:00 +0000</pubDate>
 				<link>//blog.c0ldcat.ml/posts/ruby-something/</link>
 				<guid isPermaLink="true">//blog.c0ldcat.ml/posts/ruby-something/</guid>
 			</item>

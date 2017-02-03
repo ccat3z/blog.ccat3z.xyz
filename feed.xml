@@ -6,6 +6,40 @@
 		<atom:link href="//blog.c0ldcat.ml/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Linux Kernel 只编译一个module</title>
+        <description>&lt;p&gt;调试编译Linux Kernel有时会遇到这种情况, 辛辛苦苦编译了大半天却发现忘了个module. 然而Linux可插拔的module设计能够让我们单独编译单个module, 为我们节省了不少时间.&lt;/p&gt;
+
+&lt;p&gt;以linux-surfacepro3的cpufreq_stats为例: (linux 4.8之后cpufreq_stats不再以module形式加载)&lt;/p&gt;
+
+&lt;p&gt;以内核root目录为work dir&lt;/p&gt;
+
+&lt;p&gt;确保work dir下存在&lt;code class=&quot;highlighter-rouge&quot;&gt;Module.symvers&lt;/code&gt;, 没有的话到&lt;code class=&quot;highlighter-rouge&quot;&gt;/lib/modules/${KERNEL}/build/Module.symvers&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;将kernel config复制到&lt;code class=&quot;highlighter-rouge&quot;&gt;.config&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;准备工作:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make prepare
+make scripts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;先找到模块的位置: &lt;code class=&quot;highlighter-rouge&quot;&gt;drivers/cpufreq&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;以及模块的配置参数: &lt;code class=&quot;highlighter-rouge&quot;&gt;CONFIG_CPU_FREQ_STAT=m&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;在kernel根目录下编译: &lt;code class=&quot;highlighter-rouge&quot;&gt;make CONFIG_CPU_FREQ_STAT=m M=drivers/cpufreq modules&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;看make的输出找到生成module的位置并复制到module目录里: &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo cp drivers/cpufreq/cpufreq_stats.ko /lib/modules/${KERNEL}/kernel/drivers/cpufreq/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;最后再用&lt;code class=&quot;highlighter-rouge&quot;&gt;insmod&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;depmod&lt;/code&gt;生效即可&lt;/p&gt;
+</description>
+				<pubDate>Fri, 03 Feb 2017 02:20:06 +0000</pubDate>
+				<link>//blog.c0ldcat.ml/posts/build-only-one-kernel-module/</link>
+				<guid isPermaLink="true">//blog.c0ldcat.ml/posts/build-only-one-kernel-module/</guid>
+			</item>
+		
+			<item>
 				<title>2016年全国普通高等学校招生统一考试上海语文试卷</title>
         <description>&lt;blockquote&gt;
   &lt;p&gt;转载自&lt;a href=&quot;http://blog.sina.com.cn/s/blog_5cc149a20102waxs.html&quot;&gt;2016年普通高等学校招生全国统一考试上海卷语文试题及参考答案&lt;/a&gt;&lt;/p&gt;

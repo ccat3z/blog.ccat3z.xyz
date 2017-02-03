@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ruby 碎碎念"
-date: "2017-02-03 17:26:14 +0800"
+date: "2017-02-03 18:02:00 +0800"
 tag: ["Ruby"]
 image_preview: "/images/2017-02-03-ruby-something/ruby.svg"
 short_description: "\"送个Ruby给女友?\" \"醒醒! 哪来的女朋友.\""
@@ -26,3 +26,9 @@ gem 'rack', :git => 'git://github.com/rack/rack.git'
 ```
 
 [More detail](http://bundler.io/git.html)
+
+**怎么告诉Bundle Gemfile在哪**
+
+通常Gemfile就放$PWD/Gemfile, 但有些情况下需要其他的文件名.
+
+最简单的方法就是设置`BUNDLE_GEMFILE`环境变量.

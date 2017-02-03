@@ -6,8 +6,8 @@ title: 标签
 
 <div class="content list">
     {% assign used_image = "" %}
-    {% for col_tag in site.col_tags %}
-    {% assign tag = site.tags[col_tag.title] %}
+    {% for tag_object in site.tags %}
+    {% assign tag = tag_object[1] %}
     <div class="list-item">
         {% for post in tag %}
             {% assign image = null %}
@@ -30,9 +30,9 @@ title: 标签
 
         <div class="list-item-body">
             <h2 class="list-post-title">
-                <a href="{{ site.baseurl }}/tags/{{ col_tag.slug }}"
-                title="{{ col_tag.title }}">
-                {{ col_tag.title }}</a>
+                <a href="{{ site.baseurl }}/tags/{{ tag_object[0] | | slugify: 'pretty' }}"
+                title="{{ tag_object[0] }}">
+                {{ tag_object[0] }}</a>
             </h2>
             <div class="list-post-info">
                 {{ tag[0].title }}

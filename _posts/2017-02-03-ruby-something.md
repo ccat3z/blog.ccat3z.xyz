@@ -2,6 +2,7 @@
 layout: post
 title: "Ruby 碎碎念"
 date: "2017-02-03 17:26:14 +0800"
+tag: ["Ruby"]
 image_preview: "/images/2017-02-03-ruby-something/ruby.svg"
 short_description: "\"送个Ruby给女友?\" \"醒醒! 哪来的女朋友.\""
 ---

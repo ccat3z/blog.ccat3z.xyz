@@ -16,17 +16,7 @@ nav:
   - name:           "标签"
     href:           "/tags"
 
-collections:
-    col_tags:
-      output: true
-
 defaults:
-  - scope:
-      path: ""
-      type: "col_tags"
-    values:
-      permalink: /tags/:slug/
-      layout: tag_page
   - scope:
       path: ""
       type: "posts"
@@ -60,10 +50,15 @@ social:
     link: mailto:firez199984@gmail.com
 
 sass:
-  style:            :compressed
+    style:            :compressed
+
+tag_page_layout: tag_page
+tag_page_dir: tags
+tag_permalink_style: pretty
 
 gems:
   - jekyll-seo-tag
+  - jekyll/tagging
 
 exclude:
   - "*.dot"

@@ -3,6 +3,7 @@ layout: post
 title: "Linux Kernel 只编译一个module"
 date: "2017-02-03 10:20:06 +0800"
 image_preview: "/images/2017-02-03-build-only-one-kernel-module/linux-tux.svg"
+tag: ["Linux"]
 ---
 
 调试编译Linux Kernel有时会遇到这种情况, 辛辛苦苦编译了大半天却发现忘了个module. 然而Linux可插拔的module设计能够让我们单独编译单个module, 为我们节省了不少时间.

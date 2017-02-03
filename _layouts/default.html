@@ -22,8 +22,7 @@
                 <a href="{{ nav.href }}">{{ nav.name }}</a>
                 {% endfor %}
                 {% for tag in page.tags %}
-                {% assign t = site.col_tags | where: "title" , tag | first %}
-                <a href="/tags/{{ t.slug }}">{{ tag }}</a>
+                <a href="/tags/{{ tag | slugify: 'pretty' }}">{{ tag }}</a>
                 {% endfor %}
             </nav>
         </header>

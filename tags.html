@@ -4,6 +4,8 @@ permalink: /tags/
 title: 标签
 ---
 
+{{ "测试adww---Sa" | slugify }}
+
 <div class="content list">
     {% assign used_image = "" %}
     {% for tag_object in site.tags %}
@@ -30,7 +32,7 @@ title: 标签
 
         <div class="list-item-body">
             <h2 class="list-post-title">
-                <a href="{{ site.baseurl }}/tags/{{ tag_object[0] | | slugify: 'pretty' }}"
+                <a href="{{ site.baseurl }}/tags/{{ tag_object[0] | slugify: 'pretty' }}"
                 title="{{ tag_object[0] }}">
                 {{ tag_object[0] }}</a>
             </h2>

@@ -59,7 +59,7 @@ git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 # Add all
-git add .
+git add --all .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 # Push it

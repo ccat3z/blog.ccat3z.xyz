@@ -70,11 +70,6 @@ body {
 a {
     color: #268bd2;
     text-decoration: none;
-
-    &:hover,
-    &:focus {
-        text-decoration: underline;
-    }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -509,6 +504,11 @@ tbody tr:nth-child(odd) th {
         color: #333;
     }
 }
+
+footer hr { margin-bottom: 0px }
+footer p {color: #ddd; text-align: right }
+footer a {color: #ddd; }
+footer img { display: initial; margin: 0; height: 1rem }
 
 .highlight .hll { background-color: #ffffcc }
 .highlight .c { color: #999988; font-style: italic } /* Comment */

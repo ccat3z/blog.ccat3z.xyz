@@ -8,8 +8,11 @@
     <div class="container">
         <header class="masthead-bar scoll-up">
             <h1 class="masthead-bar-title">
-                {% if page.title != "主页" %}<a href="#top" id="scoll-to-top">{{ page.title }}</a><span> | </span>{% endif %}
-                <a href="{{ site.baseurl }}/">{{ site.author }}<span>&#39;s blog</span></a>
+                <a href="#top" id="scoll-to-top">
+                    {% if page.title != "主页" %}
+                    <span id="masthead-bar-title-page">{{ page.title }}<span> | </span></span>
+                    {% endif %}
+                <span>{{ site.author }}<span>&#39;s blog</span></span></a>
             </h1>
         </header>
         <header class="masthead scoll-up">
@@ -41,11 +44,14 @@
             var distanceY = window.pageYOffset || document.documentElement.scrollTop,
             shrinkOn = 200,
             header = $("header");
-            if (distanceY > shrinkOn && header.height() / $(window).height() < 0.15) {
+            if (distanceY > shrinkOn) {
                 if (header.hasClass("scoll-up")) {
                     header.removeClass("scoll-up");
                 }
                 header.addClass("scoll-down");
+                if ( header.height() / $(window).height() > 0.15 ) {
+                    $('#masthead-bar-title-page').css('display', 'none');
+                }
             } else {
                 if (header.hasClass("scoll-down")) {
                     header.removeClass("scoll-down");

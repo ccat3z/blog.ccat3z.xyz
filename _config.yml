@@ -28,6 +28,7 @@ projects:
   - name: z-uploader
     description: Group uploader, 收文件专用
     link: https://github.com/c0ldcat/z-uploader
+    image: /images/z-uploader.svg
   - name: netease-music-java
     description: 网易云音乐 Java API
     link: https://github.com/c0ldcat/netease-music-java

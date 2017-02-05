@@ -45,8 +45,11 @@
     <div class="container">
         <header class="masthead-bar scoll-up">
             <h1 class="masthead-bar-title">
-                <a href="#top" id="scoll-to-top">SCEE BIO:6.3基因工程</a><span> | </span>
-                <a href="/">c0ldcat<span>&#39;s blog</span></a>
+                <a href="#top" id="scoll-to-top">
+                    
+                    <span id="masthead-bar-title-page">SCEE BIO:6.3基因工程<span> | </span></span>
+                    
+                <span>c0ldcat<span>&#39;s blog</span></span></a>
             </h1>
         </header>
         <header class="masthead scoll-up">
@@ -248,11 +251,14 @@
             var distanceY = window.pageYOffset || document.documentElement.scrollTop,
             shrinkOn = 200,
             header = $("header");
-            if (distanceY > shrinkOn && header.height() / $(window).height() < 0.15) {
+            if (distanceY > shrinkOn) {
                 if (header.hasClass("scoll-up")) {
                     header.removeClass("scoll-up");
                 }
                 header.addClass("scoll-down");
+                if ( header.height() / $(window).height() > 0.15 ) {
+                    $('#masthead-bar-title-page').css('display', 'none');
+                }
             } else {
                 if (header.hasClass("scoll-down")) {
                     header.removeClass("scoll-down");

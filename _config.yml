@@ -65,6 +65,7 @@ exclude:
   - "*.dot"
   - ".*"
   - "Gemfile"
+  - "genGemfile.sh"
   - "deploy.sh"
   - "deploy_key"
   - "deploy_key.enc"

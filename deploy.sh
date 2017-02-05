@@ -47,12 +47,6 @@ git clone --depth=1 --branch=$TARGET_BRANCH $REPO orig
 if [ $? -eq 0 ];then
     cd out
     mv ../orig/.git .git
-
-    # If no change, just exit
-    if [ -z `git diff --exit-code` ]; then
-        echo "No changes to the output on this push, exiting."
-        exit 0
-    fi
 else
     cd out
     git init

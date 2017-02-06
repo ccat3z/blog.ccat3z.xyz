@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title id="site-title">Freedesktop | c0ldcat's blog</title>
+    <link rel="icon" href="/c0ldcat.png">
+    <link rel="stylesheet" href="./../../css/style.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for c0ldcat's blog" href="/feed.xml" />
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.typetype.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.scrollTo.min.js"></script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e1acee033923881f5528a3b4a658039b";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Freedesktop - c0ldcat’s blog</title>
+<meta property="og:title" content="Freedesktop" />
+<meta name="description" content="一个伪装成菜鸡全栈工程师的上海高三狗" />
+<meta property="og:description" content="一个伪装成菜鸡全栈工程师的上海高三狗" />
+<link rel="canonical" href="//blog.c0ldcat.ml/tags/freedesktop/" />
+<meta property="og:url" content="//blog.c0ldcat.ml/tags/freedesktop/" />
+<meta property="og:site_name" content="c0ldcat’s blog" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "WebPage",
+"headline": "Freedesktop",
+"description": "一个伪装成菜鸡全栈工程师的上海高三狗",
+"url": "//blog.c0ldcat.ml/tags/freedesktop/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+    <a id="top"></a>
+    <div class="container">
+        <header class="masthead-bar scoll-up">
+            <h1 class="masthead-bar-title">
+                <a href="#top" id="scoll-to-top">
+                    
+                    <span id="masthead-bar-title-page">Freedesktop<span> | </span></span>
+                    
+                <span>c0ldcat<span>&#39;s blog</span></span></a>
+            </h1>
+        </header>
+        <header class="masthead scoll-up">
+            <h1 class="masthead-title">
+                <a href="/" id="page-title">Freedesktop</a><span> | </span>
+                <a href="/"><span id="author-name">c0ldcat</span><span>&#39;s blog</span></a>
+            </h1>
+            <nav class="masthead-nav">
+                
+                <a href="/posts">文章</a>
+                
+                <a href="/projects">项目</a>
+                
+                <a href="/tags">标签</a>
+                
+                
+            </nav>
+        </header>
+        <div class="content page">
+  
+<div class="content list">
+    
+    
+    
+    
+    <div class="list-item">
+        
+        <div class="list-item-img">
+            <img class="media-image"
+            src="/images/2017-02-05-freedesktop/freedesktop.svg" alt="Freedesktop 那些破事"
+            title="Freedesktop 那些破事" />
+        </div>
+        
+        <div class="list-item-body">
+            <h2 class="list-post-title">
+                <a href="/posts/freedesktop/">Freedesktop 那些破事</a>
+            </h2>
+            <div class="list-post-info">
+                <time class="list-post-date">05 Feb 2017</time>
+                 | 对于一个强迫症, 这些Deskotp的技能必须熟练 
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+
+
+<script>
+var id_list = ['scoll-to-top', 'page-title', 'site-title'];
+for(target in id_list ) {
+    var item = $('#' + id_list[target]);
+    console.log('标签:' + item.text())
+    item.html('标签:' + item.text())
+}
+</script>
+
+</div>
+
+        <footer>
+            <hr>
+            <p><small>Maintained by <a href="https://github.com/c0ldcat">c0ldcat</a> with <img src="/images/love.svg" /></small><p>
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js"></script>
+
+    <script>
+    function init() {
+        window.addEventListener('scroll', function(e){
+            var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+            shrinkOn = 200,
+            header = $("header");
+            if (distanceY > shrinkOn) {
+                if (header.hasClass("scoll-up")) {
+                    header.removeClass("scoll-up");
+                }
+                header.addClass("scoll-down");
+                if ( header.height() / $(window).height() > 0.15 ) {
+                    $('#masthead-bar-title-page').css('display', 'none');
+                }
+            } else {
+                if (header.hasClass("scoll-down")) {
+                    header.removeClass("scoll-down");
+                }
+                header.addClass("scoll-up");
+            }
+            //console.log(distanceY);
+        });
+        var scollItem = $("#scoll-to-top");
+        scollItem.click(function() {
+            $.scrollTo(scollItem.attr("href"), {duration:2000});
+        });
+    }
+    $(document).ready(init());
+
+    $(window).hashchange(function(){
+        var target = $(location.hash);
+        console.log(location.hash);
+        if(target.length==1){
+            var top = target.offset().top-$('.masthead-bar').height();
+            if(top > 0){
+                $('html,body').scrollTop(top);
+            }
+        }
+    });
+
+    $(function() {
+        $(window).hashchange();
+    });
+    </script>
+</body>
+</html>

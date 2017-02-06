@@ -6,7 +6,8 @@ title: 标签
 
 <div class="content list">
     {% assign used_image = "" %}
-    {% for tag_object in site.tags %}
+    {% assign tags = site | tag_sort %}
+    {% for tag_object in tags %}
     {% assign tag = tag_object[1] %}
     <div class="list-item">
         {% for post in tag %}

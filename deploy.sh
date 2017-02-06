@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TARGET_BRANCH="gh-pages"
+TARGET_BRANCH="coding-pages"
 
 # Pull requests shouldn't try to deploy, just skip
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
@@ -20,8 +20,11 @@ ssh-add deploy_key
 
 # Build information
 REPO=`git config remote.origin.url`
-SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
+SSH_REPO=${REPO/https:\/\/github.com\//git@git.coding.net:}
 SHA=`git rev-parse --verify HEAD`
+
+# Key scan
+ssh-keyscan git.coding.net >> ~/.ssh/known_hosts
 
 # Build
 jekyll build
@@ -42,7 +45,7 @@ cd ..
 mv _site out
 
 # Init git dir
-git clone --depth=1 --branch=$TARGET_BRANCH $REPO orig
+git clone --depth=1 --branch=$TARGET_BRANCH $SSH_REPO orig
 
 if [ $? -eq 0 ];then
     cd out
@@ -60,7 +63,7 @@ git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 # Add all
 git add --all .
-git commit -m "Deploy to GitHub Pages: ${SHA}"
+git commit -m "Deploy to Coding Pages: ${SHA}"
 
 # Push it
 git push $SSH_REPO $TARGET_BRANCH -f

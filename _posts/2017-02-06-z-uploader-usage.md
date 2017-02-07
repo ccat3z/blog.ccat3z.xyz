@@ -245,4 +245,4 @@ Your browser does not support the audio tag.
 Your browser does not support the audio tag.
 </video>
 
-好了, 基本用法就是这些, 如果有什么问题和建议请即使联系我, 谢谢:)
+好了, 基本用法就是这些, 如果有什么问题和建议请及时联系我, 谢谢:)

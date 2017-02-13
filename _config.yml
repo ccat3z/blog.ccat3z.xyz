@@ -36,7 +36,7 @@ projects:
   - name: Hackwlb Server
     description: 本站开源哦
     link: https://github.com/c0ldcat/hackwlb-server
-    image: /c0ldcat.png
+    image: /images/c0ldcat.svg
   - name: SCEE BIO
     description: 生物笔记
     link: https://github.com/c0ldcat/scee-bio

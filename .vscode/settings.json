@@ -4,8 +4,9 @@
         "commands": [
             {
                 "match": ".*",
-                "cmd": "bash --login -c 'GEM_HOME=/home/c0ldcat/.gem/ruby/2.4.0 bundle exec jekyll build -I -d /srv/blog'"
+                "cmd": "bash --login -c 'GEM_HOME=/home/c0ldcat/.gem/ruby/2.4.0 bundle exec jekyll build -d /srv/blog'"
             }
         ]
-    }
+    },
+    "insertdatestring.format": "YYYY-MM-DD hh:mm:ss ZZZZ"
 }

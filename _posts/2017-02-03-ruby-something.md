@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ruby 碎碎念"
+title: "Ruby碎碎念"
 date: "2017-02-03 18:02:00 +0800"
 tag: ["Ruby"]
 image_preview: "/images/2017-02-03-ruby-something/ruby.svg"

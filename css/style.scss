@@ -1,6 +1,5 @@
 ---
 ---
-/*
 @font-face {
     font-family: 'Source Han Sans CN';
     src: url('/fonts/SourceHanSansCN-ExtraLight.ttf') format('truetype');
@@ -36,7 +35,6 @@
     src: url('/fonts/SourceHanSansCN-Heavy.ttf') format('truetype');
     font-weight: 900;
 }
-*/
 
 * {
     -webkit-box-sizing: border-box;
@@ -51,7 +49,7 @@ body {
 }
 
 html {
-    // font-family:'Microsoft Yahei Light', 'Source Han Sans CN', 'Microsoft Yahei', sans-serif;
+    font-family:'Source Han Sans CN', 'Microsoft Yahei', sans-serif;
     font-style:normal;
     font-size: 18px;
     font-weight: 300;

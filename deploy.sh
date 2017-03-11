@@ -1,5 +1,6 @@
 #!/bin/bash
 
+MAIN_BRANCH=$TRAVIS_BRANCH
 TARGET_BRANCH="gh-pages"
 MIRROR_BRANCH="coding-jekyll"
 
@@ -19,10 +20,23 @@ chmod 600 deploy_key
 eval `ssh-agent -s`
 ssh-add deploy_key
 
+# Config git
+git config user.name "Travis CI"
+git config user.email "$COMMIT_AUTHOR_EMAIL"
+
 # Build information
 REPO=`git config remote.origin.url`
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
+
+# Auto Merge Mirror
+git remote update && \
+git fetch origin $MIRROR_BRANCH && \
+git checkout -b $MIRROR_BRANCH FETCH_HEAD && \
+git merge $MAIN_BRANCH --no-commit && \
+git commit -m "Auto merge branch 'jekyll' into coding-jekyll" && \
+git push $SSH_REPO $MIRROR_BRANCH
+git checkout $MAIN_BRANCH
 
 # Build
 jekyll build
@@ -36,7 +50,7 @@ do
     sed -i "s|/css|$(echo $html | sed "s|[^/\\.]\{1,\}/|../|g;s|/[^/]*$||")/css|" $html
 done
 
-font-spider --debug --no-backup $(find . -name "*html")
+font-spider --no-backup $(find . -name "*html")
 
 cd ..
 
@@ -55,20 +69,9 @@ else
     git remote add repo $REPO
 fi
 
-# Config git
-git config user.name "Travis CI"
-git config user.email "$COMMIT_AUTHOR_EMAIL"
-
 # Add all
 git add --all .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 # Push it
 git push $SSH_REPO $TARGET_BRANCH -f
-
-# Auto Merge Mirror
-git fetch origin $MIRROR_BRANCH && \
-git checkout -b $MIRROR_BRANCH origin/$MIRROR_BRANCH && \
-git merge $TARGET_BRANCH --no-commit && \
-git commit -m "Auto merge branch 'jekyll' into coding-jekyll" && \
-git push origin $MIRROR_BRANCH

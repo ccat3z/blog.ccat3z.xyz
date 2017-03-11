@@ -293,7 +293,7 @@ Your browser does not support the audio tag.
 			</item>
 		
 			<item>
-				<title>Freedesktop 那些破事</title>
+				<title>Freedesktop那些破事</title>
         <description>&lt;h2 id=&quot;desktop-entries&quot;&gt;Desktop entries&lt;/h2&gt;
 
 &lt;p&gt;桌面配置项是描述如何启动程序, 如何处理数据的配置文件, 它们还会和菜单规范同步作用, 定义一个程序在菜单中的显示图标. 大部分桌面配置项是 .desktop 和 .directory 文件.&lt;/p&gt;

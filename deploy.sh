@@ -1,6 +1,7 @@
 #!/bin/bash
 
 TARGET_BRANCH="gh-pages"
+MIRROR_BRANCH="coding-jekyll"
 
 # Pull requests shouldn't try to deploy, just skip
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
@@ -64,3 +65,10 @@ git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 # Push it
 git push $SSH_REPO $TARGET_BRANCH -f
+
+# Auto Merge Mirror
+git fetch origin $MIRROR_BRANCH && \
+git checkout -b $MIRROR_BRANCH origin/$MIRROR_BRANCH && \
+git merge $TARGET_BRANCH --no-commit && \
+git commit -m "Auto merge branch 'jekyll' into coding-jekyll" && \
+git push origin $MIRROR_BRANCH

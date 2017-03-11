@@ -21,8 +21,8 @@ eval `ssh-agent -s`
 ssh-add deploy_key
 
 # Config git
-git config user.name "Travis CI"
-git config user.email "$COMMIT_AUTHOR_EMAIL"
+git config --global user.name "Travis CI"
+git config --global user.email "$COMMIT_AUTHOR_EMAIL"
 
 # Build information
 REPO=`git config remote.origin.url`

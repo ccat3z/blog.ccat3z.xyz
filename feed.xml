@@ -6,6 +6,97 @@
 		<atom:link href="//blog.c0ldcat.ml/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>解决Git Cannot update paths and switch to branch</title>
+        <description>&lt;p&gt;今天在改写博客自动同步镜像脚本, 从Remote Branch创建本地Branch时CI抛出这样个问题:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fatal: Cannot update paths and switch to branch 'nome-do-branch' at the same time.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;查了下是因为本地仓库找不到关于remote的信息, 想起来之前我是直接clone的branch可能没有update remote的信息.&lt;/p&gt;
+
+&lt;p&gt;可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;git remote show origin&lt;/code&gt;更新所有远程库信息, 顺便看看有没有获取正确.&lt;/p&gt;
+
+&lt;p&gt;CI脚本可以用这条命令:&lt;code class=&quot;highlighter-rouge&quot;&gt;git remote update&lt;/code&gt;, 效果相同.&lt;/p&gt;
+
+&lt;p&gt;接下来就一样了, &lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout -b BRANCH_NAME remote/BRANCH_NAME&lt;/code&gt;.&lt;/p&gt;
+</description>
+				<pubDate>Sat, 11 Mar 2017 07:25:59 +0000</pubDate>
+				<link>//blog.c0ldcat.ml/posts/git-fetch-remote-branch-error/</link>
+				<guid isPermaLink="true">//blog.c0ldcat.ml/posts/git-fetch-remote-branch-error/</guid>
+			</item>
+		
+			<item>
+				<title>硬盘根目录里的Msdia80.dll文件</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;转自&lt;a href=&quot;http://zhan.renren.com/sola86?gid=3602888498037068703&amp;amp;checked=true&quot;&gt;硬盘根目录里的Msdia80.dll文件&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;发现硬盘根目录里有个&lt;code class=&quot;highlighter-rouge&quot;&gt;Msdia80.dll&lt;/code&gt;文件, 看着挺烦人的, 想删掉, 故搜了下, 发现和VC2005有关系.&lt;/p&gt;
+
+&lt;p&gt;这里是&lt;a href=&quot;http://support.microsoft.com/kb/927665/zh-cn&quot;&gt;微软的解释&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;您有正在运行一个64位操作系统的计算机. 您使用&lt;code class=&quot;highlighter-rouge&quot;&gt;Vcredist_x64.exe&lt;/code&gt;文件或&lt;code class=&quot;highlighter-rouge&quot;&gt;Vcredist_ia64.exe&lt;/code&gt;文件这台计算机上安装Microsoft Visual C++ 2005可再发行组件包. 当您这样做时, &lt;code class=&quot;highlighter-rouge&quot;&gt;Msdia80.dll&lt;/code&gt;文件被安装在启动驱动器的根文件夹中.
+它的正确路径应该是&lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Program Files\Common Files\Microsoft Shared\VC\msdia80.dll&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;解决方法是把这个&lt;code class=&quot;highlighter-rouge&quot;&gt;msdia80.dll&lt;/code&gt;放置在&lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Program Files\Common Files\Microsoft Shared\VC\&lt;/code&gt;内(没有建一个), 然后命令行注册这个dll, 以管理员身份运行命令提示符, 输入&lt;code class=&quot;highlighter-rouge&quot;&gt;regsvr32 &quot;C:\Program Files\Common Files\Microsoft Shared\VC\msdia80.dll&quot;&lt;/code&gt;.&lt;/p&gt;
+</description>
+				<pubDate>Sat, 11 Mar 2017 07:11:49 +0000</pubDate>
+				<link>//blog.c0ldcat.ml/posts/msdia80-dll/</link>
+				<guid isPermaLink="true">//blog.c0ldcat.ml/posts/msdia80-dll/</guid>
+			</item>
+		
+			<item>
+				<title>Atom Editor国内源</title>
+        <description>&lt;p&gt;虽然已经不用Atom了, 但以前一直用的Atom源还是记录一下, 话说淘宝真的什么源都有啊.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.apmrc
+registry &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; https://registry.npm.taobao.org/
+strict-ssl &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;还有HTTP代理设置, 光是设置HTTP_PROXY环境变量apm是不识的:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.apmrc
+strict-ssl &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false
+&lt;/span&gt;http_proxy &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; socks5://127.0.0.1:1997
+https_proxy &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; socks5://127.0.0.1:1997
+&lt;span class=&quot;c&quot;&gt;#支持socks&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;不清楚.apmrc在哪的可以直接敲命令:&lt;code class=&quot;highlighter-rouge&quot;&gt;apm config set strict-ssl false&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;apm config get strict-ssl&lt;/code&gt;可以获取当前设置.&lt;/p&gt;
+
+</description>
+				<pubDate>Sat, 11 Mar 2017 07:09:31 +0000</pubDate>
+				<link>//blog.c0ldcat.ml/posts/atom-proxy/</link>
+				<guid isPermaLink="true">//blog.c0ldcat.ml/posts/atom-proxy/</guid>
+			</item>
+		
+			<item>
+				<title>Windows 10设置磁块颜色</title>
+        <description>&lt;p&gt;看到开始屏幕一片红非常单调, 想看看有没有办法给普通链接加上UWP那样的色彩.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.thewindowsclub.com/windows-tile-color-changer-download&quot;&gt;Windows Tile Color Changer&lt;/a&gt;解决了这个问题.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2017-03-11-color-tiles/windows-tile-color-changer.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Windows Tile Color Changer is a freeware for Windows 8.1/8 which has been released by us. It allows you to change the color of pinned Tiles of your desktop apps, on your Start Screen, easily with a single click, and further help you in customizing your Start Screen.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2017-03-11-color-tiles/change-start-screem-tile-color.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;打开Changer, 列表中会给出位于&lt;code class=&quot;highlighter-rouge&quot;&gt;C:\ProgramData\Microsoft\Windows\Start Menu\Programs&lt;/code&gt;中的所有快捷方式, 选择想要的颜色点Change就可以啦, 即刻生效.&lt;/p&gt;
+
+</description>
+				<pubDate>Sat, 11 Mar 2017 06:48:18 +0000</pubDate>
+				<link>//blog.c0ldcat.ml/posts/color-tiles/</link>
+				<guid isPermaLink="true">//blog.c0ldcat.ml/posts/color-tiles/</guid>
+			</item>
+		
+			<item>
 				<title>Windows日常的序章</title>
         <description>&lt;p&gt;思索再三, 我决定未来用回Windows作为主要工作环境, 用了Linux(Ubunutu 1y, Debian 0.5y, Arch Linux 2.6y)多年多少有些舍不得, 操作习惯早已Linuxiz. 但是Linux作为主要使用环境太摧残强迫症了, 几年来从dm到wm, 从Gnome插件到GTK主题我一直不停在修修补补, 再加上未来对交流(QQ, 微信等)和办公(Ofiice)的需求增高, Wayland对hidpi支持还不完善, Linux Surface Pro 3的维护时间不足和遇到的种种困难, WSL的出现等众多原因助推我切换Windows, 水一篇纪念被我抛弃的Linux环境, 话说这几天做出的决定还真多, 冒着2h/d的路程时间选择走读, 切完全陌生的Windows…&lt;/p&gt;
 
@@ -1218,7 +1309,7 @@ MimeType=text/plain;
 			</item>
 		
 			<item>
-				<title>Ruby 碎碎念</title>
+				<title>Ruby碎碎念</title>
         <description>&lt;p&gt;&lt;strong&gt;如何在Bundle添加Git源?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Specifying a ref, branch, or tag for a git repository specified inline works exactly the same way&lt;/p&gt;

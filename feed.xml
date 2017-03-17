@@ -6,6 +6,18 @@
 		<atom:link href="//blog.c0ldcat.ml/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>How to create windows 10 toast notification with PowerShell?</title>
+        <description>&lt;p&gt;直接抄…&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/c0ldcat/e8693105c054d15126efddad141dd0db.js&quot;&gt;&lt;/script&gt;
+
+</description>
+				<pubDate>Fri, 17 Mar 2017 14:14:50 +0000</pubDate>
+				<link>//blog.c0ldcat.ml/posts/ps-windows-10-toast-notification/</link>
+				<guid isPermaLink="true">//blog.c0ldcat.ml/posts/ps-windows-10-toast-notification/</guid>
+			</item>
+		
+			<item>
 				<title>解决Git Cannot update paths and switch to branch</title>
         <description>&lt;p&gt;今天在改写博客自动同步镜像脚本, 从Remote Branch创建本地Branch时CI抛出这样个问题:&lt;/p&gt;
 

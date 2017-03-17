@@ -363,26 +363,23 @@ tbody tr:nth-child(odd) th {
 
 .masthead-bar {
     position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(255,255,255,0.8);
-    width: 100%;
-    z-index: 9999;
+    bottom: 0;
+    right: 0;
 
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-
+    
     &.scoll-down {
         opacity: 1;
-        top: 0;
+        bottom: 0;
     }
 
     &.scoll-up {
         opacity: 0;
-        top: -50%;
+        bottom: -50%;
     }
 
     &-title {

@@ -1,0 +1,32 @@
+---
+layout: page
+title: 文章
+---
+{% assign list-posts = paginator.posts %}
+{% include list_post.html %}
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}">&laquo; Prev</a>
+  {% else %}
+    <span>&laquo; Prev</span>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <span>{{ page }}</span>
+    {% elsif page == 1 %}
+      <a href="{{ site.paginate_path | replace: ':num', '' }}">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}">Next &raquo;</a>
+  {% else %}
+    <span>Next &raquo;</span>
+  {% endif %}
+</div>
+{% endif %}

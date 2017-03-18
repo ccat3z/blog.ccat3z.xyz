@@ -87,9 +87,13 @@ tag_page_layout: tag_page
 tag_page_dir: tags
 tag_permalink_style: pretty
 
+paginate: 10
+paginate_path: "/posts/:num"
+
 gems:
   - jekyll-seo-tag
   - jekyll/tagging
+  - jekyll-paginate
 
 exclude:
   - "*.dot"

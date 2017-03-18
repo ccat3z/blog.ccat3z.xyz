@@ -9,7 +9,7 @@
         <header class="masthead-bar scoll-up">
             <h1 class="masthead-bar-title">
                 <a href="#top" id="scoll-to-top">
-                <span>{{ site.author }}<span>&#39;s blog</span></span></a>
+                    <span>{{ site.author }}<span>&#39;s blog</span></span></a>
             </h1>
         </header>
         <header class="masthead scoll-up">
@@ -28,56 +28,77 @@
         </header>
         {{ content }}
         <footer>
-            <hr>
-            <p><small>Maintained by <a href="https://github.com/c0ldcat">c0ldcat</a> with <img src="/images/love.svg" /></small><p>
+            <p>
+                {% if paginator.total_pages > 1 %}
+                    {% if paginator.previous_page %}
+                        <a href="{{ paginator.previous_page_path }}">&laquo; Prev</a>
+                    {% else %}
+                        <span>&laquo; Prev</span>
+                    {% endif %}
+                    {% for page in (1..paginator.total_pages) %}
+                        {% if page == paginator.page %}
+                            <span style="color: #333;">{{ page }}</span>
+                        {% elsif page == 1 %}
+                            <a href="{{ site.paginate_path | replace: ':num', '' }}">{{ page }}</a>
+                        {% else %}
+                            <a href="{{ site.paginate_path | replace: ':num', page }}">{{ page }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% if paginator.next_page %}
+                        <a href="{{ paginator.next_page_path }}">Next &raquo;</a>
+                    {% else %}
+                        <span>Next &raquo;</span>
+                    {% endif %}
+                {% endif %}
+                <small>Maintained by <a href="/about">c0ldcat</a> with <span style="color: #f44336;">❤</span></small>
+            <p>
         </footer>
     </div>
-
     <script type="text/javascript" src="https://cdn.staticfile.org/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js"></script>
 
     <script>
-    function init() {
-        window.addEventListener('scroll', function(e){
-            var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-            shrinkOn = 200,
-            header = $("header");
-            if (distanceY > shrinkOn) {
-                if (header.hasClass("scoll-up")) {
-                    header.removeClass("scoll-up");
+        function init() {
+            window.addEventListener('scroll', function(e){
+                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                    shrinkOn = 200,
+                    header = $("header");
+                if (distanceY > shrinkOn) {
+                    if (header.hasClass("scoll-up")) {
+                        header.removeClass("scoll-up");
+                    }
+                    header.addClass("scoll-down");
+                    if ( header.height() / $(window).height() > 0.15 ) {
+                        $('#masthead-bar-title-page').css('display', 'none');
+                    }
+                } else {
+                    if (header.hasClass("scoll-down")) {
+                        header.removeClass("scoll-down");
+                    }
+                    header.addClass("scoll-up");
                 }
-                header.addClass("scoll-down");
-                if ( header.height() / $(window).height() > 0.15 ) {
-                    $('#masthead-bar-title-page').css('display', 'none');
-                }
-            } else {
-                if (header.hasClass("scoll-down")) {
-                    header.removeClass("scoll-down");
-                }
-                header.addClass("scoll-up");
-            }
-            //console.log(distanceY);
-        });
-        var scollItem = $("#scoll-to-top");
-        scollItem.click(function() {
-            $.scrollTo(scollItem.attr("href"), {duration:2000});
-        });
-    }
-    $(document).ready(init());
-
-    $(window).hashchange(function(){
-        var target = $(location.hash);
-        console.log(location.hash);
-        if(target.length==1){
-            var top = target.offset().top-$('.masthead-bar').height();
-            if(top > 0){
-                $('html,body').scrollTop(top);
-            }
+                //console.log(distanceY);
+            });
+            var scollItem = $("#scoll-to-top");
+            scollItem.click(function() {
+                $.scrollTo(scollItem.attr("href"), {duration:2000});
+            });
         }
-    });
+        $(document).ready(init());
 
-    $(function() {
-        $(window).hashchange();
-    });
+        $(window).hashchange(function(){
+            var target = $(location.hash);
+            console.log(location.hash);
+            if(target.length==1){
+                var top = target.offset().top-$('.masthead-bar').height();
+                if(top > 0){
+                    $('html,body').scrollTop(top);
+                }
+            }
+        });
+
+        $(function() {
+            $(window).hashchange();
+        });
     </script>
 </body>
 </html>

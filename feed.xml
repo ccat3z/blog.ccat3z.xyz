@@ -6,6 +6,41 @@
 		<atom:link href="//blog.c0ldcat.ml/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Kindlet开始的地方</title>
+        <description>&lt;h1 id=&quot;序言&quot;&gt;序言&lt;/h1&gt;
+
+&lt;p&gt;欢迎来到Kindle越狱的世界！&lt;/p&gt;
+
+&lt;p&gt;在本系列教程中, 作者将详细介绍Kindlet的开发过程及其API库, 在学习Kindlet之前请确保您:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;拥有一台已经越狱的Kindle&lt;/li&gt;
+  &lt;li&gt;熟练掌握Java语法及基本准则&lt;/li&gt;
+  &lt;li&gt;了解Swing, AWT相关知识&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;希望您能通过本系列教程学会个性化您的Kindle, 让Kindle不仅仅作为一款优秀的阅读器, 更成为一款方便使用的电子设备. 当然, 更希望您能分享您的作品. 如有错误或建议, 欢迎指出, 谢谢;)&lt;/p&gt;
+
+&lt;p&gt;去年在&lt;a href=&quot;http://krblog.krrrrr.xyz/md/post/81&quot;&gt;KrBlog&lt;/a&gt;开的坑, 今年填上!&lt;/p&gt;
+
+&lt;h1 id=&quot;什么是kindlet&quot;&gt;什么是Kindlet?&lt;/h1&gt;
+
+&lt;p&gt;Kindlet即Kindle越狱插件中的一种，基于Java语言及Kindlet库，Kindle内原生的功能大多基于此。&lt;/p&gt;
+
+&lt;p&gt;典型的Kindlet应用有：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.mobileread.com/forums/showthread.php?t=203326&quot;&gt;KUAL&lt;/a&gt; Application Launcher &amp;amp; Menus&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.mobileread.com/forums/showthread.php?t=132108&quot;&gt;Kindle Chinese Chess&lt;/a&gt; Chinese Chess on Kindle&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+				<pubDate>Sat, 18 Mar 2017 14:53:39 +0000</pubDate>
+				<link>//blog.c0ldcat.ml/posts/kindlet/</link>
+				<guid isPermaLink="true">//blog.c0ldcat.ml/posts/kindlet/</guid>
+			</item>
+		
+			<item>
 				<title>How to create windows 10 toast notification with PowerShell?</title>
         <description>&lt;p&gt;直接抄…&lt;/p&gt;
 

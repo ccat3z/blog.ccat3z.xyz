@@ -44,7 +44,7 @@
         <header class="masthead-bar scoll-up">
             <h1 class="masthead-bar-title">
                 <a href="#top" id="scoll-to-top">
-                <span>c0ldcat<span>&#39;s blog</span></span></a>
+                    <span>c0ldcat<span>&#39;s blog</span></span></a>
             </h1>
         </header>
         <header class="masthead scoll-up">
@@ -66,8 +66,7 @@
             </nav>
         </header>
         <div class="content page">
-  <h3 id="-更多精彩的文章一些生活的点滴-">[ <span id="section-post-title" hidetext="&lt;a href=&quot;/posts&quot;&gt;更多精彩的文章&lt;/a&gt;" origtext="一些生活的点滴">更多精彩的文章|一些生活的点滴</span> ]</h3>
-
+  
 <div class="content list">
     
     
@@ -107,29 +106,8 @@
         </div>
     </div>
     
-    <div class="list-item">
-        
-        <div class="list-item-img">
-            <img class="media-image" src="/images/2017-03-11-msdia80-dll/dll.png" alt="硬盘根目录里的Msdia80.dll文件" title="硬盘根目录里的Msdia80.dll文件" />
-        </div>
-        
-        <div class="list-item-body">
-            <h2 class="list-post-title">
-                <a href="/posts/msdia80-dll/">硬盘根目录里的Msdia80.dll文件</a>
-            </h2>
-            <div class="list-post-info">
-                <time class="list-post-date">11 Mar 2017</time>
-                 | 其实放根目录下也没多大事 
-            </div>
-        </div>
-    </div>
-    
     
 </div>
-
-<hr />
-
-<h3 id="-以及一些微小的工作更多精妙复杂的设计-">[ <span id="section-project-title" hidetext="&lt;a href=&quot;/projects&quot;&gt;更多精妙复杂的设计&lt;/a&gt;" origtext="以及一些微小的工作">以及一些微小的工作|更多精妙复杂的设计</span> ]</h3>
 
 <div class="content list">
 
@@ -151,38 +129,6 @@
     </div>
 </div>
 
-<div class="list-item">
-    
-    <div class="list-item-img">
-        <img class="media-image" src="/images/netease-music.svg" alt="Netease Music Java" title="Netease Music Java" />
-    </div>
-    
-    <div class="list-item-body">
-        <h2 class="list-post-title">
-            <a href="https://github.com/c0ldcat/netease-music-java">Netease Music Java</a>
-        </h2>
-        <div class="list-post-info">
-             网易云音乐 Java API 
-        </div>
-    </div>
-</div>
-
-<div class="list-item">
-    
-    <div class="list-item-img">
-        <img class="media-image" src="/images/c0ldcat.svg" alt="Hackwlb Server" title="Hackwlb Server" />
-    </div>
-    
-    <div class="list-item-body">
-        <h2 class="list-post-title">
-            <a href="https://github.com/c0ldcat/hackwlb-server">Hackwlb Server</a>
-        </h2>
-        <div class="list-post-info">
-             本站开源哦 
-        </div>
-    </div>
-</div>
-
 
 </div>
 
@@ -191,86 +137,63 @@ var authorItem = $("#author-name");
 var author = authorItem.text();
 authorItem.empty();
 authorItem.typetype("FireZ").backspace(5).typetype(author);
-var typetypeList = ["section-post-title", "section-project-title"];
-for (id in typetypeList) {
-    (function() {
-        var item = $("#" + typetypeList[id]);
-        var itemTitle = item.attr("origText");
-        console.log(itemTitle);
-        item.empty();
-        item.typetype(itemTitle, {
-            e: 0.04,
-            t: 100,
-            keypress: function() {},
-            callback: function() {
-                item.mouseenter(function() {
-                    item.empty();
-                    item.html(item.attr("hideText"));
-                });
-                item.mouseleave(function() {
-                    item.empty();
-                    item.html(item.attr("origText"));
-                });
-            }
-        })
-    })();
-}
 </script>
 
 
 </div>
 
         <footer>
-            <hr>
-            <p><small>Maintained by <a href="https://github.com/c0ldcat">c0ldcat</a> with <img src="/images/love.svg" /></small><p>
+            <p>
+                
+                <small>Maintained by <a href="/about">c0ldcat</a> with <span style="color: #f44336;">❤</span></small>
+            <p>
         </footer>
     </div>
-
     <script type="text/javascript" src="https://cdn.staticfile.org/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js"></script>
 
     <script>
-    function init() {
-        window.addEventListener('scroll', function(e){
-            var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-            shrinkOn = 200,
-            header = $("header");
-            if (distanceY > shrinkOn) {
-                if (header.hasClass("scoll-up")) {
-                    header.removeClass("scoll-up");
+        function init() {
+            window.addEventListener('scroll', function(e){
+                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                    shrinkOn = 200,
+                    header = $("header");
+                if (distanceY > shrinkOn) {
+                    if (header.hasClass("scoll-up")) {
+                        header.removeClass("scoll-up");
+                    }
+                    header.addClass("scoll-down");
+                    if ( header.height() / $(window).height() > 0.15 ) {
+                        $('#masthead-bar-title-page').css('display', 'none');
+                    }
+                } else {
+                    if (header.hasClass("scoll-down")) {
+                        header.removeClass("scoll-down");
+                    }
+                    header.addClass("scoll-up");
                 }
-                header.addClass("scoll-down");
-                if ( header.height() / $(window).height() > 0.15 ) {
-                    $('#masthead-bar-title-page').css('display', 'none');
-                }
-            } else {
-                if (header.hasClass("scoll-down")) {
-                    header.removeClass("scoll-down");
-                }
-                header.addClass("scoll-up");
-            }
-            //console.log(distanceY);
-        });
-        var scollItem = $("#scoll-to-top");
-        scollItem.click(function() {
-            $.scrollTo(scollItem.attr("href"), {duration:2000});
-        });
-    }
-    $(document).ready(init());
-
-    $(window).hashchange(function(){
-        var target = $(location.hash);
-        console.log(location.hash);
-        if(target.length==1){
-            var top = target.offset().top-$('.masthead-bar').height();
-            if(top > 0){
-                $('html,body').scrollTop(top);
-            }
+                //console.log(distanceY);
+            });
+            var scollItem = $("#scoll-to-top");
+            scollItem.click(function() {
+                $.scrollTo(scollItem.attr("href"), {duration:2000});
+            });
         }
-    });
+        $(document).ready(init());
 
-    $(function() {
-        $(window).hashchange();
-    });
+        $(window).hashchange(function(){
+            var target = $(location.hash);
+            console.log(location.hash);
+            if(target.length==1){
+                var top = target.offset().top-$('.masthead-bar').height();
+                if(top > 0){
+                    $('html,body').scrollTop(top);
+                }
+            }
+        });
+
+        $(function() {
+            $(window).hashchange();
+        });
     </script>
 </body>
 </html>

@@ -4,12 +4,3 @@ layout: page
 
 {% assign list-posts = site.tags[page.title] %}
 {% include list_post.html %}
-
-<script>
-var id_list = ['scoll-to-top', 'page-title', 'site-title'];
-for(target in id_list ) {
-    var item = $('#' + id_list[target]);
-    console.log('标签:' + item.text())
-    item.html('标签:' + item.text())
-}
-</script>

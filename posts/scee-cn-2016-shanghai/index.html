@@ -784,7 +784,6 @@ D.作者为藤君向自己求文而感到庆幸。</p>
             </p>
         </footer>
     </div>
-    <script type="text/javascript" src="https://cdn.staticfile.org/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js"></script>
 
     <script>
         function init() {
@@ -814,21 +813,6 @@ D.作者为藤君向自己求文而感到庆幸。</p>
             });
         }
         $(document).ready(init());
-
-        $(window).hashchange(function(){
-            var target = $(location.hash);
-            console.log(location.hash);
-            if(target.length==1){
-                var top = target.offset().top-$('.masthead-bar').height();
-                if(top > 0){
-                    $('html,body').scrollTop(top);
-                }
-            }
-        });
-
-        $(function() {
-            $(window).hashchange();
-        });
     </script>
 </body>
 </html>

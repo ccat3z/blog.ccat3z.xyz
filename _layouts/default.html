@@ -40,9 +40,9 @@
                         {% if page == paginator.page %}
                             <span style="color: #333;">{{ page }}</span>
                         {% elsif page == 1 %}
-                            <a href="{{ site.paginate_path | replace: ':num', '' }}">{{ page }}</a>
+                            <a href="../">{{ page }}</a>
                         {% else %}
-                            <a href="{{ site.paginate_path | replace: ':num', page }}">{{ page }}</a>
+                            <a href="{% if paginator.page != 1 %}.{% endif %}./{{ page }}">{{ page }}</a>
                         {% endif %}
                     {% endfor %}
                     {% if paginator.next_page %}

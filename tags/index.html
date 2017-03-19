@@ -1,12 +1,11 @@
 ---
-layout: default
-permalink: /tags/
+layout: page
 title: 标签
 ---
 
 <div class="content list">
     {% assign used_image = "" %}
-    {% assign tags = site | tag_sort %}
+    {% assign tags = paginator.tags %}
     {% for tag_object in tags %}
     {% assign tag = tag_object[1] %}
     <div class="list-item">
@@ -31,7 +30,7 @@ title: 标签
 
         <div class="list-item-body">
             <h2 class="list-post-title">
-                <a href="{{ site.baseurl }}/tags/{{ tag_object[0] | slugify: 'pretty' }}"
+                <a href="{{ site.baseurl }}/tag/{{ tag_object[0] | slugify: 'pretty' }}"
                 title="{{ tag_object[0] }}">
                 {{ tag_object[0] }}</a>
             </h2>

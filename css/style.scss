@@ -507,6 +507,7 @@ footer p {color: #ddd; text-align: right }
 footer a {color: #ddd; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}
 footer a:hover {color: #333}
 footer img { display: initial; margin: 0; height: 1rem }
+footer span.block { white-space: nowrap }
 
 .highlight .hll { background-color: #ffffcc }
 .highlight .c { color: #999988; font-style: italic } /* Comment */

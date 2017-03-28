@@ -22,7 +22,7 @@
                 <a href="{{ nav.href }}">{{ nav.name }}</a>
                 {% endfor %}
                 {% for tag in page.tags %}
-                <a href="/tags/{{ tag | slugify: 'pretty' }}">{{ tag }}</a>
+                <a href="/tag/{{ tag | slugify: 'pretty' }}">{{ tag }}</a>
                 {% endfor %}
             </nav>
         </header>

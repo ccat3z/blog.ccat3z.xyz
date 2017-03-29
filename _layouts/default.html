@@ -14,7 +14,7 @@
         </header>
         <header class="masthead scoll-up">
             <h1 class="masthead-title">
-                {% if page.title != "主页" %}<a href="{{ site.baseurl }}/" id="page-title">{{ page.title }}</a><span> | </span>{% endif %}
+                {% if page.title != "主页" %}<a href="{{ site.baseurl }}/" id="page-title">{% if page.title_html != null %}{{ page.title_html }}{% else %}{{ page.title }}{% endif %}</a><span> | </span>{% endif %}
                 <a href="{{ site.baseurl }}/"><span id="author-name">{{ site.author }}</span><span>&#39;s blog</span></a>
             </h1>
             <nav class="masthead-nav">

@@ -14,7 +14,7 @@
         {% endif %}
         <div class="list-item-body">
             <h2 class="list-post-title">
-                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                <a href="{{ site.baseurl }}{{ post.url }}">{% if post.title_html != null %}{{ post.title_html }}{% else %}{{ post.title }}{% endif %}</a>
             </h2>
             <div class="list-post-info">
                 <time class="list-post-date">{{ post.date | date_to_string }}</time>

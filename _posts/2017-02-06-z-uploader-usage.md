@@ -2,7 +2,7 @@
 layout: post
 title: "Z Uploader正式测试!"
 date: "2017-02-06 20:06:22 +0800"
-tags: ["Z Uploader"]
+tags: ["Z Uploader", "Project"]
 image_preview: "/images/z-uploader.svg"
 short_description: "为了收作业写的Web App...一想到这可能是我最后几天收作业了"
 ---

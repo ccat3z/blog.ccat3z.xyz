@@ -151,6 +151,6 @@ zenjava的javafx-maven-plugin一行命令就打包好了exe
 
 ![](/images/2017-04-02-scale-jpg-init/drag.png)
 
-然后在原文件目录下就生成好了缩放好的文件(oringal name-scaled.jpg)
+然后在原文件目录下就生成好了缩放好的文件(orginal name-scaled.jpg)
 
 好, 搞定!

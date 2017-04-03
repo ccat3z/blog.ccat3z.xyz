@@ -31,6 +31,10 @@ projects:
     description: 网易云音乐 Java API
     link: https://github.com/c0ldcat/netease-music-java
     image: /images/netease-music.svg
+  - name: Scale JPG
+    description: 一步解决图片大小格式限制问题
+    link: https://github.com/c0ldcat/scale-jpg
+    image: /images/scale-jpg.svg
   - name: Z Uploader
     description: Group uploader, 收文件专用
     link: https://github.com/c0ldcat/z-uploader

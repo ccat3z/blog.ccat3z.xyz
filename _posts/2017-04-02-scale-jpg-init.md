@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "发一个小工具-Scale JPG"
-date: "2017-04-03 19:19:20 +0800"
+date: "2017-04-07 22:06:28 +0800"
 tag: ["JavaFX", "Project"]
 image_preview: "/images/2017-04-02-scale-jpg-init/scale-jpg.svg"
 short_description: "JavaFX突然登场"
@@ -77,7 +77,7 @@ echo "done"
 
 但不行啊总不能让别人每个人都升级Windows 10 Insider再按个WSL吧
 
-然后我就想要不写个GUI吧（￣︶￣）↗　
+然后我就想要不写个UI吧（￣︶￣）↗　
 
 然后不想写个Web APP啊..毕竟找不到免费的国内的性能比较好的VPS, 然后我又不会PHP╯︿╰
 
@@ -107,7 +107,7 @@ echo "done"
 
 真的非常方便写!
 
-MVC框架非常清晰干净a,(哪来的M...VC框架(+_+)?
+MVC框架非常清晰干净,(哪来的M...VC框架(+_+)?
 
 然后用Java1.8, 再也不用一堆匿名listener, lamda函数来回嵌套♪(^∇^*)
 
@@ -124,6 +124,12 @@ zenjava的javafx-maven-plugin一行命令就打包好了exe
 [百度网盘](http://pan.baidu.com/s/1eSmohhC)
 
 [Github](https://github.com/c0ldcat/scale-jpg/releases/download/v1.0/scale-jpg-1.0.exe)
+
+首先看看演示视频
+
+<video src="/images/2017-04-02-scale-jpg-init/scale-jpg.mp4" controls="controls">
+Your browser does not support the audio tag.
+</video>
 
 然后解压
 

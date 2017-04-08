@@ -223,9 +223,8 @@ short_description: "为了收作业写的Web App...一想到这可能是我最�
 
 等待Notify区域提示`All file uploaded done.`并自动刷新后便上传成功.
 
-<video src="/images/2017-02-06-z-uploader-usage/upload.mp4" controls="controls">
-Your browser does not support the audio tag.
-</video>
+{% assign video = "/images/2017-02-06-z-uploader-usage/upload.mp4" %}
+{% include video.html %}
 
 # 我是组长! I\'m leader!
 
@@ -241,8 +240,7 @@ Your browser does not support the audio tag.
 
 在Task页面中还有DOWNLOAD和DELET分别是下载整个Task和删除Delete.
 
-<video src="/images/2017-02-06-z-uploader-usage/master.mp4" controls="controls">
-Your browser does not support the audio tag.
-</video>
+{% assign video = "/images/2017-02-06-z-uploader-usage/master.mp4" %}
+{% include video.html %}
 
 好了, 基本用法就是这些, 如果有什么问题和建议请及时联系我, 谢谢:)

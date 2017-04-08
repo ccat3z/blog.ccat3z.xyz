@@ -127,9 +127,9 @@ zenjava的javafx-maven-plugin一行命令就打包好了exe
 
 首先看看演示视频
 
-<video src="/images/2017-04-02-scale-jpg-init/scale-jpg.mp4" controls="controls">
-Your browser does not support the audio tag.
-</video>
+{% assign video = "/images/2017-04-02-scale-jpg-init/scale-jpg.mp4" %}
+
+{% include video.html %}
 
 然后解压
 

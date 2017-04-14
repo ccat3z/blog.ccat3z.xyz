@@ -8,5 +8,5 @@
             }
         ]
     },
-    "insertdatestring.format": "YYYY-MM-DD hh:mm:ss ZZZZ"
+    "insertDateString.format": "YYYY-MM-DD hh:mm:ss ZZZZ"
 }

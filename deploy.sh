@@ -41,19 +41,6 @@ git checkout $MAIN_BRANCH
 # Build
 jekyll build
 
-cd _site
-
-sed -i "s|\/fonts|../fonts|g" css/*.css
-
-for html in $(find . -name "*html")
-do
-    sed -i "s|/css|$(echo $html | sed "s|[^/\\.]\{1,\}/|../|g;s|/[^/]*$||")/css|" $html
-done
-
-font-spider --no-backup $(find . -name "*html")
-
-cd ..
-
 mv _site out
 
 # Init git dir

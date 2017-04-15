@@ -3,10 +3,10 @@ layout: page
 title: "主页"
 ---
 
-{% assign list-post-limit = 2 %}
+{% assign list-post-limit = 3 %}
 {% include list_post.html %}
 
-{% assign list-project-limit = 1 %}
+{% assign list-project-limit = 2 %}
 {% include list_project.html %}
 
 <script type="text/javascript">

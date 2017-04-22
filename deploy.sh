@@ -47,10 +47,15 @@ sed -i "s|\/fonts|../fonts|g" css/*.css
 
 for html in $(find . -name "*html")
 do
-    sed -i "s|/css|$(echo $html | sed "s|[^/\\.]\{1,\}/|../|g;s|/[^/]*$||")/css|" $html
+    sed -i "s|\"/css|\"$(echo $html | sed "s|[^/\\.]\{1,\}/|../|g;s|/[^/]*$||")/css|" $html
 done
 
 font-spider --no-backup $(find . -name "*html")
+
+for html in $(find . -name "*html")
+do
+    sed -i "s|\"\./[/.]*css|\"/css|i" $html
+done
 
 cd ..
 

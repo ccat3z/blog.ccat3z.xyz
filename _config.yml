@@ -8,6 +8,8 @@ baseurl:            ""
 
 markdown:           kramdown
 
+timezone:           Asia/Shanghai
+
 nav:
   - name:           "文章"
     href:           "/posts"

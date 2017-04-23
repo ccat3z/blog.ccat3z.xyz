@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title id="site-title">解决Git Cannot update paths and switch to branch | c0ldcat's blog</title>
+    <title id="site-title">SCEE BIO 光合作用 | c0ldcat's blog</title>
     <link rel="icon" href="/c0ldcat.png">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for c0ldcat's blog" href="/feed.xml" />
@@ -20,22 +20,22 @@
     })();
     </script>
     <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>解决Git Cannot update paths and switch to branch - c0ldcat’s blog</title>
-<meta property="og:title" content="解决Git Cannot update paths and switch to branch" />
-<meta name="description" content="今天在改写博客自动同步镜像脚本, 从Remote Branch创建本地Branch时CI抛出这样个问题:" />
-<meta property="og:description" content="今天在改写博客自动同步镜像脚本, 从Remote Branch创建本地Branch时CI抛出这样个问题:" />
-<link rel="canonical" href="//blog.c0ldcat.ml/posts/git-fetch-remote-branch-error/" />
-<meta property="og:url" content="//blog.c0ldcat.ml/posts/git-fetch-remote-branch-error/" />
+<title>SCEE BIO 光合作用 - c0ldcat’s blog</title>
+<meta property="og:title" content="SCEE BIO 光合作用" />
+<meta name="description" content="水的光解: 类囊体膜" />
+<meta property="og:description" content="水的光解: 类囊体膜" />
+<link rel="canonical" href="//blog.c0ldcat.ml/posts/scee-bio-photosynthesis/" />
+<meta property="og:url" content="//blog.c0ldcat.ml/posts/scee-bio-photosynthesis/" />
 <meta property="og:site_name" content="c0ldcat’s blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-03-11T15:25:59+08:00" />
+<meta property="article:published_time" content="2017-04-24T00:06:40+08:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "解决Git Cannot update paths and switch to branch",
-"datePublished": "2017-03-11T15:25:59+08:00",
-"description": "今天在改写博客自动同步镜像脚本, 从Remote Branch创建本地Branch时CI抛出这样个问题:",
-"url": "//blog.c0ldcat.ml/posts/git-fetch-remote-branch-error/"}</script>
+"headline": "SCEE BIO 光合作用",
+"datePublished": "2017-04-24T00:06:40+08:00",
+"description": "水的光解: 类囊体膜",
+"url": "//blog.c0ldcat.ml/posts/scee-bio-photosynthesis/"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -51,7 +51,7 @@
         </header>
         <header class="masthead scoll-up">
             <h1 class="masthead-title">
-                <a href="/" id="page-title">解决Git Cannot update paths and switch to branch</a><span> | </span>
+                <a href="/" id="page-title">SCEE BIO 光合作用</a><span> | </span>
                 <a href="/"><span id="author-name">c0ldcat</span><span>&#39;s blog</span></a>
             </h1>
             <nav class="masthead-nav">
@@ -65,25 +65,23 @@
                 <a href="/about">关于我</a>
                 
                 
-                <a href="/tag/git">Git</a>
+                <a href="/tag/scee">SCEE</a>
+                
+                <a href="/tag/scee-bio">SCEE BIO</a>
                 
             </nav>
         </header>
         <div class="content post">
   <div class="post-date">
-    <time>11 Mar 2017</time>
+    <time>24 Apr 2017</time>
   </div>
-  <p>今天在改写博客自动同步镜像脚本, 从Remote Branch创建本地Branch时CI抛出这样个问题:</p>
+  <p>水的光解: 类囊体膜</p>
 
-<p><code class="highlighter-rouge">fatal: Cannot update paths and switch to branch 'nome-do-branch' at the same time.</code></p>
+<p>40~50℃停止</p>
 
-<p>查了下是因为本地仓库找不到关于remote的信息, 想起来之前我是直接clone的branch可能没有update remote的信息.</p>
+<p>总光合(真实)</p>
 
-<p>可以用<code class="highlighter-rouge">git remote show origin</code>更新所有远程库信息, 顺便看看有没有获取正确.</p>
-
-<p>CI脚本可以用这条命令:<code class="highlighter-rouge">git remote update</code>, 效果相同.</p>
-
-<p>接下来就一样了, <code class="highlighter-rouge">git checkout -b BRANCH_NAME remote/BRANCH_NAME</code>.</p>
+<p>净光合(表观)</p>
 
 </div>
 

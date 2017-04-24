@@ -1,11 +1,10 @@
 ---
 layout: post
 title: "SCEE BIO 物质"
-date: "2017-04-23 12:52:06 +0800"
+date: "2017-04-24 23:37:17 +0800"
 tag: ["SCEE", "SCEE BIO"]
 image_preview: "/images/2017-04-22-scee-bio-substance/energy.svg"
 ---
-
 
 多肽: 3~50氨基酸
 
@@ -17,7 +16,11 @@ tRNA: 反密码子
 
 mRNA: 密码子
 
-![](/images/2017-04-22-scee-bio-substance/chloroplast.svg)
+![层析法叶绿素](/images/2017-04-22-scee-bio-substance/chloroplast.svg)
+
+滤液线: 毛细吸管沾少许滤液(含有叶绿素)
+
+浸泡在溶剂(展开剂)中
 
 代谢旺: 自由水多
 

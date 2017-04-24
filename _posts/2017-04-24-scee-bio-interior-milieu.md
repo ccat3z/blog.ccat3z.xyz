@@ -13,3 +13,7 @@ image_preview: "/images/2017-04-24-scee-bio-interior-milieu/blood.png"
 神经活动会通过体液(神经递质)
 
 只用肝生成尿素(进入血液)
+
+淋巴液: 病毒, 细菌
+
+作用机理: 先说条件(xxx素合成和释放导致...)

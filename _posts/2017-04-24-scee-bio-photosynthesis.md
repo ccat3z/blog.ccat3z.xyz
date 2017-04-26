@@ -6,7 +6,7 @@ tag: ["SCEE", "SCEE BIO"]
 image_preview: "/images/2017-04-24-scee-bio-photosynthesis/grass.png"
 ---
 
-{% include mathjax.md %}
+{% include mathjax.html %}
 
 水的光解: 类囊体膜
 

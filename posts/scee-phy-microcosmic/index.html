@@ -7,7 +7,7 @@
     <link rel="icon" href="/c0ldcat.png">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for c0ldcat's blog" href="/feed.xml" />
-    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/jquery.typetype.min.js"></script>
     <script type="text/javascript" src="/js/jquery.scrollTo.min.js"></script>
     <script>
@@ -76,7 +76,7 @@
     <time>22 Apr 2017</time>
   </div>
   
-<script type="text/javascript" src="https://cdn.staticfile.org/mathjax/2.7.0-beta.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -85,11 +85,11 @@
       processEscapes: true
     }
   });
-MathJax.Ajax.config.path["mhchem"] =
-  "https://cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.1.0";
+MathJax.Ajax.config.path["Contrib"] = "//cdn.mathjax.org/mathjax/contrib";
+
 MathJax.Hub.Config({
   TeX: {
-    extensions: ["[mhchem]/mhchem.js"]
+    extensions: ["[Contrib]/mhchem/mhchem.js", "[Contrib]/img/img.js"]
   }
 });
 </script>

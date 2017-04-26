@@ -1,10 +1,12 @@
 ---
 layout: post
 title: "SCEE BIO 物质"
-date: "2017-04-24 23:37:17 +0800"
+date: "2017-04-26 23:22:01 +0800"
 tag: ["SCEE", "SCEE BIO"]
 image_preview: "/images/2017-04-22-scee-bio-substance/energy.svg"
 ---
+
+{% include mathjax.html %}
 
 多肽: 3~50氨基酸
 
@@ -17,6 +19,12 @@ tRNA: 反密码子
 mRNA: 密码子
 
 ![层析法叶绿素](/images/2017-04-22-scee-bio-substance/chloroplast.svg)
+
+$\ce{CaSO3}$: 防止$\ce{H+}破坏叶绿素$ //其他色素?
+
+$\ce{SiO2}$: 帮助研磨
+
+避开大叶脉
 
 滤液线: 毛细吸管沾少许滤液(含有叶绿素)
 
@@ -39,5 +47,9 @@ mRNA: 密码子
 * 性激素
 * 肾上腺皮质激素
 * 维生素D原料
+
+常见酶pH
+* 胰蛋白酶:10
+* 唾液淀粉酶: 7
 
 

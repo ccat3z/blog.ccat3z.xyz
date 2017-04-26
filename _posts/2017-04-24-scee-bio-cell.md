@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "SCEE BIO 细胞"
-date: "2017-04-24 22:41:58 +0800"
+date: "2017-04-26 23:27:06 +0800"
 tag: ["SCEE", "SCEE BIO"]
 image_preview: "/images/2017-04-24-scee-bio-cell/core.svg"
 ---
@@ -28,3 +28,5 @@ G2: 分裂所需蛋白质
 <img width="200px" src="/images/2017-04-24-scee-bio-cell/cell-cycle.svg">
 
 一个完整的细胞周期 //TODO
+
+无氧呼吸中能量转移: 有机物 -> 有机物 + ATP + __热量__

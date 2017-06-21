@@ -125,5 +125,18 @@
 </div>
 
   <script src="/js/canvas.js"></script>
+  <script>
+  (function() {
+      var img = new Image();
+      function getResult(event) {
+          var imgType = "png";
+          (event && event.type === 'load' ? img.width == 1 : false) && (imgType = "webp");
+          $(".block-left").css("background-image", "linear-gradient(rgba(44, 45, 51, 0.8), rgba(44, 45, 51, 0.8)), url(/images/background.png)".replace(/\.png/,"." + imgType));
+      }
+      img.onerror = getResult;
+      img.onload = getResult;
+      img.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA='; //一像素图片
+  })();
+  </script>
 </body>
 </html>

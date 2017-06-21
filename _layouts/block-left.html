@@ -1,0 +1,31 @@
+---
+#layout: compress
+---
+
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body>
+
+  <div class="block-left">
+    <div class="content">
+      <div class="main-info">
+        <a href="/" class="logo"><img src="/images/c0ldcat-pure-white.svg" class="logo"></a>
+        <h1>
+          <span id="author-name">{{ site.author }}</span><span>&#39;s blog</span>
+        </h1>
+        <ul>
+          {% for nav in site.nav %}
+          <li><a href="{{ nav.href }}">{{ nav.name }}</a></li>
+          {% endfor %}
+        </ul>
+        </div>
+    </div>
+    <canvas></canvas>
+  </div>
+
+  {{ content }}
+
+  <script src="/assets/js/canvas.js"></script>
+</body>
+</html>

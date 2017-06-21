@@ -1,21 +1,31 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title id="site-title">{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
-    <link rel="icon" href="/c0ldcat.png">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{ site.name }}" href="{{ site.baseurl }}/feed.xml" />
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.typetype.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.scrollTo.min.js"></script>
-    <script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title id="site-title">{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
+  <link rel="icon" href="/c0ldcat.png">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{ site.name }}" href="{{ site.baseurl }}/feed.xml" />
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.typetype.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.scrollTo.min.js"></script>
+  <script>
     var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?e1acee033923881f5528a3b4a658039b";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e1acee033923881f5528a3b4a658039b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
     })();
-    </script>
-    {% seo %}
+  </script>
+  <!-- Left Block Image for Posts -->
+  {% if page.image %}{% assign image = page.image %}{% else %}{% assign image = site.background %}{% endif %}
+  <style>
+    .block-left {
+      background: linear-gradient(rgba(44, 45, 51, 0.8), rgba(44, 45, 51, 0.8)),
+      url({{ image }}) no-repeat;
+      background-size: cover;
+      background-position-x: right;
+    }
+  </style>
+  {% seo %}
 </head>

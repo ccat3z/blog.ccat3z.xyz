@@ -11,14 +11,12 @@ markdown:           kramdown
 timezone:           Asia/Shanghai
 
 nav:
-  - name:           "文章"
+  - name:           "Posts"
     href:           "/posts"
-  - name:           "项目"
+  - name:           "Projects"
     href:           "/projects"
-  - name:           "标签"
+  - name:           "Tags"
     href:           "/tags"
-  - name:           "关于我"
-    href:           "/about"
 
 defaults:
   - scope:
@@ -86,7 +84,10 @@ social:
     username: firez199984@gmail.com
     link: mailto:firez199984@gmail.com
 
+background: /images/background.png
+
 sass:
+    sass_dir:         assets/_sass
     style:            :compressed
 
 tag_page_layout: tag_page

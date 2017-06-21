@@ -87,7 +87,7 @@ social:
 background: /images/background.png
 
 sass:
-    sass_dir:         assets/_sass
+    sass_dir:         _sass
     style:            :compressed
 
 tag_page_layout: tag_page

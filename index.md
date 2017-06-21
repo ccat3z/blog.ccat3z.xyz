@@ -1,13 +1,16 @@
 ---
-layout: page
-title: "主页"
+layout: home
 ---
 
-{% assign list-post-limit = 3 %}
-{% include list_post.html %}
+# About me
 
-{% assign list-project-limit = 2 %}
-{% include list_project.html %}
+Student / Programer
+
+QQ: [1044839034](tencent://message/?uin=1044839034)
+
+Github: [c0dlcat](https://github.com/c0ldcat)
+
+E-Mail: [firez199984@gmail.com](mailto:firez199984@gmail.com)
 
 <script type="text/javascript">
 var authorItem = $("#author-name");

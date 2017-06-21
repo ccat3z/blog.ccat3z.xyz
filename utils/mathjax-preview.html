@@ -1,71 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title id="site-title">MathJax Preview | c0ldcat's blog</title>
-    <link rel="icon" href="/c0ldcat.png">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml" title="RSS Feed for c0ldcat's blog" href="/feed.xml" />
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.typetype.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.scrollTo.min.js"></script>
-    <script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?e1acee033923881f5528a3b4a658039b";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
-    <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>MathJax Preview - c0ldcat’s blog</title>
-<meta property="og:title" content="MathJax Preview" />
-<meta name="description" content="一个伪装成菜鸡全栈工程师的上海高三狗" />
-<meta property="og:description" content="一个伪装成菜鸡全栈工程师的上海高三狗" />
-<link rel="canonical" href="//blog.c0ldcat.ml/utils/mathjax-preview.html" />
-<meta property="og:url" content="//blog.c0ldcat.ml/utils/mathjax-preview.html" />
-<meta property="og:site_name" content="c0ldcat’s blog" />
-<script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "WebPage",
-"headline": "MathJax Preview",
-"description": "一个伪装成菜鸡全栈工程师的上海高三狗",
-"url": "//blog.c0ldcat.ml/utils/mathjax-preview.html"}</script>
-<!-- End Jekyll SEO tag -->
 
-</head>
+---
+layout: block-left
+---
 
-<body>
-    <a id="top"></a>
-    <div class="container">
-        <header class="masthead-bar scoll-up">
-            <h1 class="masthead-bar-title">
-                <a href="#top" id="scoll-to-top">
-                    <span>c0ldcat<span>&#39;s blog</span></span></a>
-            </h1>
-        </header>
-        <header class="masthead scoll-up">
-            <h1 class="masthead-title">
-                <a href="/" id="page-title">MathJax Preview</a><span> | </span>
-                <a href="/"><span id="author-name">c0ldcat</span><span>&#39;s blog</span></a>
-            </h1>
-            <nav class="masthead-nav">
-                
-                <a href="/posts">文章</a>
-                
-                <a href="/projects">项目</a>
-                
-                <a href="/tags">标签</a>
-                
-                <a href="/about">关于我</a>
-                
-                
-            </nav>
-        </header>
-        <div class="content page">
-  <!-- saved from url=(0065)https://cdn.mathjax.org/mathjax/latest/test/sample-dynamic-2.html -->
+<div id="pages" class="block-right">
+  <div class="inner-post content">
+    <!-- saved from url=(0065)https://cdn.mathjax.org/mathjax/latest/test/sample-dynamic-2.html -->
 <!-- Copyright (c) 2012-2016 The MathJax Consortium -->
 
 
@@ -292,48 +232,5 @@ visibility:hidden; position:absolute; top:0; left: 0"></div>
 <script>
 Preview.Init();
 </script>
+  </div>
 </div>
-
-        <footer>
-            <p>
-                <span class="block">
-                
-                </span>
-                <span class="block">
-                    Maintained by <a href="/about">c0ldcat</a> with <span style="color: #f44336;">❤</span>
-                </span>
-            </p>
-        </footer>
-    </div>
-
-    <script>
-        function init() {
-            window.addEventListener('scroll', function(e){
-                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-                    shrinkOn = 200,
-                    header = $("header");
-                if (distanceY > shrinkOn) {
-                    if (header.hasClass("scoll-up")) {
-                        header.removeClass("scoll-up");
-                    }
-                    header.addClass("scoll-down");
-                    if ( header.height() / $(window).height() > 0.15 ) {
-                        $('#masthead-bar-title-page').css('display', 'none');
-                    }
-                } else {
-                    if (header.hasClass("scoll-down")) {
-                        header.removeClass("scoll-down");
-                    }
-                    header.addClass("scoll-up");
-                }
-                //console.log(distanceY);
-            });
-            var scollItem = $("#scoll-to-top");
-            scollItem.click(function() {
-                $.scrollTo(scollItem.attr("href"), {duration:2000});
-            });
-        }
-        $(document).ready(init());
-    </script>
-</body>
-</html>

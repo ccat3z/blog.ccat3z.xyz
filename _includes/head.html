@@ -16,12 +16,8 @@
       s.parentNode.insertBefore(hm, s);
     })();
   </script>
-  <!-- Left Block Image for Posts -->
-  {% if page.image %}{% assign image = page.image %}{% else %}{% assign image = site.background %}{% endif %}
   <style>
     .block-left {
-      background: linear-gradient(rgba(44, 45, 51, 0.8), rgba(44, 45, 51, 0.8)),
-      url({{ image }}) no-repeat;
       background-size: cover;
       background-position-x: right;
     }

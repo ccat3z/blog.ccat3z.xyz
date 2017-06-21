@@ -27,6 +27,7 @@
   {{ content }}
 
   <script src="/js/canvas.js"></script>
+  {% if page.image %}{% assign image = page.image %}{% else %}{% assign image = site.background %}{% endif %}
   <script>
   (function() {
       var img = new Image();

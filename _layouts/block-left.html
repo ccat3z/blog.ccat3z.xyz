@@ -1,45 +1,38 @@
 ---
-#layout: compress
+layout: pure_page
 ---
 
-<!DOCTYPE html>
-<html>
-{% include head.html %}
-<body>
-
-  <div class="block-left">
-    <div class="content">
-      <div class="main-info">
-        <a href="/" class="logo"><img src="/images/c0ldcat-pure-white.svg" class="logo"></a>
-        <h1>
-          <span id="author-name">{{ site.author }}</span><span>&#39;s blog</span>
-        </h1>
-        <ul>
-          {% for nav in site.nav %}
-          <li><a href="{{ nav.href }}">{{ nav.name }}</a></li>
-          {% endfor %}
-        </ul>
-        </div>
-    </div>
-    <canvas></canvas>
+<div class="block-left">
+  <div class="content">
+    <div class="main-info">
+      <a href="/" class="logo"><img src="/images/c0ldcat-pure-white.svg" class="logo"></a>
+      <h1>
+        <span id="author-name">{{ site.author }}</span><span>&#39;s blog</span>
+      </h1>
+      <ul>
+        {% for nav in site.nav %}
+        <li><a href="{{ nav.href }}">{{ nav.name }}</a></li>
+        {% endfor %}
+      </ul>
+      </div>
   </div>
+  <canvas></canvas>
+</div>
 
-  {{ content }}
+{{ content }}
 
-  <script src="/js/canvas.js"></script>
-  {% if page.image %}{% assign image = page.image %}{% else %}{% assign image = site.background %}{% endif %}
-  <script>
-  (function() {
-      var img = new Image();
-      function getResult(event) {
-          var imgType = "png";
-          (event && event.type === 'load' ? img.width == 1 : false) && (imgType = "webp");
-          $(".block-left").css("background-image", "linear-gradient(rgba(44, 45, 51, 0.8), rgba(44, 45, 51, 0.8)), url({{ image }})".replace(/\.png/,"." + imgType));
-      }
-      img.onerror = getResult;
-      img.onload = getResult;
-      img.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA='; //一像素图片
-  })();
-  </script>
-</body>
-</html>
+<script src="/js/canvas.js"></script>
+{% if page.image %}{% assign image = page.image %}{% else %}{% assign image = site.background %}{% endif %}
+<script>
+(function() {
+    var img = new Image();
+    function getResult(event) {
+        var imgType = "png";
+        (event && event.type === 'load' ? img.width == 1 : false) && (imgType = "webp");
+        $(".block-left").css("background-image", "linear-gradient(rgba(44, 45, 51, 0.8), rgba(44, 45, 51, 0.8)), url({{ image }})".replace(/\.png/,"." + imgType));
+    }
+    img.onerror = getResult;
+    img.onload = getResult;
+    img.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
+})();
+</script>

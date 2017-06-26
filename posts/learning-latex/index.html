@@ -1,170 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title id="site-title">LaTeX 学习笔记 | c0ldcat's blog</title>
-  <link rel="icon" href="/c0ldcat.png">
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
-  <link rel="alternate" type="application/rss+xml" title="RSS Feed for c0ldcat's blog" href="/feed.xml" />
-  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/jquery.typetype.min.js"></script>
-  <script>
-    var _hmt = _hmt || [];
-    (function () {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?e1acee033923881f5528a3b4a658039b";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-  <style>
-    .block-left {
-      background-size: cover;
-      background-position-x: right;
-    }
-  </style>
-  <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>LaTeX 学习笔记 - c0ldcat’s blog</title>
-<meta property="og:title" content="LaTeX 学习笔记" />
-<meta name="description" content="" />
-<meta property="og:description" content="" />
-<link rel="canonical" href="//blog.c0ldcat.ml/posts/learning-latex/" />
-<meta property="og:url" content="//blog.c0ldcat.ml/posts/learning-latex/" />
-<meta property="og:site_name" content="c0ldcat’s blog" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-08-07T16:30:00+08:00" />
-<script type="application/ld+json">
-{"@context": "http://schema.org",
-"@type": "BlogPosting",
-"headline": "LaTeX 学习笔记",
-"datePublished": "2016-08-07T16:30:00+08:00",
-"description": "",
-"url": "//blog.c0ldcat.ml/posts/learning-latex/"}</script>
-<!-- End Jekyll SEO tag -->
-
-</head>
-<body>
-
-  <div class="block-left">
-    <div class="content">
-      <div class="main-info">
-        <a href="/" class="logo"><img src="/images/c0ldcat-pure-white.svg" class="logo"></a>
-        <h1>
-          <span id="author-name">c0ldcat</span><span>&#39;s blog</span>
-        </h1>
-        <ul>
-          
-          <li><a href="/posts">Posts</a></li>
-          
-          <li><a href="/projects">Projects</a></li>
-          
-          <li><a href="/tags">Tags</a></li>
-          
-        </ul>
-        </div>
-    </div>
-    <canvas></canvas>
-  </div>
-
-  <div id="pages" class="block-right">
-  <div class="inner-post content">
-    <h1>LaTeX 学习笔记</h1>
-    <div class="date-highlight">07 Aug 2016</div>
-    <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-<ul>
-  <li><a href="#什么是latex">什么是LaTeX</a></li>
-  <li><a href="#tatex的优缺点">TaTeX的优缺点</a></li>
-  <li><a href="#latex学习笔记">LaTeX学习笔记</a>
-    <ul>
-      <li><a href="#安装for-windows">安装(for Windows)</a></li>
-      <li><a href="#安装for-linux">安装(for Linux)</a></li>
-      <li><a href="#安装vim插件vim-latex-suitefor-linux">安装Vim插件:Vim Latex-Suite(for Linux)</a></li>
-      <li><a href="#vim-latex-suite">Vim Latex-Suite</a></li>
-      <li><a href="#latex命令格式">LaTeX命令格式</a></li>
-      <li><a href="#基本结构">基本结构</a></li>
-      <li><a href="#文档类">文档类</a></li>
-      <li><a href="#宏包">宏包</a></li>
-      <li><a href="#插入文件">插入文件</a></li>
-      <li><a href="#仅检查语法">仅检查语法</a></li>
-      <li><a href="#中文化xecjkctex">中文化(xeCJK&amp;CTeX)</a></li>
-      <li><a href="#特殊字符">特殊字符</a></li>
-      <li><a href="#文本排版">文本排版</a></li>
-      <li><a href="#标题章和节">标题,章和节</a></li>
-      <li><a href="#章节目录">章节目录</a></li>
-      <li><a href="#ctex更换全文中文字体">CTeX更换全文中文字体</a></li>
-    </ul>
-  </li>
-  <li><a href="#参阅书籍">参阅书籍</a></li>
-  <li><a href="#一些问题">一些问题</a></li>
-</ul>
-
-<!-- /TOC -->
-
-<p>其实只是想找一款方便的笔记软件用来记录化学笔记<del>为什么不用notebook…</del>,后来就找到了这个LaTeX.</p>
-
-<p>LaTeX作为一款优秀的电子排版软件,相比Office Word有更好的兼容性<del>甚至有Beamer做演示稿</del>,也拥有Gitbook这样方便控制的一些的特性,是撰写理工科论文,笔记的优秀工具.</p>
-
-<p><img src="/images/2016-08-07-learning-latex/latex.png" alt="" /></p>
-
-<h1 id="什么是latex">什么是LaTeX</h1>
-<blockquote>
-  <p>LaTEX（/ˈlɑːtɛx/，常被读作/ˈlɑːtɛk/或/ˈleɪtɛk/），文字形式写作LaTeX，是一种基于TEX的排版系统，由美国电脑学家莱斯利·兰伯特在20世纪80年代初期开发，利用这种格式，即使用户没有排版和程序设计的知识也可以充分发挥由TEX所提供的强大功能，能在几天，甚至几小时内生成很多具有书籍质量的印刷品。对于生成复杂表格和数学公式，这一点表现得尤为突出。因此它非常适用于生成高印刷质量的科技和数学类文档。这个系统同样适用于生成从简单的信件到完整书籍的所有其他种类的文档。</p>
-  <p align="right">--维基百科</p>
-</blockquote>
-
-<h1 id="tatex的优缺点">TaTeX的优缺点</h1>
-
-<p>LaTeX总会拿来和一些”所见即所得”(What You See Is What You Get)的文字处理和排版工具比较优缺点.</p>
-
-<p>以下总结一些LaTeX的优点:</p>
-
-<ul>
-  <li><strong>专业的排版输出</strong>,产生的文档看上去就像“印刷品”一样.</li>
-  <li><strong>方便而强大的数学公式排版能力</strong>,无出其右.</li>
-  <li><strong>简单易懂的命令</strong>,绝大多数时候,用户只需掌握一些简单易懂的命令来组织文档结构,无需(或很少)操心文档的版面设计.</li>
-  <li><strong>很容易生成复杂的专业排版元素</strong>,如脚注,交叉引用,参考文献,目录等.</li>
-  <li><strong>强大的扩展性</strong>,世界各地的人开发了数以千计的LaTeX宏包用于补充和扩展LaTeX的功能.</li>
-  <li><strong>促使用户写出结构良好的文档</strong>而这也是LaTeX存在的初衷.</li>
-  <li><strong>免费</strong>,LaTeX依赖的TEX排版引擎和其它软件是跨平台,免费,开源的.无论用户使用的是 Windows,OS X,GNU/Linux还是FreeBSD等系统,都能轻松获得并使用这一强大的排版工具.</li>
-</ul>
-
-<p>LaTeX的缺点也是显而易见的:</p>
-
-<ul>
-  <li><strong>入门门槛高</strong></li>
-  <li><strong>排查错误困难</strong>,LaTeX作为一个依靠编写代码工作的排版工具,其使用的宏语言比 C++
-或 Python 等程序设计语言在错误排查方面困难得多。它虽然能够提示错误,但不提供调
-试的机制,有时错误提示还很难理解..</li>
-  <li><strong>样式定制困难</strong>,LaTeX提供了一个基本上良好的样式,为了让用户不去关注样式而专注于
-文档结构。但如果想要改进 L A TEX 生成的文档样式则是十分困难.</li>
-  <li><strong>相比”所见即所得”的模式有一些不便</strong>,为了查看生成的文档,用户总要不停地编译.</li>
-</ul>
-
-<h1 id="latex学习笔记">LaTeX学习笔记</h1>
-
-<h2 id="安装for-windows">安装(for Windows)</h2>
-<p>CTEX.ORG为我们准备好了LaTeX及中文化的<a href="http://www.ctex.org/CTeXDownload#hn_59ca4f8bbb_2">套装</a>,直接安装即可</p>
-
-<h2 id="安装for-linux">安装(for Linux)</h2>
-<p>大多数Linux发行版都在其源中加入了TeX Live,对于Arch Linux:</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>pacman -S texlive-core <span class="c">#核心</span>
+<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> <title id="site-title">LaTeX 学习笔记 | c0ldcat's blog</title> <link rel="icon" href="/c0ldcat.png"> <link rel="stylesheet" type="text/css" href="/css/main.css"> <link rel="alternate" type="application/rss+xml" title="RSS Feed for c0ldcat's blog" href="/feed.xml" /> <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script> <script type="text/javascript" src="/js/jquery.typetype.min.js"></script> <script> var _hmt = _hmt || []; (function () { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?e1acee033923881f5528a3b4a658039b"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script> <style> .block-left { background-size: cover; background-position-x: right; } </style> <!-- Begin Jekyll SEO tag v2.1.0 --> <title>LaTeX 学习笔记 - c0ldcat’s blog</title> <meta property="og:title" content="LaTeX 学习笔记" /> <meta name="description" content="" /> <meta property="og:description" content="" /> <link rel="canonical" href="//blog.c0ldcat.ml/posts/learning-latex/" /> <meta property="og:url" content="//blog.c0ldcat.ml/posts/learning-latex/" /> <meta property="og:site_name" content="c0ldcat’s blog" /> <meta property="og:type" content="article" /> <meta property="article:published_time" content="2016-08-07T16:30:00+08:00" /> <script type="application/ld+json"> {"@context": "http://schema.org", "@type": "BlogPosting", "headline": "LaTeX 学习笔记", "datePublished": "2016-08-07T16:30:00+08:00", "description": "", "url": "//blog.c0ldcat.ml/posts/learning-latex/"}</script> <!-- End Jekyll SEO tag --> </head> <body> <div class="block-left"> <div class="content"> <div class="main-info"> <a href="/" class="logo"><img src="/images/c0ldcat-pure-white.svg" class="logo"></a> <h1> <span id="author-name">c0ldcat</span><span>&#39;s blog</span> </h1> <ul> <li><a href="/posts">Posts</a></li> <li><a href="/projects">Projects</a></li> <li><a href="/tags">Tags</a></li> </ul> </div> </div> <canvas></canvas> </div> <div id="pages" class="block-right"> <div class="inner-post content"> <h1>LaTeX 学习笔记</h1> <div class="date-highlight">07 Aug 2016</div> <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 --> <ul> <li><a href="#什么是latex">什么是LaTeX</a></li> <li><a href="#tatex的优缺点">TaTeX的优缺点</a></li> <li><a href="#latex学习笔记">LaTeX学习笔记</a> <ul> <li><a href="#安装for-windows">安装(for Windows)</a></li> <li><a href="#安装for-linux">安装(for Linux)</a></li> <li><a href="#安装vim插件vim-latex-suitefor-linux">安装Vim插件:Vim Latex-Suite(for Linux)</a></li> <li><a href="#vim-latex-suite">Vim Latex-Suite</a></li> <li><a href="#latex命令格式">LaTeX命令格式</a></li> <li><a href="#基本结构">基本结构</a></li> <li><a href="#文档类">文档类</a></li> <li><a href="#宏包">宏包</a></li> <li><a href="#插入文件">插入文件</a></li> <li><a href="#仅检查语法">仅检查语法</a></li> <li><a href="#中文化xecjkctex">中文化(xeCJK&amp;CTeX)</a></li> <li><a href="#特殊字符">特殊字符</a></li> <li><a href="#文本排版">文本排版</a></li> <li><a href="#标题章和节">标题,章和节</a></li> <li><a href="#章节目录">章节目录</a></li> <li><a href="#ctex更换全文中文字体">CTeX更换全文中文字体</a></li> </ul> </li> <li><a href="#参阅书籍">参阅书籍</a></li> <li><a href="#一些问题">一些问题</a></li> </ul> <!-- /TOC --> <p>其实只是想找一款方便的笔记软件用来记录化学笔记<del>为什么不用notebook…</del>,后来就找到了这个LaTeX.</p> <p>LaTeX作为一款优秀的电子排版软件,相比Office Word有更好的兼容性<del>甚至有Beamer做演示稿</del>,也拥有Gitbook这样方便控制的一些的特性,是撰写理工科论文,笔记的优秀工具.</p> <p><img src="/images/2016-08-07-learning-latex/latex.png" alt="" /></p> <h1 id="什么是latex">什么是LaTeX</h1> <blockquote> <p>LaTEX（/ˈlɑːtɛx/，常被读作/ˈlɑːtɛk/或/ˈleɪtɛk/），文字形式写作LaTeX，是一种基于TEX的排版系统，由美国电脑学家莱斯利·兰伯特在20世纪80年代初期开发，利用这种格式，即使用户没有排版和程序设计的知识也可以充分发挥由TEX所提供的强大功能，能在几天，甚至几小时内生成很多具有书籍质量的印刷品。对于生成复杂表格和数学公式，这一点表现得尤为突出。因此它非常适用于生成高印刷质量的科技和数学类文档。这个系统同样适用于生成从简单的信件到完整书籍的所有其他种类的文档。</p> <p align="right">--维基百科</p> </blockquote> <h1 id="tatex的优缺点">TaTeX的优缺点</h1> <p>LaTeX总会拿来和一些”所见即所得”(What You See Is What You Get)的文字处理和排版工具比较优缺点.</p> <p>以下总结一些LaTeX的优点:</p> <ul> <li><strong>专业的排版输出</strong>,产生的文档看上去就像“印刷品”一样.</li> <li><strong>方便而强大的数学公式排版能力</strong>,无出其右.</li> <li><strong>简单易懂的命令</strong>,绝大多数时候,用户只需掌握一些简单易懂的命令来组织文档结构,无需(或很少)操心文档的版面设计.</li> <li><strong>很容易生成复杂的专业排版元素</strong>,如脚注,交叉引用,参考文献,目录等.</li> <li><strong>强大的扩展性</strong>,世界各地的人开发了数以千计的LaTeX宏包用于补充和扩展LaTeX的功能.</li> <li><strong>促使用户写出结构良好的文档</strong>而这也是LaTeX存在的初衷.</li> <li><strong>免费</strong>,LaTeX依赖的TEX排版引擎和其它软件是跨平台,免费,开源的.无论用户使用的是 Windows,OS X,GNU/Linux还是FreeBSD等系统,都能轻松获得并使用这一强大的排版工具.</li> </ul> <p>LaTeX的缺点也是显而易见的:</p> <ul> <li><strong>入门门槛高</strong></li> <li><strong>排查错误困难</strong>,LaTeX作为一个依靠编写代码工作的排版工具,其使用的宏语言比 C++ 或 Python 等程序设计语言在错误排查方面困难得多。它虽然能够提示错误,但不提供调 试的机制,有时错误提示还很难理解..</li> <li><strong>样式定制困难</strong>,LaTeX提供了一个基本上良好的样式,为了让用户不去关注样式而专注于 文档结构。但如果想要改进 L A TEX 生成的文档样式则是十分困难.</li> <li><strong>相比”所见即所得”的模式有一些不便</strong>,为了查看生成的文档,用户总要不停地编译.</li> </ul> <h1 id="latex学习笔记">LaTeX学习笔记</h1> <h2 id="安装for-windows">安装(for Windows)</h2> <p>CTEX.ORG为我们准备好了LaTeX及中文化的<a href="http://www.ctex.org/CTeXDownload#hn_59ca4f8bbb_2">套装</a>,直接安装即可</p> <h2 id="安装for-linux">安装(for Linux)</h2> <p>大多数Linux发行版都在其源中加入了TeX Live,对于Arch Linux:</p> <div class="language-bash highlighter-rouge"><pre class="highlight"><code>pacman -S texlive-core <span class="c">#核心</span>
 pacman -S texlive-most <span class="c">#包括了一些常用宏包</span>
 pacman -S texlive-lang <span class="c">#对其他语言(如中文,韩文等)的支持</span>
-</code></pre>
-</div>
-
-<h2 id="安装vim插件vim-latex-suitefor-linux">安装Vim插件:Vim Latex-Suite(for Linux)</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>pacman -S vim-latexsuite
-</code></pre>
-</div>
-
-<h2 id="vim-latex-suite">Vim Latex-Suite</h2>
-
-<div class="language-vim highlighter-rouge"><pre class="highlight"><code>LaTeX Suite Vim 配置<span class="p">:</span>
+</code></pre></div> <h2 id="安装vim插件vim-latex-suitefor-linux">安装Vim插件:Vim Latex-Suite(for Linux)</h2> <div class="language-bash highlighter-rouge"><pre class="highlight"><code>pacman -S vim-latexsuite
+</code></pre></div> <h2 id="vim-latex-suite">Vim Latex-Suite</h2> <div class="language-vim highlighter-rouge"><pre class="highlight"><code>LaTeX Suite Vim 配置<span class="p">:</span>
 <span class="c">"LaTeX Suite Vim 配置</span>
 <span class="k">filetype</span> plugin <span class="k">on</span> "启动时调用插件<span class="p">(</span>REQUIRED<span class="p">)</span>
 <span class="k">filetype</span> indent <span class="k">on</span> "启动时按文件类型调用插件<span class="p">(</span>OPTIONAL<span class="p">)</span>
@@ -179,132 +17,46 @@ pacman -S texlive-lang <span class="c">#对其他语言(如中文,韩文等)的�
 <span class="c">" type in \ref{fig: and press &lt;C-n&gt; you will automatically cycle through</span>
 <span class="c">" all the figure labels. Very useful!</span>
 <span class="k">set</span> iskeyword<span class="p">+=:</span>
-</code></pre>
-</div>
-
-<p>查看帮助</p>
-
-<div class="language-vim highlighter-rouge"><pre class="highlight"><code><span class="p">:</span>help latex<span class="p">-</span>suite<span class="p">.</span>txt
-</code></pre>
-</div>
-
-<h2 id="latex命令格式">LaTeX命令格式</h2>
-<ul>
-  <li>反斜线和后面的一串字母,以任意非字母符号(空格,数字,标点等)作为分隔符.</li>
-  <li>反斜线和后面的一个非字母符号,无需分隔符.</li>
-  <li>对大小写敏感</li>
-</ul>
-
-<h2 id="基本结构">基本结构</h2>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="p">{</span>article<span class="p">}</span>
+</code></pre></div> <p>查看帮助</p> <div class="language-vim highlighter-rouge"><pre class="highlight"><code><span class="p">:</span>help latex<span class="p">-</span>suite<span class="p">.</span>txt
+</code></pre></div> <h2 id="latex命令格式">LaTeX命令格式</h2> <ul> <li>反斜线和后面的一串字母,以任意非字母符号(空格,数字,标点等)作为分隔符.</li> <li>反斜线和后面的一个非字母符号,无需分隔符.</li> <li>对大小写敏感</li> </ul> <h2 id="基本结构">基本结构</h2> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="p">{</span>article<span class="p">}</span>
 <span class="c">%导言区</span>
 <span class="nt">\begin{document}</span>
 <span class="c">%文档</span>
 <span class="nt">\end{document}</span>
-</code></pre>
-</div>
-
-<h2 id="文档类">文档类</h2>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="na">[⟨options⟩]</span><span class="p">{</span>⟨class<span class="p">_</span>name⟩<span class="p">}</span>
-</code></pre>
-</div>
-
-<h2 id="宏包">宏包</h2>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\usepackage</span><span class="na">[⟨options⟩]</span><span class="p">{</span>⟨class-name⟩<span class="p">}</span> <span class="c">%导言区</span>
-</code></pre>
-</div>
-
-<h2 id="插入文件">插入文件</h2>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\include</span><span class="p">{</span>⟨filename⟩<span class="p">}</span>
+</code></pre></div> <h2 id="文档类">文档类</h2> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="na">[⟨options⟩]</span><span class="p">{</span>⟨class<span class="p">_</span>name⟩<span class="p">}</span>
+</code></pre></div> <h2 id="宏包">宏包</h2> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\usepackage</span><span class="na">[⟨options⟩]</span><span class="p">{</span>⟨class-name⟩<span class="p">}</span> <span class="c">%导言区</span>
+</code></pre></div> <h2 id="插入文件">插入文件</h2> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\include</span><span class="p">{</span>⟨filename⟩<span class="p">}</span>
 <span class="k">\input</span><span class="p">{</span>⟨filename⟩<span class="p">}</span> <span class="c">%不新建页</span>
-</code></pre>
-</div>
-
-<h2 id="仅检查语法">仅检查语法</h2>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\syntaxonly</span> <span class="c">%导言区</span>
-</code></pre>
-</div>
-
-<h2 id="中文化xecjkctex">中文化(xeCJK&amp;CTeX)</h2>
-
-<p>仅使用xeCJK:</p>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="p">{</span>article<span class="p">}</span>
+</code></pre></div> <h2 id="仅检查语法">仅检查语法</h2> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\syntaxonly</span> <span class="c">%导言区</span>
+</code></pre></div> <h2 id="中文化xecjkctex">中文化(xeCJK&amp;CTeX)</h2> <p>仅使用xeCJK:</p> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="p">{</span>article<span class="p">}</span>
 <span class="k">\usepackage</span><span class="p">{</span>xeCJK<span class="p">}</span>
 <span class="k">\setCJKmainfont</span><span class="p">{</span>SimSun<span class="p">}</span>
 <span class="nt">\begin{document}</span>
 中文LaTeX排版。
 <span class="nt">\end{document}</span>
-</code></pre>
-</div>
-
-<p>CTeX是xeCJK的进一步封装:</p>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="p">{</span>article<span class="p">}</span>
+</code></pre></div> <p>CTeX是xeCJK的进一步封装:</p> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="p">{</span>article<span class="p">}</span>
 <span class="k">\usepackage</span><span class="p">{</span>ctex<span class="p">}</span> <span class="c">%使用ctex宏包</span>
 <span class="nt">\begin{document}</span>
 你好
 <span class="nt">\end{document}</span>
-</code></pre>
-</div>
-
-<p>再进一步:</p>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="p">{</span>ctexart<span class="p">}</span>
+</code></pre></div> <p>再进一步:</p> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="p">{</span>ctexart<span class="p">}</span>
 <span class="nt">\begin{document}</span>
 你好
 <span class="nt">\end{document}</span>
-</code></pre>
-</div>
-
-<h2 id="特殊字符">特殊字符</h2>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\#</span> <span class="k">\$</span> <span class="k">\%</span> <span class="k">\&amp;</span> <span class="k">\{</span> <span class="k">\}</span> <span class="k">\_</span>
+</code></pre></div> <h2 id="特殊字符">特殊字符</h2> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\#</span> <span class="k">\$</span> <span class="k">\%</span> <span class="k">\&amp;</span> <span class="k">\{</span> <span class="k">\}</span> <span class="k">\_</span>
 <span class="k">\^</span><span class="p">{}</span> <span class="k">\~</span><span class="p">{}</span>
 <span class="k">\textbackslash</span>
-</code></pre>
-</div>
-
-<h2 id="文本排版">文本排版</h2>
-
-<p>对LaTeX来说多少个空格或Tab或一个换行都算一个空格.</p>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\\</span> <span class="c">%另起一行(本段)</span>
+</code></pre></div> <h2 id="文本排版">文本排版</h2> <p>对LaTeX来说多少个空格或Tab或一个换行都算一个空格.</p> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\\</span> <span class="c">%另起一行(本段)</span>
 <span class="c">%两个换行,另起一段</span>
 <span class="k">\newpage</span> <span class="c">%另起一页</span>
-</code></pre>
-</div>
-
-<h2 id="标题章和节">标题,章和节</h2>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\chapter</span><span class="p">{</span>...<span class="p">}</span> <span class="c">%只有report和book有</span>
+</code></pre></div> <h2 id="标题章和节">标题,章和节</h2> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\chapter</span><span class="p">{</span>...<span class="p">}</span> <span class="c">%只有report和book有</span>
 <span class="k">\section</span><span class="p">{</span>...<span class="p">}</span>
 <span class="k">\subsection</span><span class="p">{</span>...<span class="p">}</span>
 <span class="k">\subsubsection</span><span class="p">{</span>...<span class="p">}</span>
 <span class="k">\paragraph</span><span class="p">{</span>...<span class="p">}</span>
 <span class="k">\subparagraph</span><span class="p">{</span>...<span class="p">}</span>
-</code></pre>
-</div>
-
-<h2 id="章节目录">章节目录</h2>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\tableofcontents</span>
-</code></pre>
-</div>
-
-<p>在其出现的位置插入目录.为了得到正确的目录(table of contents) 内容,一个新文档必须编译两次.有时还要编译第三次.如有必要LaTeX会告诉你.</p>
-
-<h2 id="ctex更换全文中文字体">CTeX更换全文中文字体</h2>
-
-<p>以Source Han Sans CN Regular为例子<br />
-在工作目录下建立ctex-fontset-shpc.def</p>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\ProvidesExplFile</span><span class="p">{</span>ctex-fontset-shpc.def<span class="p">}</span>
+</code></pre></div> <h2 id="章节目录">章节目录</h2> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\tableofcontents</span>
+</code></pre></div> <p>在其出现的位置插入目录.为了得到正确的目录(table of contents) 内容,一个新文档必须编译两次.有时还要编译第三次.如有必要LaTeX会告诉你.</p> <h2 id="ctex更换全文中文字体">CTeX更换全文中文字体</h2> <p>以Source Han Sans CN Regular为例子<br /> 在工作目录下建立ctex-fontset-shpc.def</p> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\ProvidesExplFile</span><span class="p">{</span>ctex-fontset-shpc.def<span class="p">}</span>
   <span class="p">{</span><span class="k">\ExplFileDate</span><span class="p">}{</span>2.2<span class="p">}{</span><span class="k">\ExplFileDescription</span><span class="p">}</span>
   <span class="p">{</span>
     <span class="k">\setCJKmainfont</span>
@@ -324,53 +76,5 @@ pacman -S texlive-lang <span class="c">#对其他语言(如中文,韩文等)的�
 <span class="k">\NewDocumentCommand</span> <span class="k">\fangsong</span> <span class="p">{</span> <span class="p">}</span> <span class="p">{</span> <span class="k">\CJKfamily</span> <span class="p">{</span> zhfs <span class="p">}</span> <span class="p">}</span>
 <span class="k">\NewDocumentCommand</span> <span class="k">\kaishu</span>   <span class="p">{</span> <span class="p">}</span> <span class="p">{</span> <span class="k">\CJKfamily</span> <span class="p">{</span> zhkai <span class="p">}</span> <span class="p">}</span>
 <span class="k">\setmainfont</span><span class="p">{</span>Source~Han~Sans~CN~Regular<span class="p">}</span>  <span class="c">%英文字体</span>
-</code></pre>
-</div>
-
-<p>在DocumentClass option中加入fontset=shpc</p>
-
-<div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="na">[fontset=shpc]</span><span class="p">{</span>ctexrep<span class="p">}</span>
-</code></pre>
-</div>
-
-<h1 id="参阅书籍">参阅书籍</h1>
-<p>这里汇集了一些我在学习LaTeX中看过的一些书籍和网站,希望对您有所帮助</p>
-
-<ul>
-  <li><a href="https://github.com/louisstuart96/lshort-new-zh-cn">《lshort(一份不太简短的LaTeX2ε介绍)(未完全翻译)》</a>,Tobias Oetiker,2015</li>
-  <li><a href="http://www.ctex.org/">Chinese TeX</a>,CTEX.ORG,2016</li>
-  <li><a href="http://www.latexstudio.net/">LaTeX开源小屋</a>,LaTeX工作室,2016</li>
-  <li><a href="http://www.ctan.org/">CTAN</a>,CEST,2016</li>
-</ul>
-
-<h1 id="一些问题">一些问题</h1>
-<p>Q1:Linux中TeX生成PDF在evince中乱码<br />
-A1:安装poppler-data</p>
-
-    <div class="date-highlight">
-      
-      
-      <a class="tag" href="/tag/latex">LaTeX</a>
-      
-      
-    </div>
-  </div>
-</div>
-
-  <script src="/js/canvas.js"></script>
-  
-  <script>
-  (function() {
-      var img = new Image();
-      function getResult(event) {
-          var imgType = "png";
-          (event && event.type === 'load' ? img.width == 1 : false) && (imgType = "webp");
-          $(".block-left").css("background-image", "linear-gradient(rgba(44, 45, 51, 0.8), rgba(44, 45, 51, 0.8)), url(/images/background.png)".replace(/\.png/,"." + imgType));
-      }
-      img.onerror = getResult;
-      img.onload = getResult;
-      img.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA='; //一像素图片
-  })();
-  </script>
-</body>
-</html>
+</code></pre></div> <p>在DocumentClass option中加入fontset=shpc</p> <div class="language-tex highlighter-rouge"><pre class="highlight"><code><span class="k">\documentclass</span><span class="na">[fontset=shpc]</span><span class="p">{</span>ctexrep<span class="p">}</span>
+</code></pre></div> <h1 id="参阅书籍">参阅书籍</h1> <p>这里汇集了一些我在学习LaTeX中看过的一些书籍和网站,希望对您有所帮助</p> <ul> <li><a href="https://github.com/louisstuart96/lshort-new-zh-cn">《lshort(一份不太简短的LaTeX2ε介绍)(未完全翻译)》</a>,Tobias Oetiker,2015</li> <li><a href="http://www.ctex.org/">Chinese TeX</a>,CTEX.ORG,2016</li> <li><a href="http://www.latexstudio.net/">LaTeX开源小屋</a>,LaTeX工作室,2016</li> <li><a href="http://www.ctan.org/">CTAN</a>,CEST,2016</li> </ul> <h1 id="一些问题">一些问题</h1> <p>Q1:Linux中TeX生成PDF在evince中乱码<br /> A1:安装poppler-data</p> <div class="date-highlight"> <a class="tag" href="/tag/latex">LaTeX</a> </div> </div> </div> <script src="/js/canvas.js"></script> <script> (function() { var img = new Image(); function getResult(event) { var imgType = "png"; (event && event.type === 'load' ? img.width == 1 : false) && (imgType = "webp"); $(".block-left").css("background-image", "linear-gradient(rgba(44, 45, 51, 0.8), rgba(44, 45, 51, 0.8)), url(/images/background.png)".replace(/\.png/,"." + imgType)); } img.onerror = getResult; img.onload = getResult; img.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA='; })(); </script> </body> </html>

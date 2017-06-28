@@ -7,6 +7,10 @@
   }
 }
 
+body > div.block-left > canvas {
+  display: block;
+}
+
 .block-right {
   width: 60%;
   float: right;
@@ -701,6 +705,9 @@ canvas {
     float: none;
     width: 100%;
     height: 0;
+  }
+  body > div.block-left > canvas {
+    display: none;
   }
   html {
     overflow: auto;

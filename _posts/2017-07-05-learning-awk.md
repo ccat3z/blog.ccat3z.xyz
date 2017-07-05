@@ -520,11 +520,8 @@ seq 9 | sed 'H;g' | awk -v RS='' '{for(i=1;i<=NF;i++)printf("%dx%d=%d%s", i, NR,
 
 
 * 内建变量，参看：[http://www.gnu.org/software/gawk/manual/gawk.html#Built_002din-Variables](http://www.gnu.org/software/gawk/manual/gawk.html#Built_002din-Variables)
-
 * 流控方面，参看：[http://www.gnu.org/software/gawk/manual/gawk.html#Statements](http://www.gnu.org/software/gawk/manual/gawk.html#Statements)
-
 * 内建函数，参看：[http://www.gnu.org/software/gawk/manual/gawk.html#Built_002din](http://www.gnu.org/software/gawk/manual/gawk.html#Built_002din)
-
 * 正则表达式，参看：[http://www.gnu.org/software/gawk/manual/gawk.html#Regexp](http://www.gnu.org/software/gawk/manual/gawk.html#Regexp)
 
 （全文完）

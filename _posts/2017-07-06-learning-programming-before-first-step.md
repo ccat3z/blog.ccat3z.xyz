@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "编程入门前的第一步"
-date: "2017-07-06 20:23:40 +0800"
+date: "2017-07-07 23:09:40 +0800"
 tag: ["Programming", "教程"]
 short_description: "开始学习编程前你需要知道的"
 ---
@@ -11,6 +11,10 @@ short_description: "开始学习编程前你需要知道的"
 ## 本假设您已经有如下基础:
 
 * 高中信息课程
+
+## 您将学会的内容:
+
+* 如何写一个Python程序
 
 ## 计算机工作基本原理
 
@@ -67,6 +71,95 @@ CPU的工作非常简单, 从内存中获取一个指令并执行这个指令, �
 
 刚刚我们提到, PYthon是一种解析型的语言, 它不需要编译直接可以由解析器运行. 首先我们冲从[Python官网](https://www.python.org/)下载并安装.
 
+### 配置Python环境
+
 ![](/images/2017-07-06-learning-programming-before-first-step/python-download.jpg)
+
+配置环境变量(通常安装时自动添加)
+
+![](/images/2017-07-06-learning-programming-before-first-step/env.png)
+
+打开powershell或者cmd: `Win+R -> cmd` 或者 `Win+R powershell`
+
+输入命令: `python --version`, 若返回`Python 3.x`则说明配置成功
+
+### 选择一个合适的编辑器
+
+在一部步中您已经完成了解析器的安装, 现在就可以敲代码了. 不过在写第一个程序之前最好选择一个合适的入手编辑器. 我个人推荐[Notepad++](https://notepad-plus-plus.org/)上手.
+
+Q: 为什么不用记事本呢?
+A: 记事本只有单纯的文字编辑功能, 没有合适的代码高亮和自动缩进等功能, 满屏的黑色字体足以让人眼花.
+
+同一个源文件用不同编辑器的效果:
+
+![](/images/2017-07-06-learning-programming-before-first-step/editors.png)
+
+图中的编辑器:
+
+* Notepad: Windows自带的记事本(源代码没有用Windows的换行格式)
+* Notepad++: 比较适合上手的代码编辑器
+* IDLE: Python on Windows 自带的IDE(稍后再讲)
+* Visual Studio Code: 现代代码编辑器
+* vim: 大神/装B/小型项目利器
+
+### Hello, World!
+
+先新建一个文件, 我们就把它放在用户/文档目录下, 叫它hello.py吧(注意扩展名)
+
+``` python
+#! python
+print("Hello, World!")
+```
+
+打开cmd
+
+1. `cd Documents`或者在中文环境下是`cd 文档`: 将工作目录切换到文档目录下
+2. `python hello.py`: 执行hello程序
+
+![](/images/2017-07-06-learning-programming-before-first-step/hello-world.png)
+
+程序输出`Hello, World!`, 搞定!
+
+## 认识其他工具-命令行, IDE
+
+学会了编辑器-编译器(解析器)的工作模式基本上就能完成整个Python基础的学习, 也能够了解在编程的过程中发生了些什么. 其实大部分中小型项目都是以编辑器-编译器为主要工具. 当然notepad++并不能满足, 在熟悉了一些电脑操作后可以尝试其他更有利的代码编辑器, 比如说Atom, VS Code等等. 不过这里还要再介绍另外两样工具, 命令行和IDE.
+
+### 命令行
+
+> 命令行界面(英语:command-line interface, 缩写:CLI)是在图形用户界面得到普及之前使用最为广泛的用户界面, 它通常不支持鼠标, 用户通过键盘输入指令, 计算机接收到指令后, 予以执行. 也有人称之为字符用户界面(CUI). (摘录至维基百科)
+
+其实我们刚刚已经接触过命令行了, 就是cmd. 在程序员的世界中大部分工具都是命令行的(没有图形界面的), 它虽然相对于图形界面工具需要更大的学习成本, 但它包含了大量快捷实用的工具. 熟悉命令行工具更有利于对编程的学习和了解.
+
+命令行的种类又许多, Windows下有cmd, PowerShell, UNIX系系统下有zsh等逆天炫酷的命令行, 它们往往带来一些和Python一样的脚本语言, 但没有Python那样强大(PowerShell除外). 像Python等脚本类语言也有类似命令行的"交互式解析器", 但没有真正的命令行功能完全.
+
+命令行的基本操作是以`command arguments`(命令 参数)这样的形式, 例如`ls -l`, `python -i script.py`等等, 强大的命令行还有管道(pipe)等工具, 这里不多做说明.
+
+Python同样自带了一个类似命令行的工具, 在cmd中用命令`python`打开, 这就是刚刚提到的交互式解析器. 不同于命令行那样的指令形式, 它由一条条Pytho指令组成, 例如`1+1`, `print("")`. 正统的叫法是REPL("读取-求值-输出"循环, 英语: Read-Eval-Print Loop, 简称REPL).
+
+> REPL的优点: REPL对于学习一门新的编程语言具有很大的帮助, 因为它能立刻对初学者做出回应. 许多工具集和编程语言使用REPL研究算法, 进行调试, 比如Matlab, Root, SciPy和IPython. Python的doctest模块能够通过捕捉自身REPL命令行的输出使测试代码更容易地进行.  (摘录至维基百科)
+
+同时REPL对代码的调试也有很大的帮助.
+
+### IDE(集成开发环境)
+
+> 集成开发环境(Integrated Development Environment, 简称IDE, 也称为Integration Design Environment、Integration Debugging Environment)是一种辅助程序开发人员开发软件的应用软件, 在开发工具内部就可以辅助编写源代码文本、并编译打包成为可用的程序, 有些甚至可以设计图形接口. (摘录至维基百科)
+
+终于要谈到VB了, 我们在高中信息课程中学习的VB程序开发就是一种IDE. 命令行虽然快捷方便, 但工作内容上升, 编辑器-命令行的编译器(解析器)已经不足以应对现实情况, 于是有了IDE的出现, 它们大大简化方便了程序员的工作. 同时许多编辑器如VS code, vim等等也变得IDE化, 拥有大量的插件和或者具备方便记忆的command palette. 真正的IDE往往长这样:
+
+![](/images/2017-07-06-learning-programming-before-first-step/intellij-idea.png)
+
+IntelliJ IDEA
+
+![](/images/2017-07-06-learning-programming-before-first-step/visual-studio.png)
+
+Visual Studio
+
+(我已经按照个人喜好把工具栏全隐藏了)
+
+它们虽然强大快捷方便, 集成了大量工具, 但对于新手或者小型项目完全没有必要, 甚至有一些阻碍. 从IDE上手的学生常常不了解编写程序或者系统上的逻辑, 很难一下子了解IDE全部功能(因为太多了), 不能及时发现问题或者快速学习新部分. (特别是C, Java语言这类编译型的语言)
+
+对于Python的IDE, 大部分书籍推荐PyCharm. 但我个人认为学习语言还是从命令行工具开始比较合适. 不过在了解命令行工具后可以试下Python自带的IDLE, 功能非常简单, 非常适合学习Python.
+
+### 基础Python IDE: IDLE介绍
 
 (未完待续)

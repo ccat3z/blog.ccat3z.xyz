@@ -1164,7 +1164,7 @@
             document.onmouseup = function (event) {
                 if (blobColl.selectedBlob != null){
                     blobColl.split();
-                    if (blobColl.numActive > 18) {
+                    if (blobColl.numActive >= 18) {
                         toggleGravity();
                     }
                 }

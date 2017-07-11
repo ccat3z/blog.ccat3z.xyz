@@ -13,6 +13,10 @@ title: 破壳日快乐~
 
 这里, 送你个我改编的intéressant的动画,
 
+但是, 建议从床上打开电脑看, 不用急着穿衣服, 我不会偷看的,
+
+因为, 在电脑上blob是可以点击并拖动的, 更加流畅.
+
 希望, 你不要像下面的blob一样傻笑般得跳起来.
 
 毕竟, 你已经学会开车, 开车要稳一点, 不能飞起来.
@@ -21,7 +25,7 @@ title: 破壳日快乐~
 
 还有, blob是气泡, 水滴的意思, 读作blаb.
 
-对了, 在电脑上blob是可以点击并拖动的, 听说数量多了它们真的会飞起来.
+对了, 听说数量多了它们真的会飞起来, 而且笑得有点呆, 希望你能喜欢φ(*￣0￣).
 
 <iframe src="blob.html" height="440" width="640" frameborder="0" scrolling="no">
    Your browser dosen't support iframes.

@@ -8,6 +8,8 @@ layout: block-left
     <div class="date-highlight">{% if page.date %}{{ page.date | date: '%d %b %Y' }}{% else %}&#x2756;{% endif %}</div>
     {{ content }}
     <div class="date-highlight">
+      <!--{{ page.tags.size | inspect }}-->
+      {% if page.tags.size != nil %}
       {% assign last_tag_id = page.tags.size | minus: 1 %}
       {% for tag in page.tags%}
       <a class="tag" href="/tag/{{ tag | slugify: 'pretty' }}">{{ tag }}</a>
@@ -15,6 +17,9 @@ layout: block-left
       &nbsp;&sdot;&nbsp;
       {% endunless %}
       {% endfor %}
+      {% else %}
+      &#x2756;
+      {% endif %}
     </div>
   </div>
 </div>

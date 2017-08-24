@@ -2,7 +2,7 @@
 
 MAIN_BRANCH=$TRAVIS_BRANCH
 TARGET_BRANCH="gh-pages"
-MIRROR_BRANCH="coding-jekyll"
+# MIRROR_BRANCH="coding-jekyll"
 
 # Pull requests shouldn't try to deploy, just skip
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
@@ -30,13 +30,13 @@ SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 
 # Auto Merge Mirror
-git remote update && \
-git fetch origin $MIRROR_BRANCH && \
-git checkout -b $MIRROR_BRANCH FETCH_HEAD && \
-git merge $MAIN_BRANCH --no-commit && \
-git commit -m "Auto merge branch 'jekyll' into coding-jekyll" && \
-git push $SSH_REPO $MIRROR_BRANCH
-git checkout $MAIN_BRANCH
+# git remote update && \
+# git fetch origin $MIRROR_BRANCH && \
+# git checkout -b $MIRROR_BRANCH FETCH_HEAD && \
+# git merge $MAIN_BRANCH --no-commit && \
+# git commit -m "Auto merge branch 'jekyll' into coding-jekyll" && \
+# git push $SSH_REPO $MIRROR_BRANCH
+# git checkout $MAIN_BRANCH
 
 # Build
 jekyll build

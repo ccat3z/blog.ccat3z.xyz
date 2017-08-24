@@ -12,7 +12,7 @@ QQ: [1044839034](tencent://message/?uin=1044839034)
 
 Github: [c0dlcat](https://github.com/c0ldcat)
 
-E-Mail: [firez199984@gmail.com](mailto:firez199984@gmail.com)
+E-Mail: [c0ldcat3z@gmail.com](mailto:c0ldcat3z@gmail.com)
 
 <script type="text/javascript">
 var authorItem = $("#author-name");

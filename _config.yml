@@ -43,22 +43,10 @@ projects:
     description: 本站开源哦
     link: https://github.com/c0ldcat/hackwlb-server
     image: /images/c0ldcat.svg
-  - name: SCEE BIO
-    description: 生物笔记
-    link: https://github.com/c0ldcat/scee-bio
-    image: /images/scee-bio.svg
-  - name: SCEE CN
-    description: 语文笔记
-    link: https://github.com/c0ldcat/scee-cn
-    image: /images/scee-cn.svg
   - name: Red Music
     description: Bluetooth MP3 with Netease Music
     link: https://github.com/c0ldcat/red-music
     image: /images/red-music.svg
-  - name: BIO Font Z
-    description: 生物笔记符号字体
-    link: https://github.com/c0ldcat/bio-font-z
-    image: /images/bio-font-z.svg
   - name: KR Home Protocol
     description: 点对点式智能家具协议
     link: "#"

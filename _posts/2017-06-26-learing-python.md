@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Python学习笔记"
-date: "2017-06-26 19:34:32 +0800"
+date: "2017-09-25 23:23:02 +0800"
 tag: ["Python"]
 short_description: "开始认真学习Python啦"
 ---
@@ -19,6 +19,7 @@ short_description: "开始认真学习Python啦"
 # 网站
 
 [PyZh](http://pyzh.readthedocs.io/en/latest/)
+[Python最佳实践指南](http://pythonguidecn.readthedocs.io/zh/latest/)
 
 # 厉害的非官方库
 

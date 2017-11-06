@@ -1,0 +1,1 @@
+map m :!bundle exec jekyll build -d /srv/blog<CR>

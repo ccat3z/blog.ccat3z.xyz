@@ -14,6 +14,9 @@ short_description: "收藏夹里放不下了 (不, 拿出来晒一下"
 * 图片压缩 [I♥IMG](http://www.iloveimg.com/zh_cn/compress-image)
 * 浏览器兼容性测试 [Brower Shots](http://browsershots.org)
 * 跨网盘管理 [MultCloud](https://www.multcloud.com)
+* [World Cloud](https://www.jasondavies.com/wordcloud)
+* 微信公众号推送 [Server酱(方糖)](http://sc.ftqq.com)
+* [IntelliJ IDEA 注册机](http://idea.lanyus.com)
 
 ## 在线资源
 
@@ -27,3 +30,7 @@ short_description: "收藏夹里放不下了 (不, 拿出来晒一下"
   [<s>BT种子清洗</s>](http://www.bdtool.net/tool/torrent.html)
   [磁力转种子](http://www.torrent.org.cn/home/index/index.html)
 * 图标 [EASYICON.NET](http://www.easyicon.net)
+
+## Windows工具
+
+* [KMSpico](http://kmspico.esy.es)

@@ -6,7 +6,7 @@ layout: home
 
 I\'m [c0ldcat](http://c0ldcat.ml)
 
-Student / Programer
+Student / Programmer
 
 QQ: [1044839034](tencent://message/?uin=1044839034)
 

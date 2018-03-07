@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "我们故事的开始"
-date: "2018-03-06 23:23:10 +0800"
-tag: ["Idea"]
-short_description: "For Yu"
+permalink: /love/
 ---
 
 在一起的一百天

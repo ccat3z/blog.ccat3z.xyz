@@ -17,6 +17,8 @@ nav:
     href:           "/projects"
   - name:           "Tags"
     href:           "/tags"
+  - name:           "Love"
+    href:           "/love"
 
 defaults:
   - scope:

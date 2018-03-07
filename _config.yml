@@ -11,13 +11,13 @@ markdown:           kramdown
 timezone:           Asia/Shanghai
 
 nav:
-  - name:           "Posts"
+  - name:           "🖊️"
     href:           "/posts"
-  - name:           "Projects"
+  - name:           "🎈"
     href:           "/projects"
-  - name:           "Tags"
+  - name:           "🔖"
     href:           "/tags"
-  - name:           "Love"
+  - name:           "❤️"
     href:           "/love"
 
 defaults:

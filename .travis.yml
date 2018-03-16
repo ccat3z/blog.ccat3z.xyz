@@ -2,9 +2,14 @@ language: ruby
 rvm:
     - 2.5.0-p0
 
-script: bash ./deploy.sh
+script: jekyll build
 
-env:
-    global:
-        - ENCRYPTION_LABEL: "e4c6db214c19"
-        - COMMIT_AUTHOR_EMAIL: "firez199984@gmail.com"
+deploy:
+    provider: pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN
+    keep-history: true
+    local-dir: _site
+    target-branch: gh-pages
+    on:
+        branch: jekyll

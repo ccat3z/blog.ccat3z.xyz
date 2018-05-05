@@ -389,6 +389,9 @@ canvas {
         font-size: 1.3em;
         padding: 0.3em 0.35em;
         color: $white;
+        &.emoji-nav {
+          font-family: 'Noto Color Emoji';
+        }
       }
     }
   }

@@ -4,6 +4,8 @@ layout: home
 
 # About me
 
+**🏗️ Blog under construction**
+
 I\'m [c0ldcat](http://c0ldcat.ml)
 
 Student / Programmer

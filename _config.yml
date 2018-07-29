@@ -103,3 +103,4 @@ exclude:
   - "deploy.sh"
   - "deploy_key"
   - "deploy_key.enc"
+  - "vendor"

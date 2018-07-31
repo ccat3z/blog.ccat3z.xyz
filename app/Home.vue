@@ -11,7 +11,7 @@
       </md-card-header>
 
       <md-card-content>
-        <div v-html="content.content"></div>
+        <slot></slot>
       </md-card-content>
     </md-card>
   </div>
@@ -26,8 +26,7 @@ Vue.use(MdAvatar)
 
 export default {
   props: {
-    authorInfo: Object,
-    content: Object
+    authorInfo: Object
   }
 }
 </script>

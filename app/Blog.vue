@@ -1,7 +1,10 @@
 <template>
   <div>
-    <md-progress-bar v-if="loadState.isLoading" md-mode="indeterminate" :class="{ 'md-accent': accent }"></md-progress-bar>
-    <router-view></router-view>
+    <md-progress-bar v-if="isLoading" md-mode="indeterminate" :class="{ 'md-accent': accent }"></md-progress-bar>
+    <home v-if="pageType === 'home'" :author-info="authorInfo">
+      <div v-html="contentHtml"></div>
+    </home>
+    <not-found v-else-if="pageType === 'not-found'" />
     <Nav :nav="nav" :router="router"/>
   </div>
 </template>
@@ -10,83 +13,64 @@
 import Vue from 'vue'
 import Nav from './Nav.vue'
 import Home from './Home.vue'
-import {getNavs, getAuthorInfoInHome, getRealContentInHome, refreshBlogData, getContent, log} from './utils'
+import NotFound from './NotFound.vue'
+import {getNavs, getAuthorInfo, getRealContent, refreshBlogData, getContent, log} from './utils'
 import VueRouter from 'vue-router'
 import { MdProgress } from 'vue-material/dist/components'
 const axios = require('axios')
+const CancelToken = axios.CancelToken
+let cancelLoad
 
 Vue.use(VueRouter)
 Vue.use(MdProgress)
 
-var store = {
-  authorInfo: {
-    name: null,
-    avatar: null,
-    description: null
-  },
-  content: {
-    type: null,
-    content: null
-  },
-  loadState: {
-    isLoading: false,
-    isRouted: true
-  }
-}
-
 var router = new VueRouter({
   mode: 'history',
   routes: [
-    { name: 'home', path: '/', component: Home, props: {authorInfo: store.authorInfo, content: store.content} },
     { path: '*' }
   ]
 })
 
-window.store = store
 window.router = router
 
-router.beforeEach((to, from, next) => {
-  if (!store.loadState.isLoading && store.loadState.isRouted) {
+router.beforeEach(function loadBlogPage (to, from, next) {
+  var blog = router.app
+  if (blog.isLoading === undefined) {
+    next()
+    return
+  }
+
+  if (!blog.isLoading) {
     // ready to router
     log.i('router', 'loading ' + to.fullPath)
-    store.loadState.isLoading = true
-    store.loadState.isRouted = false
-    axios.get(to.path).then((resp) => {
+    blog.isLoading = true
+    axios.get(to.path, {
+      cancelToken: new CancelToken((c) => (cancelLoad = c))
+    }).then((resp) => {
       refreshBlogData(resp.data)
-      store.loadState.isLoading = false
+      blog.content = getContent()
 
-      router.push(to.fullPath)
+      log.i('router', 'loaded ' + to.fullPath)
+      blog.isLoading = false
     }).catch((e) => {
-      store.loadState.isLoading = false
-      store.loadState.isRouted = true
-      console.log('fail to load ' + to.fullPath)
+      blog.isLoading = false
+      if (axios.isCancel(e)) {
+        log.i('router', 'canceled ' + to.fullPath)
+        return
+      }
+
+      log.w('router', 'fail to load ' + to.fullPath)
+
+      if (e.response.status === 404) router.push('/404.html')
+      else router.back()
+    }).then(() => {
     })
-    next(false)
-  } else if (!store.loadState.isLoading && !store.loadState.isRouted) {
-    // loaded
-    log.i('router', 'loaded ' + to.fullPath)
-    store.loadState.isRouted = true
-
-    var content = getContent()
-    store.content.content = content.type
-    store.content.content = content.content
-
-    switch (to.name) {
-      case 'home':
-        var authorInfo = getAuthorInfoInHome(content)
-        store.authorInfo.name = authorInfo.name
-        store.authorInfo.avatar = authorInfo.avatar
-        store.authorInfo.description = authorInfo.description
-
-        store.content.content = getRealContentInHome(content)
-        break
-    }
     next()
   } else {
     // something is loading
-    log.i('router', 'ban ' + to.fullPath)
-    router.app.showAccent()
-    next(false)
+    cancelLoad()
+    blog.isLoading = false
+    loadBlogPage(to, from, next)
   }
 })
 
@@ -94,26 +78,31 @@ export default {
   data: () => ({
     nav: getNavs(),
     isLoading: false,
-    isRouted: true,
     router,
-    loadState: store.loadState,
-    accent: false
+    accent: false,
+    content: getContent()
   }),
+  computed: {
+    pageType: function () { return this.content.type },
+    authorInfo: function () { return getAuthorInfo(this.content) },
+    contentHtml: function () { return getRealContent(this.content) }
+  },
+  watch: {
+    isLoading: function (val, oldVal) {
+      if (!val) this.accent = false
+    }
+  },
   components: {
-    Nav
+    Nav, Home, NotFound
   },
   router,
   methods: {
     showAccent: function () {
       this.accent = true
-      setTimeout(() => (this.accent = false), 500)
     }
   }
 }
 </script>
 
 <style>
-.example {
-  color: red
-}
 </style>

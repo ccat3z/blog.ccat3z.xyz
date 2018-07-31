@@ -12,7 +12,6 @@ export function getNavs () {
 }
 
 export function getContent () {
-  log.i('utils', 'get content')
   var e = $('#blog-data-content > div')
   return {
     type: e.attr('class'),
@@ -22,9 +21,7 @@ export function getContent () {
 
 // home page
 
-export function getAuthorInfoInHome (content = null) {
-  if (content === null) content = getContent()
-
+export function getAuthorInfo (content) {
   if (content.type === 'home') {
     var author = $(content.content).filter('div.author')
     return {
@@ -32,14 +29,16 @@ export function getAuthorInfoInHome (content = null) {
       avatar: $('img.avatar', author).attr('src'),
       description: $('.description', author).text()
     }
+  } else {
+    return null
   }
 }
 
-export function getRealContentInHome (content = null) {
-  if (content === null) content = getContent()
-
+export function getRealContent (content) {
   if (content.type === 'home') {
     return $(content.content).filter('div.message').html()
+  } else {
+    return content.content
   }
 }
 
@@ -49,5 +48,6 @@ export function refreshBlogData (data) {
 
 export const log = {
   i: (tag, msg) => console.log('[' + tag + '] ' + msg),
+  w: (tag, msg) => console.warn('[' + tag + '] ' + msg),
   e: (tag, msg) => console.error('[' + tag + '] ' + msg)
 }

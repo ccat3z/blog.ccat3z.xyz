@@ -1,11 +1,14 @@
 ---
-layout: block-left
+layout: pure
 ---
 
-<div class="block-right">
-  <div class="content">
-    <div class="about-info">
-      {{ content }}
-    </div>
+<div class="home">
+  <div class="author">
+    <img class="avatar" src="{{ site.avatar }}">
+    <div class="name">{{ site.author }}</div>
+    <div class="description">{{ site.description }}</div>
+  </div>
+  <div class="message">
+    {{ content }}
   </div>
 </div>

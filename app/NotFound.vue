@@ -1,6 +1,6 @@
 <template>
   <div>
-    <md-card class="not-found-card md-accent md-display-4 target-card">
+    <md-card class="not-found-card md-accent md-display-4 target-card md-scrollbar">
       <slot></slot>
     </md-card>
   </div>
@@ -17,7 +17,7 @@ export default { }
 
 <style>
 .not-found-card {
-  min-width: 500px;
+  /* min-width: 500px; */
   width: fit-content;
   max-width: 100%;
   height: fit-content;
@@ -29,7 +29,7 @@ export default { }
   bottom: 0;
   position: absolute;
   overflow: auto;
-  padding: 50px;
+  padding: 50px 60px 50px 60px;
   text-align: center;
 }
 </style>

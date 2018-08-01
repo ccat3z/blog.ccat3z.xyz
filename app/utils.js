@@ -43,6 +43,7 @@ export function getRealContent (content) {
 }
 
 export function refreshBlogData (data) {
+  $('title').html($('title', $('<div></div>').append($(data))).html())
   $('#blog-data').html($('#blog-data', $('<div></div>').append($(data))).html())
 }
 

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <md-speed-dial class="md-bottom-right md-fixed" md-direction="top" md-event="click">
+  <div v-show="show" class="nav-speed-dial">
+    <md-speed-dial class="md-bottom-right" md-direction="top" md-event="click">
       <md-speed-dial-target class="md-primary">
         <md-icon class="md-morph-initial">menu</md-icon>
         <md-icon class="md-morph-final">close</md-icon>
@@ -39,7 +39,11 @@ export default {
       type: Boolean,
       default: false
     },
-    router: VueRouter
+    router: VueRouter,
+    show: {
+      type: Boolean,
+      default: true
+    }
   },
   methods: {
     goTo: function (href) {

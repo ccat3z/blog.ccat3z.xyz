@@ -14,12 +14,12 @@
 
 <script>
 import Vue from 'vue'
-import Nav from './Nav.vue'
-import Home from './Home.vue'
-import NotFound from './NotFound.vue'
-import Background from './Background.vue'
-import MdCardTransition from './MdCardTransition.vue'
-import {getNavs, getAuthorInfo, getRealContent, refreshBlogData, getContent, log} from './utils'
+import Nav from './modules/Nav.vue'
+import Home from './pages/Home.vue'
+import NotFound from './pages/NotFound.vue'
+import Background from './modules/Background.vue'
+import MdCardTransition from './modules/MdCardTransition.vue'
+import {getNavs, getAuthorInfo, getRealContent, refreshBlogData, getContent, log} from '../utils'
 import VueRouter from 'vue-router'
 import { MdProgress } from 'vue-material/dist/components'
 const axios = require('axios')

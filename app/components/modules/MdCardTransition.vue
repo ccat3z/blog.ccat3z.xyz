@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { log, rgb2Hex } from './utils'
+import { rgb2Hex } from '../../utils'
 import $ from 'jquery'
 import Vue from 'vue'
 import { MdCard } from 'vue-material/dist/components'

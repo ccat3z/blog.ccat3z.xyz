@@ -1,10 +1,12 @@
 <template>
   <div>
     <md-progress-bar v-if="isLoading" md-mode="indeterminate" :class="{ 'md-accent': accent }"></md-progress-bar>
-    <home v-if="pageType === 'home'" :author-info="authorInfo">
-      <div v-html="contentHtml"></div>
-    </home>
-    <not-found v-else-if="pageType === 'not-found'" />
+    <md-card-transition>
+      <home v-if="pageType === 'home'" :author-info="authorInfo">
+        <div v-html="contentHtml"></div>
+      </home>
+      <not-found v-else/>
+    </md-card-transition>
     <Nav :nav="nav" :router="router"/>
   </div>
 </template>
@@ -14,6 +16,7 @@ import Vue from 'vue'
 import Nav from './Nav.vue'
 import Home from './Home.vue'
 import NotFound from './NotFound.vue'
+import MdCardTransition from './MdCardTransition.vue'
 import {getNavs, getAuthorInfo, getRealContent, refreshBlogData, getContent, log} from './utils'
 import VueRouter from 'vue-router'
 import { MdProgress } from 'vue-material/dist/components'
@@ -93,7 +96,7 @@ export default {
     }
   },
   components: {
-    Nav, Home, NotFound
+    Nav, Home, NotFound, MdCardTransition
   },
   router,
   methods: {

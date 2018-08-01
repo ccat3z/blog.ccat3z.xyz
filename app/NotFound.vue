@@ -1,6 +1,6 @@
 <template>
   <div>
-    <md-card class="not-found-card md-accent md-display-4">
+    <md-card class="not-found-card md-accent md-display-4 target-card">
       404
     </md-card>
   </div>

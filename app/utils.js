@@ -47,7 +47,12 @@ export function refreshBlogData (data) {
 }
 
 export const log = {
+  d: (tag, msg) => console.log('[' + tag + '] ' + msg),
   i: (tag, msg) => console.log('[' + tag + '] ' + msg),
   w: (tag, msg) => console.warn('[' + tag + '] ' + msg),
   e: (tag, msg) => console.error('[' + tag + '] ' + msg)
+}
+
+export function rgb2Hex (rgb) {
+  return '#' + rgb.replace(/rgb\((\d*), (\d*), (\d*)\)/, '$1 $2 $3').split(' ').map((n) => ('0' + parseInt(n, 10).toString(16)).slice(-2)).join('')
 }

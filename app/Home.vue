@@ -1,6 +1,6 @@
 <template>
   <div>
-    <md-card class="home-card">
+    <md-card class="home-card target-card">
       <md-card-header>
         <md-avatar>
           <img :src="authorInfo.avatar" alt="Avatar">

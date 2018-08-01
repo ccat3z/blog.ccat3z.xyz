@@ -7,5 +7,5 @@ import * as utils from './utils'
 /* eslint-disable no-new */
 new Vue(Blog).$mount('#blog')
 
-window.$ = $
-window.utils = utils
+window.jQuery = window.$ = $
+require('velocity-animate')

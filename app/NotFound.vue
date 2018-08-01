@@ -1,7 +1,7 @@
 <template>
   <div>
     <md-card class="not-found-card md-accent md-display-4 target-card">
-      404
+      <slot></slot>
     </md-card>
   </div>
 </template>
@@ -17,7 +17,8 @@ export default { }
 
 <style>
 .not-found-card {
-  width: 500px;
+  min-width: 500px;
+  width: fit-content;
   max-width: 100%;
   height: fit-content;
   max-height: 100%;

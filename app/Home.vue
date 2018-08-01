@@ -13,20 +13,32 @@
       <md-card-content>
         <slot></slot>
       </md-card-content>
+
+      <md-card-actions>
+        <md-button v-for="(n, index) in nav" :key="index" class="md-icon-button" v-on:click="goTo(nav[index].href)">
+          <md-icon>{{ nav[index].icon }}</md-icon>
+        </md-button>
+      </md-card-actions>
     </md-card>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import { MdCard, MdAvatar } from 'vue-material/dist/components'
+import { MdCard, MdAvatar, MdButton } from 'vue-material/dist/components'
 
 Vue.use(MdCard)
 Vue.use(MdAvatar)
+Vue.use(MdButton)
 
 export default {
   props: {
-    authorInfo: Object
+    authorInfo: Object,
+    nav: {
+      type: Array,
+      default: () => []
+    },
+    goTo: Function
   }
 }
 </script>

@@ -49,6 +49,7 @@ export default {
     beforeLeave: function (el) {
       this.fromEl = $(el)
 
+      this.fakeCard.css('z-index', 9)
       this.fakeCard.css(this.fromCardStyle)
       this.fakeCard.css('box-shadow', 'none')
     },
@@ -71,7 +72,7 @@ export default {
     afterEnter: function (el) {
       this.toCard.css('opacity', 1)
       this.fakeCard.css('box-shadow', 'none')
-      this.fakeCard.velocity({opacity: 0}, {duration: 'fast'})
+      this.fakeCard.velocity({opacity: 0}, {duration: 'fast', complete: () => this.fakeCard.css('z-index', -1)})
 
       this.fromEl = null
       this.toEl = null
@@ -96,5 +97,6 @@ export default {
   height: 0px;
   position: absolute;
   opacity: 0;
+  z-index: -1;
 }
 </style>

@@ -56,13 +56,13 @@ router.beforeEach(function loadBlogPage (to, from, next) {
       log.i('router', 'loaded ' + to.fullPath)
       blog.isLoading = false
     }).catch((e) => {
-      blog.isLoading = false
       if (axios.isCancel(e)) {
         log.i('router', 'canceled ' + to.fullPath)
         return
       }
 
       log.w('router', 'fail to load ' + to.fullPath)
+      blog.isLoading = false
 
       if (e.response.status === 404) router.push('/404.html')
       else router.back()

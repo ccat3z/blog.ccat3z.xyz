@@ -53,7 +53,7 @@ export default {
       this.fakeCard.css('box-shadow', 'none')
     },
     leave: function (el, done) {
-      this.fakeCard.velocity({opacity: 1}, {complete: done, duration: 'fast'})
+      this.fakeCard.velocity({opacity: 1}, {delay: 300, complete: done, duration: 'fast'})
     },
     afterLeave: function (el) {
       this.fakeCard.css('box-shadow', this.fromCard.css('box-shadow'))

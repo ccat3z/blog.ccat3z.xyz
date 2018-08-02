@@ -1,6 +1,6 @@
 <!-- transition .md-card.target-card -->
 <template>
-  <div>
+  <div class="v-card-transition-wrap">
     <transition
       v-on:before-enter="beforeEnter"
       v-on:enter="enter"
@@ -11,17 +11,13 @@
       mode="out-in">
       <slot></slot>
     </transition>
-    <md-card class="fake-card"></md-card>
+    <v-card class="fake-card"></v-card>
   </div>
 </template>
 
 <script>
 import { rgb2Hex } from '../../utils'
 import $ from 'jquery'
-import Vue from 'vue'
-import { MdCard } from 'vue-material/dist/components'
-
-Vue.use(MdCard)
 
 export default {
   data: () => ({
@@ -30,10 +26,10 @@ export default {
   }),
   computed: {
     fromCard: function () {
-      return $('.md-card.target-card', this.fromEl)
+      return $('.v-card.target-card', this.fromEl)
     },
     toCard: function () {
-      return $('.md-card.target-card', this.toEl)
+      return $('.v-card.target-card', this.toEl)
     },
     fromCardStyle: function () {
       return this.cloneCardStyle(this.fromCard)
@@ -54,7 +50,7 @@ export default {
       this.fakeCard.css('box-shadow', 'none')
     },
     leave: function (el, done) {
-      this.fakeCard.velocity({opacity: 1}, {delay: 300, complete: done, duration: 'fast'})
+      this.fakeCard.velocity({opacity: 1}, {complete: done, duration: 'fast'})
     },
     afterLeave: function (el) {
       this.fakeCard.css('box-shadow', this.fromCard.css('box-shadow'))
@@ -65,9 +61,7 @@ export default {
       window.toCard = this.toCard
     },
     enter: function (el, done) {
-      let velocityStyle = this.toCardStyle
-      velocityStyle.backgroundColor = [velocityStyle.backgroundColor, [0, 1.06, 0, 0.99]]
-      this.fakeCard.velocity(velocityStyle, {complete: done})
+      this.fakeCard.velocity(this.toCardStyle, {complete: done})
     },
     afterEnter: function (el) {
       this.toCard.css('opacity', 1)
@@ -93,10 +87,16 @@ export default {
 
 <style>
 .fake-card {
-  width: 0px;
-  height: 0px;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
   position: absolute;
   opacity: 0;
   z-index: -1;
+}
+
+.v-card-transition-wrap {
+  height: inherit;
 }
 </style>

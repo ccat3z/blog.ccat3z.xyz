@@ -1,36 +1,31 @@
 <template>
   <div>
-    <md-card class="home-card target-card">
-      <md-card-header>
-        <md-avatar>
-          <img :src="authorInfo.avatar" alt="Avatar">
-        </md-avatar>
+    <v-card class="home-card target-card">
+      <v-card-title class="home-card-title">
+        <v-avatar size="36px" class="home-card-title-avatar">
+          <img :src="authorInfo.avatar" alt="avatar">
+        </v-avatar>
+        <div class="home-card-title-name">
+          <div class="">{{ authorInfo.name }}</div>
+          <div class="grey--text">{{ authorInfo.description }}</div>
+        </div>
+      </v-card-title>
 
-        <div class="md-title">{{ authorInfo.name }}</div>
-        <div class="md-subhead">{{ authorInfo.description }}</div>
-      </md-card-header>
-
-      <md-card-content>
+      <v-card-text>
         <slot></slot>
-      </md-card-content>
+      </v-card-text>
 
-      <md-card-actions>
-        <md-button v-for="(n, index) in nav" :key="index" class="md-icon-button" v-on:click="goTo(nav[index].href)">
-          <md-icon>{{ nav[index].icon }}</md-icon>
-        </md-button>
-      </md-card-actions>
-    </md-card>
+      <v-card-actions class="home-card-actions">
+        <v-spacer></v-spacer>
+        <v-btn v-for="(n, index) in nav" :key="index" icon v-on:click="goTo(nav[index].href)">
+          <v-icon>{{ nav[index].icon }}</v-icon>
+        </v-btn>
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import { MdCard, MdAvatar, MdButton } from 'vue-material/dist/components'
-
-Vue.use(MdCard)
-Vue.use(MdAvatar)
-Vue.use(MdButton)
-
 export default {
   props: {
     authorInfo: Object,
@@ -47,8 +42,9 @@ export default {
 .home-card {
   width: 90%;
   max-width: 450px;
-  height:fit-content;
+  height: fit-content;
   max-height: 100%;
+
   margin: auto;
   left: 0;
   right: 0;
@@ -56,5 +52,21 @@ export default {
   bottom: 0;
   position: absolute;
   overflow: auto;
+}
+
+.home-card-title {
+  margin-bottom: -16px;
+}
+
+.home-card-title-avatar {
+  margin-right: 16px;
+}
+
+.home-card-title-name {
+  flex-direction: column;
+}
+
+.home-card-actions {
+  margin-top: -8px;
 }
 </style>

@@ -17,7 +17,7 @@ export default {}
   background-image: url(/images/background.png);
   background-size: cover;
   background-position-x: left;
-  z-index: -1;
+  z-index: 0;
   filter: brightness(0.4);
 }
 </style>

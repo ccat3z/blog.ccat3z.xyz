@@ -1,18 +1,20 @@
 <template>
-  <div>
-    <md-progress-bar v-if="isLoading" md-mode="indeterminate" :class="{ 'md-accent': accent }" class="progress"></md-progress-bar>
-    <md-card-transition>
-      <home v-if="pageType === 'home'" :author-info="authorInfo" :nav="nav" :go-to="goTo">
-        <div v-html="contentHtml"></div>
-      </home>
-      <not-found v-else>{{ errorMessage }}</not-found>
-    </md-card-transition>
-    <Nav :nav="nav" :go-to="goTo" :show="pageType !== 'home'"/>
+  <v-app>
+    <div class="blog-main-ui">
+      <md-card-transition>
+        <home v-if="pageType === 'home'" :author-info="authorInfo" :nav="nav" :go-to="goTo">
+          <div v-html="contentHtml"></div>
+        </home>
+        <not-found v-else>{{ errorMessage }}</not-found>
+      </md-card-transition>
+      <Nav :nav="nav" :go-to="goTo" :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
+    </div>
     <background />
-  </div>
+  </v-app>
 </template>
 
 <script>
+import 'vuetify/dist/vuetify.min.css'
 import Vue from 'vue'
 import Nav from './modules/Nav.vue'
 import Home from './pages/Home.vue'
@@ -21,13 +23,13 @@ import Background from './modules/Background.vue'
 import MdCardTransition from './modules/MdCardTransition.vue'
 import {getNavs, getAuthorInfo, getRealContent, refreshBlogData, getContent, log} from '../utils'
 import VueRouter from 'vue-router'
-import { MdProgress } from 'vue-material/dist/components'
+import Vuetify from 'vuetify'
 const axios = require('axios')
 const CancelToken = axios.CancelToken
 let cancelLoad
 
 Vue.use(VueRouter)
-Vue.use(MdProgress)
+Vue.use(Vuetify)
 
 var router = new VueRouter({
   mode: 'history',
@@ -115,4 +117,9 @@ export default {
 </script>
 
 <style>
+.blog-main-ui {
+  z-index: 1;
+}
+
+html { overflow-y: auto; }
 </style>

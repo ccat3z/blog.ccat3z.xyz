@@ -1,27 +1,20 @@
 <template>
   <div>
-    <md-card class="not-found-card md-accent md-display-4 target-card md-scrollbar">
+    <v-card class="not-found-card display-4 error target-card" dark>
       <slot></slot>
-    </md-card>
+    </v-card>
   </div>
 </template>
 
-<script>
-import Vue from 'vue'
-import { MdCard } from 'vue-material/dist/components'
-
-Vue.use(MdCard)
-
-export default { }
-</script>
-
 <style>
 .not-found-card {
-  /* min-width: 500px; */
   width: fit-content;
   max-width: 100%;
   height: fit-content;
   max-height: 100%;
+  padding: 50px 60px 50px 60px;
+  text-align: center;
+
   margin: auto;
   left: 0;
   right: 0;
@@ -29,7 +22,5 @@ export default { }
   bottom: 0;
   position: absolute;
   overflow: auto;
-  padding: 50px 60px 50px 60px;
-  text-align: center;
 }
 </style>

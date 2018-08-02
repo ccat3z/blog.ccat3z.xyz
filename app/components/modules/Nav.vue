@@ -1,36 +1,19 @@
 <template>
-  <transition name="nav-fade">
-   <div v-show="show">
-     <md-speed-dial class="nav-speed-dial md-bottom-right" md-direction="top" md-event="click">
-       <md-speed-dial-target class="md-primary nav-toggle-button" v-on:click="active = !active">
-         <md-icon class="md-morph-initial">menu</md-icon>
-         <md-icon class="md-morph-final">close</md-icon>
-       </md-speed-dial-target>
-
-       <md-speed-dial-content>
-         <md-button v-for="(n, index) in nav" :key="index" class="md-icon-button" v-on:click="goTo(nav[index].href)">
-           <md-icon>{{ nav[index].icon }}</md-icon>
-         </md-button>
-       </md-speed-dial-content>
-     </md-speed-dial>
-   </div>
-  </transition>
-
+  <v-slide-x-reverse-transition>
+    <v-speed-dial bottom right direction="top" transition="scale-transition" fixed v-show="show" class="nav-speed-dial">
+      <v-btn slot="activator" color="blue" fab dark :loading="isProcessing">
+        <v-icon>menu</v-icon>
+        <v-icon>close</v-icon>
+      </v-btn>
+      <v-btn v-for="(n, index) in nav" :key="index" @click="goTo(nav[index].href)"
+        fab small color="white">
+        <v-icon>{{ nav[index].icon }}</v-icon>
+      </v-btn>
+    </v-speed-dial>
+  </v-slide-x-reverse-transition>
 </template>
 
 <script>
-import Vue from 'vue'
-import $ from 'jquery'
-import { MdSpeedDial, MdIcon, MdButton, MdProgress, MdTooltip } from 'vue-material/dist/components'
-import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
-
-Vue.use(MdSpeedDial)
-Vue.use(MdIcon)
-Vue.use(MdButton)
-Vue.use(MdProgress)
-Vue.use(MdTooltip)
-
 export default {
   data: () => ({
     active: false
@@ -49,9 +32,6 @@ export default {
       type: Boolean,
       default: true
     }
-  },
-  watch: {
-    show: (v) => v || $('.nav-toggle-button').click()
   }
 }
 </script>

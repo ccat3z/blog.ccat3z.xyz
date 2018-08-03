@@ -30,7 +30,7 @@
     "eslint-plugin-vue": "^4.7.1",
     "find": "^0.2.9",
     "html-webpack-externals-plugin": "^3.8.0",
-    "html-webpack-include-assets-plugin": "https://github.com/imvvk/html-webpack-include-assets-plugin.git",
+    "html-webpack-include-assets-plugin": "https://codeload.github.com/imvvk/html-webpack-include-assets-plugin/tar.gz/master",
     "html-webpack-plugin": "^4.0.0-alpha",
     "mini-css-extract-plugin": "^0.4.1",
     "null-loader": "^0.1.1",

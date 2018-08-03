@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "author": "ccat3z",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server --config webpack.dev.js",
+    "build": "bundle exec jekyll build; webpack --config webpack.prod.js"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "jquery": "^3.3.1",
@@ -14,6 +18,8 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "eslint": "^5.2.0",
     "eslint-config-standard": "^11.0.0",
@@ -22,11 +28,18 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
     "eslint-plugin-vue": "^4.7.1",
+    "find": "^0.2.9",
+    "html-webpack-externals-plugin": "^3.8.0",
+    "html-webpack-include-assets-plugin": "https://github.com/imvvk/html-webpack-include-assets-plugin.git",
+    "html-webpack-plugin": "^4.0.0-alpha",
     "mini-css-extract-plugin": "^0.4.1",
+    "null-loader": "^0.1.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
     "vue-loader": "^15.2.6",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.4"
   }
 }

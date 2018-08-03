@@ -10,13 +10,7 @@ layout: compress
     <title id="site-title">{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
     <link rel="icon" href="/favicon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" type="text/css" href="/css/blog.css">
-    <style>
-      .block-left {
-        background-size: cover;
-        background-position-x: right;
-      }
-    </style>
+    {% if site.dev == 'y' %}<link rel="stylesheet" type="text/css" href="/css/blog.css">{% endif %}
     {% seo %}
   </head>
 <body>
@@ -34,6 +28,6 @@ layout: compress
       </ul>
     </div>
   </div>
-  <script src="/js/blog.js"></script>
+  {% if site.dev == 'y' %}<script src="/js/blog.js"></script>{% endif %}
 </body>
 </html>

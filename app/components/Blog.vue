@@ -49,7 +49,7 @@ router.beforeEach(function loadBlogPage (to, from, next) {
 
   if (!blog.isLoading) {
     // ready to router
-    log.i('router', 'loading ' + to.fullPath)
+    log.d('router', 'loading ' + to.fullPath)
     blog.isLoading = true
     axios.get(to.path, {
       cancelToken: new CancelToken((c) => (cancelLoad = c))
@@ -57,11 +57,11 @@ router.beforeEach(function loadBlogPage (to, from, next) {
       refreshBlogData(resp.data)
       blog.content = getContent()
 
-      log.i('router', 'loaded ' + to.fullPath)
+      log.d('router', 'loaded ' + to.fullPath)
       blog.isLoading = false
     }).catch((e) => {
       if (axios.isCancel(e)) {
-        log.i('router', 'canceled ' + to.fullPath)
+        log.d('router', 'canceled ' + to.fullPath)
         return
       }
 

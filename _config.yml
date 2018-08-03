@@ -114,3 +114,7 @@ exclude:
   - "yarn.lock"
   - "package.json"
   - "yarn-error.log"
+  - "webpack.common.js"
+  - "webpack.dev.js"
+  - "webpack.prod.js"
+  - "dist"

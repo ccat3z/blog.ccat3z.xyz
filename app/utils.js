@@ -48,8 +48,8 @@ export function refreshBlogData (data) {
 }
 
 export const log = {
-  d: (tag, msg) => console.log('[' + tag + '] ' + msg),
-  i: (tag, msg) => console.log('[' + tag + '] ' + msg),
+  d: (tag, msg) => console.debug('[' + tag + '] ' + msg), // eslint-disable-line no-undef
+  i: (tag, msg) => console.info('[' + tag + '] ' + msg),
   w: (tag, msg) => console.warn('[' + tag + '] ' + msg),
   e: (tag, msg) => console.error('[' + tag + '] ' + msg)
 }

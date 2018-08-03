@@ -3,17 +3,12 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  mode: 'development',
   context: path.resolve(__dirname, 'app'),
   entry: './main.js',
   output: {
-    path: path.resolve(__dirname, '_site'),
-    filename: 'js/blog.js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/blog.[hash].js',
     publicPath: '/'
-  },
-  devServer: {
-    host: '0.0.0.0',
-    contentBase: path.resolve(__dirname, '_site')
   },
   module: {
     rules: [
@@ -24,18 +19,16 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
+          MiniCssExtractPlugin.loader,
           'css-loader'
+        ],
+        exclude: [
+          /vuetify\/dist\/vuetify\.min\.css$/
         ]
       }
     ]
   },
   plugins: [
-    new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/blog.css'
-    })
+    new VueLoaderPlugin()
   ]
 }

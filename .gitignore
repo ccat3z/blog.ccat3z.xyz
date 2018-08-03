@@ -4,3 +4,4 @@ _site
 node_modules/
 yarn-error.log
 vendor/
+dist/

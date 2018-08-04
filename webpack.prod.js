@@ -25,13 +25,7 @@ module.exports = merge.smart(common, {
     rules: [
       {
         test: /vuetify\/dist\/vuetify\.min\.css$/,
-        use: [ 'null-loader' ]
-      },
-      {
-        test: /\.css$/,
-        exclude: [
-          /vuetify\/dist\/vuetify\.min\.css$/
-        ]
+        use: [ 'ignore-loader' ]
       }
     ]
   },

@@ -21,9 +21,6 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader'
-        ],
-        exclude: [
-          /vuetify\/dist\/vuetify\.min\.css$/
         ]
       }
     ]

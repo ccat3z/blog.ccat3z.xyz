@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="center-container">
     <v-card class="home-card target-card">
       <v-card-title class="home-card-title">
         <v-avatar size="36px" class="home-card-title-avatar">
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import '../../ui.scss'
+
 export default {
   props: {
     authorInfo: Object,
@@ -44,14 +46,6 @@ export default {
   max-width: 450px;
   height: fit-content;
   max-height: 100%;
-
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  overflow: auto;
 }
 
 .home-card-title {

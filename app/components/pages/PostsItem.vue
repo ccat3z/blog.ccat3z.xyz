@@ -1,0 +1,72 @@
+<template>
+  <v-card class="post-item-card target-card">
+    <v-card-media :src="lowPolyArt" height="100px" />
+
+    <v-card-title class="post-item-card-title">
+      <div>
+        <span class="tag-group subheading">
+          <span v-if="post.tags.length > 1" class="grey--text">{</span>
+          <span v-for="(n, index) in post.tags" :key="index">
+            <router-link :to="post.tags[index].href" class="grey--text text--darken-2 tag">{{ post.tags[index].name }}</router-link>
+            <span v-if="index + 1 !== post.tags.length" class="grey--text">, </span>
+          </span>
+          <span v-if="post.tags.length > 1" class="grey--text">}</span>
+          <span class="grey--text">/</span>
+        </span>
+        <br>
+        <router-link class="title post-title black--text" :to="post.href">{{ post.title }}</router-link><br>
+        <span class="subheading grey--text">{{ post.shortDescription }}</span>
+      </div>
+    </v-card-title>
+  </v-card>
+</template>
+
+<script>
+var Trianglify = require('trianglify')
+
+export default {
+  data: () => ({
+    showTag: true
+  }),
+  props: {
+    post: Object
+  },
+  computed: {
+    lowPolyArt: () => Trianglify({width: 200, height: 200}).png()
+  }
+}
+</script>
+
+<style lang="scss">
+.post-item-card {
+  width: fit-content;
+  // max-width: fit-content;
+  max-width: 300px;
+  height: fit-content;
+  max-height: 100%;
+  margin: 50px 60px 50px 60px;
+  // text-align: center;
+
+  &-title {
+    .tag-group {
+      a.tag {
+        text-decoration: none;
+        transition: color 500ms;
+
+        &:hover {
+          color: #2196F3!important;
+        }
+      }
+    }
+
+    a.post-title {
+        text-decoration: none;
+        transition: color 500ms;
+
+        &:hover {
+          color: #2196F3!important;
+        }
+    }
+  }
+}
+</style>

@@ -74,7 +74,7 @@ export default {
     cloneCardStyle: function (card) {
       let offset = card.offset() || {top: 0, left: 0}
       return {
-        top: offset.top + 'px',
+        top: offset.top - $(window).scrollTop() + 'px',
         left: offset.left + 'px',
         width: card.outerWidth() + 'px',
         height: card.outerHeight() + 'px',

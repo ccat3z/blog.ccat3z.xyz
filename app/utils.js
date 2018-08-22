@@ -11,9 +11,12 @@ export function getNavs () {
   }).toArray()
 }
 
+let contentId = 0
+
 export function getContent () {
   var e = $('#blog-data-content > div')
   return {
+    id: contentId++,
     type: e.attr('class'),
     content: e.html()
   }
@@ -41,6 +44,27 @@ export function getRealContent (content) {
     return content.content
   }
 }
+
+// posts list
+
+export function getPostList (content) {
+  if (content.type === 'posts-list') {
+    return $('#blog-data-content > div > ul > li').map((i, e) => ({
+      title: $('a.post-title', e).html(),
+      href: $('a.post-title', e).attr('href'),
+      date: $('.post-date', e).text(),
+      shortDescription: $('.post-short-description', e).text(),
+      tags: $('.post-tags > li > a.post-tag', e).map((i, e) => ({
+        name: $(e).text(),
+        href: $(e).attr('href')
+      })).toArray()
+    })).toArray()
+  } else {
+    return null
+  }
+}
+
+window.f = () => getPostList(getContent())
 
 export function refreshBlogData (data) {
   $('title').html($('title', $('<div></div>').append($(data))).html())

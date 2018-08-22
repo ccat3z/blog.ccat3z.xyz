@@ -5,7 +5,8 @@
         <home v-if="pageType === 'home'" :author-info="authorInfo" :nav="nav" :go-to="goTo">
           <div v-html="contentHtml"></div>
         </home>
-        <not-found v-else>{{ errorMessage }}</not-found>
+        <posts v-else-if="pageType === 'posts-list'" :posts="getPostList(content)" :key="content.id" />
+        <not-found v-else :key="errorMessage">{{ errorMessage }}</not-found>
       </md-card-transition>
       <Nav :nav="nav" :go-to="goTo" :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
     </div>
@@ -18,10 +19,11 @@ import 'vuetify/dist/vuetify.min.css'
 import Vue from 'vue'
 import Nav from './modules/Nav.vue'
 import Home from './pages/Home.vue'
+import Posts from './pages/Posts.vue'
 import NotFound from './pages/NotFound.vue'
 import Background from './modules/Background.vue'
 import MdCardTransition from './modules/MdCardTransition.vue'
-import {getNavs, getAuthorInfo, getRealContent, refreshBlogData, getContent, log} from '../utils'
+import {getNavs, getAuthorInfo, getRealContent, getPostList, refreshBlogData, getContent, log} from '../utils'
 import VueRouter from 'vue-router'
 import Vuetify from 'vuetify'
 const axios = require('axios')
@@ -102,7 +104,7 @@ export default {
     }
   },
   components: {
-    Nav, Home, NotFound, MdCardTransition, Background
+    Nav, Home, Posts, NotFound, MdCardTransition, Background
   },
   router,
   methods: {
@@ -111,7 +113,8 @@ export default {
     },
     goTo: function (href) {
       this.router.push(href)
-    }
+    },
+    getPostList: getPostList
   }
 }
 </script>

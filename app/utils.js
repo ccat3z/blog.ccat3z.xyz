@@ -13,54 +13,13 @@ export function getNavs () {
 
 let contentId = 0
 
-export function getContent () {
+export function getBlogPageData () {
   var e = $('#blog-data-content > div')
   return {
     id: contentId++,
     type: e.attr('class'),
-    content: e.html()
-  }
-}
-
-// home page
-
-export function getAuthorInfo (content) {
-  if (content.type === 'home') {
-    var author = $(content.content).filter('div.author')
-    return {
-      name: $('.name', author).text(),
-      avatar: $('img.avatar', author).attr('src'),
-      description: $('.description', author).text()
-    }
-  } else {
-    return null
-  }
-}
-
-export function getRealContent (content) {
-  if (content.type === 'home') {
-    return $(content.content).filter('div.message').html()
-  } else {
-    return content.content
-  }
-}
-
-// posts list
-
-export function getPostList (content) {
-  if (content.type === 'posts-list') {
-    return $('#blog-data-content > div > ul > li').map((i, e) => ({
-      title: $('a.post-title', e).html(),
-      href: $('a.post-title', e).attr('href'),
-      date: $('.post-date', e).text(),
-      shortDescription: $('.post-short-description', e).text(),
-      tags: $('.post-tags > li > a.post-tag', e).map((i, e) => ({
-        name: $(e).text(),
-        href: $(e).attr('href')
-      })).toArray()
-    })).toArray()
-  } else {
-    return null
+    content: e.html(),
+    globalDataObject: window.blogPageData !== undefined ? window.blogPageData : null
   }
 }
 

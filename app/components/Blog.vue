@@ -2,10 +2,9 @@
   <v-app>
     <!-- <background /> -->
     <md-card-transition-content>
-      <home v-if="pageType === 'home'" :author-info="authorInfo" :nav="nav" :go-to="goTo">
-        <div v-html="contentHtml"></div>
+      <home v-if="pageType === 'home'" :content="blogPageData.content" :nav="nav" :go-to="goTo">
       </home>
-      <posts v-else-if="pageType === 'posts-list'" :posts="getPostList(content)" :key="content.id" />
+      <posts v-else-if="pageType === 'posts-list'" :content="blogPageData.content" />
       <not-found v-else :key="errorMessage">{{ errorMessage }}</not-found>
     </md-card-transition-content>
     <Nav :nav="nav" :go-to="goTo" :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
@@ -21,7 +20,7 @@ import Posts from './pages/Posts.vue'
 import NotFound from './pages/NotFound.vue'
 import Background from './modules/Background.vue'
 import MdCardTransitionContent from './modules/MdCardTransitionContent.vue'
-import {getNavs, getAuthorInfo, getRealContent, getPostList, refreshBlogData, getContent, log} from '../utils'
+import {getNavs, refreshBlogData, getBlogPageData, log} from '../utils'
 import VueRouter from 'vue-router'
 import Vuetify from 'vuetify'
 const axios = require('axios')
@@ -53,7 +52,7 @@ router.beforeEach(function loadBlogPage (to, from, next) {
       cancelToken: new CancelToken((c) => (cancelLoad = c))
     }).then((resp) => {
       refreshBlogData(resp.data)
-      blog.content = getContent()
+      blog.blogPageData = getBlogPageData()
 
       log.d('router', 'loaded ' + to.fullPath)
       blog.isLoading = false
@@ -85,13 +84,11 @@ export default {
     isLoading: false,
     router,
     accent: false,
-    content: getContent(),
+    blogPageData: getBlogPageData(),
     errorMessage: '404'
   }),
   computed: {
-    pageType: function () { return this.content.type },
-    authorInfo: function () { return getAuthorInfo(this.content) },
-    contentHtml: function () { return getRealContent(this.content) }
+    pageType: function () { return this.blogPageData.type }
   },
   watch: {
     isLoading: function (val, oldVal) {
@@ -108,8 +105,7 @@ export default {
     },
     goTo: function (href) {
       this.router.push(href)
-    },
-    getPostList: getPostList
+    }
   }
 }
 </script>

@@ -13,7 +13,7 @@
         </v-card-title>
 
         <v-card-text>
-          <slot></slot>
+          <div v-html="message"></div>
         </v-card-text>
 
         <v-card-actions class="home-card-actions">
@@ -29,15 +29,29 @@
 
 <script>
 import '../../ui.scss'
+import $ from 'jquery'
 
 export default {
   props: {
-    authorInfo: Object,
+    content: String,
     nav: {
       type: Array,
       default: () => []
     },
     goTo: Function
+  },
+  computed: {
+    authorInfo: function () {
+      var author = $(this.content).filter('div.author')
+      return {
+        name: $('.name', author).text(),
+        avatar: $('img.avatar', author).attr('src'),
+        description: $('.description', author).text()
+      }
+    },
+    message: function () {
+      return $(this.content).filter('div.message').html()
+    }
   }
 }
 </script>

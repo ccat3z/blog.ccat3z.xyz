@@ -9,10 +9,25 @@
 <script>
 import PostItemCard from '../modules/PostItemCard.vue'
 import MansonryList from './base/MasonryList.vue'
+import $ from 'jquery'
 
 export default {
   props: {
-    posts: Array
+    content: String
+  },
+  computed: {
+    posts: function () {
+      return $('ul.posts-list > li', $('<div>').html($(this.content))).map((i, e) => ({
+        title: $('a.post-title', e).html(),
+        href: $('a.post-title', e).attr('href'),
+        date: $('.post-date', e).text(),
+        shortDescription: $('.post-short-description', e).text(),
+        tags: $('.post-tags > li > a.post-tag', e).map((i, e) => ({
+          name: $(e).text(),
+          href: $(e).attr('href')
+        })).toArray()
+      })).toArray()
+    }
   },
   components: {
     PostItemCard, MansonryList

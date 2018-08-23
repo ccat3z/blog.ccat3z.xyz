@@ -61,7 +61,6 @@ export default {
     beforeEnter: function (el) {
       this.toEl = $(el)
       this.toCard.css('opacity', 0)
-      window.toCard = this.toCard
     },
     enter: function (el, done) {
       this.fakeCard.velocity(this.toCardStyle, {complete: done})

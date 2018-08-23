@@ -38,8 +38,6 @@ var router = new VueRouter({
   ]
 })
 
-window.router = router
-
 router.beforeEach(function loadBlogPage (to, from, next) {
   var blog = router.app
   if (blog.isLoading === undefined) {
@@ -67,7 +65,6 @@ router.beforeEach(function loadBlogPage (to, from, next) {
 
       log.w('router', 'fail to load ' + to.fullPath)
       blog.isLoading = false
-      window.error = e
 
       blog.errorMessage = e.response ? e.response.status : e.message
       router.push('/404.html')

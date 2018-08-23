@@ -19,6 +19,9 @@
 import { rgb2Hex } from '../../utils'
 import $ from 'jquery'
 
+/**
+ * Transition between different v-card.target-card
+ */
 export default {
   data: () => ({
     fromEl: null, // $

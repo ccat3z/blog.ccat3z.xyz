@@ -3,6 +3,7 @@
     <v-layout align-start justify-center>
       <div class='masonry-list-grid' data-masonrt="{ itemSelector: '.grid-item', columnWidth: '.grid-sizer', percentPosition: true }">
         <div class="grid-sizer"></div>
+        <!-- @slot items in masonry with .grid-item -->
         <slot></slot>
       </div>
     </v-layout>

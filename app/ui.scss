@@ -6,3 +6,12 @@
   align-items: center;
   justify-content: center;
 }
+
+.cards-list-center-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}

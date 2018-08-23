@@ -1,24 +1,26 @@
 <template>
-  <v-card class="post-item-card target-card">
-    <v-card-media :src="lowPolyArt" height="100px" />
+  <div>
+    <v-card class="post-item-card target-card">
+      <v-card-media :src="lowPolyArt" height="100px" />
 
-    <v-card-title class="post-item-card-title">
-      <div>
-        <span class="tag-group subheading">
-          <span v-if="post.tags.length > 1" class="grey--text">{</span>
-          <span v-for="(n, index) in post.tags" :key="index">
-            <router-link :to="post.tags[index].href" class="grey--text text--darken-2 tag">{{ post.tags[index].name }}</router-link>
-            <span v-if="index + 1 !== post.tags.length" class="grey--text">, </span>
+      <v-card-title class="post-item-card-title">
+        <div>
+          <span class="tag-group subheading">
+            <span v-if="post.tags.length > 1" class="grey--text">{</span>
+            <span v-for="(n, index) in post.tags" :key="index">
+              <router-link :to="post.tags[index].href" class="grey--text text--darken-2 tag">{{ post.tags[index].name }}</router-link>
+              <span v-if="index + 1 !== post.tags.length" class="grey--text">, </span>
+            </span>
+            <span v-if="post.tags.length > 1" class="grey--text">}</span>
+            <span class="grey--text">/</span>
           </span>
-          <span v-if="post.tags.length > 1" class="grey--text">}</span>
-          <span class="grey--text">/</span>
-        </span>
-        <br>
-        <router-link class="title post-title black--text" :to="post.href">{{ post.title }}</router-link><br>
-        <span class="subheading grey--text">{{ post.shortDescription }}</span>
-      </div>
-    </v-card-title>
-  </v-card>
+          <br>
+          <router-link class="title post-title black--text" :to="post.href">{{ post.title }}</router-link><br>
+          <span class="subheading grey--text">{{ post.shortDescription }}</span>
+        </div>
+      </v-card-title>
+    </v-card>
+  </div>
 </template>
 
 <script>
@@ -32,19 +34,19 @@ export default {
     post: Object
   },
   computed: {
-    lowPolyArt: () => Trianglify({width: 200, height: 200}).png()
+    lowPolyArt: () => Trianglify({width: 512, height: 512}).png()
   }
 }
 </script>
 
 <style lang="scss">
 .post-item-card {
-  width: fit-content;
+  // width: fit-content;
   // max-width: fit-content;
-  max-width: 300px;
+  // max-width: 300px;
   height: fit-content;
-  max-height: 100%;
-  margin: 50px 60px 50px 60px;
+  // max-height: 100%;
+  margin: 5px 6px 5px 6px;
   // text-align: center;
 
   &-title {

@@ -10,7 +10,7 @@
       </md-card-transition>
       <Nav :nav="nav" :go-to="goTo" :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
     </div>
-    <background />
+    <!-- <background /> -->
   </v-app>
 </template>
 

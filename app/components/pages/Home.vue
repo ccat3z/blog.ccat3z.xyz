@@ -1,28 +1,30 @@
 <template>
-  <div class="center-container">
-    <v-card class="home-card target-card">
-      <v-card-title class="home-card-title">
-        <v-avatar size="36px" class="home-card-title-avatar">
-          <img :src="authorInfo.avatar" alt="avatar">
-        </v-avatar>
-        <div class="home-card-title-name">
-          <div class="">{{ authorInfo.name }}</div>
-          <div class="grey--text">{{ authorInfo.description }}</div>
-        </div>
-      </v-card-title>
+  <v-container fluid fill-height>
+    <v-layout align-center justify-center>
+      <v-card class="home-card target-card">
+        <v-card-title class="home-card-title">
+          <v-avatar size="36px" class="home-card-title-avatar">
+            <img :src="authorInfo.avatar" alt="avatar">
+          </v-avatar>
+          <div class="home-card-title-name">
+            <div class="">{{ authorInfo.name }}</div>
+            <div class="grey--text">{{ authorInfo.description }}</div>
+          </div>
+        </v-card-title>
 
-      <v-card-text>
-        <slot></slot>
-      </v-card-text>
+        <v-card-text>
+          <slot></slot>
+        </v-card-text>
 
-      <v-card-actions class="home-card-actions">
-        <v-spacer></v-spacer>
-        <v-btn v-for="(n, index) in nav" :key="index" icon v-on:click="goTo(nav[index].href)">
-          <v-icon>{{ nav[index].icon }}</v-icon>
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </div>
+        <v-card-actions class="home-card-actions">
+          <v-spacer></v-spacer>
+          <v-btn v-for="(n, index) in nav" :key="index" icon v-on:click="goTo(nav[index].href)">
+            <v-icon>{{ nav[index].icon }}</v-icon>
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

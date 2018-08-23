@@ -1,16 +1,14 @@
 <template>
   <v-app>
-    <div class="blog-main-ui">
-      <md-card-transition>
-        <home v-if="pageType === 'home'" :author-info="authorInfo" :nav="nav" :go-to="goTo">
-          <div v-html="contentHtml"></div>
-        </home>
-        <posts v-else-if="pageType === 'posts-list'" :posts="getPostList(content)" :key="content.id" />
-        <not-found v-else :key="errorMessage">{{ errorMessage }}</not-found>
-      </md-card-transition>
-      <Nav :nav="nav" :go-to="goTo" :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
-    </div>
     <!-- <background /> -->
+    <md-card-transition-content>
+      <home v-if="pageType === 'home'" :author-info="authorInfo" :nav="nav" :go-to="goTo">
+        <div v-html="contentHtml"></div>
+      </home>
+      <posts v-else-if="pageType === 'posts-list'" :posts="getPostList(content)" :key="content.id" />
+      <not-found v-else :key="errorMessage">{{ errorMessage }}</not-found>
+    </md-card-transition-content>
+    <Nav :nav="nav" :go-to="goTo" :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
   </v-app>
 </template>
 
@@ -22,7 +20,7 @@ import Home from './pages/Home.vue'
 import Posts from './pages/Posts.vue'
 import NotFound from './pages/NotFound.vue'
 import Background from './modules/Background.vue'
-import MdCardTransition from './modules/MdCardTransition.vue'
+import MdCardTransitionContent from './modules/MdCardTransitionContent.vue'
 import {getNavs, getAuthorInfo, getRealContent, getPostList, refreshBlogData, getContent, log} from '../utils'
 import VueRouter from 'vue-router'
 import Vuetify from 'vuetify'
@@ -104,7 +102,7 @@ export default {
     }
   },
   components: {
-    Nav, Home, Posts, NotFound, MdCardTransition, Background
+    Nav, Home, Posts, NotFound, MdCardTransitionContent, Background
   },
   router,
   methods: {

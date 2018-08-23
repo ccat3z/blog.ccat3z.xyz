@@ -1,5 +1,4 @@
 <template>
-  <div>
     <v-card class="post-item-card target-card">
       <v-card-media :src="lowPolyArt" height="100px" />
 
@@ -20,7 +19,6 @@
         </div>
       </v-card-title>
     </v-card>
-  </div>
 </template>
 
 <script>
@@ -41,13 +39,7 @@ export default {
 
 <style lang="scss">
 .post-item-card {
-  // width: fit-content;
-  // max-width: fit-content;
-  // max-width: 300px;
   height: fit-content;
-  // max-height: 100%;
-  margin: 5px 6px 5px 6px;
-  // text-align: center;
 
   &-title {
     .tag-group {

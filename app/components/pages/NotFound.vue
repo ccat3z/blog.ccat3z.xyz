@@ -1,9 +1,11 @@
 <template>
-  <div class="center-container">
-    <v-card class="not-found-card display-4 error target-card" dark>
-      <slot></slot>
-    </v-card>
-  </div>
+  <v-container fluid fill-height>
+    <v-layout align-center justify-center>
+      <v-card class="not-found-card display-4 error target-card" dark>
+        <slot></slot>
+      </v-card>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

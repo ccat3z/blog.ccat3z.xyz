@@ -1,6 +1,6 @@
 <!-- transition .md-card.target-card -->
 <template>
-  <div class="v-card-transition-wrap">
+  <v-content class="v-card-transition-wrap">
     <transition
       v-on:before-enter="beforeEnter"
       v-on:enter="enter"
@@ -12,7 +12,7 @@
       <slot></slot>
     </transition>
     <v-card class="fake-card"></v-card>
-  </div>
+  </v-content>
 </template>
 
 <script>

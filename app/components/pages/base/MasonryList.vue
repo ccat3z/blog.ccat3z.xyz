@@ -13,6 +13,8 @@
 <script>
 import $ from 'jquery'
 
+const refreshMasonry = () => $('.masonry-list-grid').masonry()
+
 export default {
   props: {
     itemSelector: {
@@ -20,7 +22,8 @@ export default {
       default: '.grid-item'
     }
   },
-  mounted: () => $('.masonry-list-grid').masonry()
+  mounted: refreshMasonry,
+  updated: refreshMasonry
 }
 </script>
 

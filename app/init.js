@@ -2,4 +2,4 @@ import $ from 'jquery'
 
 window.jQuery = window.$ = $
 require('velocity-animate')
-require('masonry-layout/dist/masonry.pkgd.js')
+require('isotope-layout/dist/isotope.pkgd.min.js')

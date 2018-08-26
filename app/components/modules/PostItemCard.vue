@@ -26,7 +26,6 @@ var Trianglify = require('trianglify')
 
 export default {
   data: () => ({
-    showTag: true,
     isTargetCard: false
   }),
   props: {

@@ -64,6 +64,13 @@ module.exports = merge.smart(common, {
             `https://cdn.jsdelivr.net/npm/vuetify@${getModuleVersion('vuetify')}/dist/vuetify.min.css`
           ],
           global: 'Vuetify'
+        },
+        {
+          module: 'velocity-animate',
+          entry: [
+            `https://cdn.jsdelivr.net/npm/velocity-animate@${getModuleVersion('velocity-animate')}/velocity.min.js`
+          ],
+          global: 'jQuery'
         }
       ]
     })

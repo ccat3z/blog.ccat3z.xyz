@@ -5,7 +5,8 @@
       <home v-if="pageType === 'home'" :content="blogPageData.content" :nav="nav" :go-to="goTo">
       </home>
       <posts v-else-if="pageType === 'posts-list'" :content="blogPageData.content" />
-      <not-found v-else :key="errorMessage">{{ errorMessage }}</not-found>
+      <not-found v-else-if="pageType === 'not-found'" :key="errorMessage">{{ errorMessage }}</not-found>
+      <construction v-else/>
     </md-card-transition-content>
     <Nav :nav="nav" :go-to="goTo" :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
   </v-app>
@@ -18,6 +19,7 @@ import Nav from './modules/Nav.vue'
 import Home from './pages/Home.vue'
 import Posts from './pages/Posts.vue'
 import NotFound from './pages/NotFound.vue'
+import Construction from './pages/Construction.vue'
 import Background from './modules/Background.vue'
 import MdCardTransitionContent from './modules/MdCardTransitionContent.vue'
 import {getNavs, refreshBlogData, getBlogPageData, log} from '../utils'
@@ -96,7 +98,7 @@ export default {
     }
   },
   components: {
-    Nav, Home, Posts, NotFound, MdCardTransitionContent, Background
+    Nav, Home, Posts, NotFound, Construction, MdCardTransitionContent, Background
   },
   router,
   methods: {

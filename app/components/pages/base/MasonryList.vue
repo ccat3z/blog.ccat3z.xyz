@@ -20,8 +20,12 @@ export default {
       default: '.grid-item'
     }
   },
-  mounted: () => $('.masonry-list-grid').isotope(),
-  updated: () => $('.masonry-list-grid').isotope('reloadItems').isotope()
+  mounted: function () {
+    this.$nextTick(() => $('.masonry-list-grid').isotope())
+  },
+  updated: function () {
+    this.$nextTick(() => $('.masonry-list-grid').isotope('reloadItems').isotope())
+  }
 }
 </script>
 

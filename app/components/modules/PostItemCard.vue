@@ -1,5 +1,5 @@
 <template>
-    <v-card class="post-item-card target-card">
+    <v-card class="post-item-card" :class="{ 'target-card': isTargetCard }" @click.native="isTargetCard = true">
       <v-card-media :src="lowPolyArt" height="100px" />
 
       <v-card-title class="post-item-card-title">
@@ -26,7 +26,8 @@ var Trianglify = require('trianglify')
 
 export default {
   data: () => ({
-    showTag: true
+    showTag: true,
+    isTargetCard: false
   }),
   props: {
     post: Object

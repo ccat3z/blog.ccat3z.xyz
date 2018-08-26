@@ -1,5 +1,5 @@
 <template>
-  <v-card class="target-card" :color="color">
+  <v-card :color="color">
     <v-card-actions>
       <v-btn block flat :to="to" active-class="" append :disable="disable">
         <slot>BUTTON</slot>

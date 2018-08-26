@@ -1,7 +1,7 @@
 <template>
   <v-container fluid fill-height>
     <v-layout align-center justify-center>
-      <v-card class="not-found-card display-4 error target-card" dark>
+      <v-card class="not-found-card display-4 error" dark>
         <slot></slot>
       </v-card>
     </v-layout>

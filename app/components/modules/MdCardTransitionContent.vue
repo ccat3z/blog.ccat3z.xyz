@@ -11,7 +11,7 @@
       mode="out-in">
       <slot></slot>
     </transition>
-    <v-card class="fake-card"></v-card>
+    <v-card class="fake-card" :style="fakeCardStyle"></v-card>
   </v-content>
 </template>
 
@@ -19,59 +19,81 @@
 import { rgb2Hex } from '../../utils'
 import $ from 'jquery'
 
+function getTargetViewFrom (e) {
+  var cards = $('.v-card', e)
+  var cardsInViewport = cards.filter((i, e) => $(e).visible(false)) // entire visible
+  var cardsHasTargetClass = cards.filter((i, e) => $(e).hasClass('target-card'))
+  var targetCard = $((cardsHasTargetClass.length > 0 ? cardsHasTargetClass : cardsInViewport)[0])
+  var otherCards = cards.filter((i, e) => !$(e).is(targetCard))
+
+  return {
+    targetCard,
+    otherCards
+  }
+}
+
 /**
- * Transition between different v-card.target-card
+ * Transition between different v-card
  */
 export default {
   data: () => ({
-    fromEl: null, // $
-    toEl: null // $
+    hideFakeShadow: false,
+    fromCards: undefined,
+    toCards: undefined
   }),
   computed: {
-    fromCard: function () {
-      return $('.v-card.target-card', this.fromEl)
-    },
-    toCard: function () {
-      return $('.v-card.target-card', this.toEl)
-    },
-    fromCardStyle: function () {
-      return this.cloneCardStyle(this.fromCard)
-    },
-    toCardStyle: function () {
-      return this.cloneCardStyle(this.toCard)
-    },
-    fakeCard: () => $('.fake-card')
+    fakeCard: () => $('.fake-card'),
+    fakeCardStyle: function () {
+      return {
+        boxShadow: this.hideFakeShadow ? 'none' : undefined
+      }
+    }
   },
   watch: {
   },
   methods: {
     beforeLeave: function (el) {
-      this.fromEl = $(el)
+      this.fromCards = getTargetViewFrom(el)
 
-      this.fakeCard.css('z-index', 9)
-      this.fakeCard.css(this.fromCardStyle)
-      this.fakeCard.css('box-shadow', 'none')
+      // clone and prepare for covering target leaving card
+      this.fakeCard.css({zIndex: 9})
+      this.fakeCard.css(this.cloneCardStyle(this.fromCards.targetCard))
+
+      // avoid double shadow
+      this.hideFakeShadow = true
     },
     leave: function (el, done) {
+      // hide other leaving card
+      this.fromCards.otherCards.velocity({opacity: 0}, {duration: 'fast'})
+
+      // cover target leaving card
       this.fakeCard.velocity({opacity: 1}, {complete: done, duration: 'fast'})
     },
     afterLeave: function (el) {
-      this.fakeCard.css('box-shadow', this.fromCard.css('box-shadow'))
+      // card leaved, enable shadow on fake card
+      this.hideFakeShadow = false
     },
     beforeEnter: function (el) {
-      this.toEl = $(el)
-      this.toCard.css('opacity', 0)
+      this.toCards = getTargetViewFrom(el)
+
+      // hide entering card
+      this.toCards.targetCard.css({opacity: 0})
+      this.toCards.otherCards.css({opacity: 0})
     },
     enter: function (el, done) {
-      this.fakeCard.velocity(this.toCardStyle, {complete: done})
+      // move fake card
+      this.fakeCard.velocity(this.cloneCardStyle(this.toCards.targetCard), {complete: done})
     },
     afterEnter: function (el) {
-      this.toCard.css('opacity', 1)
-      this.fakeCard.css('box-shadow', 'none')
-      this.fakeCard.velocity({opacity: 0}, {duration: 'fast', complete: () => this.fakeCard.css('z-index', -1)})
+      // show entering card
+      this.toCards.targetCard.css({opacity: 1})
+      this.toCards.otherCards.velocity({opacity: 1}, {duration: 'fast'})
 
-      this.fromEl = null
-      this.toEl = null
+      // avoid double shadow
+      this.hideFakeShadow = true
+
+      // hide fake card
+      this.fakeCard.velocity({opacity: 0}, {duration: 'fast', complete: () => this.fakeCard.css('z-index', -1)})
     },
     cloneCardStyle: function (card) {
       let offset = card.offset() || {top: 0, left: 0}
@@ -93,7 +115,7 @@ export default {
   left: 0;
   width: 50px;
   height: 50px;
-  position: absolute;
+  position: fixed;
   opacity: 0;
   z-index: -1;
 }

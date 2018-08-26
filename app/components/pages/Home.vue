@@ -1,7 +1,7 @@
 <template>
   <v-container fluid fill-height>
     <v-layout align-center justify-center>
-      <v-card class="home-card target-card">
+      <v-card class="home-card">
         <v-card-title class="home-card-title">
           <v-avatar size="36px" class="home-card-title-avatar">
             <img :src="authorInfo.avatar" alt="avatar">

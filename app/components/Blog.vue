@@ -117,5 +117,5 @@ export default {
   z-index: 1;
 }
 
-html { overflow-y: auto; }
+/* html { overflow-y: auto; } */
 </style>

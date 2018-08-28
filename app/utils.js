@@ -14,7 +14,7 @@ export function getNavs () {
 }
 
 export function getPagination () {
-  return $('#blog-data-page-pagination > ul > li > a').toArray().map((e) => {
+  var pagination = $('#blog-data-page-pagination > ul > li > a').toArray().map((e) => {
     var $e = $(e)
     var type
     if ($e.hasClass('pagination-pager-prev')) type = 'prev'
@@ -30,6 +30,15 @@ export function getPagination () {
   }).filter((e) => ['current', 'page'].includes(e.type))
     .sort((a, b) => parseInt(a.name) > parseInt(b.name))
     .map((e) => e.href)
+
+  if (pagination.length === 0) { // no pagination
+    pagination[0] = '#'
+    pagination.key = window.location.pathname.replace(/\/{0,1}$/, '')
+  } else { // has pagination
+    pagination.key = window.location.pathname.replace(/\/{0,1}\d*\/{0,1}$/, '')
+  }
+
+  return pagination
 }
 
 let contentId = 0

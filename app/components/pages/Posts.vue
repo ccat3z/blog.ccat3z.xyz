@@ -35,7 +35,7 @@ export default {
       for (var i = 0; i < this.pagination.length; i++) {
         var e = this.postsByPage[i]
         if (e === undefined) {
-          acc = acc.concat(this.isNumeric(acc[acc.length - 1]) ? [] : [i])
+          acc = acc.concat($.isNumeric(acc[acc.length - 1]) ? [] : [i])
         } else {
           acc = acc.concat(e)
         }
@@ -46,27 +46,31 @@ export default {
   },
   watch: {
     content: {
-      handler: function () {
-        this.pagination = getPagination()
-
-        // ref: https://vuejs.org/v2/guide/list.html#Caveats
-        this.$set(this.postsByPage, this.currentPageNum, $('ul.posts-list > li', $('<div>').html($(this.content))).map((i, e) => ({
-          title: $('a.post-title', e).html(),
-          href: $('a.post-title', e).attr('href'),
-          date: $('.post-date', e).text(),
-          shortDescription: $('.post-short-description', e).text(),
-          tags: $('.post-tags > li > a.post-tag', e).map((i, e) => ({
-            name: $(e).text(),
-            href: $(e).attr('href')
-          })).toArray(),
-          id: hash($(e).html())
-        })).toArray())
-      },
+      handler: function () { this.loadPost() },
       immediate: true
+    },
+    'pagination.key': function () { // on load different root page
+      this.postsByPage = []
+      this.loadPost()
     }
   },
   methods: {
-    isNumeric: (i) => $.isNumeric(i)
+    loadPost: function () {
+      this.pagination = getPagination()
+
+      // ref: https://vuejs.org/v2/guide/list.html#Caveats
+      this.$set(this.postsByPage, this.currentPageNum, $('ul.posts-list > li', $('<div>').html($(this.content))).map((i, e) => ({
+        title: $('a.post-title', e).html(),
+        href: $('a.post-title', e).attr('href'),
+        date: $('.post-date', e).text(),
+        shortDescription: $('.post-short-description', e).text(),
+        tags: $('.post-tags > li > a.post-tag', e).map((i, e) => ({
+          name: $(e).text(),
+          href: $(e).attr('href')
+        })).toArray(),
+        id: hash($(e).html())
+      })).toArray())
+    }
   },
   components: {
     PostItemCard, RouterButtonCard, MansonryList

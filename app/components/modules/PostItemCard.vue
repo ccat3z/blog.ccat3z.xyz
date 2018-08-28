@@ -5,6 +5,8 @@
       <v-card-title class="post-item-card-title">
         <div>
           <span class="tag-group subheading">
+            <span class="grey--text text--darken-2">{{ post.date }}</span>
+            <span class="grey--text">/</span>
             <span v-if="post.tags.length > 1" class="grey--text">{</span>
             <span v-for="(n, index) in post.tags" :key="index">
               <router-link :to="post.tags[index].href" class="grey--text text--darken-2 tag">{{ post.tags[index].name }}</router-link>

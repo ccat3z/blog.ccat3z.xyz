@@ -23,7 +23,16 @@ function getTargetViewFrom (e) {
   var cards = $('.v-card', e)
   var cardsInViewport = cards.filter((i, e) => $(e).visible(false)) // entire visible
   var cardsHasTargetClass = cards.filter((i, e) => $(e).hasClass('target-card'))
-  var targetCard = $((cardsHasTargetClass.length > 0 ? cardsHasTargetClass : cardsInViewport)[0])
+
+  var targetCard
+  if (cardsHasTargetClass.length > 0) {
+    targetCard = $(cardsHasTargetClass[0])
+  } else if (cardsInViewport.length > 0) {
+    targetCard = $(cardsInViewport[0])
+  } else {
+    targetCard = $(cards[0])
+  }
+
   var otherCards = cards.filter((i, e) => !$(e).is(targetCard))
 
   return {

@@ -1,18 +1,18 @@
 <template>
 <div>
-  <mansonry-list id="top">
+  <masonry-list id="top">
     <div class="grid-item post-item-card-wrapper" v-for="(v, index) in posts" :key="posts[index].id">
       <router-button-card v-if="typeof posts[index] === 'number'" :to="pagination[posts[index]]" color="accent">MORE</router-button-card>
       <post-item-card v-else :post="posts[index]" :key="posts[index].id"/>
     </div>
-  </mansonry-list>
+  </masonry-list>
 </div>
 </template>
 
 <script>
 import PostItemCard from '../modules/PostItemCard.vue'
 import RouterButtonCard from '../modules/RouterButtonCard.vue'
-import MansonryList from './base/MasonryList.vue'
+import MasonryList from './base/MasonryList.vue'
 import $ from 'jquery'
 import { getPagination } from '../../utils.js'
 var hash = require('object-hash')
@@ -73,7 +73,7 @@ export default {
     }
   },
   components: {
-    PostItemCard, RouterButtonCard, MansonryList
+    PostItemCard, RouterButtonCard, MasonryList
   }
 }
 </script>

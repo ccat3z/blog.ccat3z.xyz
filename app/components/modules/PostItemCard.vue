@@ -1,5 +1,5 @@
 <template>
-    <v-card class="post-item-card" :class="{ 'target-card': isTargetCard }" @click.native="isTargetCard = true">
+    <v-card :id="id" class="post-item-card" @click.native="setTarget()">
       <v-card-media :src="lowPolyArt" height="100px" />
 
       <v-card-title class="post-item-card-title">
@@ -24,17 +24,25 @@
 </template>
 
 <script>
+import $ from 'jquery'
+var hash = require('object-hash')
 var Trianglify = require('trianglify')
 
 export default {
-  data: () => ({
-    isTargetCard: false
-  }),
   props: {
     post: Object
   },
   computed: {
-    lowPolyArt: () => Trianglify({width: 512, height: 512}).png()
+    lowPolyArt: () => Trianglify({width: 512, height: 512}).png(),
+    id: function () {
+      return hash(this.post)
+    }
+  },
+  methods: {
+    setTarget: function () {
+      $('.v-card.target-card').removeClass('target-card')
+      $('#' + this.id).addClass('target-card')
+    }
   }
 }
 </script>

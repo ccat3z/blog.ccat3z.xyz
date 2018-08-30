@@ -4,7 +4,7 @@
     <md-card-transition-content>
       <home v-if="pageType === 'home'" :content="blogPageData.content" :nav="nav" :go-to="goTo">
       </home>
-      <posts v-else-if="pageType === 'posts-list'" :content="blogPageData.content" />
+      <posts v-else-if="pageType === 'posts-list'" :content="blogPageData.content" :key="getPagination().key" />
       <not-found v-else-if="pageType === 'not-found'" :key="errorMessage">{{ errorMessage }}</not-found>
       <construction v-else/>
     </md-card-transition-content>
@@ -22,7 +22,7 @@ import NotFound from './pages/NotFound.vue'
 import Construction from './pages/Construction.vue'
 import Background from './modules/Background.vue'
 import MdCardTransitionContent from './modules/MdCardTransitionContent.vue'
-import {getNavs, refreshBlogData, getBlogPageData, log} from '../utils'
+import {getNavs, refreshBlogData, getBlogPageData, getPagination, log} from '../utils'
 import VueRouter from 'vue-router'
 import Vuetify from 'vuetify'
 const axios = require('axios')
@@ -107,7 +107,8 @@ export default {
     },
     goTo: function (href) {
       this.router.push(href)
-    }
+    },
+    getPagination
   }
 }
 </script>

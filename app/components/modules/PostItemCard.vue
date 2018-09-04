@@ -33,7 +33,9 @@ export default {
     post: Object
   },
   computed: {
-    lowPolyArt: () => Trianglify({width: 512, height: 512}).png(),
+    lowPolyArt: function () {
+      return Trianglify({width: 512, height: 512, seed: this.id}).png()
+    },
     id: function () {
       return hash(this.post)
     }

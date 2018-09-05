@@ -1,5 +1,5 @@
 <template>
-    <v-card :id="id" class="post-item-card" @click.native="setTarget()">
+    <v-card :id="id" class="post-item-card" @click.native="setTarget(id)">
       <v-card-media :src="lowPolyArt" height="100px" />
 
       <v-card-title class="post-item-card-title">
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import $ from 'jquery'
+import { UtilsMixin as MdCardTransitionUtilsMixin } from 'components/layout/MdCardTransitionContent.vue'
 var hash = require('object-hash')
 var Trianglify = require('trianglify')
 
@@ -40,12 +40,7 @@ export default {
       return hash(this.post)
     }
   },
-  methods: {
-    setTarget: function () {
-      $('.v-card.target-card').removeClass('target-card')
-      $('#' + this.id).addClass('target-card')
-    }
-  }
+  mixins: [MdCardTransitionUtilsMixin]
 }
 </script>
 

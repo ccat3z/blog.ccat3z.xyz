@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import '../../ui.scss'
 import $ from 'jquery'
 
 export default {

@@ -117,4 +117,5 @@ exclude:
   - "webpack.common.js"
   - "webpack.dev.js"
   - "webpack.prod.js"
+  - "postcss.config.js"
   - "dist"

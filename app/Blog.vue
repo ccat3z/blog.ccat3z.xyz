@@ -13,20 +13,29 @@
 </template>
 
 <script>
-import 'vuetify/dist/vuetify.min.css'
 import Vue from 'vue'
-import Nav from './modules/Nav.vue'
-import Home from './pages/Home.vue'
-import Posts from './pages/Posts.vue'
-import NotFound from './pages/NotFound.vue'
-import Construction from './pages/Construction.vue'
-import Background from './modules/Background.vue'
-import MdCardTransitionContent from './modules/MdCardTransitionContent.vue'
-import {getNavs, refreshBlogData, getBlogPageData, getPagination, log} from '../utils'
 import VueRouter from 'vue-router'
+
+import 'material-design-icons/iconfont/material-icons.css'
+import 'vuetify/dist/vuetify.min.css'
 import Vuetify from 'vuetify'
+
+import Home from 'pages/Home.vue'
+import Posts from 'pages/Posts.vue'
+import NotFound from 'pages/NotFound.vue'
+import Construction from 'pages/Construction.vue'
+
+import Nav from 'components/layout/Nav.vue'
+import Background from 'components/layout/Background.vue'
+import MdCardTransitionContent from 'components/layout/MdCardTransitionContent.vue'
+
+import 'app/style/hide-orig-data.css'
+
+import { getNavs, refreshBlogData, getBlogPageData, getPagination } from 'app/utils/blog-data'
+import { log } from 'app/utils/common'
 const axios = require('axios')
 const CancelToken = axios.CancelToken
+
 let cancelLoad
 
 Vue.use(VueRouter)

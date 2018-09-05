@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { rgb2Hex } from '../../utils'
+import { rgb2Hex } from 'app/utils/common'
 import $ from 'jquery'
 
 function getTargetViewFrom (e) {
@@ -38,6 +38,15 @@ function getTargetViewFrom (e) {
   return {
     targetCard,
     otherCards
+  }
+}
+
+export const UtilsMixin = {
+  methods: {
+    setTarget: function (id) {
+      $('.v-card.target-card').removeClass('target-card')
+      $('#' + id).addClass('target-card')
+    }
   }
 }
 

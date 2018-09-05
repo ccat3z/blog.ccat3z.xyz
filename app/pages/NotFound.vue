@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import '../../ui.scss'
-
 export default { }
 </script>
 

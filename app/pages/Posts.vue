@@ -10,11 +10,14 @@
 </template>
 
 <script>
-import PostItemCard from '../modules/PostItemCard.vue'
-import RouterButtonCard from '../modules/RouterButtonCard.vue'
-import MasonryList from './base/MasonryList.vue'
+import MasonryList from 'components/pages/MasonryList.vue'
+
+import PostItemCard from 'components/cards/PostItemCard.vue'
+import RouterButtonCard from 'components/cards/RouterButtonCard.vue'
+
 import $ from 'jquery'
-import { getPagination } from '../../utils.js'
+import { getPagination } from 'app/utils/blog-data'
+
 var hash = require('object-hash')
 
 export default {

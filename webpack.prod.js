@@ -26,6 +26,10 @@ module.exports = merge.smart(common, {
       {
         test: /vuetify\/dist\/vuetify\.min\.css$/,
         use: [ 'ignore-loader' ]
+      },
+      {
+        test: /material-design-icons\/iconfont\/material-icons.css$/,
+        use: [ 'ignore-loader' ]
       }
     ]
   },
@@ -47,6 +51,12 @@ module.exports = merge.smart(common, {
   ).concat([
     new HtmlWebpackExternalsPlugin({
       externals: [
+        {
+          module: 'material-design-icons',
+          entry: [
+            `https://cdn.bootcss.com/material-design-icons/${getModuleVersion('material-design-icons')}/iconfont/material-icons.css`
+          ]
+        },
         {
           module: 'jquery',
           entry: `https://cdn.jsdelivr.net/npm/jquery@${getModuleVersion('jquery')}/dist/jquery.min.js`,

@@ -1,5 +1,7 @@
 import $ from 'jquery'
 
+// TODO: use store
+
 export function getNavs () {
   return $('#blog-data-nav > ul > li > a').map((i, e) => {
     var $e = $(e)

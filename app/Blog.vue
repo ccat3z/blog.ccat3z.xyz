@@ -2,13 +2,13 @@
   <v-app>
     <!-- <background /> -->
     <md-card-transition-content>
-      <home v-if="pageType === 'home'" :content="blogPageData.content" :nav="nav" :go-to="goTo">
+      <home v-if="pageType === 'home'" :content="blogPageData.content" :nav="nav">
       </home>
       <posts v-else-if="pageType === 'posts-list'" :content="blogPageData.content" :key="getPagination().key" />
       <not-found v-else-if="pageType === 'not-found'" :key="errorMessage">{{ errorMessage }}</not-found>
       <construction v-else/>
     </md-card-transition-content>
-    <Nav :nav="nav" :go-to="goTo" :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
+    <Nav :nav="nav" :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
   </v-app>
 </template>
 
@@ -113,9 +113,6 @@ export default {
   methods: {
     showAccent: function () {
       this.accent = true
-    },
-    goTo: function (href) {
-      this.router.push(href)
     },
     getPagination
   }

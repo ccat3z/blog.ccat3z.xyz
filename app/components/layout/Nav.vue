@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import mixin from 'app/utils/mixin'
+
 export default {
   data: () => ({
     active: false
@@ -27,12 +29,12 @@ export default {
       type: Boolean,
       default: false
     },
-    goTo: Function,
     show: {
       type: Boolean,
       default: true
     }
-  }
+  },
+  mixins: [mixin]
 }
 </script>
 

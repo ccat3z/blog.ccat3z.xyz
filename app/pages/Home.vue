@@ -29,6 +29,7 @@
 
 <script>
 import $ from 'jquery'
+import mixin from 'app/utils/mixin'
 
 export default {
   props: {
@@ -36,8 +37,7 @@ export default {
     nav: {
       type: Array,
       default: () => []
-    },
-    goTo: Function
+    }
   },
   computed: {
     authorInfo: function () {
@@ -51,7 +51,8 @@ export default {
     message: function () {
       return $(this.content).filter('div.message').html()
     }
-  }
+  },
+  mixins: [mixin]
 }
 </script>
 

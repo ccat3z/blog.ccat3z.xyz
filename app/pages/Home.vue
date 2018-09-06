@@ -32,14 +32,9 @@ import $ from 'jquery'
 import mixin from 'app/utils/mixin'
 
 export default {
-  props: {
-    content: String,
-    nav: {
-      type: Array,
-      default: () => []
-    }
-  },
   computed: {
+    content: function () { return this.$store.getters['blog/content'] },
+    nav: function () { return this.$store.getters['blog/nav'] },
     authorInfo: function () {
       var author = $(this.content).filter('div.author')
       return {

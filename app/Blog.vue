@@ -2,13 +2,13 @@
   <v-app>
     <!-- <background /> -->
     <md-card-transition-content>
-      <home v-if="pageType === 'home'" :content="blogPageData.content" :nav="nav">
+      <home v-if="pageType === 'home'">
       </home>
-      <posts v-else-if="pageType === 'posts-list'" :content="blogPageData.content" :key="getPagination().key" />
+      <posts v-else-if="pageType === 'posts-list'" :key="rootPath" />
       <not-found v-else-if="pageType === 'not-found'" :key="errorMessage">{{ errorMessage }}</not-found>
       <construction v-else/>
     </md-card-transition-content>
-    <Nav :nav="nav" :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
+    <Nav :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
   </v-app>
 </template>
 
@@ -31,8 +31,9 @@ import MdCardTransitionContent from 'components/layout/MdCardTransitionContent.v
 
 import 'app/style/hide-orig-data.css'
 
-import { getNavs, refreshBlogData, getBlogPageData, getPagination } from 'app/utils/blog-data'
 import { log } from 'app/utils/common'
+import store from 'app/store'
+
 const axios = require('axios')
 const CancelToken = axios.CancelToken
 
@@ -62,8 +63,7 @@ router.beforeEach(function loadBlogPage (to, from, next) {
     axios.get(to.path, {
       cancelToken: new CancelToken((c) => (cancelLoad = c))
     }).then((resp) => {
-      refreshBlogData(resp.data)
-      blog.blogPageData = getBlogPageData()
+      blog.$store.commit('blog/reloadBlogData', resp.data)
 
       log.d('router', 'loaded ' + to.fullPath)
       blog.isLoading = false
@@ -91,21 +91,20 @@ router.beforeEach(function loadBlogPage (to, from, next) {
 
 export default {
   data: () => ({
-    nav: getNavs(),
     isLoading: false,
-    router,
     accent: false,
-    blogPageData: getBlogPageData(),
     errorMessage: '404'
   }),
   computed: {
-    pageType: function () { return this.blogPageData.type }
+    pageType: function () { return this.$store.getters['blog/pageType'] },
+    rootPath: function () { return this.$store.getters['blog/rootPath'] }
   },
   watch: {
     isLoading: function (val, oldVal) {
       if (!val) this.accent = false
     }
   },
+  store,
   components: {
     Nav, Home, Posts, NotFound, Construction, MdCardTransitionContent, Background
   },
@@ -113,8 +112,7 @@ export default {
   methods: {
     showAccent: function () {
       this.accent = true
-    },
-    getPagination
+    }
   }
 }
 </script>

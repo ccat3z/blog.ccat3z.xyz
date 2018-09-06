@@ -16,19 +16,16 @@ import PostItemCard from 'components/cards/PostItemCard.vue'
 import RouterButtonCard from 'components/cards/RouterButtonCard.vue'
 
 import $ from 'jquery'
-import { getPagination } from 'app/utils/blog-data'
 
 var hash = require('object-hash')
 
 export default {
   data: () => ({
-    postsByPage: [], // append in watch
-    pagination: getPagination() // update in watch
+    postsByPage: [] // append in watch
   }),
-  props: {
-    content: String
-  },
   computed: {
+    pagination: function () { return this.$store.getters['blog/pagination'] },
+    content: function () { return this.$store.getters['blog/content'] },
     currentPageNum: function () {
       return this.pagination.findIndex((a) => a === '#')
     },
@@ -51,16 +48,10 @@ export default {
     content: {
       handler: function () { this.loadPost() },
       immediate: true
-    },
-    'pagination.key': function () { // on load different root page
-      this.postsByPage = []
-      this.loadPost()
     }
   },
   methods: {
     loadPost: function () {
-      this.pagination = getPagination()
-
       // ref: https://vuejs.org/v2/guide/list.html#Caveats
       this.$set(this.postsByPage, this.currentPageNum, $('ul.posts-list > li', $('<div>').html($(this.content))).map((i, e) => ({
         title: $('a.post-title', e).html(),

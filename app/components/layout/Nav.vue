@@ -21,10 +21,6 @@ export default {
     active: false
   }),
   props: {
-    nav: {
-      type: Array,
-      default: () => []
-    },
     isProcessing: {
       type: Boolean,
       default: false
@@ -33,6 +29,9 @@ export default {
       type: Boolean,
       default: true
     }
+  },
+  computed: {
+    nav: function () { return this.$store.getters['blog/nav'] }
   },
   mixins: [mixin]
 }

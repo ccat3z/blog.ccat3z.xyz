@@ -39,7 +39,6 @@
     "file-loader": "^2.0.0",
     "find": "^0.2.9",
     "html-webpack-externals-plugin": "^3.8.0",
-    "html-webpack-include-assets-plugin": "https://codeload.github.com/imvvk/html-webpack-include-assets-plugin/tar.gz/master",
     "html-webpack-plugin": "^4.0.0-alpha",
     "ignore-loader": "^0.1.2",
     "mini-css-extract-plugin": "^0.4.2",

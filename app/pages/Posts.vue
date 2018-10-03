@@ -15,9 +15,9 @@ import MasonryList from 'components/pages/MasonryList.vue'
 import PostItemCard from 'components/cards/PostItemCard.vue'
 import RouterButtonCard from 'components/cards/RouterButtonCard.vue'
 
-import $ from 'jquery'
+import { getPostInfo } from 'pages/Post.vue'
 
-var hash = require('object-hash')
+import $ from 'jquery'
 
 export default {
   data: () => ({
@@ -53,17 +53,11 @@ export default {
   methods: {
     loadPost: function () {
       // ref: https://vuejs.org/v2/guide/list.html#Caveats
-      this.$set(this.postsByPage, this.currentPageNum, $('ul.posts-list > li', $('<div>').html($(this.content))).map((i, e) => ({
-        title: $('a.post-title', e).html(),
-        href: $('a.post-title', e).attr('href'),
-        date: $('.post-date', e).text(),
-        shortDescription: $('.post-short-description', e).text(),
-        tags: $('.post-tags > li > a.post-tag', e).map((i, e) => ({
-          name: $(e).text(),
-          href: $(e).attr('href')
-        })).toArray(),
-        id: hash($(e).html())
-      })).toArray())
+      this.$set(
+        this.postsByPage,
+        this.currentPageNum,
+        $('ul.posts-list > li', $('<div>').html($(this.content))).toArray().map(getPostInfo)
+      )
     }
   },
   components: {

@@ -2,4 +2,10 @@
 layout: pure
 ---
 
-<div class="post">{{ content }}</div>
+<div class="post">
+  {% assign post = page %}
+  {% include layout/post-info.html %}
+  <div class="content">
+    {{ content }}
+  </div>
+</div>

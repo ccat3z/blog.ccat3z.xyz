@@ -1,6 +1,6 @@
 <template>
     <v-card :id="id" class="post-item-card" @click.native="setTarget(id)">
-      <v-card-media :src="lowPolyArt" height="100px" />
+      <v-card-media :src="post.image" height="100px" />
 
       <v-card-title class="post-item-card-title">
         <div>
@@ -26,16 +26,12 @@
 <script>
 import { UtilsMixin as MdCardTransitionUtilsMixin } from 'components/layout/MdCardTransitionContent.vue'
 var hash = require('object-hash')
-var Trianglify = require('trianglify')
 
 export default {
   props: {
     post: Object
   },
   computed: {
-    lowPolyArt: function () {
-      return Trianglify({width: 512, height: 512, seed: this.id}).png()
-    },
     id: function () {
       return hash(this.post)
     }

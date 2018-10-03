@@ -4,6 +4,7 @@
     <md-card-transition-content>
       <home v-if="pageType === 'home'">
       </home>
+      <post v-else-if="pageType === 'post'" />
       <posts v-else-if="pageType === 'posts-list'" :key="rootPath" />
       <not-found v-else-if="pageType === 'not-found'" :key="errorMessage">{{ errorMessage }}</not-found>
       <construction v-else/>
@@ -21,6 +22,7 @@ import 'vuetify/dist/vuetify.min.css'
 import Vuetify from 'vuetify'
 
 import Home from 'pages/Home.vue'
+import Post from 'pages/Post.vue'
 import Posts from 'pages/Posts.vue'
 import NotFound from 'pages/NotFound.vue'
 import Construction from 'pages/Construction.vue'
@@ -106,7 +108,7 @@ export default {
   },
   store,
   components: {
-    Nav, Home, Posts, NotFound, Construction, MdCardTransitionContent, Background
+    Nav, Home, Post, Posts, NotFound, Construction, MdCardTransitionContent, Background
   },
   router,
   methods: {

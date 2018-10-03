@@ -74,7 +74,7 @@ export default {
       this.fromCards = getTargetViewFrom(el)
 
       // clone and prepare for covering target leaving card
-      this.fakeCard.css({zIndex: 9})
+      this.fakeCard.css({ zIndex: 9 })
       this.fakeCard.css(this.cloneCardStyle(this.fromCards.targetCard))
 
       // avoid double shadow
@@ -82,10 +82,10 @@ export default {
     },
     leave: function (el, done) {
       // hide other leaving card
-      this.fromCards.otherCards.velocity({opacity: 0}, {duration: 'fast'})
+      this.fromCards.otherCards.velocity({ opacity: 0 }, { duration: 'fast' })
 
       // cover target leaving card
-      this.fakeCard.velocity({opacity: 1}, {complete: done, duration: 'fast'})
+      this.fakeCard.velocity({ opacity: 1 }, { complete: done, duration: 'fast' })
     },
     afterLeave: function (el) {
       // card leaved, enable shadow on fake card
@@ -95,26 +95,26 @@ export default {
       this.toCards = getTargetViewFrom(el)
 
       // hide entering card
-      this.toCards.targetCard.css({opacity: 0})
-      this.toCards.otherCards.css({opacity: 0})
+      this.toCards.targetCard.css({ opacity: 0 })
+      this.toCards.otherCards.css({ opacity: 0 })
     },
     enter: function (el, done) {
       // move fake card
-      this.fakeCard.velocity(this.cloneCardStyle(this.toCards.targetCard), {complete: done})
+      this.fakeCard.velocity(this.cloneCardStyle(this.toCards.targetCard), { complete: done })
     },
     afterEnter: function (el) {
       // show entering card
-      this.toCards.targetCard.css({opacity: 1})
-      this.toCards.otherCards.velocity({opacity: 1}, {duration: 'fast'})
+      this.toCards.targetCard.css({ opacity: 1 })
+      this.toCards.otherCards.velocity({ opacity: 1 }, { duration: 'fast' })
 
       // avoid double shadow
       this.hideFakeShadow = true
 
       // hide fake card
-      this.fakeCard.velocity({opacity: 0}, {duration: 'fast', complete: () => this.fakeCard.css('z-index', -1)})
+      this.fakeCard.velocity({ opacity: 0 }, { duration: 'fast', complete: () => this.fakeCard.css('z-index', -1) })
     },
     cloneCardStyle: function (card) {
-      let offset = card.offset() || {top: 0, left: 0}
+      let offset = card.offset() || { top: 0, left: 0 }
       return {
         top: offset.top - $(window).scrollTop() + 'px',
         left: offset.left + 'px',

@@ -21,7 +21,7 @@ export default {
     }
   },
   mounted: function () {
-    this.$nextTick(() => $('.masonry-list-grid').isotope())
+    $('.masonry-list-grid').isotope()
   },
   updated: function () {
     this.$nextTick(() => $('.masonry-list-grid').isotope('reloadItems').isotope())

@@ -19,14 +19,17 @@
 import { rgb2Hex } from 'app/utils/common'
 import $ from 'jquery'
 
-function getTargetViewFrom (e) {
+function getTargetViewFrom (e, prefCardID) {
   var cards = $('.v-card', e)
+  var cardsPref = prefCardID !== undefined ? cards.filter((i, e) => $(e).attr('id') === prefCardID) : []
   var cardsInViewport = cards.filter((i, e) => $(e).visible(false)) // entire visible
   var cardsHasTargetClass = cards.filter((i, e) => $(e).hasClass('target-card'))
 
   var targetCard
   if (cardsHasTargetClass.length > 0) {
     targetCard = $(cardsHasTargetClass[0])
+  } else if (cardsPref.length > 0) {
+    targetCard = $(cardsPref[0])
   } else if (cardsInViewport.length > 0) {
     targetCard = $(cardsInViewport[0])
   } else {
@@ -57,7 +60,9 @@ export default {
   data: () => ({
     hideFakeShadow: false,
     fromCards: undefined,
-    toCards: undefined
+    toCards: undefined,
+    sourceCardID: undefined,
+    leavingCardID: undefined
   }),
   computed: {
     fakeCard: () => $('.fake-card'),
@@ -79,6 +84,12 @@ export default {
 
       // avoid double shadow
       this.hideFakeShadow = true
+
+      // store leaving card id
+      this.leavingCardID = this.fromCards.targetCard.attr('id')
+
+      // store target card id
+      this.sourceCardID = this.fromCards.targetCard.attr('source-id')
     },
     leave: function (el, done) {
       // hide other leaving card
@@ -92,7 +103,7 @@ export default {
       this.hideFakeShadow = false
     },
     beforeEnter: function (el) {
-      this.toCards = getTargetViewFrom(el)
+      this.toCards = getTargetViewFrom(el, this.sourceCardID)
 
       // hide entering card
       this.toCards.targetCard.css({ opacity: 0 })
@@ -112,6 +123,9 @@ export default {
 
       // hide fake card
       this.fakeCard.velocity({ opacity: 0 }, { duration: 'fast', complete: () => this.fakeCard.css('z-index', -1) })
+
+      // set from card id
+      this.toCards.targetCard.attr('source-id', this.leavingCardID)
     },
     cloneCardStyle: function (card) {
       let offset = card.offset() || { top: 0, left: 0 }

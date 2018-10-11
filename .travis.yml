@@ -1,20 +1,36 @@
-language: ruby
-rvm:
-    - 2.5.0-p0
+language: python
+python: 3.6
 
 before_install:
     - nvm install node
     - npm i -g yarn
+    - rvm install 2.5.0-p0
+
+install:
     - yarn install
+    - bundle install --jobs=3 --retry=3
+    - pip install -r .deploy_scripts/requirements.txt
 
 script: yarn build
 
 deploy:
-    provider: pages
-    skip-cleanup: true
-    github-token: $GITHUB_TOKEN
-    keep-history: true
-    local-dir: dist
-    target-branch: gh-pages
-    on:
-        branch: jekyll
+    - provider: pages
+      skip-cleanup: true
+      github-token: "$GITHUB_TOKEN"
+      keep-history: true
+      local-dir: dist
+      target-branch: gh-pages
+      on:
+          branch: jekyll
+    - provider: script
+      skip_cleanup: true
+      script: python .deploy_scripts/qiniusync.py
+      on:
+          branch: jekyll
+
+env:
+    global:
+        - secure: q9iECYbEpKPR94JC3JoX03grs7O1W5Q0F9rbEc/tfmMzEcuXAeMN8l0HFSL8ZrU0IK71bk2jx3BbnZ+8SEud3KDdtb2y8pRL3HQkbhZP0WwKo3p4hZhP3g/puy2ZukKDklnRtL9UXfVBmj2/kTaPzHBnPQ70mPhqNllf/gc161Llv8mY4q8z7jziSYizUTLTGkxKz58r9fH92bOWV9hN7BZseUxx+EeZ/oul2VSG3E7sgjPduV5h13jSbscPDBz0uPpnqcnTfpHoU/BRt1razw5r+fSoVgWmxJrK4QJvB9ZZ94so6VduHroE2vPCunzNbpsfIe6LgmPNm6aJI2t/5xpCu9CxMP4HKNIEVzrJ94NzDLTjUEuo+Z8LU9kKDJiScz59tnz18ZL/qyIDD0MJ4NTQ6L3s7RAssAUkTc4fVSIL/9ya0H0/2WdZQSEi2T1ULi9TDC+Bl4ipHqiMG4zfw6mnPtNmxEl8Kz7QgeGJbbCVRh+TZgFPJV3bhRaI66+uDd8hO30PRhJe2nkyRCfLOzFcX4YhxEY+ynOETCsMp3uFnljXETWRDQPOYtGzQ0hrOjrm0df3yJMT7CgAGIxy6JhVJwxOQgrqBhV0Ptp6gtOC5ah97ytDcZfbexW2BhJnHbGRaMN3zE2O6HepK4CWBb+UPAcA7nWY+Qj1yOGmkUs=
+        - secure: qGPOo2JhbsjUDjKPUbrvD7c7U2hAnPPXa6P3fjQ6yOFhyOKyaLR2zcZlGtd6GUk8ryHQQsBuYJkDx9JHu0iPBuVI7g+wJtxkB5IaXJowk8VgX/TfavJ+jSFnkJQzLv3l1Q2oImD0x7r6WmVqoaGqCpGllW2JfVFZRvJ7KJxDgj8PePnNntiQy0MM1rovpAO6NpkFeh3b+emSmHrn+itoEIyXRRKiaJUuZNzUiVU2luY5WTuSpS6geMX50hDT1C8WTKZwrmX6Ow1FkruyV5voQ911CI2/7flsJ2XL0FQcUAlP7EoY8WAHa+JxpmTI7XxYdx3WtEnW4/ozJPWkgprgXENfkCPCDPMSRkTeHf/XvYXY0skOc9wrlS0AB1EmHduxxzfiBpIx6CSf/QpHtEU+c+awNF07YEL3RJYWUu/astCPoX9whfYlk1oNNPlFjyAUWUzCvobtTIisrmU369gxp71eFoGnWipbfbMfnjS7juEY4dFjlFF55UHW8bTpb9WrjEAu6eNXGJQTTW75dV0Cgrt0AkJs6ADsL6y7bwUVmV7kgrYo87elfW8gcl65UoeBGcrM2bponyv9ph1NwPc+lSK22pFMEzxL4Ompn0Upts43G7q/xlweES+/yrexkXTZvUI8niqW/GFpi5/+7kuceIezboc1d90BKeFTZqgncUE=
+        - QINIU_BUCKET=blog
+        - QINIU_PATH=dist

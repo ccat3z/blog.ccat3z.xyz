@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+qiniu = "*"
+click = "*"
+
+[dev-packages]
+ptpython = "==0.41"
+neovim = "*"
+
+[requires]
+python_version = "3.7"

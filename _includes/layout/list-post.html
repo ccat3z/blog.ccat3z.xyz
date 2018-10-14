@@ -1,0 +1,8 @@
+<ul class="posts-list">
+  {% if list-posts == null %} {% assign list-posts = site.posts %} {% endif %}
+  {% for post in list-posts %}
+  <li>
+    {% include layout/post-info.html %}
+  </li>
+  {% endfor %}
+</ul>

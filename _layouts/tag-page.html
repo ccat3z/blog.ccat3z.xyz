@@ -1,0 +1,8 @@
+---
+layout: pure
+---
+
+<div class="posts-list">
+{% assign list-posts = site.tags[page.title] %}
+{% include layout/list-post.html %}
+</div>

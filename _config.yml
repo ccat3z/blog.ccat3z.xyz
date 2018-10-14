@@ -1,8 +1,9 @@
 name:               "c0ldcat's blog"
-description:        "一个菜鸡全栈大一狗"
+description:        "Student / Programmer"
 
-url:                "//blog.c0ldcat.ml"
+url:                "//c0ldcat.cc"
 author:             "c0ldcat"
+avatar:             "/images/c0ldcat.svg"
 
 baseurl:            ""
 
@@ -11,13 +12,20 @@ markdown:           kramdown
 timezone:           Asia/Shanghai
 
 nav:
-  - name:           "🖊️"
+  - name:           "home"
+    icon:           "home"
+    href:           "/"
+  - name:           "post"
+    icon:           "create"
     href:           "/posts"
-  - name:           "🎈"
+  - name:           "projects"
+    icon:           "code"
     href:           "/projects"
-  - name:           "🔖"
+  - name:           "tags"
+    icon:           "bookmark"
     href:           "/tags"
-  - name:           "❤️"
+  - name:           "love"
+    icon:           "favorite"
     href:           "/love"
 
 defaults:
@@ -80,7 +88,7 @@ sass:
     sass_dir:         _sass
     style:            :compressed
 
-tag_page_layout: tag_page
+tag_page_layout: tag-page
 tag_page_dir: tag
 tag_permalink_style: pretty
 
@@ -96,11 +104,18 @@ plugins:
   - jekyll-paginate
 
 exclude:
-  - "*.dot"
   - ".*"
   - "Gemfile"
-  - "genGemfile.sh"
-  - "deploy.sh"
-  - "deploy_key"
-  - "deploy_key.enc"
+  - "Gemfile.lock"
   - "vendor"
+  - "app"
+  - "node_modules"
+  - "webpack.config.js"
+  - "yarn.lock"
+  - "package.json"
+  - "yarn-error.log"
+  - "webpack.common.js"
+  - "webpack.dev.js"
+  - "webpack.prod.js"
+  - "postcss.config.js"
+  - "dist"

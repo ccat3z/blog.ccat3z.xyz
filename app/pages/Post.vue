@@ -1,0 +1,108 @@
+<template>
+  <v-container fluid fill-height>
+    <v-layout justify-center>
+      <v-card class="post-card">
+        <v-card-title class="post-card-title">
+          <div>
+            <span class="prefix-info headline">
+              /
+
+              <span class="key-info" v-if="info.date">{{ info.date }} /</span>
+
+              <span v-if="info.tags.length > 0">
+                <span v-if="info.tags.length > 1">{</span>
+                <span v-for="(n, index) in info.tags" :key="index">
+                  <router-link :to="info.tags[index].href">{{ info.tags[index].name }}</router-link>
+                  <span v-if="index + 1 !== info.tags.length">, </span>
+                </span>
+                <span v-if="info.tags.length > 1">}</span>
+                <span>/</span>
+              </span>
+
+            </span>
+            <!-- <br> -->
+            <span class="headline">
+              {{ info.title }}
+            </span>
+          </div>
+        </v-card-title>
+        <v-card-text class="post-content" v-html="content" />
+      </v-card>
+    </v-layout>
+  </v-container>
+</template>
+
+<script>
+import $ from 'jquery'
+var hash = require('object-hash')
+var Trianglify = require('trianglify')
+
+export function getPostInfo (e) {
+  let id = hash($(e).html())
+
+  return {
+    title: $('a.post-title', e).html(),
+    href: $('a.post-title', e).attr('href'),
+    date: $('.post-date', e).text(),
+    shortDescription: $('.post-short-description', e).text(),
+    tags: $('.post-tags > li > a.post-tag', e).map((i, e) => ({
+      name: $(e).text(),
+      href: $(e).attr('href')
+    })).toArray(),
+    id,
+    image: Trianglify({ width: 512, height: 512, seed: id }).png()
+  }
+}
+
+export default {
+  data: () => ({
+    showPrefixInfo: false
+  }),
+  computed: {
+    _content: function () { return this.$store.getters['blog/content'] },
+    info: function () { return getPostInfo($(this._content).filter('div.post-info')) },
+    content: function () { return $(this._content).filter('div.content').html() }
+  }
+}
+</script>
+
+<style lang="scss">
+.post-card {
+  width: 100%;
+  max-width: 900px;
+  height: fit-content;
+  max-height: 100%;
+  padding: 20px;
+
+  @media only screen and (max-width: 600px) {
+    padding: 5px;
+  }
+
+  &-title {
+    .prefix-info {
+      color: #9e9e9e;
+
+      .key-info, a {
+        color: #616161;
+      }
+
+      a {
+        text-decoration: none;
+        transition: color 500ms;
+
+        &:hover {
+          color: #2196F3!important;
+        }
+      }
+    }
+  }
+
+  & .post-content {
+    & img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%
+    }
+  }
+}
+</style>

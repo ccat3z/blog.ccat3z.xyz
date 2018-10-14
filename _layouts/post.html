@@ -1,25 +1,11 @@
 ---
-layout: block-left
+layout: pure
 ---
 
-<div id="pages" class="block-right">
-  <div class="inner-post content">
-    <h1>{{ page.title }}</h1>
-    <div class="date-highlight">{% if page.date %}{{ page.date | date: '%d %b %Y' }}{% else %}&#x2756;{% endif %}</div>
+<div class="post">
+  {% assign post = page %}
+  {% include layout/post-info.html %}
+  <div class="content">
     {{ content }}
-    <div class="date-highlight">
-      <!--{{ page.tags.size | inspect }}-->
-      {% if page.tags.size != nil %}
-      {% assign last_tag_id = page.tags.size | minus: 1 %}
-      {% for tag in page.tags%}
-      <a class="tag" href="/tag/{{ tag | slugify: 'pretty' }}">{{ tag }}</a>
-      {% unless tag == page.tags[last_tag_id] %}
-      &nbsp;&sdot;&nbsp;
-      {% endunless %}
-      {% endfor %}
-      {% else %}
-      &#x2756;
-      {% endif %}
-    </div>
   </div>
 </div>

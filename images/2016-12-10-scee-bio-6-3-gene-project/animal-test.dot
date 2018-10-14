@@ -1,0 +1,21 @@
+digraph animal_test {
+    rankdir=LR
+    {
+        rank=same
+        node [shape="box"]
+        A [label="供卵细胞母羊"]
+        B [label="供核母羊"]
+    }
+    A细胞核[label="细胞核"]
+    A -> 有核细胞 -> {A细胞核, 无核卵细胞}
+    B -> 乳腺细胞
+    B细胞核 [label="细胞核"]
+    乳腺细胞 -> B细胞核 [label="取出细胞核"]
+    {无核卵细胞, B细胞核} -> 融合细胞
+    {
+        edge [dir="back"]
+        胚胎 -> 融合细胞 [label="体外培养, 分裂"]
+        代孕母羊 -> 胚胎
+        克隆羊 -> 代孕母羊 [label="产出"]
+    }
+}

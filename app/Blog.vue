@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- <background /> -->
-    <md-card-transition-content>
+    <md-card-transition-content class="blog-main-ui">
       <home v-if="pageType === 'home'">
       </home>
       <post v-else-if="pageType === 'post'" />
@@ -10,6 +10,7 @@
       <construction v-else/>
     </md-card-transition-content>
     <Nav :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
+    <ICP :show="pageType === 'home'" />
   </v-app>
 </template>
 
@@ -30,6 +31,7 @@ import Construction from 'pages/Construction.vue'
 import Nav from 'components/layout/Nav.vue'
 import Background from 'components/layout/Background.vue'
 import MdCardTransitionContent from 'components/layout/MdCardTransitionContent.vue'
+import ICP from 'components/ICP.vue'
 
 import 'app/style/hide-orig-data.css'
 
@@ -108,7 +110,7 @@ export default {
   },
   store,
   components: {
-    Nav, Home, Post, Posts, NotFound, Construction, MdCardTransitionContent, Background
+    Nav, Home, Post, Posts, NotFound, Construction, MdCardTransitionContent, Background, ICP
   },
   router,
   methods: {
@@ -120,9 +122,5 @@ export default {
 </script>
 
 <style>
-.blog-main-ui {
-  z-index: 1;
-}
-
 /* html { overflow-y: auto; } */
 </style>

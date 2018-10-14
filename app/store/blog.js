@@ -62,6 +62,10 @@ function getNav (data) {
   }).toArray()
 }
 
+function getICP (data) {
+  return $('#blog-data-icp').text()
+}
+
 const state = {
   _blogData: getBlogData()
 }
@@ -72,7 +76,8 @@ const getters = {
   content: (state, getters) => getters._blogContent.content,
   pagination: (state) => getPagination(state._blogData),
   nav: (state) => getNav(state._blogData),
-  rootPath: (state, getters) => getters.pagination.rootPath
+  rootPath: (state, getters) => getters.pagination.rootPath,
+  icp: (state) => getICP(state._blogData)
 }
 
 const mutations = {

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js",
     "dev-jekyll": "JEKYLL_DEV=y bundle exec jekyll build --watch",
-    "build": "bundle exec jekyll build; webpack --config webpack.prod.js"
+    "build": "bundle exec jekyll build -d _site_dist; webpack --config webpack.prod.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -10,7 +10,7 @@ layout: compress
     <title id="site-title">{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
     <link rel="icon" href="/favicon.png">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-    {% if site.dev == 'y' %}<link rel="stylesheet" type="text/css" href="/css/blog.css">{% endif %}
+    {% if jekyll.environment == "development" %}<link rel="stylesheet" type="text/css" href="/css/blog.css">{% endif %}
     {% seo %}
   </head>
 <body>
@@ -29,6 +29,6 @@ layout: compress
     </div>
     <div id="blog-data-icp">{{ site.icp }}</div>
   </div>
-  {% if site.dev == 'y' %}<script src="/js/blog.js"></script>{% endif %}
+  {% if jekyll.environment == "development" %}<script src="/js/blog.js"></script>{% endif %}
 </body>
 </html>

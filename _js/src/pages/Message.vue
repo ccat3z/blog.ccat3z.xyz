@@ -1,0 +1,38 @@
+<template>
+  <v-container fluid fill-height>
+    <v-layout align-center justify-center>
+      <v-card class="message-card" dark :color="color">
+        <v-icon x-large class="icon">{{ icon }}</v-icon>
+        <p class="title" v-html="message"></p>
+      </v-card>
+    </v-layout>
+  </v-container>
+</template>
+
+<script>
+import $ from 'jquery'
+
+export default {
+  computed: {
+    _content: function () { return this.$store.getters['blog/content'] },
+    icon: function () { return $(this._content).filter('div.icon').html() },
+    color: function () { return $(this._content).filter('div.color').html() },
+    message: function () { return $(this._content).filter('div.message').html() }
+  }
+}
+</script>
+
+<style lang="scss">
+.message-card {
+  width: fit-content;
+  max-width: 100%;
+  height: fit-content;
+  max-height: 100%;
+  padding: 50px 60px 30px 60px;
+  text-align: center;
+
+  & .icon {
+    padding-bottom: 30px;
+  }
+}
+</style>

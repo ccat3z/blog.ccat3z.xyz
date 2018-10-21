@@ -7,6 +7,7 @@
       <post v-else-if="pageType === 'post'" />
       <posts v-else-if="pageType === 'posts-list'" :key="rootPath" />
       <not-found v-else-if="pageType === 'not-found'" :key="errorMessage">{{ errorMessage }}</not-found>
+      <message v-else-if="pageType === 'message'" />
       <construction v-else/>
     </md-card-transition-content>
     <Nav :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
@@ -27,6 +28,7 @@ import Post from 'pages/Post.vue'
 import Posts from 'pages/Posts.vue'
 import NotFound from 'pages/NotFound.vue'
 import Construction from 'pages/Construction.vue'
+import Message from 'pages/Message.vue'
 
 import Nav from 'components/layout/Nav.vue'
 import Background from 'components/layout/Background.vue'
@@ -110,7 +112,7 @@ export default {
   },
   store,
   components: {
-    Nav, Home, Post, Posts, NotFound, Construction, MdCardTransitionContent, Background, ICP
+    Nav, Home, Post, Posts, NotFound, Construction, Message, MdCardTransitionContent, Background, ICP
   },
   router,
   methods: {

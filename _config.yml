@@ -93,15 +93,11 @@ tag_page_layout: tag-page
 tag_page_dir: tag
 tag_permalink_style: pretty
 
-tags_paginate: 10
-tags_paginate_path: "/tags/:num"
-
 paginate: 10
 paginate_path: "/posts/:num"
 
 plugins:
   - jekyll-seo-tag
-  - jekyll/tagging
   - jekyll-paginate
 
 exclude:

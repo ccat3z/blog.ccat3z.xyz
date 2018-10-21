@@ -4,8 +4,7 @@ title: 标签
 ---
 
 <ul class="posts-list">
-    {% assign tags = paginator.tags %}
-    {% for tag_object in tags %}
+    {% for tag_object in site.tags %}
     {% assign tag = tag_object[1] %}
     <li>
         <h2 class="list-post-title">

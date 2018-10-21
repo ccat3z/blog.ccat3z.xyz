@@ -67,6 +67,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'app/style/post.scss';
+
 .post-card {
   width: 100%;
   max-width: 900px;
@@ -98,11 +100,7 @@ export default {
   }
 
   & .post-content {
-    & img {
-      display: block;
-      margin: 0 auto;
-      max-width: 100%
-    }
+    @include post;
   }
 }
 </style>

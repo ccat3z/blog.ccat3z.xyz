@@ -12,7 +12,7 @@
           </div>
         </v-card-title>
 
-        <v-card-text>
+        <v-card-text class="home-card-content">
           <div v-html="message"></div>
         </v-card-text>
 
@@ -51,7 +51,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import 'app/style/post.scss';
+
 .home-card {
   width: 90%;
   max-width: 450px;
@@ -73,5 +75,12 @@ export default {
 
 .home-card-actions {
   margin-top: -8px;
+}
+
+.home-card-content {
+    @include post;
+    p {
+      margin: 10px;
+    }
 }
 </style>

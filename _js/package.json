@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js",
-    "dev-jekyll": "bundle exec jekyll build --watch",
-    "build": "JEKYLL_ENV=production bundle exec jekyll build -d _site_dist; webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

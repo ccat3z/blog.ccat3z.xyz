@@ -3,19 +3,19 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  context: path.resolve(__dirname, 'app'),
+  context: path.resolve(__dirname, 'src'),
   entry: './main.js',
-  resolve: {
-    alias: {
-      app: path.resolve(__dirname, 'app'),
-      components: path.resolve(__dirname, 'app/components'),
-      pages: path.resolve(__dirname, 'app/pages')
-    }
-  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/blog.[hash].js',
     publicPath: '/'
+  },
+  resolve: {
+    alias: {
+      app: path.resolve(__dirname, 'src'),
+      components: path.resolve(__dirname, 'src/components'),
+      pages: path.resolve(__dirname, 'src/pages')
+    }
   },
   module: {
     rules: [

@@ -3,6 +3,7 @@ const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const jekyll = process.env.JEKYLL_OUTPUT || '../_site'
 module.exports = merge(common, {
   mode: 'development',
   output: {
@@ -10,7 +11,7 @@ module.exports = merge(common, {
   },
   devServer: {
     host: '0.0.0.0',
-    contentBase: path.resolve(__dirname, '_site')
+    contentBase: path.resolve(__dirname, jekyll)
   },
   plugins: [
     new MiniCssExtractPlugin({

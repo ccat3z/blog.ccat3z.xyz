@@ -12,8 +12,7 @@ const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 
 const getModuleVersion = (module) => require(`${module}/package.json`).version
 
-const jekyllDist = '_site_dist'
-
+const jekyll = process.env.JEKYLL_OUTPUT || '../_site'
 module.exports = merge.smart(common, {
   mode: 'production',
   optimization: {
@@ -38,7 +37,7 @@ module.exports = merge.smart(common, {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, jekyllDist),
+      from: path.resolve(__dirname, jekyll),
       to: './',
       ignore: [ '*.html' ]
     }]),
@@ -46,9 +45,9 @@ module.exports = merge.smart(common, {
       filename: 'css/blog.[hash].css'
     })
   ].concat(
-    find.fileSync(/.*\.html$/, path.resolve(__dirname, jekyllDist))
+    find.fileSync(/.*\.html$/, path.resolve(__dirname, jekyll))
       .map((f) => (new HtmlWebpackPlugin({
-        filename: f.replace(path.resolve(__dirname, jekyllDist) + '/', ''), template: f
+        filename: f.replace(path.resolve(__dirname, jekyll) + '/', ''), template: f
       })))
   ).concat([
     new HtmlWebpackExternalsPlugin({

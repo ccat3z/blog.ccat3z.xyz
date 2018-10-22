@@ -11,5 +11,6 @@
     {% endunless %}
   {% endfor %}
   </ul>
+  {% if post.image %}<img class="post-image" src="{{ post.image }}" />{% endif %}
 </div>
 {% endif %}

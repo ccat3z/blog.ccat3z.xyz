@@ -2,6 +2,9 @@
   <v-container fluid fill-height>
     <v-layout justify-center>
       <v-card class="post-card">
+        <div class="post-card-image-box">
+          <img :src="info.image" />
+        </div>
         <v-card-title class="post-card-title">
           <div>
             <span class="prefix-info headline">
@@ -38,7 +41,9 @@ var hash = require('object-hash')
 var Trianglify = require('trianglify')
 
 export function getPostInfo (e) {
-  let id = hash($(e).html())
+  let id = hash($('a.post-title', e).attr('href'))
+  let image = $('img.post-image', e).attr('src') || Trianglify({ width: 512, height: 512, seed: id }).png()
+  console.log($('img.post-image', e))
 
   return {
     title: $('a.post-title', e).html(),
@@ -50,7 +55,7 @@ export function getPostInfo (e) {
       href: $(e).attr('href')
     })).toArray(),
     id,
-    image: Trianglify({ width: 512, height: 512, seed: id }).png()
+    image
   }
 }
 
@@ -80,7 +85,35 @@ export default {
     padding: 5px;
   }
 
+  &-image-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+
+    img {
+      min-width: 300px;
+      min-height: 300px;
+      max-width: 600px;
+      max-height: 600px;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(to bottom left, rgba(255, 255, 255, 0.3), white 25%);;
+      width: 600px;
+      height: 600px;
+      // z-index: -1;
+    }
+  }
+
   &-title {
+    position: relative;
+    z-index: 1;
+
     .prefix-info {
       color: #9e9e9e;
 
@@ -99,7 +132,10 @@ export default {
     }
   }
 
-  & .post-content {
+  .post-content {
+    position: relative;
+    z-index: 1;
+
     @include post;
   }
 }

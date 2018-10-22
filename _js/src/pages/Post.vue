@@ -80,6 +80,7 @@ export default {
   height: fit-content;
   max-height: 100%;
   padding: 20px;
+  overflow: hidden;
 
   @media only screen and (max-width: 600px) {
     padding: 5px;

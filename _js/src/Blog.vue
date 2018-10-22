@@ -11,6 +11,7 @@
     </md-card-transition-content>
     <Nav :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
     <ICP :show="pageType === 'home'" />
+    <v-snackbar v-model="accent" bottom :timeout="3000" color="red accent-2">{{ message }}</v-snackbar>
   </v-app>
 </template>
 
@@ -71,6 +72,7 @@ router.beforeEach(function loadBlogPage (to, from, next) {
 
       log.d('router', 'loaded ' + to.fullPath)
       blog.isLoading = false
+      next()
     }).catch((e) => {
       if (axios.isCancel(e)) {
         log.d('router', 'canceled ' + to.fullPath)
@@ -80,11 +82,9 @@ router.beforeEach(function loadBlogPage (to, from, next) {
       log.w('router', 'fail to load ' + to.fullPath)
       blog.isLoading = false
 
-      blog.errorMessage = e.response ? e.response.status : e.message
-      router.push('/404.html')
-    }).then(() => {
+      blog.message = e.response ? e.response.status : e.message
+      blog.accent = true
     })
-    next()
   } else {
     // something is loading
     cancelLoad()
@@ -97,27 +97,17 @@ export default {
   data: () => ({
     isLoading: false,
     accent: false,
-    errorMessage: '404'
+    message: null
   }),
   computed: {
     pageType: function () { return this.$store.getters['blog/pageType'] },
     rootPath: function () { return this.$store.getters['blog/rootPath'] }
   },
-  watch: {
-    isLoading: function (val, oldVal) {
-      if (!val) this.accent = false
-    }
-  },
   store,
   components: {
     Nav, Home, Post, Posts, Message, MessageBase, MdCardTransitionContent, Background, ICP
   },
-  router,
-  methods: {
-    showAccent: function () {
-      this.accent = true
-    }
-  }
+  router
 }
 </script>
 

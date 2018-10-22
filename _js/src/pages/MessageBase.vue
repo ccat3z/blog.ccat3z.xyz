@@ -1,20 +1,24 @@
 <template>
   <v-container fluid fill-height>
     <v-layout align-center justify-center>
-      <v-card class="construction-card" dark color="amber">
-        <v-icon x-large class="icon">format_paint</v-icon>
-        <p class="title">Coming soon</p>
+      <v-card class="message-card" dark :color="color">
+        <v-icon x-large class="icon">{{ icon }}</v-icon>
+        <p class="title" v-html="message"></p>
       </v-card>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-export default { }
+import $ from 'jquery'
+
+export default {
+  props: ['color', 'icon', 'message']
+}
 </script>
 
 <style lang="scss">
-.construction-card {
+.message-card {
   width: fit-content;
   max-width: 100%;
   height: fit-content;

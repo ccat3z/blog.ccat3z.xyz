@@ -99,6 +99,7 @@ paginate_path: "/posts/:num"
 plugins:
   - jekyll-seo-tag
   - jekyll-paginate
+  - jekyll/tagging
 
 exclude:
   - ".*"

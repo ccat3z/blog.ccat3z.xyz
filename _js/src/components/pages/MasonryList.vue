@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted: function () {
-    this.iso = new Isotope('.masonry-list-grid', { initLayout: false })
+    this.iso = new Isotope('.masonry-list-grid')
     refreshMasonry(this.iso)
   },
   updated: function () {

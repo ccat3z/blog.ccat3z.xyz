@@ -19,7 +19,6 @@ function refreshMasonry (iso) {
     iso.reloadItems()
     iso.arrange()
   })
-  imagesLoaded(iso.element, () => console.log('test'))
 }
 
 export default {

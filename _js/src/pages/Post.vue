@@ -43,7 +43,6 @@ var Trianglify = require('trianglify')
 export function getPostInfo (e) {
   let id = hash($('a.post-title', e).attr('href'))
   let image = $('img.post-image', e).attr('src') || Trianglify({ width: 512, height: 256, seed: id }).png()
-  console.log($('img.post-image', e))
 
   return {
     title: $('a.post-title', e).html(),

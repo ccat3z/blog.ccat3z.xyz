@@ -11,9 +11,21 @@
 </template>
 
 <script>
-import $ from 'jquery'
+const imagesLoaded = require('imagesloaded')
+const Isotope = require('isotope-layout')
+
+function refreshMasonry (iso) {
+  imagesLoaded(iso.element, () => {
+    iso.reloadItems()
+    iso.arrange()
+  })
+  imagesLoaded(iso.element, () => console.log('test'))
+}
 
 export default {
+  data: () => ({
+    iso: null
+  }),
   props: {
     itemSelector: {
       type: String,
@@ -21,10 +33,11 @@ export default {
     }
   },
   mounted: function () {
-    $('.masonry-list-grid').isotope()
+    this.iso = new Isotope('.masonry-list-grid', { initLayout: false })
+    refreshMasonry(this.iso)
   },
   updated: function () {
-    this.$nextTick(() => $('.masonry-list-grid').isotope('reloadItems').isotope())
+    this.$nextTick(() => refreshMasonry(this.iso))
   }
 }
 </script>
@@ -33,6 +46,11 @@ export default {
 .masonry-list-grid {
   width: 100%;
   max-width: 900px;
+
+  .grid-item {
+    position: fixed;
+    left: -900px;
+  }
 
   .grid-sizer, .grid-item {
     width: calc(100% / 3);

@@ -1,6 +1,6 @@
 <template>
     <v-card :id="id" class="post-item-card" @click.native="setTarget(id)">
-      <v-card-media :src="post.image" height="100px" />
+      <img class="post-item-card-image" :src="post.image"/>
 
       <v-card-title class="post-item-card-title">
         <div>
@@ -43,6 +43,11 @@ export default {
 <style lang="scss">
 .post-item-card {
   height: fit-content;
+
+  &-image {
+    width: 100%;
+    // height: 100px;
+  }
 
   &-title {
     .tag-group {

@@ -48,7 +48,8 @@
   }
 
   h1:before,
-  h2:before {
+  h2:before,
+  h3:before {
     content: "#";
     color: #42b983;
     position: absolute;
@@ -97,26 +98,31 @@
     max-width: 100%;
   }
 
-  // code
-  pre {
-    border-radius: 2px;
-    word-wrap: break-word;
-    padding: 12px 13px;
-    font-size: 13px;
-    overflow: auto;
+  // inline code
+  code.highlighter-rouge {
+    background: #eee;
+    padding: 0 3px;
+    margin: 0 3px;
   }
 
-  code {
-    padding: 3px 5px;
-    border-radius: 2px;
-    white-space: inherit;
-    color: inherit;
-    font-size: 85%;
-  }
+  // block code
+  div.highlighter-rouge {
+    .highlight {
+      pre.highlight {
+        word-wrap: break-word;
+        padding: 12px 12px;
+        overflow: auto;
 
-  .highlighter-rouge {
+        code {
+          color: #fff;
+        }
+      }
+    }
     @include highlight;
+
+    overflow: hidden;
     border-radius: 2px;
+    margin: 5px 0;
   }
 
   // overwrite vuetify.css

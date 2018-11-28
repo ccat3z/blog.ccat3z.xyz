@@ -2,8 +2,6 @@ const path = require('path')
 const find = require('find')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -15,13 +13,6 @@ const getModuleVersion = (module) => require(`${module}/package.json`).version
 const jekyll = process.env.JEKYLL_OUTPUT || '../_site'
 module.exports = merge.smart(common, {
   mode: 'production',
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-      }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
-  },
   module: {
     rules: [
       {

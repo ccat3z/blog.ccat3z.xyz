@@ -141,7 +141,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .fake-card {
   top: 0;
   left: 0;
@@ -154,5 +154,9 @@ export default {
 
 .v-card-transition-wrap {
   height: inherit;
+
+  .v-card {
+    transition: none;
+  }
 }
 </style>

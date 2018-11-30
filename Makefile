@@ -1,6 +1,6 @@
 OUTPUT=build
 JEKYLL=$(OUTPUT)/jekyll
-JEKYLL_DEV=/tmp/blog-jekyll-dev
+JEKYLL_DEV=$(OUTPUT)/jekyll-dev
 DIST=$(OUTPUT)/dist
 
 .PHONY: $(DIST) $(JEKYLL) clean dev-jekyll dev-webpack

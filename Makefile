@@ -11,6 +11,7 @@ $(DIST): build $(JEKYLL)
 	mv _js/dist $(DIST)
 
 $(JEKYLL): build
+	-rm -r $(JEKYLL)
 	JEKYLL_ENV=production bundle exec jekyll build -d $(JEKYLL)
 
 build:

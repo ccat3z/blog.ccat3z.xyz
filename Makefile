@@ -1,6 +1,6 @@
 OUTPUT=build
 JEKYLL=$(OUTPUT)/jekyll
-JEKYLL_DEV=/tmp/blog-jekyll-dev
+JEKYLL_DEV=$(OUTPUT)/jekyll-dev
 DIST=$(OUTPUT)/dist
 
 .PHONY: $(DIST) $(JEKYLL) clean dev-jekyll dev-webpack
@@ -11,6 +11,7 @@ $(DIST): build $(JEKYLL)
 	mv _js/dist $(DIST)
 
 $(JEKYLL): build
+	-rm -r $(JEKYLL)
 	JEKYLL_ENV=production bundle exec jekyll build -d $(JEKYLL)
 
 build:

@@ -20,8 +20,12 @@ image: "/images/2018-11-18-develop-wepy-on-linux/wechat.png"
 
 ## 方法2: 远程编辑
 
+<s>
 在用方法1更新1.02.1811150的时候发现了一个奇怪的问题, 就是模拟器渲染的时候莫名其妙得找不到文件 (*.wxml not found) 一时找不到原因.
 (截至现在(2018/11/18)我注意到cytle解决了这个问题, 有空我去研究一下)
+</s>
+(是微信开发者工具自己的bug)
+
 于是我又拿出了吃灰的Surface用作build机器. 通常都是在Windows上想办法远程编辑Linux服务器上的文件, 现在我们把方向反过来.
 
 这里主要解决两个问题:
@@ -68,10 +72,10 @@ Windows 10上开启OpenSSH Server的方法我就不多废话了. 得注意的一
 
 这个问题在`wepy`的[issue #1755][#1755]中也有人提到, 是文件写入不够快导致的, 在主机上是小概率事件, 在远程编辑上就成了完全事件.
 
-看`wepy`的源文件可以发现`wepy`的watch功能是通过`chokidar`实现的, 并且会读取`vue.config.js`中的`watchOption`传给`chokidar`.
+看`wepy`的源文件可以发现`wepy`的watch功能是通过`chokidar`实现的, 并且会读取`wepy.config.js`中的`watchOption`传给`chokidar`.
 默认`chokidar`会在文件出现的那一刻触发`add` event, 参考[paulmillr/chokidar](https://github.com/paulmillr/chokidar#performance), 我们只要设置`awaitWriteFinish`即可解决问题.
 
-在`vue.config.js`里加入这个
+在`wepy.config.js`里加入这个
 
 ``` js
 watchOption: {

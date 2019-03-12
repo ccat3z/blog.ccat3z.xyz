@@ -107,3 +107,5 @@ exclude:
   - "Gemfile.lock"
   - "vendor"
   - "dist"
+  - "build"
+  - "Makefile"

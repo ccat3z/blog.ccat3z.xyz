@@ -4,7 +4,7 @@ python: 3.6
 before_install:
     - nvm install node
     - npm i -g yarn
-    - rvm install 2.5.0-p0
+    - rvm install 2.6.1
 
 install:
     - cd _js; yarn install; cd ..

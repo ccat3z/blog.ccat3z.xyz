@@ -824,7 +824,6 @@
       background: inherit;
 }
 
-
 .masonry-list-grid {
   width: 100%;
   max-width: 900px;
@@ -847,7 +846,6 @@
 }
 }
 
-
 .fake-card {
   top: 0;
   left: 0;
@@ -863,7 +861,6 @@
 .v-card-transition-wrap .v-card {
     transition: none;
 }
-
 
 .post-item-card {
   height: -webkit-fit-content;
@@ -888,11 +885,9 @@
       color: #2196F3 !important;
 }
 
-
 .post-item-card-wrapper {
   padding: 6px;
 }
-
 
 .message-card {
   width: -webkit-fit-content;
@@ -935,7 +930,6 @@
   -webkit-filter: brightness(0.4);
           filter: brightness(0.4);
 }
-
 
 .icp-info {
   text-align: center;

@@ -26,7 +26,7 @@ module.exports = merge.smart(common, {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(),
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, jekyll),
       to: './',

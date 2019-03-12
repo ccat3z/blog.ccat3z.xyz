@@ -7,6 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 
 const getModuleVersion = (module) => require(`${module}/package.json`).version
 
@@ -22,6 +23,16 @@ module.exports = merge.smart(common, {
       {
         test: /material-design-icons\/iconfont\/material-icons.css$/,
         use: [ 'ignore-loader' ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [ '@babel/preset-env' ]
+          }
+        }
       }
     ]
   },
@@ -75,6 +86,13 @@ module.exports = merge.smart(common, {
           global: 'jQuery'
         }
       ]
+    }),
+    new HtmlWebpackIncludeAssetsPlugin({
+      assets: [
+        `https://cdn.jsdelivr.net/npm/@babel/polyfill@${getModuleVersion('@babel/polyfill')}/dist/polyfill.min.js`
+      ],
+      append: false,
+      publicPath: false
     })
   ])
 })

@@ -8,6 +8,7 @@
     "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.2.5",
     "axios": "^0.18.0",
     "imagesloaded": "^4.1.4",
     "isotope-layout": "^3.0.6",
@@ -23,7 +24,10 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
     "autoprefixer": "^9.3.1",
+    "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.0",
     "copy-webpack-plugin": "^5.0.1",
     "css-loader": "^2.1.1",

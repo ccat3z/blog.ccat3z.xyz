@@ -24,7 +24,7 @@ import Vuetify from 'vuetify'
 
 import Home from 'pages/Home.vue'
 import Post from 'pages/Post.vue'
-import Posts from 'pages/Posts.vue'
+import Posts from 'pages/posts/Posts.vue'
 import Message from 'pages/Message.vue'
 import MessageBase from 'pages/MessageBase.vue'
 

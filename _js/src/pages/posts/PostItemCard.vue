@@ -1,8 +1,10 @@
 <template>
     <v-card :id="id" class="post-item-card" @click.native="setTarget(id)">
-      <img class="post-item-card-image" :src="post.image"/>
+      <div class="image-box">
+        <img class="image" :src="post.image"/>
+      </div>
 
-      <v-card-title class="post-item-card-title">
+      <v-card-title class="title">
         <div>
           <span class="tag-group subheading">
             <span class="grey--text text--darken-2">{{ post.date }}</span>
@@ -40,16 +42,49 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .post-item-card {
-  height: fit-content;
+  overflow: hidden;
+  max-width: 700px;
 
-  &-image {
-    width: 100%;
-    // height: 100px;
+  @media only screen and (min-width: 450px) {
+    min-height: 180px;
+    padding: 20px;
   }
 
-  &-title {
+  &:hover {
+    & .image-box {
+      opacity: 0.3;
+    }
+  }
+
+  & .image-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: opacity 0.5s;
+    opacity: 1;
+
+    img {
+      min-width: 300px;
+      min-height: 300px;
+      max-width: 600px;
+      max-height: 600px;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(to bottom left, rgba(255, 255, 255, 0.3), white 25%);;
+      width: 600px;
+      height: 600px;
+    }
+  }
+
+  & .title {
+    position: relative;
     .tag-group {
       a.tag {
         text-decoration: none;

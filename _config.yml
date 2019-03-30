@@ -17,16 +17,16 @@ nav:
     href:           "/"
   - name:           "post"
     icon:           "create"
-    href:           "/posts"
+    href:           "/posts/"
   - name:           "projects"
     icon:           "code"
-    href:           "/projects"
+    href:           "/projects/"
   - name:           "tags"
     icon:           "bookmark"
-    href:           "/tags"
+    href:           "/tags/"
   - name:           "love"
     icon:           "favorite"
-    href:           "/love"
+    href:           "/love/"
 
 defaults:
   - scope:

@@ -6,12 +6,14 @@
     :key="posts[index].id"
     :post="v"
   />
+  <pagination class="pagination" />
 </div>
 </template>
 
 <script>
 import PostItemCard from './PostItemCard.vue'
 import { getPostInfo } from 'pages/Post.vue'
+import Pagination from 'components/layout/Pagination.vue'
 import $ from 'jquery'
 
 export default {
@@ -22,7 +24,7 @@ export default {
     }
   },
   components: {
-    PostItemCard
+    PostItemCard, Pagination
   }
 }
 </script>
@@ -61,5 +63,9 @@ $gap-small: 10px;
       }
     }
   }
+}
+
+.pagination {
+  padding: calc(#{$gap} / 2);
 }
 </style>

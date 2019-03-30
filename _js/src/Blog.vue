@@ -5,7 +5,7 @@
       <home v-if="pageType === 'home'">
       </home>
       <post v-else-if="pageType === 'post'" />
-      <posts v-else-if="pageType === 'posts-list'" :key="rootPath" />
+      <posts v-else-if="pageType === 'posts-list'" />
       <message v-else-if="pageType === 'message'" />
       <message-base v-else color="amber" icon="format_paint" message="Coming soon"/>
     </md-card-transition-content>
@@ -45,8 +45,7 @@ export default {
     message: null
   }),
   computed: {
-    pageType () { return this.$store.getters['blog/pageType'] },
-    rootPath () { return this.$store.getters['blog/rootPath'] }
+    pageType () { return this.$store.getters['blog/pageType'] }
   },
   store,
   components: {

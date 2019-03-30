@@ -41,11 +41,9 @@ function getPagination (data) {
     .sort((a, b) => parseInt(a.name) > parseInt(b.name))
     .map((e) => e.href)
 
-  if (pagination.length === 0) { // no pagination
+  // if no pagination
+  if (pagination.length === 0) {
     pagination[0] = '#'
-    pagination.rootPath = window.location.pathname.replace(/\/{0,1}$/, '')
-  } else { // has pagination
-    pagination.rootPath = window.location.pathname.replace(/\/{0,1}\d*\/{0,1}$/, '')
   }
 
   return pagination
@@ -71,8 +69,7 @@ const getters = {
   pageType: (state, getters) => getters._blogContent.pageType,
   content: (state, getters) => getters._blogContent.content,
   pagination: (state) => getPagination(state._blogData),
-  nav: (state) => getNav(state._blogData),
-  rootPath: (state, getters) => getters.pagination.rootPath
+  nav: (state) => getNav(state._blogData)
 }
 
 const mutations = {

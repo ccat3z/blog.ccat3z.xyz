@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid fill-height>
-    <v-layout justify-center>
+  <v-container>
+    <v-layout align-center column>
       <v-card class="post-card">
         <div class="post-card-image-box">
           <img :src="info.image" />
@@ -76,8 +76,6 @@ export default {
 .post-card {
   width: 100%;
   max-width: 900px;
-  height: fit-content;
-  max-height: 100%;
   padding: 20px;
   overflow: hidden;
 

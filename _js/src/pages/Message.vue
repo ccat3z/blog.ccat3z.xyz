@@ -4,6 +4,7 @@
 
 <script>
 import MessageBase from './MessageBase.vue'
+import $ from 'jquery'
 
 export default {
   computed: {

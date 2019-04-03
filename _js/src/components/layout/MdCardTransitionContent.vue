@@ -72,8 +72,6 @@ export default {
       }
     }
   },
-  watch: {
-  },
   methods: {
     beforeLeave: function (el) {
       this.fromCards = getTargetViewFrom(el)
@@ -103,6 +101,8 @@ export default {
       this.hideFakeShadow = false
     },
     beforeEnter: function (el) {
+      this.$el.scrollTo({ x: 0, y: 0 })
+
       this.toCards = getTargetViewFrom(el, this.sourceCardID)
 
       // hide entering card
@@ -153,7 +153,10 @@ export default {
 }
 
 .v-card-transition-wrap {
-  height: inherit;
+  overflow-y: auto;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 
   .v-card {
     transition: none;

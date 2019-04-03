@@ -399,10 +399,6 @@
 .post-card {
   width: 100%;
   max-width: 900px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  max-height: 100%;
   padding: 20px;
   overflow: hidden;
 }
@@ -834,7 +830,10 @@
   z-index: -1;
 }
 .v-card-transition-wrap {
-  height: inherit;
+  overflow-y: auto;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 .v-card-transition-wrap .v-card {
     transition: none;
@@ -954,3 +953,8 @@
 #blog-data {
   display: none;
 }
+
+html {
+  overflow: hidden;
+}
+

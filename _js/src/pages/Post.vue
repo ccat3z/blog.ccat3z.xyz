@@ -1,38 +1,36 @@
 <template>
-  <v-container>
-    <v-layout align-center column>
-      <v-card class="post-card">
-        <div class="post-card-image-box">
-          <img :src="info.image" />
-        </div>
-        <v-card-title class="post-card-title">
-          <div>
-            <span class="prefix-info headline">
-              /
+  <div class="post-container">
+    <v-card class="post-card">
+      <div class="post-card-image-box">
+        <img :src="info.image" />
+      </div>
+      <v-card-title class="post-card-title">
+        <div>
+          <span class="prefix-info headline">
+            /
 
-              <span class="key-info" v-if="info.date">{{ info.date }} /</span>
+            <span class="key-info" v-if="info.date">{{ info.date }} /</span>
 
-              <span v-if="info.tags.length > 0">
-                <span v-if="info.tags.length > 1">{</span>
-                <span v-for="(n, index) in info.tags" :key="index">
-                  <router-link :to="info.tags[index].href">{{ info.tags[index].name }}</router-link>
-                  <span v-if="index + 1 !== info.tags.length">, </span>
-                </span>
-                <span v-if="info.tags.length > 1">}</span>
-                <span>/</span>
+            <span v-if="info.tags.length > 0">
+              <span v-if="info.tags.length > 1">{</span>
+              <span v-for="(n, index) in info.tags" :key="index">
+                <router-link :to="info.tags[index].href">{{ info.tags[index].name }}</router-link>
+                <span v-if="index + 1 !== info.tags.length">, </span>
               </span>
+              <span v-if="info.tags.length > 1">}</span>
+              <span>/</span>
+            </span>
 
-            </span>
-            <!-- <br> -->
-            <span class="headline">
-              {{ info.title }}
-            </span>
-          </div>
-        </v-card-title>
-        <v-card-text class="post-content" v-html="content" />
-      </v-card>
-    </v-layout>
-  </v-container>
+          </span>
+          <!-- <br> -->
+          <span class="headline">
+            {{ info.title }}
+          </span>
+        </div>
+      </v-card-title>
+      <v-card-text class="post-content" v-html="content" />
+    </v-card>
+  </div>
 </template>
 
 <script>
@@ -73,68 +71,80 @@ export default {
 <style lang="scss">
 @import 'app/style/post.scss';
 
-.post-card {
+.post-container {
   width: 100%;
-  max-width: 900px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   padding: 20px;
-  overflow: hidden;
 
-  @media only screen and (max-width: 600px) {
-    padding: 5px;
+  @media only screen and (max-width: 500px) {
+    padding: 0;
   }
 
-  &-image-box {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 0;
+  .post-card {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    overflow: hidden;
 
-    img {
-      min-width: 300px;
-      min-height: 300px;
-      max-width: 600px;
-      max-height: 600px;
+    @media only screen and (max-width: 600px) {
+      padding: 5px;
     }
 
-    &:after {
-      content: "";
+    &-image-box {
       position: absolute;
       top: 0;
       right: 0;
-      background: linear-gradient(to bottom left, rgba(255, 255, 255, 0.3), white 25%);;
-      width: 600px;
-      height: 600px;
-      // z-index: -1;
-    }
-  }
+      z-index: 0;
 
-  &-title {
-    position: relative;
-    z-index: 1;
-
-    .prefix-info {
-      color: #9e9e9e;
-
-      .key-info, a {
-        color: #616161;
+      img {
+        min-width: 300px;
+        min-height: 300px;
+        max-width: 600px;
+        max-height: 600px;
       }
 
-      a {
-        text-decoration: none;
-        transition: color 500ms;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: linear-gradient(to bottom left, rgba(255, 255, 255, 0.3), white 25%);;
+        width: 600px;
+        height: 600px;
+        // z-index: -1;
+      }
+    }
 
-        &:hover {
-          color: #2196F3!important;
+    &-title {
+      position: relative;
+      z-index: 1;
+
+      .prefix-info {
+        color: #9e9e9e;
+
+        .key-info, a {
+          color: #616161;
+        }
+
+        a {
+          text-decoration: none;
+          transition: color 500ms;
+
+          &:hover {
+            color: #2196F3!important;
+          }
         }
       }
     }
-  }
 
-  .post-content {
-    position: relative;
-    z-index: 1;
+    .post-content {
+      position: relative;
+      z-index: 1;
 
-    @include post;
+      @include post;
+    }
   }
 }
 </style>

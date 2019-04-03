@@ -101,7 +101,7 @@ export default {
       this.hideFakeShadow = false
     },
     beforeEnter: function (el) {
-      this.$el.scrollTo({ x: 0, y: 0 })
+      this.$el.scrollTop = 0
 
       this.toCards = getTargetViewFrom(el, this.sourceCardID)
 

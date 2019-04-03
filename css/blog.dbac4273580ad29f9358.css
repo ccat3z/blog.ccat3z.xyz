@@ -919,9 +919,6 @@
           margin-bottom: 10px;
 }
 }
-.pagination[data-v-602b61e4] {
-  padding: calc(20px / 2);
-}
 
 .message-card {
   width: -webkit-fit-content;
@@ -939,15 +936,8 @@
     padding-bottom: 30px;
 }
 
-
-.nav-speed-dial {
-  z-index: 10
-}
-.nav-fade-enter-active, .nav-fade-leave-active {
-  transition: opacity .3s;
-}
-.nav-fade-enter, .nav-fade-leave-to /* .nav-fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+.nav-speed-dial[data-v-a5c905ce] {
+  z-index: 10;
 }
 
 #blog-data {

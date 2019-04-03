@@ -5,7 +5,7 @@
       <home v-if="pageType === 'home'">
       </home>
       <post v-else-if="pageType === 'post'" />
-      <posts v-else-if="pageType === 'posts-list'" />
+      <posts v-else-if="pageType === 'posts-list'" :key="$router.currentRoute.path" />
       <message v-else-if="pageType === 'message'" />
       <message-base v-else color="amber" icon="format_paint" message="Coming soon"/>
     </md-card-transition-content>

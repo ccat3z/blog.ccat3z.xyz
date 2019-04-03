@@ -1,7 +1,7 @@
 <template>
   <v-slide-x-reverse-transition>
-    <v-speed-dial bottom right direction="top" transition="scale-transition" fixed v-show="show" class="nav-speed-dial">
-      <v-btn slot="activator" color="blue" fab dark :loading="isProcessing">
+    <v-speed-dial v-model="fab" bottom right direction="top" transition="scale-transition" fixed v-show="show" class="nav-speed-dial">
+      <v-btn v-model="fab" slot="activator" color="blue" fab dark :loading="isProcessing">
         <v-icon>menu</v-icon>
         <v-icon>close</v-icon>
       </v-btn>
@@ -18,7 +18,8 @@ import mixin from 'app/utils/mixin'
 
 export default {
   data: () => ({
-    active: false
+    active: false,
+    fab: false
   }),
   props: {
     isProcessing: {

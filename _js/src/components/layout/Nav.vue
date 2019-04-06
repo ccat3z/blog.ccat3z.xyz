@@ -5,7 +5,7 @@
       bottom
       right
       direction="top"
-      transition="slide-y-transition"
+      transition="slide-y-reverse-transition"
       fixed
       v-show="show"
       class="nav-speed-dial"

@@ -948,6 +948,16 @@
     padding-bottom: 30px;
 }
 
+.message-card {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 90%;
+  max-height: 90%;
+  padding: 0;
+  text-align: center;
+}
+
 .nav-speed-dial[data-v-a5c905ce] {
   z-index: 10;
 }

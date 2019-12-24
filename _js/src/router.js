@@ -13,6 +13,7 @@ var router = new VueRouter({
 })
 
 let cancelLoad
+window.router = router
 
 router.beforeEach(async function loadBlogPage (to, from, next) {
   var blog = router.app

@@ -1,6 +1,7 @@
 ---
-title: Merry Christmas
+title: Merry Christmas to Hannah
 layout: page
+options: hide-nav
 ---
 
 <div class="christmas-card" onclick="goToContent()">

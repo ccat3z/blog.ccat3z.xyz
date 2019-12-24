@@ -1,7 +1,8 @@
 <template>
   <v-container fluid fill-height>
     <v-layout align-center justify-center>
-      <v-card class="message-card" v-html="content" />
+      <v-card class="post-card" v-html="content" />
+      </v-card>
     </v-layout>
   </v-container>
 </template>
@@ -10,9 +11,21 @@
 import $ from 'jquery'
 
 export default {
+  data: () => ({
+    content: ''
+  }),
   computed: {
     _content: function () { return this.$store.getters['blog/content'] },
-    content: function () { return $(this._content).filter('div.content').html() }
+  },
+  watch: {
+    _content: {
+      handler (n) {
+        if (this.content && this.content.length > 0) return
+
+        this.content = $(this._content).filter('div.content').html()
+      },
+      immediate: true
+    }
   }
 }
 </script>

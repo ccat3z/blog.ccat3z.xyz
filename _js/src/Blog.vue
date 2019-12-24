@@ -10,7 +10,7 @@
       <page v-else-if="pageType === 'page'" :key="$router.currentRoute.path" />
       <message-base v-else color="amber" icon="format_paint" message="Coming soon"/>
     </md-card-transition-content>
-    <Nav :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
+    <Nav :show="(pageType !== 'home' && !hideNav) || isLoading" :is-processing="isLoading"/>
     <v-snackbar v-model="accent" bottom :timeout="3000" color="red accent-2">{{ message }}</v-snackbar>
   </v-app>
 </template>
@@ -47,7 +47,8 @@ export default {
     message: null
   }),
   computed: {
-    pageType () { return this.$store.getters['blog/pageType'] }
+    pageType () { return this.$store.getters['blog/pageType'] },
+    hideNav () { return this.$store.getters['blog/hideNav'] }
   },
   store,
   components: {

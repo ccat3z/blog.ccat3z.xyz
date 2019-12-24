@@ -19,6 +19,7 @@ function getBlogContent (data) {
 
   return {
     pageType: $blogContent.attr('class'),
+    hideNav: $blogContent.attr('hide-nav') !== undefined,
     content: $blogContent.html()
   }
 }
@@ -67,6 +68,7 @@ const state = {
 const getters = {
   _blogContent: state => getBlogContent(state._blogData),
   pageType: (state, getters) => getters._blogContent.pageType,
+  hideNav: (state, getters) => getters._blogContent.hideNav,
   content: (state, getters) => getters._blogContent.content,
   pagination: (state) => getPagination(state._blogData),
   nav: (state) => getNav(state._blogData)

@@ -1,5 +1,5 @@
 ---
-title: Merry Christmas to Hannah
+title: Merry Christmas
 layout: page
 options: hide-nav
 ---

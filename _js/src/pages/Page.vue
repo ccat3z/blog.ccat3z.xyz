@@ -2,7 +2,6 @@
   <v-container fluid fill-height>
     <v-layout align-center justify-center>
       <v-card class="post-card" v-html="content" />
-      </v-card>
     </v-layout>
   </v-container>
 </template>

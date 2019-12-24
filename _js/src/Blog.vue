@@ -7,6 +7,7 @@
       <post v-else-if="pageType === 'post'" />
       <posts v-else-if="pageType === 'posts-list'" :key="$router.currentRoute.path" />
       <message v-else-if="pageType === 'message'" />
+      <page v-else-if="pageType === 'page'" />
       <message-base v-else color="amber" icon="format_paint" message="Coming soon"/>
     </md-card-transition-content>
     <Nav :show="pageType !== 'home' || isLoading" :is-processing="isLoading"/>
@@ -26,6 +27,7 @@ import Post from 'pages/Post.vue'
 import Posts from 'pages/posts/Posts.vue'
 import Message from 'pages/Message.vue'
 import MessageBase from 'pages/MessageBase.vue'
+import Page from 'pages/Page.vue'
 
 import Nav from 'components/layout/Nav.vue'
 // import Background from 'components/layout/Background.vue'
@@ -49,7 +51,7 @@ export default {
   },
   store,
   components: {
-    Nav, Home, Post, Posts, Message, MessageBase, MdCardTransitionContent /*, Background */
+    Nav, Home, Post, Posts, Message, MessageBase, MdCardTransitionContent, Page /*, Background */
   },
   methods: {
     showAccentMessage (msg) {

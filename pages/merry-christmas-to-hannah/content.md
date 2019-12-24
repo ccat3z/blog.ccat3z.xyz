@@ -75,6 +75,7 @@ From Scott & Apple
   margin: 0;
   padding: 0;
   width: 40px;
+  height: 40px;
 }
 </style>
 

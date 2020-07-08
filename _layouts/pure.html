@@ -10,7 +10,9 @@ layout: compress
     <title id="site-title">{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
     <link rel="icon" href="/favicon.png">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-    {% if jekyll.environment == "development" %}<link rel="stylesheet" type="text/css" href="/css/blog.css">{% endif %}
+    {% if jekyll.environment == "development" %}
+    <link href="/static/css/main.chunk.css" rel="stylesheet">
+    {% endif %}
     {% seo %}
   </head>
 <body>
@@ -28,6 +30,9 @@ layout: compress
       </ul>
     </div>
   </div>
-  {% if jekyll.environment == "development" %}<script src="/js/blog.js"></script>{% endif %}
+  {% if jekyll.environment == "development" %}
+  <script src="/static/js/bundle.js"></script>
+  <script src="/static/js/main.chunk.js"></script>
+  {% endif %}
 </body>
 </html>

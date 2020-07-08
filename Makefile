@@ -14,9 +14,9 @@ SITE_DIST_DIR=$(BUILD_OUTPUT_DIR)/site
 
 .PHONY: $(SITE_DIST_DIR)
 $(SITE_DIST_DIR): $(JEKYLL_DIST_DIR) | $(BUILD_OUTPUT_DIR)
-	cd $(JS_LIBRARY_SOURCE_DIR); JEKYLL_OUTPUT=$(realpath $(JEKYLL_DIST_DIR)) yarn build
+	cd $(JS_LIBRARY_SOURCE_DIR); PUBLIC_DIR=$(realpath $(JEKYLL_DIST_DIR)) pnpm run build
 	[ ! -d "$(SITE_DIST_DIR)" ] || rm -r $(SITE_DIST_DIR)
-	mv $(JS_LIBRARY_SOURCE_DIR)/dist $(SITE_DIST_DIR)
+	mv $(JS_LIBRARY_SOURCE_DIR)/build $(SITE_DIST_DIR)
 
 .PHONY: $(JEKYLL_DIST_DIR)
 $(JEKYLL_DIST_DIR): | $(BUILD_OUTPUT_DIR)
@@ -56,4 +56,4 @@ watch-jekyll: | $(BUILD_OUTPUT_DIR)
 .PHONY: watch-js
 watch-js: | $(BUILD_OUTPUT_DIR)
 	[ -d "$(JEKYLL_DEV_SERVER_DIR)" ] || { echo -e "\033[31mrun \`make watch-jekyll\` first\033[0m"; exit 1; }
-	cd $(JS_LIBRARY_SOURCE_DIR); JEKYLL_OUTPUT=$(realpath $(JEKYLL_DEV_SERVER_DIR)) yarn dev
+	cd $(JS_LIBRARY_SOURCE_DIR); PUBLIC_DIR=$(realpath $(JEKYLL_DEV_SERVER_DIR)) pnpm run start

@@ -2,6 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const find = require('find');
 const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
 
 // Make sure any symlinks in the project folder are resolved:
@@ -20,6 +21,7 @@ const publicUrlOrPath = getPublicUrlOrPath(
   require(resolveApp('package.json')).homepage,
   process.env.PUBLIC_URL
 );
+const publicDir = process.env.PUBLIC_DIR || resolveApp('public');
 
 const moduleFileExtensions = [
   'web.mjs',
@@ -53,8 +55,8 @@ module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
+  appPublic: publicDir,
+  appHtmls: find.fileSync(/.*\.html$/, publicDir).map(f => f.replace(publicDir + '/', '')),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),

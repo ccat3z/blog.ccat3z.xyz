@@ -51,9 +51,12 @@ install-dependecies:
 
 .PHONY: watch-jekyll
 watch-jekyll: | $(BUILD_OUTPUT_DIR)
-	cd $(JEKYLL_BUILDER_DIR); bundle exec jekyll serve -w -s $(SITE_SOURCE_DIR) -d $(JEKYLL_DEV_SERVER_DIR)
+	cd $(JEKYLL_BUILDER_DIR); JEKYLL_ENV=development bundle exec jekyll serve -w -s $(SITE_SOURCE_DIR) -d $(JEKYLL_DEV_SERVER_DIR)
+
+.PHONY: $(JEKYLL_DEV_SERVER_DIR)
+$(JEKYLL_DEV_SERVER_DIR): | $(BUILD_OUTPUT_DIR)
+	cd $(JEKYLL_BUILDER_DIR); JEKYLL_ENV=development bundle exec jekyll build -s $(SITE_SOURCE_DIR) -d $(JEKYLL_DEV_SERVER_DIR)
 
 .PHONY: watch-js
-watch-js: | $(BUILD_OUTPUT_DIR)
-	[ -d "$(JEKYLL_DEV_SERVER_DIR)" ] || { echo -e "\033[31mrun \`make watch-jekyll\` first\033[0m"; exit 1; }
+watch-js: $(JEKYLL_DEV_SERVER_DIR) | $(BUILD_OUTPUT_DIR)
 	cd $(JS_LIBRARY_SOURCE_DIR); PUBLIC_DIR=$(realpath $(JEKYLL_DEV_SERVER_DIR)) pnpm run start

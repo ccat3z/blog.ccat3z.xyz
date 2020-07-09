@@ -54,7 +54,7 @@ const resolveModule = (resolveFn, filePath) => {
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
-  appBuild: resolveApp('build'),
+  appBuild: process.env.BUILD_OUTPUT || resolveApp('build'),
   appPublic: publicDir,
   appHtmls: find.fileSync(/.*\.html$/, publicDir).map(f => f.replace(publicDir + '/', '')),
   appIndexJs: resolveModule(resolveApp, 'src/index'),

@@ -100,11 +100,4 @@ plugins:
   - jekyll-paginate
   - jekyll/tagging
 
-exclude:
-  - ".*"
-  - "Gemfile"
-  - "Gemfile.lock"
-  - "vendor"
-  - "dist"
-  - "build"
-  - "Makefile"
+exclude: []

@@ -1,6 +1,10 @@
 version: 2
 updates:
-  - package-ecosystem: "javascript"
+  - package-ecosystem: "npm"
     directory: "/app"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "bundler"
+    directory: "/jekyll"
     schedule:
       interval: "daily"

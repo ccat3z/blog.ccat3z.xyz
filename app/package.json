@@ -117,22 +117,6 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
       "^.+\\.module\\.(css|sass|scss)$"
     ],
-    "modulePaths": [
-      "/home/c0ldcat/Documents/blog/_js/node_modules/.pnpm/react-scripts@3.4.1_typescript@3.7.5/node_modules/react-scripts/bin/react-scripts.js/node_modules",
-      "/home/c0ldcat/Documents/blog/_js/node_modules/.pnpm/react-scripts@3.4.1_typescript@3.7.5/node_modules/react-scripts/bin/node_modules",
-      "/home/c0ldcat/Documents/blog/_js/node_modules/.pnpm/react-scripts@3.4.1_typescript@3.7.5/node_modules/react-scripts/node_modules",
-      "/home/c0ldcat/Documents/blog/_js/node_modules/.pnpm/react-scripts@3.4.1_typescript@3.7.5/node_modules",
-      "/home/c0ldcat/Documents/blog/_js/node_modules/.pnpm/node_modules",
-      "/home/c0ldcat/Documents/blog/_js/node_modules",
-      "/home/c0ldcat/Documents/blog/node_modules",
-      "/home/c0ldcat/Documents/node_modules",
-      "/home/c0ldcat/node_modules",
-      "/home/node_modules",
-      "/node_modules",
-      "/home/c0ldcat/Documents/blog/_js/node_modules/react-scripts/bin/react-scripts.js/node_modules",
-      "/home/c0ldcat/Documents/blog/_js/node_modules/react-scripts/bin/node_modules",
-      "/home/c0ldcat/Documents/blog/_js/node_modules/react-scripts/node_modules"
-    ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"

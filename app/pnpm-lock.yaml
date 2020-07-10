@@ -16,7 +16,7 @@ dependencies:
   babel-loader: 8.1.0_@babel+core@7.9.0+webpack@4.42.0
   babel-plugin-named-asset-import: 0.3.6_@babel+core@7.9.0
   babel-preset-react-app: 9.1.2
-  camelcase: 5.3.1
+  camelcase: 6.0.0
   case-sensitive-paths-webpack-plugin: 2.3.0
   css-loader: 3.4.2_webpack@4.42.0
   dotenv: 8.2.0
@@ -32,7 +32,7 @@ dependencies:
   file-loader: 4.3.0_webpack@4.42.0
   find: 0.3.0
   fs-extra: 8.1.0
-  html-webpack-plugin: 4.0.0-beta.11_webpack@4.42.0
+  html-webpack-plugin: 4.3.0_webpack@4.42.0
   identity-obj-proxy: 3.0.0
   jest: 24.9.0
   jest-environment-jsdom-fourteen: 1.0.1
@@ -1696,6 +1696,10 @@ packages:
       '@testing-library/dom': '>=5'
     resolution:
       integrity: sha512-oZ0Ib5I4Z2pUEcoo95cT1cr6slco9WY7yiPpG+RGNkj8YcYgJnM7pXmYmorNOReh8MIGcKSqXyeGjxnr8YiZbA==
+  /@types/anymatch/1.3.1:
+    dev: false
+    resolution:
+      integrity: sha512-/+CRPXpBDpo2RK9C68N3b2cOvO0Cf5B9aPijHsoDQTHivnGSObdOF2BRQOYjojWTDy6nQvMjmqRXIxH55VjxxA==
   /@types/babel__core/7.1.9:
     dependencies:
       '@babel/parser': 7.10.4
@@ -1744,6 +1748,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-GRTZLeLJ8ia00ZH8mxMO8t0aC9M1N9bN461Z2eaRurJo6Fpa+utgCwLzI4jQHcrdzuzp5WPN9jRwpsCQ1VhJ5w==
+  /@types/html-minifier-terser/5.1.0:
+    dev: false
+    resolution:
+      integrity: sha512-iYCgjm1dGPRuo12+BStjd1HiVQqhlRhWDOQigNxn023HcjnhsiFz9pc6CzJj4HwDCSQca9bxTL4PxJDbkdm3PA==
   /@types/istanbul-lib-coverage/2.0.3:
     dev: false
     resolution:
@@ -1819,10 +1827,18 @@ packages:
     dev: false
     resolution:
       integrity: sha512-6cFei7F7L4wwuM+IND/Q2cV1koQUvJ8iSV+Gwn0c3kvABZ691g7sp3hfEQHOUBJtccl1gPi+EyNjMIl9nGA0ug==
+  /@types/source-list-map/0.1.2:
+    dev: false
+    resolution:
+      integrity: sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==
   /@types/stack-utils/1.0.1:
     dev: false
     resolution:
       integrity: sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
+  /@types/tapable/1.0.6:
+    dev: false
+    resolution:
+      integrity: sha512-W+bw9ds02rAQaMvaLYxAbJ6cvguW/iJXNT6lTssS1ps6QdrMKttqEAMEG/b5CR8TZl3/L7/lH0ZV5nNR1LXikA==
   /@types/testing-library__dom/6.14.0:
     dependencies:
       pretty-format: 24.9.0
@@ -1844,6 +1860,31 @@ packages:
     dev: false
     resolution:
       integrity: sha512-iCdNPKU3IsYwRK9JieSYAiX0+aYDXOGAmrC/3/M7AqqSDKnWWVv07X+Zk1uFSL7cMTUYzv4lQRfohucEocn5/w==
+  /@types/uglify-js/3.9.3:
+    dependencies:
+      source-map: 0.6.1
+    dev: false
+    resolution:
+      integrity: sha512-KswB5C7Kwduwjj04Ykz+AjvPcfgv/37Za24O2EDzYNbwyzOo8+ydtvzUfZ5UMguiVu29Gx44l1A6VsPPcmYu9w==
+  /@types/webpack-sources/1.4.0:
+    dependencies:
+      '@types/node': 12.12.48
+      '@types/source-list-map': 0.1.2
+      source-map: 0.7.3
+    dev: false
+    resolution:
+      integrity: sha512-c88dKrpSle9BtTqR6ifdaxu1Lvjsl3C5OsfvuUbUwdXymshv1TkufUAXBajCCUM/f/TmnkZC/Esb03MinzSiXQ==
+  /@types/webpack/4.41.21:
+    dependencies:
+      '@types/anymatch': 1.3.1
+      '@types/node': 12.12.48
+      '@types/tapable': 1.0.6
+      '@types/uglify-js': 3.9.3
+      '@types/webpack-sources': 1.4.0
+      source-map: 0.6.1
+    dev: false
+    resolution:
+      integrity: sha512-2j9WVnNrr/8PLAB5csW44xzQSJwS26aOnICsP3pSGCEdsu6KYtfQ6QJsVUKHWRnm1bL7HziJsfh5fHqth87yKA==
   /@types/yargs-parser/15.0.0:
     dev: false
     resolution:
@@ -3020,6 +3061,12 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
+  /camelcase/6.0.0:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-8KMDF1Vz2gzOq54ONPJS65IvTUaB1cHJ2DMM7MbPmLZljDH1qpzzLsWdiN9pHh6qvkRVDTi/07+eNGch/oLU4w==
   /caniuse-api/3.0.0:
     dependencies:
       browserslist: 4.13.0
@@ -5485,8 +5532,11 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-ZPr5MNObqnV/T9akshPKbVgyOqLmy+Bxo7juKCfTfnjNniTAMdy4hz21YQqoofMBJD2kdREaqPPdThoR78Tgxg==
-  /html-webpack-plugin/4.0.0-beta.11_webpack@4.42.0:
+  /html-webpack-plugin/4.3.0_webpack@4.42.0:
     dependencies:
+      '@types/html-minifier-terser': 5.1.0
+      '@types/tapable': 1.0.6
+      '@types/webpack': 4.41.21
       html-minifier-terser: 5.1.1
       loader-utils: 1.4.0
       lodash: 4.17.16
@@ -5498,9 +5548,9 @@ packages:
     engines:
       node: '>=6.9'
     peerDependencies:
-      webpack: ^4.0.0
+      webpack: '>=4.0.0 < 6.0.0'
     resolution:
-      integrity: sha512-4Xzepf0qWxf8CGg7/WQM5qBB2Lc/NFI7MhU59eUDTkuQp3skZczH4UA1d6oQyDEIoMDgERVhRyTdtUPZ5s5HBg==
+      integrity: sha512-C0fzKN8yQoVLTelcJxZfJCE+aAvQiY2VUf3UuKrR4a9k5UMWYOtpDLsaXwATbcVCnI05hUS7L9ULQHWLZhyi3w==
   /htmlparser2/3.10.1:
     dependencies:
       domelementtype: 1.3.1
@@ -10095,6 +10145,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
+  /source-map/0.7.3:
+    dev: false
+    engines:
+      node: '>= 8'
+    resolution:
+      integrity: sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
   /spdx-correct/3.1.1:
     dependencies:
       spdx-expression-parse: 3.0.1
@@ -11513,7 +11569,7 @@ specifiers:
   babel-loader: 8.1.0
   babel-plugin-named-asset-import: ^0.3.6
   babel-preset-react-app: ^9.1.2
-  camelcase: ^5.3.1
+  camelcase: ^6.0.0
   case-sensitive-paths-webpack-plugin: 2.3.0
   css-loader: 3.4.2
   dotenv: 8.2.0
@@ -11529,7 +11585,7 @@ specifiers:
   file-loader: 4.3.0
   find: ^0.3.0
   fs-extra: ^8.1.0
-  html-webpack-plugin: 4.0.0-beta.11
+  html-webpack-plugin: 4.3.0
   identity-obj-proxy: 3.0.0
   jest: 24.9.0
   jest-environment-jsdom-fourteen: 1.0.1

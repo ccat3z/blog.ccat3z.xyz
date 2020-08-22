@@ -1,13 +1,23 @@
 NPM=pnpm
-NPM_RUN=pnpm run
-NPM_SCRIPTS=build start test
 
-.PHONY: $(NPM_SCRIPTS) install-dependecies
+BUILD_OUTPUT=dist
+PUBLIC_DIR=$(error PUBLIC_DIR is not set)
 
-all: build
+.PHONY: all
+all: $(BUILD_OUTPUT)
+$(BUILD_OUTPUT): build
 
+# npm scripts
+.PHONY: build start test
+start test: %:
+	$(NPM) run $@
+build:
+	BUILD_OUTPUT=$(CURDIR)/$(BUILD_OUTPUT) $(NPM) run $@
+
+# misc
+.PHONY: install-dependecies clean
 install-dependecies:
 	$(NPM) install
 
-$(NPM_SCRIPTS): %:
-	$(NPM_RUN) $@
+clean:
+	-rm -rf $(BUILD_OUTPUT)

@@ -58,7 +58,6 @@
     "resolve": "^1.17.0",
     "resolve-url-loader": "3.1.1",
     "sass-loader": "^9.0.3",
-    "semver": "6.3.0",
     "terser-webpack-plugin": "^4.1.0",
     "ts-pnp": "^1.2.0",
     "typescript": "~3.7.5",

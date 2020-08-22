@@ -15,8 +15,8 @@ build:
 	BUILD_OUTPUT=$(CURDIR)/$(BUILD_OUTPUT) $(NPM) run $@
 
 # misc
-.PHONY: install-dependecies clean
-install-dependecies:
+.PHONY: install-dependencies clean
+install-dependencies:
 	$(NPM) install
 
 clean:

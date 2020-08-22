@@ -38,12 +38,12 @@ watch:
 		'$(MAKE) -C $(MODULE_JS_APP) PUBLIC_DIR=$(CURDIR)/$(MODULE_JEKYLL)/build start'
 
 # misc
-.PHONY: clean install-dependecies
+.PHONY: clean install-dependencies
 clean:
 	-rm -rf $(SITE_DIST_DIR)
 	-$(MAKE) -C $(MODULE_JS_APP) clean
 	-$(MAKE) -C $(MODULE_JEKYLL) clean
 
-install-dependecies:
-	$(MAKE) -C $(MODULE_JS_APP) install-dependecies
-	$(MAKE) -C $(MODULE_JEKYLL) install-dependecies
+install-dependencies:
+	$(MAKE) -C $(MODULE_JS_APP) install-dependencies
+	$(MAKE) -C $(MODULE_JEKYLL) install-dependencies

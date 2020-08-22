@@ -25,6 +25,6 @@ clean:
 	-rm -r "$(PRODUCTION_BUILD_OUTPUT)"
 	-rm -r "$(DEVELOPMENT_BUILD_OUTPUT)"
 
-.PHONY: install-dependecies
-install-dependecies:
+.PHONY: install-dependencies
+install-dependencies:
 	bundle install

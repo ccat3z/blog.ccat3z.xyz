@@ -1,77 +1,47 @@
-###############
-#             #
-#   modules   #
-#             #
-###############
+CONCURRENTLY = concurrently
+RSYNC				 = rsync
 
-CONCURRENTLY=concurrently
+# settings
+SITE_DIST_DIR = dist
 
-###############
-#             #
-#   modules   #
-#             #
-###############
+# modules
+MODULE_JEKYLL  = jekyll
+MODULE_JS_APP  = app
+MODULE_CONTENT = content
 
-MODULE_JEKYLL=$(CURDIR)/jekyll
-MODULE_JS_APP=$(CURDIR)/app
-CONTENT_DIR=$(CURDIR)/content
+# dist build
+all: $(SITE_DIST_DIR)
 
-MAKE_JEKYLL=$(MAKE) -C "$(MODULE_JEKYLL)"
-MAKE_JS_APP=$(MAKE) -C "$(MODULE_JS_APP)"
+.PHONY: $(MODULE_JEKYLL)/dist
+$(MODULE_JEKYLL)/dist:
+	$(MAKE) -C $(MODULE_JEKYLL) CONTENT_SOURCE_DIR=$(CURDIR)/$(MODULE_CONTENT) dist
 
-################
-#              #
-#   settings   #
-#              #
-################
-
-BUILD_OUTPUT_DIR=$(CURDIR)/build
-SITE_DIST_DIR=$(BUILD_OUTPUT_DIR)/site
-JS_APP_PUBLIC_DIR=$(BUILD_OUTPUT_DIR)/public
-JS_APP_PUBLIC_DIR_DEVELOPMENT=$(BUILD_OUTPUT_DIR)/public-dev
-
-#############
-#           #
-#   build   #
-#           #
-#############
-
-.PHONY: $(SITE_DIST_DIR) $(JS_APP_PUBLIC_DIR)
-$(SITE_DIST_DIR): $(JS_APP_PUBLIC_DIR) | $(BUILD_OUTPUT_DIR)
-	$(MAKE_JS_APP) PUBLIC_DIR=$(JS_APP_PUBLIC_DIR) BUILD_OUTPUT=$(SITE_DIST_DIR) build
+.PHONY: $(MODULE_JS_APP)/dist
+$(MODULE_JS_APP)/dist: $(MODULE_JEKYLL)/dist
+	$(MAKE) -C $(MODULE_JS_APP) PUBLIC_DIR=$(CURDIR)/$(MODULE_JEKYLL)/dist dist
 	@echo -e "\033[32mBuild successfully.\033[0m"
-	@echo -e "Ouput dir: \033[34m$(SITE_DIST_DIR)\033[0m"
 
-$(JS_APP_PUBLIC_DIR): | $(BUILD_OUTPUT_DIR)
-	$(MAKE_JEKYLL) CONTENT_SOURCE_DIR=$(CONTENT_DIR) PRODUCTION_DIST_DIR=$(JS_APP_PUBLIC_DIR) $(JS_APP_PUBLIC_DIR)
+$(SITE_DIST_DIR): $(MODULE_JS_APP)/dist
+	rm -rf '$@'
+	cp -R '$<' '$@'
 
-##################
-#                #
-#   dev server   #
-#                #
-##################
-
+# dev build
 .PHONY: watch
-watch: | $(BUILD_OUTPUT_DIR) $(JS_APP_PUBLIC_DIR_DEVELOPMENT)
+watch:
+	mkdir -p '$(CURDIR)/$(MODULE_JEKYLL)/build'
 	$(CONCURRENTLY) -k \
-		-n 'jekyll,node' \
-		'$(MAKE_JEKYLL) CONTENT_SOURCE_DIR=$(CONTENT_DIR) DEVELOPMENT_SERVER_DIR=$(JS_APP_PUBLIC_DIR_DEVELOPMENT) watch' \
-		'$(MAKE_JS_APP) PUBLIC_DIR=$(JS_APP_PUBLIC_DIR_DEVELOPMENT) start'
+		-n 'jekyll,js-app' \
+		-c 'green,blue' \
+		'$(MAKE) -C $(MODULE_JEKYLL) CONTENT_SOURCE_DIR=$(CURDIR)/$(MODULE_CONTENT) watch' \
+		'$(MAKE) -C $(MODULE_JS_APP) PUBLIC_DIR=$(CURDIR)/$(MODULE_JEKYLL)/build start'
 
-############
-#          #
-#   misc   #
-#          #
-############
-
-$(BUILD_OUTPUT_DIR) $(JS_APP_PUBLIC_DIR_DEVELOPMENT): %:
-	mkdir -p $@
-
-.PHONY: clean
+# misc
+.PHONY: clean install-dependecies
 clean:
-	-rm -r $(BUILD_OUTPUT_DIR)
+	-rm -rf $(SITE_DIST_DIR)
+	-$(MAKE) -C $(MODULE_JS_APP) clean
+	-$(MAKE) -C $(MODULE_JEKYLL) clean
 
-.PHONY: install-dependecies
 install-dependecies:
-	$(MAKE_JS_APP) install-dependecies
-	$(MAKE_JEKYLL) install-dependecies
+	$(MAKE) -C $(MODULE_JS_APP) install-dependecies
+	$(MAKE) -C $(MODULE_JEKYLL) install-dependecies

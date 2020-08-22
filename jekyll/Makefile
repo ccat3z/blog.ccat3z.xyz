@@ -1,27 +1,30 @@
 JEKYLL=bundle exec jekyll
 
-BUILD_OUTPUT_DIR=$(CURDIR)/build
-PRODUCTION_DIST_DIR=$(BUILD_OUTPUT_DIR)/site
-DEVELOPMENT_SERVER_DIR=$(BUILD_OUTPUT_DIR)/jekyll-dev
+PRODUCTION_BUILD_OUTPUT=dist
+DEVELOPMENT_BUILD_OUTPUT=build
 CONTENT_SOURCE_DIR=$(error CONTENT_SOURCE_DIR is not set)
 
-all: $(PRODUCTION_DIST_DIR)
+all: $(PRODUCTION_BUILD_OUTPUT)
 
-$(BUILD_OUTPUT_DIR):
-	mkdir -p "$(BUILD_OUTPUT_DIR)"
+# prod build
+.PHONY: $(PRODUCTION_BUILD_OUTPUT)
+$(PRODUCTION_BUILD_OUTPUT):
+	mkdir -p '$@'
+	JEKYLL_ENV=production $(JEKYLL) build -s "$(CONTENT_SOURCE_DIR)" -d "$@"
 
+# dev build
+.PHONY: watch $(DEVELOPMENT_BUILD_OUTPUT)
+watch: $(DEVELOPMENT_BUILD_OUTPUT)
+$(DEVELOPMENT_BUILD_OUTPUT):
+	mkdir -p '$@'
+	JEKYLL_ENV=development $(JEKYLL) build -w -s "$(CONTENT_SOURCE_DIR)" -d "$@"
+
+# misc
 .PHONY: clean
 clean:
-	-rm -r "$(BUILD_OUTPUT_DIR)"
+	-rm -r "$(PRODUCTION_BUILD_OUTPUT)"
+	-rm -r "$(DEVELOPMENT_BUILD_OUTPUT)"
 
 .PHONY: install-dependecies
 install-dependecies:
 	bundle install
-
-.PHONY: $(PRODUCTION_DIST_DIR)
-$(PRODUCTION_DIST_DIR): | $(BUILD_OUTPUT_DIR)
-	JEKYLL_ENV=production $(JEKYLL) build -s "$(CONTENT_SOURCE_DIR)" -d "$(PRODUCTION_DIST_DIR)"
-
-.PHONY: watch
-watch: | $(BUILD_OUTPUT_DIR)
-	JEKYLL_ENV=development $(JEKYLL) build -w -s "$(CONTENT_SOURCE_DIR)" -d "$(DEVELOPMENT_SERVER_DIR)"

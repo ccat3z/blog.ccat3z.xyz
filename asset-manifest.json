@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.910c2ea5.chunk.css",
-    "main.js": "/static/js/main.ef19eb21.chunk.js",
-    "main.js.map": "/static/js/main.ef19eb21.chunk.js.map",
+    "main.js": "/static/js/main.444372c5.chunk.js",
+    "main.js.map": "/static/js/main.444372c5.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.89ca9b38.js",
     "runtime-main.js.map": "/static/js/runtime-main.89ca9b38.js.map",
-    "static/js/2.02679368.chunk.js": "/static/js/2.02679368.chunk.js",
-    "static/js/2.02679368.chunk.js.map": "/static/js/2.02679368.chunk.js.map",
+    "static/js/2.5a1fee78.chunk.js": "/static/js/2.5a1fee78.chunk.js",
+    "static/js/2.5a1fee78.chunk.js.map": "/static/js/2.5a1fee78.chunk.js.map",
     "404.html": "/404.html",
     "index.html": "/index.html",
     "love/index.html": "/love/index.html",
@@ -60,7 +60,7 @@
     "posts/z-uploader-usage/index.html": "/posts/z-uploader-usage/index.html",
     "projects/index.html": "/projects/index.html",
     "static/css/main.910c2ea5.chunk.css.map": "/static/css/main.910c2ea5.chunk.css.map",
-    "static/js/2.02679368.chunk.js.LICENSE.txt": "/static/js/2.02679368.chunk.js.LICENSE.txt",
+    "static/js/2.5a1fee78.chunk.js.LICENSE.txt": "/static/js/2.5a1fee78.chunk.js.LICENSE.txt",
     "tag/alpinelinux/index.html": "/tag/alpinelinux/index.html",
     "tag/android/index.html": "/tag/android/index.html",
     "tag/atom-editor/index.html": "/tag/atom-editor/index.html",
@@ -104,8 +104,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.89ca9b38.js",
-    "static/js/2.02679368.chunk.js",
+    "static/js/2.5a1fee78.chunk.js",
     "static/css/main.910c2ea5.chunk.css",
-    "static/js/main.ef19eb21.chunk.js"
+    "static/js/main.444372c5.chunk.js"
   ]
 }

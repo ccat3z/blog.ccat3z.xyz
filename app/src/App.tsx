@@ -7,6 +7,8 @@ import "./pages/Splash"
 
 if (process.env.NODE_ENV === 'development') {
   require("./pages/Debug")
+} else {
+  require("./pages/WIP")
 }
 
 function App() {

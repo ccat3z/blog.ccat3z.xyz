@@ -1,0 +1,33 @@
+name: Build Site
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v1.4.3
+      with:
+        node-version: 12.6.0
+    - name: Setup PNPM
+      uses: pnpm/setup@v1.2.0
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1.43.0
+      with:
+        ruby-version: 2.7.0
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: make install-dependencies
+    - name: Build site
+      run: make dist
+    - name: Deploy
+      uses: crazy-max/ghaction-github-pages@v2.1.2
+      with:
+        build_dir: dist
+        keep_history: true
+        jekyll: false
+      env:
+        github_token: ${{ secrets.GITHUB_TOKEN }}

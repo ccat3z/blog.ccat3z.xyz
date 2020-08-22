@@ -8,6 +8,7 @@ SITE_DIST_DIR = dist
 MODULE_JEKYLL  = jekyll
 MODULE_JS_APP  = app
 MODULE_CONTENT = content
+MODULE_ARCHIVE = archive
 
 # dist build
 all: $(SITE_DIST_DIR)
@@ -24,6 +25,7 @@ $(MODULE_JS_APP)/dist: $(MODULE_JEKYLL)/dist
 $(SITE_DIST_DIR): $(MODULE_JS_APP)/dist
 	rm -rf '$@'
 	cp -R '$<' '$@'
+	cp -R '$(MODULE_ARCHIVE)' '$@/archive'
 
 # dev build
 .PHONY: watch

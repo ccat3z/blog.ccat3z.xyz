@@ -954,7 +954,7 @@
   width: fit-content;
   max-width: 90%;
   max-height: 90%;
-  padding: 0;
+  /* padding: 0; */
   text-align: center;
 }
 

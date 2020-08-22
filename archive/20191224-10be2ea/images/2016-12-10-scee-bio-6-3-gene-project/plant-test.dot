@@ -1,0 +1,8 @@
+digraph plant_test {
+    rankdir=LR
+    A[label="离体组织器官(已分化)"]
+    B[label="愈伤组织(未分化)"]
+    A -> B
+    B -> {根, 芽} [label="再分化"]
+    {根, 芽} -> 新个体
+}

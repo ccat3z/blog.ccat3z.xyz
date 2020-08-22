@@ -1,0 +1,14 @@
+digraph center {
+    rankdir=LR
+    {
+        node[shape="none"]
+        DNA [label="DNA(基因)"]
+        RNA
+        蛋白质 [label="蛋白质(性状)"]
+    }
+    DNA -> DNA [label="复制"]
+    DNA -> RNA [label="转录"]
+    RNA -> DNA [label="逆转录" style="dashed"]
+    RNA -> RNA [label="复制" style="dashed"]
+    RNA -> 蛋白质 [label="翻译"]
+}

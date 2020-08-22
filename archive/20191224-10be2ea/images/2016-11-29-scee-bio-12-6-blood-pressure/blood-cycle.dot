@@ -1,0 +1,46 @@
+digraph G {
+node [fontname="Source Han Sans CN"]
+subgraph cluster_肺部{
+color="#e0e0e0"
+label="肺部"
+{
+    rank=same
+    node [color = "#009688"]
+    肺动脉,肺毛细血管,肺静脉
+}
+}
+subgraph cluster_心脏{
+label="心脏"
+color="#e0e0e0"
+{
+    rank=same
+    node [color = "#f44336"]
+    右心房,右心室
+    左心房,左心室
+}
+}
+subgraph cluster_血管{
+color="#e0e0e0"
+label="血管"
+{
+    rank=same
+    node [color = "#9627b0"]
+    毛细血管
+    主静脉,主动脉
+}
+}
+{ #静脉血
+    edge[color = "#9c27b0"]
+    毛细血管->主静脉->
+    右心房->右心室->
+    肺动脉->肺毛细血管->肺静脉->
+    左心房->左心室
+}
+{ #动脉血
+    edge[color = "#f44336"]
+    左心室->
+    主动脉->毛细血管
+}
+note1[label="!这里是静脉血!" shape=plaintext]
+note1->肺动脉
+}

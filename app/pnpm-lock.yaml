@@ -29,7 +29,7 @@ dependencies:
   eslint-plugin-jsx-a11y: 6.3.1_eslint@6.8.0
   eslint-plugin-react: 7.20.6_eslint@6.8.0
   eslint-plugin-react-hooks: 1.7.0_eslint@6.8.0
-  file-loader: 4.3.0_webpack@4.44.1
+  file-loader: 6.0.0_webpack@4.44.1
   find: 0.3.0
   fs-extra: 8.1.0
   html-webpack-plugin: 4.3.0_webpack@4.44.1
@@ -58,7 +58,7 @@ dependencies:
   terser-webpack-plugin: 4.1.0_webpack@4.44.1
   ts-pnp: 1.2.0_typescript@3.7.5
   typescript: 3.7.5
-  url-loader: 4.1.0_file-loader@4.3.0+webpack@4.44.1
+  url-loader: 4.1.0_file-loader@6.0.0+webpack@4.44.1
   webpack: 4.44.1_webpack@4.44.1
   webpack-dev-server: 3.11.0_webpack@4.44.1
   webpack-manifest-plugin: 2.2.0_webpack@4.44.1
@@ -5525,18 +5525,18 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-bCg29ictuBaKUwwArK4ouCaqDgLZcysCFLmM/Yn/FDoqndh/9vNuQfXRDvTuXKLxfD/JtZQGKFT8MGcJBK644g==
-  /file-loader/4.3.0_webpack@4.44.1:
+  /file-loader/6.0.0_webpack@4.44.1:
     dependencies:
-      loader-utils: 1.4.0
+      loader-utils: 2.0.0
       schema-utils: 2.7.0
       webpack: 4.44.1_webpack@4.44.1
     dev: false
     engines:
-      node: '>= 8.9.0'
+      node: '>= 10.13.0'
     peerDependencies:
-      webpack: ^4.0.0
+      webpack: ^4.0.0 || ^5.0.0
     resolution:
-      integrity: sha512-aKrYPYjF1yG3oX0kWRrqrSMfgftm7oJW5M+m4owoldH5C51C0RkIwB++JbRvEW3IU6/ZG5n8UvEcdgwOt2UOWA==
+      integrity: sha512-/aMOAYEFXDdjG0wytpTL5YQLfZnnTmLNjn+AIrJ/6HVnTfDqLsVKUUwkDf4I4kgex36BvjuXEn/TX9B/1ESyqQ==
   /file-uri-to-path/1.0.0:
     dev: false
     optional: true
@@ -11640,9 +11640,9 @@ packages:
     dev: false
     resolution:
       integrity: sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
-  /url-loader/4.1.0_file-loader@4.3.0+webpack@4.44.1:
+  /url-loader/4.1.0_file-loader@6.0.0+webpack@4.44.1:
     dependencies:
-      file-loader: 4.3.0_webpack@4.44.1
+      file-loader: 6.0.0_webpack@4.44.1
       loader-utils: 2.0.0
       mime-types: 2.1.27
       schema-utils: 2.7.0
@@ -12295,7 +12295,7 @@ specifiers:
   eslint-plugin-jsx-a11y: ^6.3.1
   eslint-plugin-react: ^7.20.6
   eslint-plugin-react-hooks: ^1.7.0
-  file-loader: 4.3.0
+  file-loader: ^6.0.0
   find: ^0.3.0
   fs-extra: ^8.1.0
   html-webpack-plugin: 4.3.0

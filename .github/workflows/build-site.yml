@@ -13,7 +13,7 @@ jobs:
       with:
         node-version: 12.6.0
     - name: Setup PNPM
-      uses: pnpm/setup@v1.2.0
+      uses: pnpm/action-setup@v1.2.0
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1.43.0
       with:

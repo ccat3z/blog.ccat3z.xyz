@@ -7,6 +7,7 @@ dependencies:
   '@types/react-router-dom': 5.1.5
   '@typescript-eslint/eslint-plugin': 3.9.1_c7bce4e140da76dc3e8429bfb1f7ccc2
   '@typescript-eslint/parser': 3.9.1_eslint@7.7.0+typescript@3.7.5
+  autoprefixer: 9.8.6
   babel-eslint: 10.1.0_eslint@7.7.0
   babel-loader: 8.1.0_fbab4801791d746d265885e0d19f0bda
   babel-plugin-named-asset-import: 0.3.6_@babel+core@7.11.4
@@ -2740,7 +2741,7 @@ packages:
   /autoprefixer/9.8.6:
     dependencies:
       browserslist: 4.14.0
-      caniuse-lite: 1.0.30001117
+      caniuse-lite: 1.0.30001120
       colorette: 1.2.1
       normalize-range: 0.1.2
       num2fraction: 1.2.2
@@ -3219,6 +3220,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-4tY0Fatzdx59kYjQs+bNxUwZB03ZEBgVmJ1UkFPz/Q8OLiUUbjct2EdpnXj0fvFTPej2EkbPIG0w8BWsjAyk1Q==
+  /caniuse-lite/1.0.30001120:
+    dev: false
+    resolution:
+      integrity: sha512-JBP68okZs1X8D7MQTY602jxMYBmXEKOFkzTBaNSkubooMPFOAv2TXWaKle7qgHpjLDhUzA/TMT0qsNleVyXGUQ==
   /case-sensitive-paths-webpack-plugin/2.3.0:
     dev: false
     engines:
@@ -10392,6 +10397,7 @@ specifiers:
   '@types/react-router-dom': ^5.1.5
   '@typescript-eslint/eslint-plugin': ^3.9.1
   '@typescript-eslint/parser': ^3.9.1
+  autoprefixer: ^9.8.6
   babel-eslint: 10.1.0
   babel-loader: 8.1.0
   babel-plugin-named-asset-import: ^0.3.6

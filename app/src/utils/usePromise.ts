@@ -44,7 +44,7 @@ function reducer<T>(state: State<T> = { state: 'pending' }, action: Action<T>): 
   case 'rejected':
     return {
       error: action.payload,
-      result: undefined,
+      result: state.result,
       state: 'rejected'
     }
   default:

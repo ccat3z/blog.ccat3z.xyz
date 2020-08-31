@@ -28,6 +28,7 @@ dependencies:
   find: 0.3.0
   fs-extra: 9.0.1
   html-webpack-plugin: 4.3.0_webpack@4.44.1
+  iconfont-webpack-plugin: 5.0.0_fda9e5643db96e6edefb8e257ee287a4
   identity-obj-proxy: 3.0.0
   mini-css-extract-plugin: 0.10.0_webpack@4.44.1
   optimize-css-assets-webpack-plugin: 5.0.3_webpack@4.44.1
@@ -3929,6 +3930,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ofovWglpqoqbfLNOTBNZLSbMuGrblAf1efvvArGKOZMBrIoJeu5UsAipQolkijtyQx5MtAzT/J9IHj/CEY1mJw==
+  /cubic2quad/1.1.1:
+    dev: false
+    resolution:
+      integrity: sha1-abGcYaP1tB7PLx1fro+wNBWqixU=
   /cyclist/1.0.1:
     dev: false
     resolution:
@@ -5119,6 +5124,10 @@ packages:
       node: '>=6.9.0'
     resolution:
       integrity: sha512-r8EC6NO1sngH/zdD9fiRDLdcgnbayXah+mLgManTaIZJqEC1MZstmnox8KpnI2/fxQwrp5OpCOYWLp4rBl4Jcg==
+  /geometry-interfaces/1.1.4:
+    dev: false
+    resolution:
+      integrity: sha512-qD6OdkT6NcES9l4Xx3auTpwraQruU7dARbQPVO71MKvkGYw5/z/oIiGymuFXrRaEQa5Y67EIojUpaLeGEa5hGA==
   /get-caller-file/2.0.5:
     dev: false
     engines:
@@ -5510,6 +5519,23 @@ packages:
     dev: false
     resolution:
       integrity: sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
+  /iconfont-webpack-plugin/5.0.0_fda9e5643db96e6edefb8e257ee287a4:
+    dependencies:
+      css-loader: 4.2.1_webpack@4.44.1
+      loader-utils: 1.4.0
+      postcss: 7.0.27
+      postcss-loader: 3.0.0
+      svg2ttf: 4.3.0
+      svgicons2svgfont: 9.1.1
+      ttf2woff: 2.0.1
+      webpack: 4.44.1_webpack@4.44.1
+    dev: false
+    peerDependencies:
+      css-loader: '>=4'
+      postcss-loader: ^2.1.3 || ^3.0.0
+      webpack: '*'
+    resolution:
+      integrity: sha512-cTaoMmDJe4p0Z0E67uCY2gRAQr46vYhXI8dVfvLjm+h7Xt9LSplDb5qe9+AeMW0s9PhNyXdllICYubOq5WZtWw==
   /iconv-lite/0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -6463,6 +6489,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
+  /microbuffer/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-izgy7UDIfVH0e7I0kTppinVtGdI=
   /microevent.ts/0.1.1:
     dev: false
     resolution:
@@ -6729,6 +6759,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
+  /neatequal/1.0.0:
+    dependencies:
+      varstream: 0.3.2
+    dev: false
+    resolution:
+      integrity: sha1-LuEhG8n6bkxVcV/SELsFYC6xrjs=
   /negotiator/0.6.2:
     dev: false
     engines:
@@ -8147,6 +8183,16 @@ packages:
       node: '>=6.0.0'
     resolution:
       integrity: sha512-uIFtJElxJo29QC753JzhidoAhvp/e/Exezkdhfmt8AymWT6/5B7W1WmponYWkHk2eg6sONyTch0A3nkMPun3SQ==
+  /postcss/7.0.27:
+    dependencies:
+      chalk: 2.4.2
+      source-map: 0.6.1
+      supports-color: 6.1.0
+    dev: false
+    engines:
+      node: '>=6.0.0'
+    resolution:
+      integrity: sha512-WuQETPMcW9Uf1/22HWUWP9lgsIC+KEHg2kozMflKjbeUtw9ujvFX6QmIfozaErDkmLWS9WEnEdEe6Uo9/BNTdQ==
   /postcss/7.0.32:
     dependencies:
       chalk: 2.4.2
@@ -8470,6 +8516,15 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-jvHAYjxqbbDcZxPEv6xGMysjaPg=
+  /readable-stream/1.1.14:
+    dependencies:
+      core-util-is: 1.0.2
+      inherits: 2.0.4
+      isarray: 0.0.1
+      string_decoder: 0.10.31
+    dev: false
+    resolution:
+      integrity: sha1-fPTFTvZI44EwhMY23SB54WbAgdk=
   /readable-stream/2.3.7:
     dependencies:
       core-util-is: 1.0.2
@@ -9297,6 +9352,14 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-zUz5JD+tgqtuDjMhwIg5uFVV3dtqZ9yQJlZVfq4I01/K5Paj5UHj7VyrQOJvzawSVlKpObApbfD0Ed6yJc+1eg==
+  /string.fromcodepoint/0.2.1:
+    dev: false
+    resolution:
+      integrity: sha1-jZeDM8C8klOPUPOD5IiPPlYZ1lM=
+  /string.prototype.codepointat/0.2.1:
+    dev: false
+    resolution:
+      integrity: sha512-2cBVCj6I4IOvEnjgO/hWqXjqBGsY+zwPmHl12Srk9IXSZ56Jwwmy+66XO5Iut/oQVR7t5ihYdLB0GMa4alEUcg==
   /string.prototype.matchall/4.0.2:
     dependencies:
       define-properties: 1.1.3
@@ -9322,6 +9385,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-XxZn+QpvrBI1FOcg6dIpxUPgWCPuNXvMD72aaRaUQv1eD4e/Qy8i/hFTe0BUmD60p/QA6bh1avmuPTfNjqVWRw==
+  /string_decoder/0.10.31:
+    dev: false
+    resolution:
+      integrity: sha1-YuIDvEF2bGwoyfyEMB2rHFMQ+pQ=
   /string_decoder/1.1.1:
     dependencies:
       safe-buffer: 5.1.2
@@ -9420,6 +9487,42 @@ packages:
     dev: false
     resolution:
       integrity: sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ==
+  /svg-pathdata/5.0.5:
+    dev: false
+    engines:
+      node: '>=6.9.5'
+    resolution:
+      integrity: sha512-TAAvLNSE3fEhyl/Da19JWfMAdhSXTYeviXsLSoDT1UM76ADj5ndwAPX1FKQEgB/gFMPavOy6tOqfalXKUiXrow==
+  /svg2ttf/4.3.0:
+    dependencies:
+      argparse: 1.0.10
+      cubic2quad: 1.1.1
+      lodash: 4.17.20
+      microbuffer: 1.0.0
+      svgpath: 2.3.0
+      xmldom: 0.1.31
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-LZ0B7zzHWLWbzLzwaKGHQvPOuxCXLReIb3LSxFSGUy1gMw2Utk6KGNbTmbmRL6Rk1qDSmTixnDrQgnXaL9n0CA==
+  /svgicons2svgfont/9.1.1:
+    dependencies:
+      commander: 2.20.3
+      geometry-interfaces: 1.1.4
+      glob: 7.1.6
+      neatequal: 1.0.0
+      readable-stream: 2.3.7
+      sax: 1.2.4
+      string.fromcodepoint: 0.2.1
+      string.prototype.codepointat: 0.2.1
+      svg-pathdata: 5.0.5
+      transformation-matrix-js: 2.7.6
+    dev: false
+    engines:
+      node: '>=6.9.5'
+    hasBin: true
+    resolution:
+      integrity: sha512-iOj7lqHP/oMrLg7S2Iv89LOJUfmIuePefXcs5ul4IsKwcYvL/T/Buahz+nQQJygyuvEMBBXqnCRmnvJggHeJzA==
   /svgo/1.3.2:
     dependencies:
       chalk: 2.4.2
@@ -9441,6 +9544,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-yhy/sQYxR5BkC98CY7o31VGsg014AKLEPxdfhora76l36hD9Rdy5NZA/Ocn6yayNPgSamYdtX2rFJdcv07AYVw==
+  /svgpath/2.3.0:
+    dev: false
+    resolution:
+      integrity: sha512-N/4UDu3Y2ICik0daMmFW1tplw0XPs1nVIEVYkTiQfj9/JQZeEtAKaSYwheCwje1I4pQ5r22fGpoaNIvGgsyJyg==
   /table/5.4.6:
     dependencies:
       ajv: 6.12.4
@@ -9636,6 +9743,11 @@ packages:
       node: '>=0.6'
     resolution:
       integrity: sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
+  /transformation-matrix-js/2.7.6:
+    deprecated: Package no longer supported. Contact support@npmjs.com for more info.
+    dev: false
+    resolution:
+      integrity: sha512-1CxDIZmCQ3vA0GGnkdMQqxUXVm3xXAFmglPYRS1hr37LzSg22TC7QAWOT38OmdUvMEs/rqcnkFoAsqvzdiluDg==
   /traverse-chain/0.1.0:
     dev: false
     resolution:
@@ -9677,6 +9789,15 @@ packages:
       typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
     resolution:
       integrity: sha512-kzeQ5B8H3w60nFY2g8cJIuH7JDpsALXySGtwGJ0p2LSjLgay3NdIpqq5SoOBe46bKDW2iq25irHCr8wjomUS2g==
+  /ttf2woff/2.0.1:
+    dependencies:
+      argparse: 1.0.10
+      microbuffer: 1.0.0
+      pako: 1.0.11
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha1-hxgyJAAksJ25VwkEx8GSi4BXyWk=
   /tty-browserify/0.0.0:
     dev: false
     resolution:
@@ -9935,6 +10056,15 @@ packages:
     dev: false
     resolution:
       integrity: sha512-NOJ6JZCAWr0zlxZt+xqCHNTEKOsrks2HQd4MqhP1qy4z1SkbEP467eNx6TgDKXMvUOb+OENfJCZwM+16n7fRfw==
+  /varstream/0.3.2:
+    dependencies:
+      readable-stream: 1.1.14
+    dev: false
+    engines:
+      node: '>=0.10.*'
+    hasBin: true
+    resolution:
+      integrity: sha1-GKxklHZfP/GjWtmkvgU77BiKXeE=
   /vary/1.1.2:
     dev: false
     engines:
@@ -10201,6 +10331,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
+  /xmldom/0.1.31:
+    dev: false
+    engines:
+      node: '>=0.1'
+    resolution:
+      integrity: sha512-yS2uJflVQs6n+CyjHoaBmVSqIDevTAWrzMmjG1Gc7h1qQ7uVozNhEPJAwZXWyGQ/Gafo3fCwrcaokezLPupVyQ==
   /xtend/4.0.2:
     dev: false
     engines:
@@ -10277,6 +10413,7 @@ specifiers:
   find: ^0.3.0
   fs-extra: ^9.0.1
   html-webpack-plugin: 4.3.0
+  iconfont-webpack-plugin: ^5.0.0
   identity-obj-proxy: 3.0.0
   mini-css-extract-plugin: 0.10.0
   optimize-css-assets-webpack-plugin: 5.0.3

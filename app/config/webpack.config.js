@@ -79,13 +79,17 @@ module.exports = function(webpackEnv) {
           // Necessary for external CSS imports to work
           // https://github.com/facebook/create-react-app/issues/2677
           ident: 'postcss',
-          plugins: () => [
+          plugins: (loader) => [
             require('postcss-flexbugs-fixes'),
             require('postcss-preset-env')({
               autoprefixer: {
                 flexbox: 'no-2009',
               },
               stage: 3,
+            }),
+            require('iconfont-webpack-plugin')({
+              resolve: loader.resolve,
+              fontNamePrefix: 'font-'
             }),
             // Adds PostCSS Normalize as the reset css with default options,
             // so that it honors browserslist config in package.json

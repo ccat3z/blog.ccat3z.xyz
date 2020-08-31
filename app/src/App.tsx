@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom'
 import 'terminal.css'
+import './icons/fonts.css'
 
 import PageDispatcher from './PageDispatcher'
 import BlogData from './BlogData'

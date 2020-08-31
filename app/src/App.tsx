@@ -2,6 +2,7 @@ import React from 'react'
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'
+import 'terminal.css'
 
 import PageDispatcher from './PageDispatcher'
 import './pages/Splash'

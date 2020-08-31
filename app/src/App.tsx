@@ -5,8 +5,10 @@ import {
 import 'terminal.css'
 
 import PageDispatcher from './PageDispatcher'
-import './pages/Splash'
+import BlogData from './BlogData'
 import Root from './components/Root'
+
+import './pages/Splash'
 
 if (process.env.NODE_ENV === 'development') {
   require("./pages/Debug")
@@ -17,9 +19,11 @@ if (process.env.NODE_ENV === 'development') {
 function App() {
   return (
     <Router>
-      <Root>
-        <PageDispatcher />
-      </Root>
+      <BlogData>
+        <Root>
+          <PageDispatcher />
+        </Root>
+      </BlogData>
     </Router>
   )
 }

@@ -1,9 +1,7 @@
-import React, { useState, useContext, ComponentType, ReactNode, useMemo } from 'react'
-import { useHistory, useLocation } from "react-router-dom"
-import { fetchBlogData, usePromise, BlogData } from './utils'
+import React, { ComponentType, ReactNode } from 'react'
+import { useBlogData } from './BlogData'
 
-const BlogContext = React.createContext<BlogData>({ type: 'splash' })
-export function useBlogData() { return useContext(BlogContext) }
+export { useBlogData }
 
 function DefaultFallbackPage () {
   const { type } = useBlogData()
@@ -27,12 +25,8 @@ export function registerPageType(page: PageType) {
   }
 }
 
-function PageDispatcher() {
-  const { push } = useHistory(); (global as any).router = push
-  const { pathname } = useLocation()
-  const [initPath] = useState(pathname)
-  const { data: _blogData } = usePromise(() => fetchBlogData(pathname === initPath ? undefined : pathname), [pathname])
-  const blogData = useMemo(() => _blogData || { type: 'splash' }, [_blogData])
+export default function PageDispatcher() {
+  const blogData = useBlogData()
 
   let page: ReactNode 
   for (const pt of pageTypes) {
@@ -45,11 +39,5 @@ function PageDispatcher() {
     page = <fallbackPageType.component />
   }
 
-  return (
-    <BlogContext.Provider value={blogData}>
-      {page}
-    </BlogContext.Provider>
-  )
+  return <>{page}</>
 }
-
-export default PageDispatcher

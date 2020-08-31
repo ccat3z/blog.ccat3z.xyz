@@ -2,3 +2,29 @@
   font-icon: url('./c0ldcat.svg');
   vertical-align: middle;
 }
+
+.icon-retry:before {
+  font-icon: url('./retry.svg');
+  vertical-align: middle;
+}
+
+.icon-loading:before {
+  font-icon: url('./loading.svg');
+  display: inline-block;
+  animation: 1s spin infinite linear;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.icon-fail:before {
+  font-icon: url('./fail.svg');
+  vertical-align: middle;
+}

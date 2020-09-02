@@ -1,6 +1,7 @@
 import React from 'react'
 import { useBlogData, useBlogDataLoadingState } from '../BlogData'
 import { useHistory, useLocation } from 'react-router-dom'
+import './Header.scss'
 
 type Location = {
   pathname: string
@@ -27,27 +28,19 @@ export default function Header() {
   const { push: goTo } = useHistory()
   const { pathname } = useLocation()
 
-  return <div className="terminal-nav">
+  return <div className="terminal-nav blog-header">
     <div style={{
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center'
     }}>
-      <a onClick={() => {
+      <a className={`ps1 ${state}`} onClick={() => {
         if (state === 'rejected') {
           retry()
         } else {
           goTo('/')
         }
-      }} style={{
-        color: state === 'rejected' ? 'var(--error-color)' : undefined
-      }}>
-        <span className={state === 'rejected' ? 'icon-fail' : 'icon-c0ldcat'}/>
-      </a>
-      <span style={{
-        margin: '0 0.3em',
-        color: 'var(--secondary-color)'
-      }}>{'>'}</span>
+      }}></a>
       <span>
         {`${convertUrlToVirtualCommand({pathname})}`}
       </span>

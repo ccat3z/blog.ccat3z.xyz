@@ -1,0 +1,14 @@
+.blog-root-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+
+  .page {
+    max-width: var(--page-width);
+    width: 95%;
+  }
+
+  .content {
+  }
+}

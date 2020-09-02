@@ -1,25 +1,16 @@
 import React from 'react'
 import Header from './Header'
+import './Root.scss'
 
 type HeaderProps = {
   children: React.ReactNode
 }
 
 export default function Root(props: HeaderProps) {
-  return <div style={{
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%'
-  }}>
-    <div style={{
-      maxWidth: '860px',
-      width: '95%'
-    }}>
+  return <div className="blog-root-page">
+    <div className="page">
       <Header />
-      <div style={{
-        paddingBottom: '10px'
-      }}>
+      <div className="content">
         {props.children}
       </div>
     </div>

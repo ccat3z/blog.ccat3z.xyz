@@ -1,5 +1,3 @@
-
-
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
@@ -22,8 +20,6 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-
-const postcssNormalize = require('postcss-normalize');
 
 const appPackageJson = require(paths.appPackageJson);
 
@@ -91,11 +87,12 @@ module.exports = function(webpackEnv) {
               resolve: loader.resolve,
               fontNamePrefix: 'font-'
             }),
-            // Adds PostCSS Normalize as the reset css with default options,
-            // so that it honors browserslist config in package.json
-            // which in turn let's users customize the target behavior as per their needs.
-            postcssNormalize(),
             require('autoprefixer'),
+            require('postcss-css-variables')({
+              preserve: false,
+              variables: require('./css')
+            }),
+            require('postcss-normalize'),
           ],
           sourceMap: isEnvProduction && shouldUseSourceMap,
         },

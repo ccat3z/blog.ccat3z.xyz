@@ -34,6 +34,7 @@ dependencies:
   mini-css-extract-plugin: 0.10.0_webpack@4.44.1
   optimize-css-assets-webpack-plugin: 5.0.3_webpack@4.44.1
   pnp-webpack-plugin: 1.6.4_typescript@3.7.5
+  postcss-css-variables: 0.17.0
   postcss-flexbugs-fixes: 4.2.1
   postcss-loader: 3.0.0
   postcss-normalize: 9.0.0_browserslist@4.14.0
@@ -3225,6 +3226,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-JBP68okZs1X8D7MQTY602jxMYBmXEKOFkzTBaNSkubooMPFOAv2TXWaKle7qgHpjLDhUzA/TMT0qsNleVyXGUQ==
+  /caniuse-lite/1.0.30001122:
+    dev: false
+    resolution:
+      integrity: sha512-pxjw28CThdrqfz06nJkpAc5SXM404TXB/h5f4UJX+rrXJKE/1bu/KAILc2AY+O6cQIFtRjV9qOR2vaEp9LDGUA==
   /case-sensitive-paths-webpack-plugin/2.3.0:
     dev: false
     engines:
@@ -4754,6 +4759,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-Jqcarwc7OfshJxcnRhMcJwQCjbg=
+  /extend/3.0.2:
+    dev: false
+    resolution:
+      integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==
   /external-editor/3.1.0:
     dependencies:
       chardet: 0.7.0
@@ -7577,6 +7586,15 @@ packages:
       node: '>=6.9.0'
     resolution:
       integrity: sha512-Kisdo1y77KUC0Jmn0OXU/COOJbzM8cImvw1ZFsBgBgMgb1iL23Zs/LXRe3r+EZqM3vGYKdQ2YJVQ5VkJI+zEJQ==
+  /postcss-css-variables/0.17.0:
+    dependencies:
+      balanced-match: 1.0.0
+      escape-string-regexp: 1.0.5
+      extend: 3.0.2
+      postcss: 6.0.23
+    dev: false
+    resolution:
+      integrity: sha512-/ZpFnJgksNOrQA72b3DKhExYh+0e2P5nEc3aPZ62G7JLmdDjWRFv3k/q4LxV7uzXFnmvkhXRbdVIiH5tKgfFNA==
   /postcss-custom-media/7.0.8:
     dependencies:
       postcss: 7.0.32
@@ -8011,7 +8029,7 @@ packages:
     dependencies:
       autoprefixer: 9.8.6
       browserslist: 4.14.0
-      caniuse-lite: 1.0.30001117
+      caniuse-lite: 1.0.30001122
       css-blank-pseudo: 0.1.4
       css-has-pseudo: 0.10.0
       css-prefers-color-scheme: 3.1.1
@@ -8179,6 +8197,16 @@ packages:
       node: '>=6.14.4'
     resolution:
       integrity: sha512-2tLuBsA6P4rYTNKCXYG/71C7j1pU6pK503suYOmn4xYrQIzW+opD+7FAFNuGSdZC/3Qfy334QbeMu7MEb8gOxg==
+  /postcss/6.0.23:
+    dependencies:
+      chalk: 2.4.2
+      source-map: 0.6.1
+      supports-color: 5.5.0
+    dev: false
+    engines:
+      node: '>=4.0.0'
+    resolution:
+      integrity: sha512-soOk1h6J3VMTZtVeVpv15/Hpdl2cBLX3CAw4TAbkpTJiNPk9YP/zWcD1ND+xEtvyuuvKzbxliTOIyvkSeSJ6ag==
   /postcss/7.0.21:
     dependencies:
       chalk: 2.4.2
@@ -10435,6 +10463,7 @@ specifiers:
   mini-css-extract-plugin: 0.10.0
   optimize-css-assets-webpack-plugin: 5.0.3
   pnp-webpack-plugin: 1.6.4
+  postcss-css-variables: ^0.17.0
   postcss-flexbugs-fixes: ^4.2.1
   postcss-loader: 3.0.0
   postcss-normalize: ^9.0.0

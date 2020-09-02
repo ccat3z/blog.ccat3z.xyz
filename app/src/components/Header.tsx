@@ -8,9 +8,9 @@ type Location = {
 }
 
 const virtualCommands = [
-  (l) => { if (l.pathname === '/') return 'screenfetch' },
-  (l) => { if (l.pathname.startsWith('/posts')) return 'ls /posts'},
-  (l) => 'cat ' + l.pathname.replace(/\/$/, '').replace(/\.[^./]*/, '')
+  l => { if (l.pathname === '/') return 'screenfetch' },
+  l => { if (l.pathname.match(/^\/posts\/?$/)) return 'ls /posts'},
+  l => 'cat ' + l.pathname.replace(/\/$/, '').replace(/\.[^./]*/, '')
 ] as ((locaction: Location) => string | undefined)[]
 
 function convertUrlToVirtualCommand(location: Location) {

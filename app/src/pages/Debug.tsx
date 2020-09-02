@@ -7,6 +7,10 @@ function DebugPage() {
   return (
     <div>
       {'BlogData: ' + JSON.stringify(data)}
+      <div dangerouslySetInnerHTML={{
+        __html: data.content?.outerHTML || ''
+      }}>
+      </div>
     </div>
   )
 }

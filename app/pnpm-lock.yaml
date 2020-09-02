@@ -46,7 +46,8 @@ dependencies:
   react-router-dom: 5.2.0_react@16.13.1
   resolve: 1.17.0
   resolve-url-loader: 3.1.1
-  sass-loader: 9.0.3_webpack@4.44.1
+  sass: 1.26.10
+  sass-loader: 9.0.3_sass@1.26.10+webpack@4.44.1
   terminal.css: 0.7.1
   terser-webpack-plugin: 4.1.0_webpack@4.44.1
   ts-pnp: 1.2.0_typescript@3.7.5
@@ -8860,11 +8861,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-QbusSBnWHaRBZeTxsJyknwI0q+q6m1NtLBmB76JfW/rdVN7Ws6Zz70w65+430/ouVcdNVT3qwrDgrM6PaYyRtw==
-  /sass-loader/9.0.3_webpack@4.44.1:
+  /sass-loader/9.0.3_sass@1.26.10+webpack@4.44.1:
     dependencies:
       klona: 1.1.2
       loader-utils: 2.0.0
       neo-async: 2.6.2
+      sass: 1.26.10
       schema-utils: 2.7.0
       semver: 7.3.2
       webpack: 4.44.1_webpack@4.44.1
@@ -8885,6 +8887,15 @@ packages:
         optional: true
     resolution:
       integrity: sha512-fOwsP98ac1VMme+V3+o0HaaMHp8Q/C9P+MUazLFVi3Jl7ORGHQXL1XeRZt3zLSGZQQPC8xE42Y2WptItvGjDQg==
+  /sass/1.26.10:
+    dependencies:
+      chokidar: 3.4.2
+    dev: false
+    engines:
+      node: '>=8.9.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-bzN0uvmzfsTvjz0qwccN1sPm2HxxpNI/Xa+7PlUEMS+nQvbyuEK7Y0qFqxlPHhiNHb1Ze8WQJtU31olMObkAMw==
   /sax/1.2.4:
     dev: false
     resolution:
@@ -10436,6 +10447,7 @@ specifiers:
   react-router-dom: ^5.2.0
   resolve: ^1.17.0
   resolve-url-loader: 3.1.1
+  sass: ^1.26.10
   sass-loader: ^9.0.3
   terminal.css: ^0.7.1
   terser-webpack-plugin: ^4.1.0

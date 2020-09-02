@@ -29,18 +29,14 @@ export default function Header() {
   const { pathname } = useLocation()
 
   return <div className="terminal-nav blog-header">
-    <div style={{
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center'
-    }}>
-      <a className={`ps1 ${state}`} onClick={() => {
+    <div className="command-line">
+      <span className={`ps1 ${state}`} onClick={() => {
         if (state === 'rejected') {
           retry()
         } else {
           goTo('/')
         }
-      }}></a>
+      }} />
       <span>
         {`${convertUrlToVirtualCommand({pathname})}`}
       </span>

@@ -1,35 +1,42 @@
 .blog-header {
-  .ps1 {
-    background: none;
-    color: var(--primary-color);
+  .command-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
-    &:before {
-      font-icon: url('../icons/c0ldcat.svg');
-      vertical-align: middle;
-    }
-
-    &::after {
-      content: '>';
-      display: inline-block;
-      margin: 0 .5em;
-      color: var(--secondary-color);
-    }
-
-    &:hover {
-      text-decoration: none;
+    .ps1 {
       background: none;
       color: var(--primary-color);
-    }
 
-    &.rejected {
       &:before {
-        font-icon: url('../icons/fail.svg');
-        color: var(--error-color);
+        font-icon: url('../icons/c0ldcat.svg');
+        vertical-align: middle;
       }
+
+      &::after {
+        content: '>';
+        display: inline-block;
+        margin: 0 .5em;
+        color: var(--secondary-color);
+      }
+
       &:hover {
-        &::before {
-          font-icon: url('../icons/retry.svg');
-          vertical-align: middle;
+        text-decoration: none;
+        background: none;
+        color: var(--primary-color);
+        cursor: pointer;
+      }
+
+      &.rejected {
+        &:before {
+          font-icon: url('../icons/fail.svg');
+          color: var(--error-color);
+        }
+        &:hover {
+          &::before {
+            font-icon: url('../icons/retry.svg');
+            vertical-align: middle;
+          }
         }
       }
     }

@@ -2,8 +2,7 @@ import React from 'react'
 import {
   BrowserRouter as Router,
 } from 'react-router-dom'
-import 'terminal.css'
-import './icons/fonts.css'
+import './App.scss';
 
 import PageDispatcher from './PageDispatcher'
 import BlogData from './BlogData'

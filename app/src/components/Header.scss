@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    font-family: var(--mono-font-stack);
 
     .ps1 {
       background: none;
@@ -36,6 +37,50 @@
           &::before {
             font-icon: url('../icons/retry.svg');
             vertical-align: middle;
+          }
+        }
+      }
+    }
+
+    .pager {
+      input {
+        font-family: inherit;
+        font-size: var(--global-font-size);
+        border: none;
+        border-bottom: dashed 1px var(--secondary-color);
+        margin: 0;
+        width: 2em;
+        text-align: center;
+        padding: 0;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+          // opacity: 1;
+        }
+      }
+
+      .page-btns {
+        color: var(--secondary-color);
+        .page-btn {
+          color: inherit;
+          &:hover {
+            background: none;
+            color: var(--primary-color);
+          }
+
+          &.disabled {
+            text-decoration: line-through;
+            cursor: not-allowed;
+
+            &:hover {
+              background: none;
+              color: inherit;
+            }
           }
         }
       }

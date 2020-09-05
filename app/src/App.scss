@@ -1,4 +1,5 @@
 @import './terminal.scss';
+@import './highlight.css';
 
 body {
   margin: 0;
@@ -11,6 +12,7 @@ pre {
     padding: 1em;
     font-family: var(--mono-font-stack);
     overflow: auto;
+    color: var(--global-font-color);
   }
 }
 

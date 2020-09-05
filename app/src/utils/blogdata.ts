@@ -11,6 +11,7 @@ export type Page = {
 }
 
 export type BlogData = {
+  title: string,
   nav?: Nav[],
   pagination?: Page[],
   content?: Element,
@@ -32,10 +33,12 @@ export async function fetchBlogData(url?: string): Promise<BlogData> {
 export async function parseBlogData(html: string): Promise<BlogData> {
   const el = document.createElement('html')
   el.innerHTML = html
+  const title = el.querySelector('head > title')?.textContent?.trim() || ''
   const blogData = el.querySelector('[id=blog-data]') || document.createElement('div')
   const context = extractContent(blogData)
 
   return {
+    title,
     nav: extractNav(blogData),
     pagination: extractPagination(blogData),
     content: context?.element,

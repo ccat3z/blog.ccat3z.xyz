@@ -71,7 +71,7 @@ function PostsListPage() {
               goTo(p.href)
               e.stopPropagation()
               e.preventDefault()
-            }} className="title">{p.title}</a>
+            }} className="title">{p.title.trim()}</a>
             <div className="tags-group">
               {p.tags.map(t => (<span className="tag-box" key={p.href}>
                 <a

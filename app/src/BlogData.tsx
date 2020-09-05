@@ -1,4 +1,4 @@
-import React, { useState, useContext, useMemo } from 'react'
+import React, { useState, useContext, useMemo, useEffect } from 'react'
 import { useHistory, useLocation } from "react-router-dom"
 import { fetchBlogData, usePromise, BlogData } from './utils'
 
@@ -24,6 +24,7 @@ export default function BlogDataContext(props: { children: React.ReactNode }) {
       retry
     }
   }, [state, retry])
+  useEffect(() => { document.title = blogData.title }, [blogData.title])
 
   return (
     <BlogContext.Provider value={blogData}>

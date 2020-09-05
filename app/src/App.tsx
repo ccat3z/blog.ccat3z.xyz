@@ -11,6 +11,7 @@ import Root from './components/Root'
 import './pages/Splash'
 import './pages/Home'
 import './pages/PostsList'
+import './pages/Message'
 
 if (process.env.NODE_ENV === 'development') {
   require("./pages/Debug")

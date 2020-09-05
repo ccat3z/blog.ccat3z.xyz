@@ -17,7 +17,6 @@ function PageFilterCommand(props: {page: number}) {
     if (pagination === undefined) return
     if (index < 1) return
     if (index > pagination.length) return
-    console.log('goto ' + pagination[index - 1].href)
     _goTo(pagination[index - 1].href)
   }, 500), [_goTo, pagination])
 

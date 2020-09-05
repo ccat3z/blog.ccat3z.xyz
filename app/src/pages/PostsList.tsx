@@ -78,7 +78,6 @@ function PostsListPage() {
                   className="tag"
                   href={t.href}
                   onClick={(e) => {
-                    goTo(t.href)
                     e.stopPropagation()
                     e.preventDefault()
                   }}

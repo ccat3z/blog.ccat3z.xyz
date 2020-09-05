@@ -82,7 +82,7 @@ const virtualCommands = [
   },
   // /posts/:string
   l => {
-    let m = l.pathname.match(/^\/posts\/([^\/]{1,})\/?$/)
+    let m = l.pathname.match(/^\/posts\/([^/]{1,})\/?$/)
     if (m === null) return
     return <PureStringCommand text={`open /posts/${m[1]}`} />
   },

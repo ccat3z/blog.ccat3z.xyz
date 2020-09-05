@@ -50,7 +50,6 @@ dependencies:
   sass: 1.26.10
   sass-loader: 9.0.3_sass@1.26.10+webpack@4.44.1
   style-loader: 1.2.1_webpack@4.44.1
-  terminal.css: 0.7.1
   terser-webpack-plugin: 4.1.0_webpack@4.44.1
   ts-pnp: 1.2.0_typescript@3.7.5
   typescript: 3.7.5
@@ -3632,17 +3631,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-xb3ZL6+L8b9JLLCx3ZdoZy4+2ECphCMo2PwqgP1tlfVq6M6YReyzBJtvWWtbDSpNr9hn96pkCiZqUcFEc+54Qg==
-  /cp-file/7.0.0:
-    dependencies:
-      graceful-fs: 4.2.4
-      make-dir: 3.1.0
-      nested-error-stacks: 2.1.0
-      p-event: 4.2.0
-    dev: false
-    engines:
-      node: '>=8'
-    resolution:
-      integrity: sha512-0Cbj7gyvFVApzpK/uhCtQ/9kE9UnYpxMzaq5nQQC/Dh4iaj5fxp7iEFIullrYwzj8nf0qnsI1Qsx34hAeAebvw==
   /create-ecdh/4.0.4:
     dependencies:
       bn.js: 4.11.9
@@ -6795,10 +6783,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
-  /nested-error-stacks/2.1.0:
-    dev: false
-    resolution:
-      integrity: sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
   /next-tick/1.0.0:
     dev: false
     resolution:
@@ -7119,14 +7103,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=
-  /p-event/4.2.0:
-    dependencies:
-      p-timeout: 3.2.0
-    dev: false
-    engines:
-      node: '>=8'
-    resolution:
-      integrity: sha512-KXatOjCRXXkSePPb1Nbi0p0m+gQAwdlbhi4wQKJPI1HsMQS9g+Sqp2o+QHziPr7eYJyOZet836KoHEVM1mwOrQ==
   /p-finally/1.0.0:
     dev: false
     engines:
@@ -7203,14 +7179,6 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-XE6G4+YTTkT2a0UWb2kjZe8xNwf8bIbnqpc/IS/idOBVhyves0mK5OJgeocjx7q5pvX/6m23xuzVPYT1uGM73w==
-  /p-timeout/3.2.0:
-    dependencies:
-      p-finally: 1.0.0
-    dev: false
-    engines:
-      node: '>=8'
-    resolution:
-      integrity: sha512-rhIwUycgwwKcP9yTOOFK/AKsAopjjCakVqLHePO3CC6Mir1Z99xT+R63jZxAT5lFZLa2inS5h+ZS2GvR99/FBg==
   /p-try/1.0.0:
     dev: false
     engines:
@@ -9649,12 +9617,6 @@ packages:
       node: '>= 10'
     resolution:
       integrity: sha512-0b4HOimQHj9nXNEAA7zWwMM91Zhhba3pspja6sQbgTpynOJf+bkjBnfybNYzbpLbnwXnbyB4LOREvlyXLkCHSg==
-  /terminal.css/0.7.1:
-    dependencies:
-      cp-file: 7.0.0
-    dev: false
-    resolution:
-      integrity: sha512-yYINde4CzCDSE/H5ioZlPhvGxAcEHDo5LCSnkEgyH4w0wM7/qTdnexAIgWRZs4oQHobYVB2V2GQiYt0zj4endA==
   /terser-webpack-plugin/1.4.5_webpack@4.44.1:
     dependencies:
       cacache: 12.0.4
@@ -10506,7 +10468,6 @@ specifiers:
   sass: ^1.26.10
   sass-loader: ^9.0.3
   style-loader: ^1.2.1
-  terminal.css: ^0.7.1
   terser-webpack-plugin: ^4.1.0
   ts-pnp: ^1.2.0
   typescript: ~3.7.5

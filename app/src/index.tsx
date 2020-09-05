@@ -8,3 +8,8 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('blog')
 );
+
+let bd = document.getElementById('blog-data')
+if (bd) {
+  bd.style.display = 'none'
+}

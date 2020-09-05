@@ -80,6 +80,12 @@ const virtualCommands = [
       <PageFilterCommand page={page} />
     </>
   },
+  // /posts/:string
+  l => {
+    let m = l.pathname.match(/^\/posts\/([^\/]{1,})\/?$/)
+    if (m === null) return
+    return <PureStringCommand text={`open /posts/${m[1]}`} />
+  },
   // /*
   l => {
     let c = 'cat ' + l.pathname.replace(/\/$/, '').replace(/\.[^./]*/, '')

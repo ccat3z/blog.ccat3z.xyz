@@ -60,7 +60,7 @@ module.exports = function(webpackEnv) {
   const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
       {
-        loader: MiniCssExtractPlugin.loader,
+        loader: isEnvDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
       },
       {
         loader: require.resolve('css-loader'),

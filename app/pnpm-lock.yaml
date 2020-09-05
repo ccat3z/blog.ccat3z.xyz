@@ -49,6 +49,7 @@ dependencies:
   resolve-url-loader: 3.1.1
   sass: 1.26.10
   sass-loader: 9.0.3_sass@1.26.10+webpack@4.44.1
+  style-loader: 1.2.1_webpack@4.44.1
   terminal.css: 0.7.1
   terser-webpack-plugin: 4.1.0_webpack@4.44.1
   ts-pnp: 1.2.0_typescript@3.7.5
@@ -2084,6 +2085,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-7+2BITlgjgDhH0vvwZU/HZJVyk+2XUlvxXe8dFMedNX/aMkaOq++rMAFXc0tM7ij15QaWlbdQASBR9dihi+bDQ==
+  /@types/json-schema/7.0.6:
+    dev: false
+    resolution:
+      integrity: sha512-3c+yGKvVP5Y9TYBEibGNR+kLtijnj7mYrXRg+WpFb2X9xm04g/DXYkfg4hmzJQosc9snFNUPkbYIhu+KAm6jJw==
   /@types/json5/0.0.29:
     dev: false
     resolution:
@@ -8955,6 +8960,16 @@ packages:
       node: '>= 8.9.0'
     resolution:
       integrity: sha512-0ilKFI6QQF5nxDZLFn2dMjvc4hjg/Wkg7rHd3jK6/A4a1Hl9VFdQWvgB1UMGoU94pad1P/8N7fMcEnLnSiju8A==
+  /schema-utils/2.7.1:
+    dependencies:
+      '@types/json-schema': 7.0.6
+      ajv: 6.12.4
+      ajv-keywords: 3.5.2_ajv@6.12.4
+    dev: false
+    engines:
+      node: '>= 8.9.0'
+    resolution:
+      integrity: sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg==
   /select-hose/2.0.0:
     dev: false
     resolution:
@@ -9487,6 +9502,18 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
+  /style-loader/1.2.1_webpack@4.44.1:
+    dependencies:
+      loader-utils: 2.0.0
+      schema-utils: 2.7.1
+      webpack: 4.44.1_webpack@4.44.1
+    dev: false
+    engines:
+      node: '>= 8.9.0'
+    peerDependencies:
+      webpack: ^4.0.0 || ^5.0.0
+    resolution:
+      integrity: sha512-ByHSTQvHLkWE9Ir5+lGbVOXhxX10fbprhLvdg96wedFZb4NDekDPxVKv5Fwmio+QcMlkkNfuK+5W1peQ5CUhZg==
   /stylehacks/4.0.3:
     dependencies:
       browserslist: 4.14.0
@@ -10478,6 +10505,7 @@ specifiers:
   resolve-url-loader: 3.1.1
   sass: ^1.26.10
   sass-loader: ^9.0.3
+  style-loader: ^1.2.1
   terminal.css: ^0.7.1
   terser-webpack-plugin: ^4.1.0
   ts-pnp: ^1.2.0

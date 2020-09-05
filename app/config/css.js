@@ -13,7 +13,7 @@ module.exports = {
   '--error-color': '#d20962',
   '--progress-bar-background': '#727578',
   '--progress-bar-fill': '#151515',
-  '--code-bg-color': '#e8eff2',
+  '--code-bg-color': '#fff',
   '--input-style': 'solid',
   '--display-h1-decoration': 'none',
 }

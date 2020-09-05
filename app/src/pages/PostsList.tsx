@@ -73,7 +73,7 @@ function PostsListPage() {
               e.preventDefault()
             }} className="title">{p.title.trim()}</a>
             <div className="tags-group">
-              {p.tags.map(t => (<span className="tag-box" key={p.href}>
+              {p.tags.map(t => (<span className="tag-box" key={t.href}>
                 <a
                   className="tag"
                   href={t.href}

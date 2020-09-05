@@ -1,6 +1,7 @@
 dependencies:
   '@babel/core': 7.11.4
   '@svgr/webpack': 5.4.0
+  '@types/lodash': 4.14.161
   '@types/node': 12.12.54
   '@types/react': 16.9.46
   '@types/react-dom': 16.9.8
@@ -31,6 +32,7 @@ dependencies:
   html-webpack-plugin: 4.3.0_webpack@4.44.1
   iconfont-webpack-plugin: 5.0.0_fda9e5643db96e6edefb8e257ee287a4
   identity-obj-proxy: 3.0.0
+  lodash: 4.17.20
   mini-css-extract-plugin: 0.10.0_webpack@4.44.1
   optimize-css-assets-webpack-plugin: 5.0.3_webpack@4.44.1
   pnp-webpack-plugin: 1.6.4_typescript@3.7.5
@@ -2092,6 +2094,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
+  /@types/lodash/4.14.161:
+    dev: false
+    resolution:
+      integrity: sha512-EP6O3Jkr7bXvZZSZYlsgt5DIjiGr0dXP1/jVEwVLTFgg0d+3lWVQkRavYVQszV7dYUwvg0B8R0MBDpcmXg7XIA==
   /@types/minimatch/3.0.3:
     dev: false
     resolution:
@@ -10419,6 +10425,7 @@ packages:
 specifiers:
   '@babel/core': ^7.11.4
   '@svgr/webpack': ^5.4.0
+  '@types/lodash': ^4.14.161
   '@types/node': ^12.12.54
   '@types/react': ^16.9.46
   '@types/react-dom': ^16.9.8
@@ -10449,6 +10456,7 @@ specifiers:
   html-webpack-plugin: 4.3.0
   iconfont-webpack-plugin: ^5.0.0
   identity-obj-proxy: 3.0.0
+  lodash: ^4.17.20
   mini-css-extract-plugin: 0.10.0
   optimize-css-assets-webpack-plugin: 5.0.3
   pnp-webpack-plugin: 1.6.4

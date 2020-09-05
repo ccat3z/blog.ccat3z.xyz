@@ -9,6 +9,7 @@ import BlogData from './BlogData'
 import Root from './components/Root'
 
 import './pages/Splash'
+import './pages/Home'
 import './pages/PostsList'
 
 if (process.env.NODE_ENV === 'development') {

@@ -1,15 +1,38 @@
 .blog-root-page {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
+  $header-height: 4em;
 
-  .page {
-    max-width: var(--page-width);
-    width: 95%;
+  .header-box {
+    position: fixed;
+    width: 100%;
+    background: var(--background-color);
+    z-index: 1;
+    top: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .header {
+      max-width: var(--page-width);
+      width: 95%;
+      height: $header-height;
+    }
   }
 
-  .content {
-    margin-bottom: var(--global-space);
+  .page {
+    // height: 100vh;
+    // overflow: auto;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: $header-height;
+
+    .content {
+      max-width: var(--page-width);
+      width: 95%;
+      margin-bottom: var(--global-space);
+    }
   }
 }

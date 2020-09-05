@@ -8,8 +8,10 @@ type HeaderProps = {
 
 export default function Root(props: HeaderProps) {
   return <div className="blog-root-page">
+    <div className="header-box">
+      <Header className="header"/>
+    </div>
     <div className="page">
-      <Header />
       <div className="content">
         {props.children}
       </div>

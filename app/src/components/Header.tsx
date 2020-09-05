@@ -69,13 +69,15 @@ function PageFilterCommand() {
   </span>
 }
 
-export default function Header() {
+export default function Header(props: {
+  className?: string
+}) {
   const blogData = useBlogData()
   const { state, retry } = useBlogDataLoadingState()
   const { push: goTo } = useHistory()
   const { pathname } = useLocation()
 
-  return <div className="terminal-nav blog-header">
+  return <div className={`terminal-nav blog-header ${props.className || ''}`}>
     <div className="command-line">
       <span className={`ps1 ${state}`} onClick={() => {
         if (state === 'rejected') {

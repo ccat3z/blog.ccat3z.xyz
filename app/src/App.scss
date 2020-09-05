@@ -5,9 +5,13 @@ body {
   font-family: var(--font-stack);
 }
 
-code {
-  font-family: var(--mono-font-stack);
-  overflow: none;
+pre {
+  padding: 0;
+  code {
+    padding: 1em;
+    font-family: var(--mono-font-stack);
+    overflow: auto;
+  }
 }
 
 #blog-data {

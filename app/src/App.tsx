@@ -12,6 +12,7 @@ import './pages/Splash'
 import './pages/Home'
 import './pages/PostsList'
 import './pages/Message'
+import './pages/Post'
 
 if (process.env.NODE_ENV === 'development') {
   require("./pages/Debug")

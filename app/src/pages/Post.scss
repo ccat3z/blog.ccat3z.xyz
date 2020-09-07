@@ -1,0 +1,10 @@
+.post-page {
+  .post-info-box {
+    .tag {
+      &:hover {
+        text-decoration: underline;
+        background: inherit;
+      }
+    }
+  }
+}

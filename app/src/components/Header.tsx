@@ -85,6 +85,15 @@ const virtualCommands = [
     if (m === null) return
     return <PureStringCommand text={`open /posts/${m[1]}`} />
   },
+  // /tag/:string
+  l => {
+    let m = l.pathname.match(/^\/tag\/([^/]{1,})\/?$/)
+    if (m === null) return
+    return <>
+      <PureStringCommand text={`ls /posts`} />
+      <PureStringCommand text={`filter --tag='${m[1]}'`} />
+    </>
+  },
   // /*
   l => {
     let c = 'cat ' + l.pathname.replace(/\/$/, '').replace(/\.[^./]*/, '')

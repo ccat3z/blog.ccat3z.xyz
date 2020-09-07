@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.80705ca0.chunk.css",
-    "main.js": "/static/js/main.b229eed6.chunk.js",
-    "main.js.map": "/static/js/main.b229eed6.chunk.js.map",
+    "main.css": "/static/css/main.5cdf2d44.chunk.css",
+    "main.js": "/static/js/main.0b1dc071.chunk.js",
+    "main.js.map": "/static/js/main.0b1dc071.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.89ca9b38.js",
     "runtime-main.js.map": "/static/js/runtime-main.89ca9b38.js.map",
     "static/js/2.9eda85ef.chunk.js": "/static/js/2.9eda85ef.chunk.js",
@@ -17,6 +17,7 @@
     "posts/array-and-pointer-in-c/index.html": "/posts/array-and-pointer-in-c/index.html",
     "posts/atom-proxy/index.html": "/posts/atom-proxy/index.html",
     "posts/baidu-cloud-crack/index.html": "/posts/baidu-cloud-crack/index.html",
+    "posts/blog-v3/index.html": "/posts/blog-v3/index.html",
     "posts/build-only-one-kernel-module/index.html": "/posts/build-only-one-kernel-module/index.html",
     "posts/c-complex-declaration/index.html": "/posts/c-complex-declaration/index.html",
     "posts/color-tiles/index.html": "/posts/color-tiles/index.html",
@@ -57,7 +58,7 @@
     "posts/xposed-art-n-sharedpreference/index.html": "/posts/xposed-art-n-sharedpreference/index.html",
     "posts/z-uploader-usage/index.html": "/posts/z-uploader-usage/index.html",
     "projects/index.html": "/projects/index.html",
-    "static/css/main.80705ca0.chunk.css.map": "/static/css/main.80705ca0.chunk.css.map",
+    "static/css/main.5cdf2d44.chunk.css.map": "/static/css/main.5cdf2d44.chunk.css.map",
     "static/js/2.9eda85ef.chunk.js.LICENSE.txt": "/static/js/2.9eda85ef.chunk.js.LICENSE.txt",
     "tag/alpinelinux/index.html": "/tag/alpinelinux/index.html",
     "tag/android/index.html": "/tag/android/index.html",
@@ -103,7 +104,7 @@
   "entrypoints": [
     "static/js/runtime-main.89ca9b38.js",
     "static/js/2.9eda85ef.chunk.js",
-    "static/css/main.80705ca0.chunk.css",
-    "static/js/main.b229eed6.chunk.js"
+    "static/css/main.5cdf2d44.chunk.css",
+    "static/js/main.0b1dc071.chunk.js"
   ]
 }

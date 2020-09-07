@@ -7,13 +7,11 @@ layout: compress
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title id="site-title">{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
     <link rel="icon" href="/favicon.png">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-    {% if jekyll.environment == "development" %}
-    <link href="/static/css/main.css" rel="stylesheet">
-    {% endif %}
+    <!--SEO_BEGIN-->
     {% seo %}
+    <!--SEO_END-->
   </head>
 <body>
   <div id="blog"></div>

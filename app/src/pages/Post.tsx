@@ -66,7 +66,9 @@ function PostPage(props: {
           <span className="pi">]</span><br />
         </code>
       </pre>
-      <Raw element={post.content} />
+      <Raw className="post-content" element={post.content} />
+      <hr className="footer-line" />
+      <Comments className="comments" term={`Comment: ${post.postInfo.id}`} />
     </div>
   )
 }

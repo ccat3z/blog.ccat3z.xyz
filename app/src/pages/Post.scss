@@ -7,4 +7,20 @@
       }
     }
   }
+
+  .post-content {
+    .content {
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  .footer-line {
+    margin: calc(var(--global-space) * 3) 0;
+  }
+
+  .comments {
+    position: relative;
+    top: -16px;
+  }
 }

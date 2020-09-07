@@ -26,7 +26,7 @@ export function extractPostInfo (e: Element): PostInfo | undefined {
 
   return {
     id: id.textContent,
-    title: title?.textContent || '',
+    title: title?.textContent?.trim() || '',
     href: title?.getAttribute('href') || '#',
     date: date?.textContent || '',
     abstract: description?.textContent || '',

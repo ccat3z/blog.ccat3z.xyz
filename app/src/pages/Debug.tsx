@@ -1,5 +1,7 @@
 import React from 'react'
-import { useBlogData, registerPageType } from '../PageDispatcher'
+import { registerPageType } from '@/PageDispatcher'
+import { useBlogData } from '@/BlogData'
+import Raw from '@/components/RawElement'
 
 function DebugPage() {
   const data = useBlogData()
@@ -7,10 +9,7 @@ function DebugPage() {
   return (
     <div>
       {'BlogData: ' + JSON.stringify(data)}
-      <div dangerouslySetInnerHTML={{
-        __html: data.content?.outerHTML || ''
-      }}>
-      </div>
+      {data.content && <Raw element={data.content} />}
     </div>
   )
 }

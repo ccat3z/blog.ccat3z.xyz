@@ -21,14 +21,16 @@ export type BlogData = {
   }
 }
 
-export async function fetchBlogData(url?: string): Promise<BlogData> {
+let firstLoad = true
+export async function fetchBlogData(url: string): Promise<BlogData> {
   let html: string
-  if (!url) {
+  if (firstLoad && url === document.location.pathname) {
     html = document.getElementsByTagName('html')[0].innerHTML
   } else {
     const resp = await fetch(url)
     html = await resp.text()
   }
+  firstLoad = false
 
   return await parseBlogData(html)
 }

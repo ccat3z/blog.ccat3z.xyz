@@ -1,4 +1,4 @@
-import React, { ComponentType, ReactNode } from 'react'
+import React, { ComponentType, ReactNode, useEffect } from 'react'
 import { useBlogData } from './BlogData'
 
 export { useBlogData }
@@ -27,6 +27,7 @@ export function registerPageType(page: PageType) {
 
 export default function PageDispatcher() {
   const blogData = useBlogData()
+  useEffect(() => { document.documentElement.scrollTop = 0 }, [blogData])
 
   let page: ReactNode 
   for (const pt of pageTypes) {

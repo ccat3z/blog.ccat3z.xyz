@@ -77,6 +77,7 @@ function PostsListPage() {
                   onClick={(e) => {
                     e.stopPropagation()
                     e.preventDefault()
+                    goTo(t.href)
                   }}
                 >{t.name}</a>
               </span>))}

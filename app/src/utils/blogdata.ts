@@ -15,7 +15,10 @@ export type BlogData = {
   nav?: Nav[],
   pagination?: Page[],
   content?: Element,
-  type: string
+  type: string,
+  seo: {
+    nodes: ChildNode[]
+  }
 }
 
 export async function fetchBlogData(url?: string): Promise<BlogData> {
@@ -36,14 +39,37 @@ export async function parseBlogData(html: string): Promise<BlogData> {
   const title = el.querySelector('head > title')?.textContent?.trim() || ''
   const blogData = el.querySelector('[id=blog-data]') || document.createElement('div')
   const context = extractContent(blogData)
+  const head = el.querySelector('head')
 
   return {
     title,
     nav: extractNav(blogData),
     pagination: extractPagination(blogData),
     content: context?.element,
-    type: context?.type || 'empty'
+    type: context?.type || 'empty',
+    seo: head ? findSEONodesInHead(head) : { nodes: [] }
   }
+}
+
+export function findSEONodesInHead(head: Element) {
+  let nodes: ChildNode[] = []
+
+  let i = 0;
+  while (
+    i < head.childNodes.length &&
+    !(head.childNodes[i].nodeType === 8 && head.childNodes[i].nodeValue === 'SEO_BEGIN')
+  ) { ++i }
+
+  while (
+    i < head.childNodes.length &&
+    !(head.childNodes[i].nodeType === 8 && head.childNodes[i].nodeValue === 'SEO_END')
+  ) {
+    nodes.push(head.childNodes[i])
+    ++i
+  }
+  if (i !== head.childNodes.length) nodes.push(head.childNodes[i])
+
+  return { nodes };
 }
 
 function extractNav(element: Element): Nav[] | undefined {

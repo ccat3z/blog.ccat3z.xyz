@@ -53,8 +53,8 @@ function PostPage(props: {
           </span><br />
           <span className="na">tags</span><span className="pi">:</span> <span className="pi">[</span>
           {post.postInfo.tags.map((t, i, { length }) => (
-            <>
-              <a key={t.href} className="tag sx" href={t.href}
+            <React.Fragment key={t.href}>
+              <a className="tag sx" href={t.href}
                 onClick={(e) => {
                   e.stopPropagation()
                   e.preventDefault()
@@ -62,7 +62,7 @@ function PostPage(props: {
                 }}
               >{t.name}</a>
               { i !== length - 1 && <span className="pi">, </span> }
-            </>
+            </React.Fragment>
           ))}
           <span className="pi">]</span><br />
         </code>

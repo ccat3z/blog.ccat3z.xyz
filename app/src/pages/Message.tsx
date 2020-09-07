@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { useBlogData } from '@/BlogData'
 import { registerPageType } from '@/PageDispatcher'
+import Raw from '@/components/RawElement'
 
 function MessagePage() {
   const data = useBlogData()
@@ -9,10 +10,9 @@ function MessagePage() {
     return m
   }, [data.content])
 
-  return (
-    <div dangerouslySetInnerHTML={{ __html: content?.outerHTML || '' }}>
-    </div>
-  )
+  return <>
+    { content && <Raw element={content} /> }
+  </>
 }
 
 registerPageType({

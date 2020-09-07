@@ -38,6 +38,7 @@ function PostPage(props: {
         <code>
           <span className="nn">---</span><br />
           <span className="na">title</span><span className="pi">:</span> <span className="s">{post.postInfo.title}</span><br />
+          <span className="na">date</span><span className="pi">:</span> <span className="s">{post.postInfo.date}</span><br />
           <span className="na">description</span><span className="pi">:</span> <span className="pi">|-</span><br />
           <span style={{
             width: '100%',

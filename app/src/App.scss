@@ -8,10 +8,12 @@ body {
 
 pre {
   padding: 0;
+  overflow-x: auto;
+
   code {
     padding: 1em;
+    overflow: visible;
     font-family: var(--mono-font-stack);
-    overflow: auto;
     color: var(--global-font-color);
   }
 }

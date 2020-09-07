@@ -3,7 +3,7 @@ layout: post
 title: "分享几个我高中时候经常用来找试(da)卷(an)的网站"
 date: "2017-08-30 12:36:29 +0800"
 tag: ["SCEE"]
-short_description: "卷子要自己做"
+description: "卷子要自己做"
 ---
 
 卷子要自己做, 否则只能和我一样上普通学校.

@@ -3,7 +3,7 @@ layout: post
 title: "Groovy学习笔记"
 date: "2019-10-19 17:35:49 +0800"
 tag: ["Groovy", "Learning"]
-short_description: "干翻爪哇!"
+description: "干翻爪哇!"
 image: "/images/2019-10-19-learning-groovy/groovy-logo.svg"
 ---
 

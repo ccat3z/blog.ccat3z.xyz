@@ -17,18 +17,15 @@ type PostInfo = {
 
 export function extractPostInfo (e: Element): PostInfo | undefined {
   let title = e.querySelector('a.post-title')
-  if (!title) return
   let date = e.querySelector('.post-date')
-  if (!date) return
-  let shortDescription = e.querySelector('.post-short-description')
-  if (!shortDescription) return
+  let description = e.querySelector('.post-description')
   let tags = Array.from(e.querySelectorAll('.post-tags > li > a.post-tag'))
 
   return {
-    title: title.textContent || '',
-    href: title.getAttribute('href') || '#',
-    date: date.textContent || '',
-    abstract: shortDescription.textContent || '',
+    title: title?.textContent || '',
+    href: title?.getAttribute('href') || '#',
+    date: date?.textContent || '',
+    abstract: description?.textContent || '',
     tags: tags.map(e => ({
       name: e.textContent || '',
       href: e.getAttribute('href') || '#'

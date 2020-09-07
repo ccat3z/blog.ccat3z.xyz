@@ -3,7 +3,7 @@ layout: post
 title: "Xposed在Android N下尝试使用SharedPreference的解决方案"
 date: "2017-07-24 23:07:39 +0800"
 tag: ["Xposed"]
-short_description: "Xposed亦可赛艇"
+description: "Xposed亦可赛艇"
 ---
 
 最近有开发者终于耐不住等待, 拿起art的源码就开始自己改. 虽然只是WIP, 但各路大神立刻就放出了卡刷包, 我也迫不及待得尝了把鲜. 不过很快就发现原来的SharedPreference已经不再适用, 这里简单介绍下我所使用的解决方法.

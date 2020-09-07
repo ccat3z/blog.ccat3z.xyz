@@ -3,7 +3,7 @@ layout: post
 title: "数组名和指针的区别"
 date: "2017-09-15 18:31:04 +0800"
 tag: ["C"]
-short_description: "数组是数组, 指针是指针"
+description: "数组是数组, 指针是指针"
 ---
 
 > 转自[zhanjindong](https://github.com/zhanjindong)的[越简单越好：数组名和指针的区别](http://www.cnblogs.com/zhanjindong/archive/2013/02/15/2912892.html)

@@ -3,7 +3,7 @@ layout: post
 title: "Python学习笔记"
 date: "2017-09-25 23:23:02 +0800"
 tag: ["Python"]
-short_description: "开始认真学习Python啦"
+description: "开始认真学习Python啦"
 ---
 
 暑假开始啦...刚考完没啥特别的事情干, 于是终于开始认真重新来干Python了, 这里记录一些我看的网站/书籍.

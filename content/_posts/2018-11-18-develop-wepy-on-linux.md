@@ -3,7 +3,7 @@ layout: post
 title: "在Linux上开发微信小程序"
 date: "2018-11-18 20:27:24 +0800"
 tag: ["Mini Program", "WeChat", "Tencent"]
-short_description: "是一件痛苦的事情"
+description: "是一件痛苦的事情"
 image: "/images/2018-11-18-develop-wepy-on-linux/wechat.png"
 ---
 

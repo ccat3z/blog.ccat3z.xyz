@@ -3,7 +3,7 @@ layout: post
 title: "C复杂声明"
 date: "2017-10-02 22:25:05 +0800"
 tag: ["C"]
-short_description: "上次看到网易的gg面试题"
+description: "上次看到网易的gg面试题"
 ---
 
 先放大招: [cdecl: C gibberish ↔ English](https://cdecl.org/)

@@ -4,7 +4,7 @@ title: "发一个小工具-Scale JPG"
 date: "2017-04-07 22:06:28 +0800"
 tag: ["JavaFX", "Project"]
 image_preview: "/images/2017-04-02-scale-jpg-init/scale-jpg.svg"
-short_description: "JavaFX突然登场"
+description: "JavaFX突然登场"
 ---
 
 前面全是废话, 直接跳到[怎么用](#怎么用)

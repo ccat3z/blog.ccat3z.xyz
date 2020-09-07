@@ -3,7 +3,7 @@ layout: post
 title: "饥荒系列自定义SDL2"
 date: "2018-10-22 20:57:29 +0800"
 tag: ["Game"]
-short_description: "玩到可持续发展"
+description: "玩到可持续发展"
 image: "/images/2018-10-22-dont-starve-custom-sdl2/image.jpg"
 ---
 

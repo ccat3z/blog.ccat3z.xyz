@@ -4,7 +4,7 @@ title: "Windows截屏/录屏"
 date: "2017-04-15 19:47:14 +0800"
 tag: ["Windows"]
 image_preview: "/images/2017-04-15-sceenshot-on-windows/screenshot.png"
-short_description: "真的找了好久(在找之前加个没字)"
+description: "真的找了好久(在找之前加个没字)"
 ---
 
 

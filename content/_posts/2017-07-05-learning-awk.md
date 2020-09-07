@@ -3,7 +3,7 @@ layout: post
 title: "AWK简明教程"
 date: "2017-07-05 23:03:12 +0800"
 tag: ["awk"]
-short_description: "超级棒的awk入门教程"
+description: "超级棒的awk入门教程"
 ---
 
 > 转自[AWK 简明教程](http://coolshell.cn/articles/9070.html)

@@ -4,7 +4,7 @@ title: "Windows日常的序章"
 date: "2017-03-11 11:14:03 +0800"
 tag: ["Windows"]
 image_preview: /images/2017-03-11-windows-noob/windows.svg
-short_description: "正式转换Windows工作环境"
+description: "正式转换Windows工作环境"
 ---
 
 思索再三, 我决定未来用回Windows作为主要工作环境, 用了Linux(Ubunutu 1y, Debian 0.5y, Arch Linux 2.6y)多年多少有些舍不得, 操作习惯早已Linuxiz. 但是Linux作为主要使用环境太摧残强迫症了, 几年来从dm到wm, 从Gnome插件到GTK主题我一直不停在修修补补, 再加上未来对交流(QQ, 微信等)和办公(Ofiice)的需求增高, Wayland对hidpi支持还不完善, Linux Surface Pro 3的维护时间不足和遇到的种种困难, WSL的出现等众多原因助推我切换Windows, 水一篇纪念被我抛弃的Linux环境, 话说这几天做出的决定还真多, 冒着2h/d的路程时间选择走读, 切完全陌生的Windows...

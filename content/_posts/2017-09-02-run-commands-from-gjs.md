@@ -3,7 +3,7 @@ layout: post
 title: "Gjs里执行系统命令"
 date: "2017-09-02 18:51:15 +0800"
 tag: ["Gnome"]
-short_description: "写插件实用"
+description: "写插件实用"
 ---
 
 其实很久没有写Gnome Extension了(不把Linux作为主系统了), 当时因为fcitx(其实是chromium系)的bug导致输入框位置HiDpi下偏移, 所以想写个插件临时弥补一下. 判别focus window当然首先想到的是用xprop, 需要执行一段system command. 网上找了很久才找到的解决方案, 这里转来分享一下, 万一以后要用. 不过很多需要命令操控GTK/Gnome的都可以直接使用内建的API, 不想找官方麻烦的doc(可以看C的API再用)的往往可以从类似扩展中找到.

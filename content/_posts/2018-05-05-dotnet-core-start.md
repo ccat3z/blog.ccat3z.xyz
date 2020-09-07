@@ -3,7 +3,7 @@ layout: post
 title: ".NET Core踩坑记录"
 date: "2019-07-02 20:22:57 +0800"
 tag: ["DotNet Core"]
-short_description: "微软一统天下"
+description: "微软一统天下"
 image: "/images/2018-05-05-dotnet-core-start/dotnet-logo.png"
 ---
 

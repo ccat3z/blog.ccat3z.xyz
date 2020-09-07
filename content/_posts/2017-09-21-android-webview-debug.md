@@ -3,7 +3,7 @@ layout: post
 title: "Android手机上Webview页面以及微信/QQ浏览器真机调试"
 date: "2017-09-21 22:09:15 +0800"
 tag: ["Android"]
-short_description: ":D"
+description: ":D"
 ---
 
 > 转自[Cango](http://www.jianshu.com/u/84bd2b65f0c5)的[Android手机上Webview页面以及微信/QQ浏览器真机调试](http://www.jianshu.com/p/a06b5b8dc6b2)

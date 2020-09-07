@@ -3,7 +3,7 @@ layout: post
 title: "Alpine Linux 国内源"
 date: "2018-10-23 14:36:36 +0800"
 tag: ["AlpineLinux"]
-short_description: "更快一点"
+description: "更快一点"
 ---
 
 * 中科大: http://mirrors.ustc.edu.cn/alpine/

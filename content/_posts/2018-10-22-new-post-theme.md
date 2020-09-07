@@ -3,7 +3,7 @@ layout: post
 title: "新的主题"
 date: "2018-10-22 09:52:02 +0800"
 tag: ["Blog"]
-short_description: "全新的操作"
+description: "全新的操作"
 ---
 
 # [blog.ccat3z.xyz](http://blog.ccat3z.xyz)

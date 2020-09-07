@@ -4,7 +4,7 @@ title: "Windows 10设置磁块颜色"
 date: "2017-03-11 14:48:18 +0800"
 tags: ["Windows"]
 image_preview: "/images/2017-03-11-color-tiles/color.svg"
-short_description: "美化美化美化"
+description: "美化美化美化"
 ---
 
 看到开始屏幕一片红非常单调, 想看看有没有办法给普通链接加上UWP那样的色彩.

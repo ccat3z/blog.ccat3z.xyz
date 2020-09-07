@@ -4,7 +4,7 @@ title: "Ruby碎碎念"
 date: "2017-02-03 18:02:00 +0800"
 tag: ["Ruby"]
 image_preview: "/images/2017-02-03-ruby-something/ruby.svg"
-short_description: "\"送个Ruby给女友?\" \"醒醒! 哪来的女朋友.\""
+description: "\"送个Ruby给女友?\" \"醒醒! 哪来的女朋友.\""
 ---
 
 **如何在Bundle添加Git源?**

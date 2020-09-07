@@ -3,7 +3,7 @@ layout: post
 title: "Freedesktop那些破事"
 date: "2017-02-05 16:32:44 +0800"
 tag: ["Linux", "Freedesktop"]
-short_description: "对于一个强迫症, 这些Deskotp的技能必须熟练"
+description: "对于一个强迫症, 这些Deskotp的技能必须熟练"
 image_preview: "/images/2017-02-05-freedesktop/freedesktop.svg"
 ---
 

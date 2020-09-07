@@ -4,7 +4,7 @@ title: "Z Uploader正式测试!"
 date: "2017-02-06 20:06:22 +0800"
 tags: ["Z Uploader", "Project"]
 image_preview: "/images/z-uploader.svg"
-short_description: "为了收作业写的Web App...一想到这可能是我最后几天收作业了"
+description: "为了收作业写的Web App...一想到这可能是我最后几天收作业了"
 ---
 
 3天开发, 7天个人测试, 3天小组测试, 接下来就是班级测试了.

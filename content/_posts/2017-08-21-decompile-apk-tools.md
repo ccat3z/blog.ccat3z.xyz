@@ -3,7 +3,7 @@ layout: post
 title: "Android反编译工具总结"
 date: "2017-08-21 01:05:20 +0800"
 tag: ["Android"]
-short_description: "我... 我就想学习一下 QwQ 绝对不会抢红包什么的"
+description: "我... 我就想学习一下 QwQ 绝对不会抢红包什么的"
 ---
 
 > 转自[Android反编译工具总结](http://sunzq1993.com/2017/03/19/Android反编译工具总结/)

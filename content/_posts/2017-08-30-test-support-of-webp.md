@@ -3,7 +3,7 @@ layout: post
 title: "一段判断浏览器是否支持WebP的js代码"
 date: "2017-08-30 12:25:36 +0800"
 tag: ["Web"]
-short_description: "讲真为什么大家都不支持WebP..."
+description: "讲真为什么大家都不支持WebP..."
 ---
 
 > 转自[一段判断浏览器是否支持WebP的js代码](http://www.jianshu.com/p/cf60ad18c1c6)

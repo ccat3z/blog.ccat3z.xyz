@@ -4,7 +4,7 @@ title: "Ruby各种基础概念整理"
 date: "2017-03-30 23:09:18 +0800"
 tag: ["Ruby"]
 image_preview: "/images/2017-03-30-ruby-bundle-rake/bundle.png"
-short_description: "不知怎么得就玩起了Ruby"
+description: "不知怎么得就玩起了Ruby"
 ---
 
 刚开始学Ruby, 一切都是如此新鲜. 相信不少人刚开始快速学Ruby也会想我一样遇到不少问题... Gem是什么, Rakefile是什么, 怎么打包Gem包, 有没有Makefile之类的问题, 在此篇作简单整理.

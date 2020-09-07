@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import './PostsList.scss'
 
 type PostInfo = {
+  id: string,
   title: string,
   href: string,
   date: string,
@@ -16,12 +17,15 @@ type PostInfo = {
 }
 
 export function extractPostInfo (e: Element): PostInfo | undefined {
+  let id = e.querySelector('.post-id')
+  if (!(id && id.textContent)) return
   let title = e.querySelector('a.post-title')
   let date = e.querySelector('.post-date')
   let description = e.querySelector('.post-description')
   let tags = Array.from(e.querySelectorAll('.post-tags > li > a.post-tag'))
 
   return {
+    id: id.textContent,
     title: title?.textContent || '',
     href: title?.getAttribute('href') || '#',
     date: date?.textContent || '',
@@ -39,6 +43,7 @@ function extractPostList (e: Element): PostInfo[] {
     let res = extractPostInfo(p)
     
     return res || {
+      id: `ERROR${Math.random().toString().substr(2, 10)}`,
       title: 'ERROR',
       href: '#',
       date: '',

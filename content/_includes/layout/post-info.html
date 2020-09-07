@@ -1,5 +1,6 @@
 {% if post != null %}
 <div class="post-info">
+  <span class="post-id">{{ post.id }}</span>
   <a href="{{ post.url }}" class="post-title">{{ post.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
   <span class="post-date">{{ post.date | date: '%d %b %Y' }}</span>
   </h2>

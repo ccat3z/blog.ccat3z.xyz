@@ -33,7 +33,7 @@
     "file-loader": "^6.0.0",
     "find": "^0.3.0",
     "fs-extra": "^9.0.1",
-    "html-webpack-plugin": "4.3.0",
+    "html-webpack-plugin": "4.5.1",
     "iconfont-webpack-plugin": "^5.0.0",
     "identity-obj-proxy": "3.0.0",
     "lodash": "^4.17.20",

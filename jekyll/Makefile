@@ -1,4 +1,5 @@
-JEKYLL=bundle exec jekyll
+BUNDLE = bundle
+JEKYLL = $(BUNDLE) exec jekyll
 
 PRODUCTION_BUILD_OUTPUT=dist
 DEVELOPMENT_BUILD_OUTPUT=build
@@ -27,4 +28,4 @@ clean:
 
 .PHONY: install-dependencies
 install-dependencies:
-	bundle install
+	$(BUNDLE) install

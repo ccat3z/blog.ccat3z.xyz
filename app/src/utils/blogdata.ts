@@ -27,7 +27,9 @@ export async function fetchBlogData(url: string): Promise<BlogData> {
   if (firstLoad && url === document.location.pathname) {
     html = document.getElementsByTagName('html')[0].innerHTML
   } else {
-    const resp = await fetch(url)
+    const resp = await fetch(url, { 
+      redirect: 'follow'
+    })
     html = await resp.text()
   }
   firstLoad = false

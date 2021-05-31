@@ -24,8 +24,6 @@ const restrictedGlobals = require('confusing-browser-globals');
 module.exports = {
   root: true,
 
-  parser: 'babel-eslint',
-
   plugins: ['import', 'jsx-a11y', 'react', 'react-hooks'],
 
   env: {
@@ -51,6 +49,13 @@ module.exports = {
   },
 
   overrides: [
+    {
+      files: ['src/**/*'],
+      parser: '@babel/eslint-parser',
+      parserOptions: {
+        requireConfigFile: false,
+      },
+    },
     {
       files: ['**/*.ts?(x)'],
       parser: '@typescript-eslint/parser',

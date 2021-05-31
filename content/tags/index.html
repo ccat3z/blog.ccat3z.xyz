@@ -8,7 +8,7 @@ title: 标签
     {% assign tag = tag_object[1] %}
     <li>
         <h2 class="list-post-title">
-            <a href="{{ site.baseurl }}/tag/{{ tag_object[0] | slugify: 'pretty' }}" title="{{ tag_object[0] }}" class="post-title">
+            <a href="{{ site.baseurl }}/tag/{{ tag_object[0] | slugify: 'pretty' }}/" title="{{ tag_object[0] }}" class="post-title">
                 <span>{{ tag_object[0] }}</span>
             </a>
         </h2>

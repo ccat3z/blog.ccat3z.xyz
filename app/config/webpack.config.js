@@ -77,7 +77,11 @@ module.exports = function(webpackEnv) {
             plugins: [
               require('postcss-flexbugs-fixes'),
               require('postcss-preset-env')({
-                autoprefixer: {
+                // Enable autoprefixer in production environment only to
+                // remove autoprefixer warning.
+                // See: https://github.com/postcss/autoprefixer/issues/1318
+                //      https://github.com/postcss/autoprefixer/pull/1409
+                autoprefixer: isEnvProduction && {
                   flexbox: 'no-2009',
                 },
                 stage: 3,

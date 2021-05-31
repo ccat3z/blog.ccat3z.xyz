@@ -9,3 +9,4 @@
   - [ ] sass-loader@v5
   - [ ] remove terser-webpack-plugin
 - [ ] Polyfill
+- [ ] Remove react-dev-utils

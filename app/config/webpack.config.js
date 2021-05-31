@@ -72,29 +72,28 @@ module.exports = function(webpackEnv) {
         // package.json
         loader: require.resolve('postcss-loader'),
         options: {
-          // Necessary for external CSS imports to work
-          // https://github.com/facebook/create-react-app/issues/2677
-          ident: 'postcss',
-          plugins: (loader) => [
-            require('postcss-flexbugs-fixes'),
-            require('postcss-preset-env')({
-              autoprefixer: {
-                flexbox: 'no-2009',
-              },
-              stage: 3,
-            }),
-            require('iconfont-webpack-plugin')({
-              resolve: loader.resolve,
-              fontNamePrefix: 'font-'
-            }),
-            require('autoprefixer'),
-            require('postcss-css-variables')({
-              preserve: false,
-              variables: require('./css')
-            }),
-            require('postcss-normalize'),
-          ],
-          sourceMap: isEnvProduction && shouldUseSourceMap,
+          postcssOptions: (loader) => ({
+            plugins: [
+              require('postcss-flexbugs-fixes'),
+              require('postcss-preset-env')({
+                autoprefixer: {
+                  flexbox: 'no-2009',
+                },
+                stage: 3,
+              }),
+              require('iconfont-webpack-plugin')({
+                resolve: loader.resolve,
+                fontNamePrefix: 'font-'
+              }),
+              require('autoprefixer'),
+              require('postcss-css-variables')({
+                preserve: false,
+                variables: require('./css')
+              }),
+              require('postcss-normalize'),
+            ],
+            sourceMap: isEnvProduction && shouldUseSourceMap,
+          })
         },
       },
     ].filter(Boolean);

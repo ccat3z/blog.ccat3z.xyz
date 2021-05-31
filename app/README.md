@@ -8,3 +8,4 @@
   - [ ] postcss-loader@v5
   - [ ] sass-loader@v5
   - [ ] remove terser-webpack-plugin
+- [ ] Polyfill

@@ -18,7 +18,7 @@ dependencies:
   case-sensitive-paths-webpack-plugin: 2.4.0
   confusing-browser-globals: 1.0.10
   css-loader: 4.3.0_webpack@4.46.0
-  dotenv: 8.2.0
+  dotenv: 10.0.0
   dotenv-expand: 5.1.0
   eslint: 7.27.0
   eslint-loader: 4.0.2_eslint@7.27.0+webpack@4.46.0
@@ -4605,12 +4605,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
-  /dotenv/8.2.0:
+  /dotenv/10.0.0:
     dev: false
     engines:
-      node: '>=8'
+      node: '>=10'
     resolution:
-      integrity: sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
+      integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==
   /duplexer/0.1.2:
     dev: false
     resolution:
@@ -11199,7 +11199,7 @@ specifiers:
   case-sensitive-paths-webpack-plugin: ^2.4.0
   confusing-browser-globals: ^1.0.10
   css-loader: ^4.3.0
-  dotenv: 8.2.0
+  dotenv: ^10.0.0
   dotenv-expand: 5.1.0
   eslint: ^7.27.0
   eslint-loader: ^4.0.2

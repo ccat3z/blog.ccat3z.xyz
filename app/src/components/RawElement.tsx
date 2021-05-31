@@ -1,6 +1,5 @@
 import React from 'react'
 
-// TODO: exec <script>
 export default function RawElement(props: {
   element: Element,
   className?: string,
@@ -12,6 +11,10 @@ export default function RawElement(props: {
     ref={elem => {
       if (!elem) return
       elem.appendChild(props.element)
+      elem.querySelectorAll('script').forEach(script => {
+        // eslint-disable-next-line no-eval
+        window.eval(script.innerHTML)
+      })
     }}
   />
 }

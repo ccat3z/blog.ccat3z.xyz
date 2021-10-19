@@ -27,6 +27,10 @@
       </ul>
     </div>
   </div>
+  <script>
+    const dataElement = document.getElementById('blog-data')
+    if (dataElement) dataElement.setAttribute('style', 'display: none;');
+  </script>
   {% if jekyll.environment == "development" %}
   <script src="/static/js/bundle.js"></script>
   {% endif %}

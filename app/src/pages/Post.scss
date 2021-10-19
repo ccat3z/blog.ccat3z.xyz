@@ -6,6 +6,10 @@
         background: inherit;
       }
     }
+
+    code::after {
+      content: none;
+    }
   }
 
   .post-content {

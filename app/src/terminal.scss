@@ -312,6 +312,26 @@ ol ol {
   margin-bottom: 0;
 }
 
+li {
+  & > p:first-child {
+    display: inline;
+  }
+
+  & > p:not(:first-child) {
+    &:nth-child(2) {
+      margin-top: .5em;
+    }
+
+    &:last-child {
+      margin-bottom: .5em;
+    }
+
+    margin-top: .5em;
+    margin-bottom: .5em;
+    margin-left: calc(var(--global-space) * 2);
+  }
+}
+
 .terminal-menu {
   width: 100%;
 }

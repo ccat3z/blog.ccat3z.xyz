@@ -170,17 +170,6 @@ code {
   font-family: var(--mono-font-stack);
 }
 
-code::after,
-code::before {
-  content: "`";
-  display: inline;
-}
-
-pre code::after,
-pre code::before {
-  content: "";
-}
-
 pre {
   display: block;
   word-break: break-all;

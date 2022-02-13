@@ -24,9 +24,6 @@ nav:
   # - name:           "tags"
   #   icon:           "bookmark"
   #   href:           "/tags/"
-  - name:           "love"
-    icon:           "favorite"
-    href:           "/love/"
 
 defaults:
   - scope:

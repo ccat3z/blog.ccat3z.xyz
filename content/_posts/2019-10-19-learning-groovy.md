@@ -7,8 +7,6 @@ description: "干翻爪哇!"
 image: "/images/2019-10-19-learning-groovy/groovy-logo.svg"
 ---
 
-# Groovy学习笔记
-
 开始<del>再一次</del>学习Java.
 不过在学Java之前, 得先看看流行的Java构建工具, 免得被IDE偷偷干活.
 现在比较流行(大概)Gradle,

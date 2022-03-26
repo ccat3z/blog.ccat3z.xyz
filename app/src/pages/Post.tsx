@@ -38,18 +38,20 @@ function PostPage(props: {
         <code>
           <span className="na">title</span><span className="pi">:</span> <span className="s">{post.postInfo.title}</span><br />
           <span className="na">date</span><span className="pi">:</span> <span className="s">{post.postInfo.date}</span><br />
-          <span className="na">description</span><span className="pi">:</span> <span className="pi">|-</span><br />
-          <span style={{
-            width: '100%',
-            display: 'inline-flex',
-            flexDirection: 'row'
-          }}>
-            <span>{`  `}</span><span className="s" style={{
-              display: 'inline-block'
+          { post.postInfo.abstract ? <>
+            <span className="na">description</span><span className="pi">:</span> <span className="pi">|-</span><br />
+            <span style={{
+              width: '100%',
+              display: 'inline-flex',
+              flexDirection: 'row'
             }}>
-              {post.postInfo.abstract}
-            </span>
-          </span><br />
+              <span>{`  `}</span><span className="s" style={{
+                display: 'inline-block'
+              }}>
+                {post.postInfo.abstract}
+              </span>
+            </span><br />
+          </> : undefined }
           <span className="na">tags</span><span className="pi">:</span> <span className="pi">[</span>
           {post.postInfo.tags.map((t, i, { length }) => (
             <React.Fragment key={t.href}>

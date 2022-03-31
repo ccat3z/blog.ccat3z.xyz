@@ -3,8 +3,7 @@ layout: home
 ---
 
 <pre class="highlight">
-<code>
- <span class="c1">      l:       .lc</span>
+<code> <span class="c1">      l:       .lc</span>
  <span class="c1">      XXKxlccd0XXK</span>  <span class="kt">Lingfeng Zhang (ccat3z)</span>
  <span class="c1">      XXXXXXXXXXXX</span>  <span class="kt">Student, DaSE ECNU</span>
  <span class="c1">o0,  .Xl.dXXXXx.cX</span>  <span class="kt">Email</span>: fzhang.chn@foxmail.com
